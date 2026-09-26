@@ -1,0 +1,149 @@
+<section id="tram-sensor-cases" aria-label="Примеры телеметрии трамвая">
+  <h2>Что происходит в сигналах</h2>
+  <div class="viz-controls">
+    <label class="form-label" for="tram-case-select">Участок
+      <select class="form-select" id="tram-case-select"></select>
+    </label>
+  </div>
+  <div class="tram-case-legend viz-row" aria-label="Показать или скрыть каналы">
+    <button type="button" data-series="front" aria-pressed="true"><span class="swatch front"></span>Передняя</button>
+    <button type="button" data-series="rear" aria-pressed="true"><span class="swatch rear"></span>Задняя</button>
+    <button type="button" data-series="master" aria-pressed="true"><span class="swatch master"></span>GNSS master</button>
+    <button type="button" data-series="rover" aria-pressed="true"><span class="swatch rover"></span>GNSS rover</button>
+  </div>
+  <div class="tram-speed-wrap"><svg id="tram-speed-chart" role="img" aria-label="Скорость по времени, метры в секунду"></svg></div>
+  <div class="tram-cmd-wrap"><svg id="tram-cmd-chart" role="img" aria-label="Положение ручки по времени, от минус 15 до плюс 15"></svg></div>
+  <div id="tram-case-detail" class="text-small" aria-live="polite"></div>
+  <div class="tram-case-tooltip" role="tooltip" hidden></div>
+</section>
+<style>
+  #tram-sensor-cases { position: relative; width: 100%; color: var(--foreground); }
+  #tram-sensor-cases h2 { margin: 0 0 8px; }
+  #tram-sensor-cases .viz-controls { margin-bottom: 8px; }
+  #tram-sensor-cases .tram-case-legend { gap: 12px; margin: 5px 0 8px; }
+  #tram-sensor-cases .tram-case-legend button { display: inline-flex; align-items: center; gap: 5px; background: transparent; border: 0; color: var(--foreground); padding: 2px 0; font: inherit; }
+  #tram-sensor-cases .tram-case-legend button[aria-pressed="false"] { opacity: .42; }
+  #tram-sensor-cases .swatch { display: inline-block; width: 16px; height: 3px; }
+  #tram-sensor-cases .front { background: var(--viz-series-1); }
+  #tram-sensor-cases .rear { background: var(--viz-series-2); }
+  #tram-sensor-cases .master { background: var(--viz-series-3); }
+  #tram-sensor-cases .rover { background: var(--viz-series-4); }
+  #tram-sensor-cases .tram-speed-wrap, #tram-sensor-cases .tram-cmd-wrap { width: 100%; }
+  #tram-sensor-cases svg { display: block; width: 100%; }
+  #tram-sensor-cases svg text { fill: var(--foreground); font-size: 12px; }
+  #tram-sensor-cases svg .axis path, #tram-sensor-cases svg .axis line { stroke: var(--border); }
+  #tram-sensor-cases svg .grid line { stroke: var(--border); opacity: .5; }
+  #tram-sensor-cases svg .grid path { display: none; }
+  #tram-sensor-cases #tram-case-detail { min-height: 20px; margin-top: 4px; color: var(--muted-foreground); }
+  #tram-sensor-cases .tram-case-tooltip { position: absolute; z-index: 3; pointer-events: none; background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--border); padding: 7px 9px; max-width: 240px; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>
+(() => {
+  const root = document.getElementById('tram-sensor-cases');
+  const cases = __CASES_JSON__;
+  const picker = root.querySelector('#tram-case-select');
+  const speedSvg = root.querySelector('#tram-speed-chart');
+  const cmdSvg = root.querySelector('#tram-cmd-chart');
+  const detail = root.querySelector('#tram-case-detail');
+  const tooltip = root.querySelector('.tram-case-tooltip');
+  const keys = ['front', 'rear', 'master', 'rover'];
+  const labels = {front:'Передняя',rear:'Задняя',master:'GNSS master',rover:'GNSS rover'};
+  const colors = {front:'var(--viz-series-1)',rear:'var(--viz-series-2)',master:'var(--viz-series-3)',rover:'var(--viz-series-4)'};
+  const visible = {front:true,rear:true,master:true,rover:true};
+  let pinned = false;
+  let lastPointer = null;
+  cases.forEach((c,i) => { const o=document.createElement('option');o.value=String(i);o.textContent=c.label+' · '+c.id;picker.appendChild(o); });
+  function withGaps(points, limit) {
+    const out=[];
+    for(let i=0;i<points.length;i++) {
+      if(i && points[i][0]-points[i-1][0]>limit) out.push([(points[i][0]+points[i-1][0])/2,NaN]);
+      out.push(points[i]);
+    }
+    return out;
+  }
+  function interpolate(points,t,step=false) {
+    if(!points.length || t<points[0][0] || t>points[points.length-1][0]) return null;
+    const i=d3.bisector(d=>d[0]).center(points,t);
+    if(step) {
+      const j=points[i][0]<=t?i:Math.max(0,i-1);
+      return t-points[j][0] < .4 ? points[j][1] : null;
+    }
+    const a=points[Math.max(0,i-(points[i][0]>t?1:0))];
+    const b=points[Math.min(points.length-1,points[i][0]<t?i+1:i)];
+    if(!a || !b || Math.abs(b[0]-a[0])>.6) return null;
+    if(a[0]===b[0]) return a[1];
+    return a[1]+(b[1]-a[1])*(t-a[0])/(b[0]-a[0]);
+  }
+  function draw() {
+    if(typeof d3==='undefined') { detail.textContent='Для интерактивного просмотра требуется загрузка D3.'; return; }
+    const c=cases[Number(picker.value)||0];
+    const w=Math.max(320,Math.floor(root.querySelector('.tram-speed-wrap').getBoundingClientRect().width));
+    const h=305, m={l:66,r:18,t:18,b:50}, pw=w-m.l-m.r, ph=h-m.t-m.b;
+    const x=d3.scaleLinear().domain([c.start,c.end]).range([m.l,m.l+pw]);
+    const values=keys.filter(k=>visible[k]).flatMap(k=>c.series[k].filter(p=>p[0]>=c.start && p[0]<=c.end).map(p=>p[1]));
+    const ext=d3.extent(values.length?values:[0,1]);
+    const pad=Math.max(0.25,(ext[1]-ext[0])*.08);
+    const y=d3.scaleLinear().domain([Math.max(0,ext[0]-pad),ext[1]+pad]).nice().range([m.t+ph,m.t]);
+    const svg=d3.select(speedSvg).attr('viewBox',`0 0 ${w} ${h}`).attr('height',h);
+    svg.selectAll('*').remove();
+    svg.append('rect').attr('data-chart-frame','').attr('x',m.l).attr('y',m.t).attr('width',pw).attr('height',ph).attr('fill','none').attr('stroke','var(--border)');
+    svg.append('g').attr('class','grid').attr('transform',`translate(0,${m.t+ph})`).call(d3.axisBottom(x).ticks(w<450?3:5).tickSize(-ph).tickFormat(''));
+    svg.append('g').attr('class','grid').attr('transform',`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-pw).tickFormat(''));
+    svg.append('g').attr('class','axis').attr('transform',`translate(0,${m.t+ph})`).call(d3.axisBottom(x).ticks(w<450?3:5));
+    svg.append('g').attr('class','axis').attr('transform',`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5));
+    svg.append('text').attr('class','axis-title').attr('data-axis','x').attr('x',m.l+pw/2).attr('y',h-8).attr('text-anchor','middle').text('Время от первого входа, с');
+    svg.append('text').attr('class','axis-title').attr('data-axis','y').attr('transform',`translate(16,${m.t+ph/2}) rotate(-90)`).attr('text-anchor','middle').text('Скорость, м/с');
+    const path=d3.line().defined(p=>Number.isFinite(p[1])).x(p=>x(p[0])).y(p=>y(p[1]));
+    for(const k of keys) if(visible[k] && c.series[k].length) svg.append('path').datum(withGaps(c.series[k].filter(p=>p[0]>=c.start && p[0]<=c.end),.6)).attr('fill','none').attr('stroke',colors[k]).attr('stroke-width',k==='front'||k==='rear'?2:1.5).attr('d',path);
+    const hover=svg.append('g').style('display','none');
+    const guide=hover.append('line').attr('data-chart-hover-guide','').attr('y1',m.t).attr('y2',m.t+ph).attr('stroke','var(--foreground)').attr('stroke-width',1).attr('opacity',.55);
+    const markers={};
+    for(const k of keys) markers[k]=hover.append('circle').attr('data-chart-hover-marker',k).attr('r',4).attr('fill',colors[k]);
+    function show(event) {
+      const pos=d3.pointer(event,svg.node());
+      const px=Math.min(m.l+pw,Math.max(m.l,pos[0]));
+      const t=x.invert(px);
+      guide.attr('x1',px).attr('x2',px);
+      const rows=[];
+      for(const k of keys) {
+        const val=visible[k]?interpolate(c.series[k],t):null;
+        markers[k].style('display',val===null?'none':null);
+        if(val!==null) { markers[k].attr('cx',px).attr('cy',y(val)); rows.push(`${labels[k]} ${val.toFixed(2)} м/с`); }
+      }
+      const cmd=interpolate(c.series.cmd,t,true);
+      if(cmd!==null) rows.push(`Ручка ${cmd.toFixed(0)}`);
+      hover.style('display',null);
+      tooltip.hidden=false;
+      tooltip.textContent=`${t.toFixed(2)} с · ${rows.join(' · ')}`;
+      const r=root.getBoundingClientRect();
+      tooltip.style.left=Math.min(r.width-245,Math.max(0,event.clientX-r.left+10))+'px';
+      tooltip.style.top=Math.max(0,event.clientY-r.top-48)+'px';
+      detail.textContent=`${c.id} · ${t.toFixed(2)} с · ${rows.join(' · ')}`;
+      lastPointer=event;
+    }
+    svg.append('rect').attr('data-chart-hit','').attr('data-chart-hover-overlay','cross-series').attr('x',m.l).attr('y',m.t).attr('width',pw).attr('height',ph).attr('fill','transparent')
+      .on('pointermove',event=>{if(!pinned)show(event)}).on('click',event=>{pinned=!pinned;show(event)})
+      .on('pointerleave',()=>{if(!pinned){hover.style('display','none');tooltip.hidden=true}});
+    const ch=145, cm={l:m.l,r:m.r,t:12,b:43}, cph=ch-cm.t-cm.b;
+    const cy=d3.scaleLinear().domain([-15,15]).range([cm.t+cph,cm.t]);
+    const csvg=d3.select(cmdSvg).attr('viewBox',`0 0 ${w} ${ch}`).attr('height',ch);
+    csvg.selectAll('*').remove();
+    csvg.append('rect').attr('data-chart-frame','').attr('x',cm.l).attr('y',cm.t).attr('width',pw).attr('height',cph).attr('fill','none').attr('stroke','var(--border)');
+    csvg.append('g').attr('class','axis').attr('transform',`translate(0,${cm.t+cph})`).call(d3.axisBottom(x).ticks(w<450?3:5));
+    csvg.append('g').attr('class','axis').attr('transform',`translate(${cm.l},0)`).call(d3.axisLeft(cy).tickValues([-15,0,15]));
+    csvg.append('path').datum(c.series.cmd.filter(p=>p[0]>=c.start && p[0]<=c.end)).attr('fill','none').attr('stroke','var(--foreground)').attr('stroke-width',1.2)
+      .attr('d',d3.line().curve(d3.curveStepAfter).x(p=>x(p[0])).y(p=>cy(p[1])));
+    csvg.append('text').attr('class','axis-title').attr('data-axis','x').attr('x',cm.l+pw/2).attr('y',ch-5).attr('text-anchor','middle').text('Время, с');
+    csvg.append('text').attr('class','axis-title').attr('data-axis','y').attr('transform',`translate(16,${cm.t+cph/2}) rotate(-90)`).attr('text-anchor','middle').text('Ручка');
+    detail.textContent=`${c.id} · ${c.start}–${c.end} с`;
+    tooltip.hidden=true;pinned=false;lastPointer=null;
+  }
+  root.querySelectorAll('.tram-case-legend button').forEach(button=>button.addEventListener('click',()=>{
+    const key=button.dataset.series;visible[key]=!visible[key];button.setAttribute('aria-pressed',String(visible[key]));draw();
+  }));
+  picker.addEventListener('change',draw);
+  const observer=new ResizeObserver(()=>draw());observer.observe(root.querySelector('.tram-speed-wrap'));
+  draw();
+})();
+</script>

@@ -1,0 +1,616 @@
+{
+  "description": "ROS 2 source, derived route assets, documentation, evaluation and visualisation code; no raw bags",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "36ac8ec9509c0a03cc9f5eb6dd611db055b4f21b0071e74a2bbd30a28e4d1bce",
+      "size": 520
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "ed68c86df7a23593d1c5ab9f091872678af5612ceb9a4e44aa631cf4970d90a2",
+      "size": 1083
+    },
+    {
+      "path": "README.md",
+      "sha256": "ba726d9aae8f410240d7186a52bf7f64566ba3416cb5750166d0f8264b0d8506",
+      "size": 7435
+    },
+    {
+      "path": "analysis/README.md",
+      "sha256": "089b86f83b661bd2bb18f5cdc45115599315a199e21e0dc3638a1af43c3517a7",
+      "size": 16295
+    },
+    {
+      "path": "analysis/catalog/README.md",
+      "sha256": "61bc4318747d96189dc3c3c5993e4bf3951a43c4c13448e34b06e31062b88cb5",
+      "size": 9801
+    },
+    {
+      "path": "analysis/catalog/catalog_bags.py",
+      "sha256": "afcf525aa6528b758b5a42ddb9d965d4a024d384122efad7ca320e6c0c5123e1",
+      "size": 15306
+    },
+    {
+      "path": "analysis/routes/README.md",
+      "sha256": "2422b9ce224789f3c02cf2168d029037b561aaa4419e2bb1da91ef7acb66b095",
+      "size": 9004
+    },
+    {
+      "path": "analysis/routes/analyze_gnss.py",
+      "sha256": "de1cf1b512a6157b6188c83db8eb38863f69afbff9370899d5928fe0d453b9d6",
+      "size": 11559
+    },
+    {
+      "path": "analysis/routes/check_explorer.py",
+      "sha256": "db65400a9b5b7baa6f3335d51f4be92db59e01d4b9199e1a0e61fcf1d8981b62",
+      "size": 1363
+    },
+    {
+      "path": "analysis/routes/detail_plots.py",
+      "sha256": "7a018d6e9c6d74fe51c37c2111d7000a33cb19639a28d5163c2f2be7a55f29f9",
+      "size": 3717
+    },
+    {
+      "path": "analysis/routes/inspect_cdr.py",
+      "sha256": "61a578d77bdc1ae672a0532854f876795a6f2228d9846607aa15d284da37dcd1",
+      "size": 1782
+    },
+    {
+      "path": "analysis/routes/make_explorer.py",
+      "sha256": "54707b13144751edc267d8d45fa7dca1f2cc4ef46d154f1aa3c1ed3c5fe3edae",
+      "size": 4566
+    },
+    {
+      "path": "analysis/routes/quality_audit.py",
+      "sha256": "621e6ecd54a95d2ae7bb5fb30a4d0ea84cccdd23785731c42687136514fce260",
+      "size": 3596
+    },
+    {
+      "path": "analysis/routes/repeatability.py",
+      "sha256": "1722d05b30ed54cb37de301cb06ed12a4eb1bb2dff96df5777b3c3fe459c1bde",
+      "size": 2914
+    },
+    {
+      "path": "analysis/routes/summarize_results.py",
+      "sha256": "9a672ca8192a7013cffecb9704c71994629d65b746c101bb9e1203359fd825a7",
+      "size": 1290
+    },
+    {
+      "path": "analysis/signals/NOTCH_README.md",
+      "sha256": "22f9baf6e0a0fd17f38c2bdbbd66b56134cf5f1199265a84e25db9c821026d0b",
+      "size": 6362
+    },
+    {
+      "path": "analysis/signals/analyze_signals.py",
+      "sha256": "1aaa43a05c06c9b9cd3b1cbe8c197d16445fb89f593863c086011c3c19763bd5",
+      "size": 12030
+    },
+    {
+      "path": "analysis/signals/final_metrics.py",
+      "sha256": "16ac8abe6ed7760808894a0b82eb88d1e70a6c4cc909a7f36bb4ae11fbde3afc",
+      "size": 4152
+    },
+    {
+      "path": "analysis/signals/find_duplicates.py",
+      "sha256": "ef6c134e6b7b53687a94f562585bcae2f9123267d188c27a8d6d1c7e0e872f54",
+      "size": 1456
+    },
+    {
+      "path": "analysis/signals/inspect_notch15.py",
+      "sha256": "e9cad2db9314d01319e3140710712ace71fb413e181ac4aef5a2683819f8306f",
+      "size": 1844
+    },
+    {
+      "path": "analysis/signals/inspect_windows.py",
+      "sha256": "364668701a148577271ecb2aae5cf5f93873fab7849ddaff96b1593eea6b14ec",
+      "size": 2873
+    },
+    {
+      "path": "analysis/signals/notch_deepdive.py",
+      "sha256": "b75deecd244ae2dff9a2361730424bf3a49308bb7f6b1f0e2e85ac2a503aa86a",
+      "size": 5688
+    },
+    {
+      "path": "analysis/simulator/README.md",
+      "sha256": "eb1210e39bb6c5b2d2f9fcaabb23865f45c27316e9d4f15698a531fe98b5dc63",
+      "size": 11033
+    },
+    {
+      "path": "analysis/simulator/SCIENCE.md",
+      "sha256": "af96bc8c0ac47a18120c995345cfb4364884886b4ce0c891136b09ae0eab330c",
+      "size": 16037
+    },
+    {
+      "path": "analysis/simulator/app.js",
+      "sha256": "0d042412fa5a68fd18d6e156711f00e922a15ac980d5591283c3a0d9e673f852",
+      "size": 27623
+    },
+    {
+      "path": "analysis/simulator/index.html",
+      "sha256": "e1b898f1dd0147a582c76ee828346dcdad58a86ad8a596ca291828c6d8b94583",
+      "size": 10443
+    },
+    {
+      "path": "analysis/simulator/scene.js",
+      "sha256": "f1ad0514f4c61fa1d195849a312abfbbb347af3b18b214cef7a9d9d558ced9b7",
+      "size": 16869
+    },
+    {
+      "path": "analysis/simulator/serve_simulator.py",
+      "sha256": "750a6a0258f25cdaddf68bb8ac23a511e309502b3bf0f8c0bc34f39c96717a11",
+      "size": 25591
+    },
+    {
+      "path": "analysis/simulator/style.css",
+      "sha256": "12e0a1d752374e4d4c93b3968ad3cd55fa3982ab356a1bb13e82b8019f407cec",
+      "size": 8587
+    },
+    {
+      "path": "analysis/viewer/build_explorer.py",
+      "sha256": "1bc19f2fa6f7335f052967aa74e9acd6368b668cc85a344e4f6976c76d9ecfd1",
+      "size": 9947
+    },
+    {
+      "path": "analysis/viewer/build_inline_cases.py",
+      "sha256": "617850c95a39382e081090a214adc92c81a08b8e855570960e6539c7d356916f",
+      "size": 3233
+    },
+    {
+      "path": "analysis/viewer/make_plots.py",
+      "sha256": "ca6e4d05a209f39245ae14538c5928e3eba4a3448c2c34c9a2fc37ae2f0ede7b",
+      "size": 7869
+    },
+    {
+      "path": "analysis/viewer/rosbag_cdr.py",
+      "sha256": "993b0220054a7cb8eda9a5c46a755db541e837d191d6d6b4792866ff3c6627c3",
+      "size": 3407
+    },
+    {
+      "path": "analysis/viewer/tram_sensor_cases.template.html",
+      "sha256": "1e43489923043df14f9b1a002627ef13349c9536be69267c86336642b261b3a9",
+      "size": 10970
+    },
+    {
+      "path": "analysis/viewer/verify_units.py",
+      "sha256": "4b51da7625bbb35990308499d7cf3c96ba2593013578b2ba95a158ea6047f05b",
+      "size": 2727
+    },
+    {
+      "path": "docs/CORE_MODEL.md",
+      "sha256": "7d5beb4f5cca39cc4bf33204e86006e1ca54c5478884efedb5924137827b16b3",
+      "size": 18707
+    },
+    {
+      "path": "docs/DRIVE_CALIBRATION.md",
+      "sha256": "6663d21bbf7e80a171d83ab337fee7522f15c99f65eb84f243704b0330af4df4",
+      "size": 13573
+    },
+    {
+      "path": "docs/JURY_CHECK.md",
+      "sha256": "a27fbd92a50555c354700068fa4c56ef3ec14da11c0ad801a044cc1b8604012e",
+      "size": 12075
+    },
+    {
+      "path": "docs/MAP_METHOD.md",
+      "sha256": "ab11081691d16629b5ec628842d4fde34326ae9e3d255dd3e47cedab537ea587",
+      "size": 16886
+    },
+    {
+      "path": "docs/RESULTS.md",
+      "sha256": "6477c2905cbb650be33cccc9d9cd5d6152cabcaac1cec9c56f8f5089905f46b2",
+      "size": 17435
+    },
+    {
+      "path": "docs/STOP_LANDMARKS.md",
+      "sha256": "4bb847cf78791116fc82a64568eabc16d74ae2e65297f0dceab906229430ca5e",
+      "size": 10591
+    },
+    {
+      "path": "docs/SUBMISSION_CHECKLIST.md",
+      "sha256": "050bcf97144babc49900c16aa10b0336270da7130b01d2c01d840951aa94f432",
+      "size": 11488
+    },
+    {
+      "path": "docs/route_map_preview.png",
+      "sha256": "56a60a391bdc382e5e1d5368b7c5e6fecdfb456f7dbab6ab7d3c7b8a1d341a57",
+      "size": 141882
+    },
+    {
+      "path": "docs/validation_metrics.png",
+      "sha256": "de424f6d8bd9365e91b71ce90aa4def143f90280caad475d35e2d2319054bdf6",
+      "size": 142334
+    },
+    {
+      "path": "evaluation/calibrate_drive.py",
+      "sha256": "ffa6fe1d5b59df5bce46cabd3082216c32a5f668adfe1ef579526c28b092d391",
+      "size": 13251
+    },
+    {
+      "path": "evaluation/calibrate_wheels.py",
+      "sha256": "a2c427a9e51cf9376a1b8e69f0a01315419237d3d9e7cf6235bbe21a92d83d9e",
+      "size": 3345
+    },
+    {
+      "path": "evaluation/causal_baseline.py",
+      "sha256": "7c32f7aed01a6f8a97f3fefb8e20fbb537f8058efedd1fe88eb52ac39ee23bbc",
+      "size": 8128
+    },
+    {
+      "path": "evaluation/compare_ros_replay.py",
+      "sha256": "12a6651e4673db6c4ee68f9b765eec6a55b7225d4e048d39b117a70f52106a0a",
+      "size": 6581
+    },
+    {
+      "path": "evaluation/core_benchmark.py",
+      "sha256": "3b6e9a517a19482d2ef34aee3b2bf7325d8b144b006340783def7c6fee675152",
+      "size": 6981
+    },
+    {
+      "path": "evaluation/distance_proxy.py",
+      "sha256": "29362955998416e7ab746e4a5cd5f7aaf559aecc3e0564b4a068ad38f8d84c67",
+      "size": 3882
+    },
+    {
+      "path": "evaluation/drive_calibration_train.json",
+      "sha256": "a31a79fd932cb40c7552060fbab482033e53b65d9db03981bc59b853d6a6ee94",
+      "size": 619103
+    },
+    {
+      "path": "evaluation/holdout_baseline.csv",
+      "sha256": "3073895c3333512bad4ad8fc9c4cb5e14a5bc238d5de706da05c8bca81e06b41",
+      "size": 3964
+    },
+    {
+      "path": "evaluation/holdout_core_final.csv",
+      "sha256": "1247b3f60afac29175c2ec0d15940e7684faa8a2ea53d1704cc1b57da11ea758",
+      "size": 4967
+    },
+    {
+      "path": "evaluation/holdout_distance_final.csv",
+      "sha256": "f2f2258f0bc71699fb6e6216a1ec9fa04a3712a26327d169c7a6c355becf42c6",
+      "size": 3638
+    },
+    {
+      "path": "evaluation/holdout_position_deployed_proxy.csv",
+      "sha256": "3d4635f91ca77c33e60cf85a2a05e675e2a7aceae61054d3ea9225799eacdfaa",
+      "size": 5254
+    },
+    {
+      "path": "evaluation/holdout_stop_landmarks.csv",
+      "sha256": "9c827ecfb366a7d2e62488e88e51b8d6aec8217dfce98977992b4de65cd60fb3",
+      "size": 13388
+    },
+    {
+      "path": "evaluation/inspect_core.py",
+      "sha256": "554eb99ce18392bf8d867d59e38fc14a0f8e4ceeb7588ac4a7a48b02780d4fbe",
+      "size": 1612
+    },
+    {
+      "path": "evaluation/plot_validation.py",
+      "sha256": "bf584e4da57fe8d7749a9cafbb6a959a5b1aff0ae2378ef6dbf3f5af2549926d",
+      "size": 3188
+    },
+    {
+      "path": "evaluation/position_proxy.py",
+      "sha256": "da8a31cddf8d38f286032ef9c904fc6b931d3d74eff3ed4cb39a6e4721854346",
+      "size": 9545
+    },
+    {
+      "path": "evaluation/replay_cli.cpp",
+      "sha256": "74a752977236c48e87aa50ed2a954cf4d98d87707a3810706547819e35badd38",
+      "size": 2805
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_231211_B7H1/monitor.log",
+      "sha256": "02781d5c0738a24c665b7f54e33123415b588f9dddcc99a54a32871abf42b2b2",
+      "size": 1395
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_231211_B7H1/report.json",
+      "sha256": "deea2b53f7a8493f6621f7f07e376daa66ba24f4aa89e70e74a5420e207ae15e",
+      "size": 1601
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_231625_pnTr/monitor.log",
+      "sha256": "7432cba0e42fa6c2adc29eefe1d7b5332c20fe4d948dcc829a30a763bc8d6e4a",
+      "size": 1506
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_231625_pnTr/report.json",
+      "sha256": "d6528cfed566ec98277fde319d1ffabc14f5f135d7c6559bb57af2f813fe0e79",
+      "size": 1720
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_232018_2DFf/monitor.log",
+      "sha256": "9f54474fd40ec777ddee3494a067e5e79974ff86c1570eb80f6b5be8d1f88ee3",
+      "size": 1511
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_232018_2DFf/report.json",
+      "sha256": "5fcfa4421b4fa1017a643eb5afde6441fe47be4bf75c00087202f080faec2b2b",
+      "size": 1725
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_233338_Uhja/accuracy.json",
+      "sha256": "ad5a1dbbd6bd1b17b86d624975ab8843fcbedc101dcadc08f94627c06c884d84",
+      "size": 3082
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_233338_Uhja/monitor.log",
+      "sha256": "8247b357a6cebd51ba376f8b7fa4b44f1d4331ec06923bdce01caa8371871628",
+      "size": 1511
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_233338_Uhja/report.json",
+      "sha256": "0702d3cbf3aa061885d6e3d38e56519d995f15e4f2c68b6a83657b0c27c3a796",
+      "size": 1725
+    },
+    {
+      "path": "evaluation/ros_smoke/anchored_20260926_233338_Uhja/samples.csv",
+      "sha256": "4df7b8f5a471fee89e5af42e94afeac0d96892ea4fd71aa20650ef90467aa3e7",
+      "size": 983321
+    },
+    {
+      "path": "evaluation/ros_smoke/no-gnss_20260926_230806_jO22/monitor.log",
+      "sha256": "96a7a9ceb8ee7e4183e7b6ebb656c8711fb8737042e3097a6a2cc52a370fe811",
+      "size": 909
+    },
+    {
+      "path": "evaluation/ros_smoke/no-gnss_20260926_230806_jO22/report.json",
+      "sha256": "6cc3b3d37802d45a31ce5417728b3308bff0d84887ea06d83526e5eec89881f7",
+      "size": 1043
+    },
+    {
+      "path": "evaluation/runtime_smoke.py",
+      "sha256": "e4e28b92c6182a81b75911e533b444c14ea5cdf3f4938ced34c81c884e7b8300",
+      "size": 2236
+    },
+    {
+      "path": "evaluation/stop_landmarks.py",
+      "sha256": "e32472beb602a6cb0cbd4f1ed5a723ec5d07ce7e88b1177023ca9b1173c57c26",
+      "size": 17868
+    },
+    {
+      "path": "evaluation/table_blackout_ablation.py",
+      "sha256": "f07326ac660355a85a87373edfb44ff0aa41d5bf223832454ffb6e5663024765",
+      "size": 8026
+    },
+    {
+      "path": "evaluation/table_blackout_validation.json",
+      "sha256": "6e4b1de9a7a87115c2d547bd938c0fe0fdf00547e7fe4631dc7956fde032f766",
+      "size": 386635
+    },
+    {
+      "path": "evaluation/validation_baseline.csv",
+      "sha256": "abb8fdd2906498f44a43eacf6ca4529a4108190c551e43115a7296de0fd7f762",
+      "size": 1751
+    },
+    {
+      "path": "evaluation/validation_core_final.csv",
+      "sha256": "b1346ecf2261fe6ef2e24906219fbcf60a76e3584ee6c72bc3c59415deea28c5",
+      "size": 2298
+    },
+    {
+      "path": "evaluation/validation_distance_final.csv",
+      "sha256": "94a4587a77bf1288afaa7776bce08972d10b92b0fd7c4a73d220d0514f41d00b",
+      "size": 2168
+    },
+    {
+      "path": "evaluation/validation_position_table.csv",
+      "sha256": "496b4207c52267293e019b230b847e67f206fee26fc5779e64e791db16af29cc",
+      "size": 3488
+    },
+    {
+      "path": "evaluation/validation_stop_landmarks.csv",
+      "sha256": "108ad31aa0ba40d9322ce9f794716e06430555680eb6a9d361383a98d1cb13a6",
+      "size": 22017
+    },
+    {
+      "path": "evaluation/wheel_calibration_train.json",
+      "sha256": "e114e7b5621ac4ef9892ca04a08e6d5ccf3672223118f0f7a46f5edd89fc3bd3",
+      "size": 742
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/CMakeLists.txt",
+      "sha256": "78c605a7f820421d0297cd7d80b9e83d83f0e9fb096ac93bea8f113a73ebc821",
+      "size": 980
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/README.md",
+      "sha256": "2a9fe1e35175b7e50b0eefe3b94a073abd4ed54f56eb7ebf7ca6f7a5307cd3de",
+      "size": 11805
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/assets/drive_accel_table.csv",
+      "sha256": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+      "size": 4805
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/assets/route_map.csv",
+      "sha256": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+      "size": 218176
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/assets/route_map_branch_a.csv",
+      "sha256": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+      "size": 219266
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/assets/route_map_branch_a_meta.json",
+      "sha256": "2a8f9a27730ab958a3e451a81ed6fec8cee65f10a68c3b3244f78e18f71215f2",
+      "size": 4437
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/assets/route_map_meta.json",
+      "sha256": "0cb9f08e706def5c6c842a0fc253afccb42e606aa340b5c636f12cc6d8cfe82f",
+      "size": 4474
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/assets/stops.csv",
+      "sha256": "e235428d9203c4e7406503a75da254fce4e8d94faceb3f8ec9273c930ccca5df",
+      "size": 2037
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/config/default.yaml",
+      "sha256": "36e5d0dfac7a541cfb4f62f907baf20a1c5cc9a7add7e22287547dd2340f1ef5",
+      "size": 2498
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp",
+      "sha256": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26",
+      "size": 5447
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp",
+      "sha256": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+      "size": 5413
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/include/tram_odometry/startup_output_gate.hpp",
+      "sha256": "0fb79ef4cd297d125cbcae6a83a40671d97d646ad12e57ab2400dccbd2d02276",
+      "size": 714
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/launch/tram_odometry.launch.py",
+      "sha256": "12473277001580f001600fc65b4b07b5a83e0d947b247ed622fb891d100d7da3",
+      "size": 1314
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/package.xml",
+      "sha256": "adcc893d3f12e46ba59ded5a59fe4eaa2c13fed27acabba7c7f83c28ea996d3d",
+      "size": 796
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/src/estimator.cpp",
+      "sha256": "e24ac8742962f7609d71cdf9ffdd56d111d815256a384d8af5b73f514f5aafe1",
+      "size": 23786
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/src/odometry_node.cpp",
+      "sha256": "47df59eb91fdbc5b4f5da817f985e3e3058893004f80d928c0a8e4396f90bcda",
+      "size": 39483
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/test/estimator_core_test.cpp",
+      "sha256": "a078c69e457248741f98b3c81902b0561b5e449990637d7180e035b09e6b4c68",
+      "size": 8975
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/test/geo_projection_test.cpp",
+      "sha256": "5e6b10159385b910d70302c54bc573453f3816c6cc94ff28bafa3669feae11d4",
+      "size": 1749
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/test/route_tf_test.cpp",
+      "sha256": "a587fa6083514c0ac6ab63d8b0ec43748b6a8e124014803271728c943d72f45a",
+      "size": 2438
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/test/startup_output_gate_test.cpp",
+      "sha256": "7eec619e37adf1b5dc221f348a11563a9a45845911ab4a682b8443e2e22bd13d",
+      "size": 1039
+    },
+    {
+      "path": "ros2_ws/src/tram_vehicle_msgs/CMakeLists.txt",
+      "sha256": "e37d64a69b574bd89e956e19a9854168ded39a7ffb0234d7a963437f8ad68e0c",
+      "size": 568
+    },
+    {
+      "path": "ros2_ws/src/tram_vehicle_msgs/msg/DriverControllerCommand.msg",
+      "sha256": "fe294e3cd4132ed8dd732d677e78196ae882d2be5468e76d029ea785615517fb",
+      "size": 348
+    },
+    {
+      "path": "ros2_ws/src/tram_vehicle_msgs/msg/VelocitySensor.msg",
+      "sha256": "7cf37396bdd5a37f2154c16031dfa9bf233858b1d9ffb5900b72951c12446319",
+      "size": 49
+    },
+    {
+      "path": "ros2_ws/src/tram_vehicle_msgs/package.xml",
+      "sha256": "c698749950f4c8eabfbf9ccd0e6370b3794ff0bfb04db518bbec20be5490a455",
+      "size": 802
+    },
+    {
+      "path": "tools/ROS_HUMBLE_WSL_SETUP.md",
+      "sha256": "7f0f7052510158c02528ca6d9f4780883975fcaecfd6444167fc4329261496f4",
+      "size": 3944
+    },
+    {
+      "path": "tools/antenna_orientation_audit.py",
+      "sha256": "9651d0c55fd9002c64a07c06121a8ddb3e3f57248bc570e666583f966b1c3968",
+      "size": 4020
+    },
+    {
+      "path": "tools/branch_geometry_compare.py",
+      "sha256": "68581ef8d923c76a533b9f6145ef3e83203db4e9be017c8b636870edd4037e83",
+      "size": 4270
+    },
+    {
+      "path": "tools/branch_position_compare.py",
+      "sha256": "5e823919019056c45c30fabe490960a6fbe88d068af6663a1bf8a40a13543c9c",
+      "size": 1825
+    },
+    {
+      "path": "tools/install_ros_humble_wsl.sh",
+      "sha256": "586498dbf4e4b4b32c0408d8af709276834543f32124cc1a5d92c2fe077e4d83",
+      "size": 3784
+    },
+    {
+      "path": "tools/make_release.py",
+      "sha256": "6f71ca06bb3d35db7a9428fec1d1a1c3035b5a6fe3ca088f639143c99f683ad4",
+      "size": 10546
+    },
+    {
+      "path": "tools/make_split.py",
+      "sha256": "36afa09cc7ba9acdfee7b08ee0fbd1013f6edad0e37a43719bed966720bcf88a",
+      "size": 3158
+    },
+    {
+      "path": "tools/map_builder.py",
+      "sha256": "f49938bfe23c0592017e4ef66afad0652c68c999d0bddc9c299cda854c196c1e",
+      "size": 15326
+    },
+    {
+      "path": "tools/map_position_audit.py",
+      "sha256": "b73a58192b7cfc288bab0a5c577fff8174e5f9bfc734ec82722bf808ca88081f",
+      "size": 4134
+    },
+    {
+      "path": "tools/map_preview.py",
+      "sha256": "d0de170002b355cc40e7a30fc9db481ccdbdeaac536229b589254eaa24ccffe5",
+      "size": 1892
+    },
+    {
+      "path": "tools/map_startup_audit.py",
+      "sha256": "0f7862334f0a63328ceb6f97835d4239daa6fe2ad008bf478f9aced4585a113f",
+      "size": 3757
+    },
+    {
+      "path": "tools/ros_smoke_monitor.py",
+      "sha256": "34e41e98d6922b28c8165a42b750c94c5eb1050482b65986621cd7f7ccf89ab1",
+      "size": 14253
+    },
+    {
+      "path": "tools/ros_smoke_wsl.sh",
+      "sha256": "55fe0d8a3a63c586de5a888483a68cfc3891a3cbd33bf9c9e034ae3d58745767",
+      "size": 3916
+    },
+    {
+      "path": "tools/route_map_io.py",
+      "sha256": "56b6371bb66fe02e70b78bb92cd3cdc9f2b9538ca85fe09f1e978123f343887d",
+      "size": 8463
+    },
+    {
+      "path": "tools/split_manifest.json",
+      "sha256": "9c7db9ea5df911692da03c2525843f20fd957a40ce01ce34ea8030696fc5f221",
+      "size": 36975
+    },
+    {
+      "path": "tools/train_vehicle_geometry_audit.py",
+      "sha256": "df7c9f252aeb3af4c00c454b70b46880dd04e4882d47965ea138e37db3db267e",
+      "size": 3719
+    }
+  ],
+  "format": "tram_odometry_source_release_v1"
+}

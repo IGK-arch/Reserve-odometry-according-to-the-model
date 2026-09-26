@@ -1,0 +1,50 @@
+tram_odometry:
+  ros__parameters:
+    vehicle_id: 30618
+    output_frame_id: mgrs_37UCB
+    relative_frame_id: odom
+    output_projection: mgrs37ucb  # x=UTM37 easting-300000, y=northing-6100000
+    child_frame_id: base_link
+    route_direction: auto  # out, return or auto; auto needs a valid startup GNSS fix
+    map_file: ''           # empty: installed assets/route_map.csv
+    start_s_m: 0.0        # used if GNSS initialization is unavailable
+    use_startup_gnss: true
+    use_map_without_gnss: false  # true only with configured direction/start_s_m
+    use_rover_fallback: true
+    startup_gnss_window_s: 5.0
+    startup_min_fixes: 3
+    rover_fallback_delay_s: 1.5
+    rover_to_master_s_m: -12.436  # official rover-master longitudinal offset
+    map_match_max_distance_m: 50.0
+    auto_out_terminal_min_x_m: -200.0
+    auto_return_terminal_max_x_m: -4400.0
+    anchor_residual_decay_m: 100.0
+    route_longitudinal_offset_m: 9.873  # rigid master→base_link offset along 3D body tangent
+    antenna_to_base_z_m: -3.0         # both GNSS antennae z=+3 in base_link
+    relative_heading_rad: 0.0
+    initial_x_m: 0.0
+    initial_y_m: 0.0
+    initial_z_m: 0.0
+    output_rotation_rad: 0.0
+    output_scale: 1.0
+    output_offset_x_m: 0.0
+    output_offset_y_m: 0.0
+    output_offset_z_m: 0.0
+    # Must match the WGS84 ECEF->ENU datum used to build assets/route_map.csv.
+    map_datum_lat_deg: 55.810367065
+    map_datum_lon_deg: 37.462266845
+    map_datum_alt_m: 168.3794
+    reset_on_large_time_jump_s: 60.0
+    # The model and robust fusion defaults come from EstimatorConfig::forVehicle(id).
+    # Optional ROS overrides: front_scale, rear_scale, mass_kg, effective_wheel_radius_m,
+    # motor_torque_max_nm, traction_power_limit_w, brake_force_max_n,
+    # rolling_resistance_accel_mps2, quadratic_drag_accel_per_mps2,
+    # grade_accel_mps2, wheel_stale_s, max_out_of_order_s, disagreement_gate_mps,
+    # innovation_gate_mps, implausible_wheel_accel_mps2, wheel_sigma_mps,
+    # process_accel_sigma_mps2, enable_adaptation.
+    # Train-only drive table is enabled by the node for vehicle_id=30618 and
+    # disabled for 30639; do not set a fixed boolean here, as it would override
+    # the vehicle-specific default. To override: enable_drive_table: false/true.
+    # Empty drive_table_path uses installed assets/drive_accel_table.csv.
+    # A missing or invalid file logs a startup warning and keeps physics-only
+    # prediction; check /result/diagnostics drive_table_active/used.

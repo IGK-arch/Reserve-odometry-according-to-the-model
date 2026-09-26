@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "csv": "route_map.csv",
+  "west_berth_branch": "B",
+  "target_point": "master GNSS antenna trajectory; judge target is base_link, master TF x=-9.873m z=+3m relative to base_link",
+  "coordinate_frame": "WGS84 geodetic EPSG:4979 to ECEF EPSG:4978 to local ENU",
+  "origin_lon_deg": 37.462266845,
+  "origin_lat_deg": 55.810367065,
+  "origin_alt_m": 168.3794,
+  "directions": {
+    "out": {
+      "meaning": "east_to_west",
+      "s_start": "east terminal",
+      "length_m": 5460.0,
+      "point_count": 2731,
+      "sources": [
+        {
+          "bag": "30618_76e1f9c7",
+          "role": "reference",
+          "raw_fix_count": 12979,
+          "clean_fix_count": 12409,
+          "velocity_integral_m": 5465.083537883167,
+          "contributed_map_fraction": 1.0
+        },
+        {
+          "bag": "30618_095a115b",
+          "aligned_points": 2718,
+          "median_horizontal_difference_m": 0.6603314320639073,
+          "longitudinal_shift_m": 0.5644529435792265,
+          "contributed_map_fraction": 0.9937797292352726,
+          "role": "support",
+          "raw_fix_count": 13241,
+          "clean_fix_count": 12830,
+          "velocity_integral_m": 5435.324417968348
+        },
+        {
+          "bag": "30618_b83d854d",
+          "aligned_points": 2713,
+          "median_horizontal_difference_m": 0.006854503441292326,
+          "longitudinal_shift_m": 0.8604927379667515,
+          "contributed_map_fraction": 0.9923161361141603,
+          "role": "support",
+          "raw_fix_count": 12054,
+          "clean_fix_count": 11754,
+          "velocity_integral_m": 5424.247841554983
+        },
+        {
+          "bag": "30618_8158f0b0",
+          "aligned_points": 2706,
+          "median_horizontal_difference_m": 0.009458213032826752,
+          "longitudinal_shift_m": -0.29198980271939945,
+          "contributed_map_fraction": 0.9897548481522137,
+          "role": "support",
+          "raw_fix_count": 11839,
+          "clean_fix_count": 11221,
+          "velocity_integral_m": 5521.251087575302
+        }
+      ]
+    },
+    "return": {
+      "meaning": "west_to_east",
+      "s_start": "west terminal",
+      "length_m": 5404.0,
+      "point_count": 2703,
+      "sources": [
+        {
+          "bag": "30618_68847170",
+          "role": "reference",
+          "raw_fix_count": 12132,
+          "clean_fix_count": 12014,
+          "velocity_integral_m": 5406.609631091323,
+          "contributed_map_fraction": 1.0
+        },
+        {
+          "bag": "30618_22c1c589",
+          "aligned_points": 2706,
+          "median_horizontal_difference_m": 0.007999675906631674,
+          "longitudinal_shift_m": -11.801166210442716,
+          "contributed_map_fraction": 1.0,
+          "role": "support",
+          "raw_fix_count": 11548,
+          "clean_fix_count": 11415,
+          "velocity_integral_m": 5419.545122526873
+        },
+        {
+          "bag": "30618_b8044aa0",
+          "aligned_points": 2596,
+          "median_horizontal_difference_m": 0.0077523387628397255,
+          "longitudinal_shift_m": -1.017352763511326,
+          "contributed_map_fraction": 0.959689349112426,
+          "role": "support",
+          "raw_fix_count": 12745,
+          "clean_fix_count": 12449,
+          "velocity_integral_m": 5408.649998336611
+        },
+        {
+          "bag": "30618_e3d94878",
+          "aligned_points": 2659,
+          "median_horizontal_difference_m": 0.007617718536249165,
+          "longitudinal_shift_m": -4.474365710269694,
+          "contributed_map_fraction": 0.9826183431952663,
+          "role": "support",
+          "raw_fix_count": 11710,
+          "clean_fix_count": 11485,
+          "velocity_integral_m": 5412.862812587155
+        }
+      ]
+    }
+  },
+  "source_split_manifest": "tools/split_manifest.json",
+  "on_vehicle_gnss_usage": "initial position fix only, never tracking after initialization",
+  "limitations": [
+    "Default outbound map follows west berth B. Optional branch A is a separate CSV selected only by external route assignment; depot paths are not mapped.",
+    "Judge output frame is fixed MGRS-CB numeric coordinates (UTM37N easting-300000, northing-6100000); transform master route to base_link using rigid 3D tangent and specified TF.",
+    "GNSS master altitude is kept in internal ENU; GNSS vertical datum is not independently documented."
+  ]
+}

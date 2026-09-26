@@ -1,0 +1,22 @@
+# The released bags are input data, not part of the solution repository.
+/dataset.zip
+/dataset/data.zip
+/dataset/data/
+
+# ROS and local build products.
+/ros2_ws/build/
+/ros2_ws/install/
+/ros2_ws/log/
+/release/
+*.exe
+*.obj
+*.o
+*.pyc
+__pycache__/
+
+# Large generated exploratory pages and scratch data. They are reproducible.
+/analysis/viewer/dataset_explorer.html
+/analysis/routes/map_explorer.html
+/analysis/routes/sampled_tracks.npz
+/analysis/catalog/timing_anomalies.csv
+/analysis/signals/notch_speed_dwell_summary.csv

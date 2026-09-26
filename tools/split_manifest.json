@@ -1,0 +1,1339 @@
+{
+  "schema_version": 1,
+  "basis": "Whole vehicle/date sessions; identical db_sha256 bags grouped",
+  "catalog": "analysis/catalog/bags.csv",
+  "sessions": [
+    {
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "split": "train"
+    },
+    {
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "split": "holdout"
+    },
+    {
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "split": "validation"
+    },
+    {
+      "vehicle": "30618",
+      "date": "2026-09-03",
+      "split": "train"
+    },
+    {
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "split": "holdout"
+    },
+    {
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "split": "train"
+    }
+  ],
+  "unique_group_count": 97,
+  "unique_group_counts": {
+    "holdout": 42,
+    "train": 42,
+    "validation": 13
+  },
+  "representatives": {
+    "train": [
+      "30618_0652866c",
+      "30618_0686195f",
+      "30618_073f08d1",
+      "30618_095a115b",
+      "30618_0d865417",
+      "30618_0e41eac3",
+      "30618_0f120b35",
+      "30618_1551d0a9",
+      "30618_22c1c589",
+      "30618_27e994fc",
+      "30618_28538acf",
+      "30618_2dbce472",
+      "30618_2f104a1d",
+      "30618_49fe4c54",
+      "30618_616ec56b",
+      "30618_68847170",
+      "30618_68d1748a",
+      "30618_76e1f9c7",
+      "30618_7b4d83f4",
+      "30618_8158f0b0",
+      "30618_87afe526",
+      "30618_88548b02",
+      "30618_9c09b081",
+      "30618_ab5921a4",
+      "30618_b15eafc3",
+      "30618_b8044aa0",
+      "30618_b83d854d",
+      "30618_b95ca60a",
+      "30618_bc5e53c2",
+      "30618_defd0170",
+      "30618_e2dcf65f",
+      "30618_e3d94878",
+      "30618_f19a4ac3",
+      "30639_0ab96c59",
+      "30639_0be558e2",
+      "30639_2b4a6347",
+      "30639_4285f2bc",
+      "30639_50956d6e",
+      "30639_584b6e32",
+      "30639_927002c2",
+      "30639_9f0b519f",
+      "30639_d927f360"
+    ],
+    "validation": [
+      "30618_01f73500",
+      "30618_082f1d65",
+      "30618_2050d396",
+      "30618_33bec73f",
+      "30618_3e9f4952",
+      "30618_437e855c",
+      "30618_67b89902",
+      "30618_a53d5f6f",
+      "30618_a869780d",
+      "30618_d4ba7005",
+      "30618_dd8d0741",
+      "30618_dd8e6395",
+      "30618_e9a34502"
+    ],
+    "holdout": [
+      "30618_0259fe53",
+      "30618_0a83c933",
+      "30618_117c2d02",
+      "30618_1cc230fa",
+      "30618_20096314",
+      "30618_2161b58b",
+      "30618_21dd3af3",
+      "30618_2255aade",
+      "30618_2366c74a",
+      "30618_2cb9ce37",
+      "30618_2d2fa7be",
+      "30618_2f2f1175",
+      "30618_3b36e5cd",
+      "30618_3ba2326f",
+      "30618_3e012faf",
+      "30618_40ffd323",
+      "30618_45ff6f99",
+      "30618_4d487b0d",
+      "30618_4e1e3181",
+      "30618_5036aa78",
+      "30618_6236f680",
+      "30618_6cb3280a",
+      "30618_74559c73",
+      "30618_748832b9",
+      "30618_79b204dc",
+      "30618_7a152380",
+      "30618_81c22fee",
+      "30618_98161270",
+      "30618_9bbe6faa",
+      "30618_af7496f0",
+      "30618_bab2fe58",
+      "30618_e151d6e4",
+      "30639_253671cc",
+      "30639_3b3d9eb8",
+      "30639_44226bde",
+      "30639_92226df0",
+      "30639_9c362687",
+      "30639_c31df386",
+      "30639_d3c43d69",
+      "30639_d601d28f",
+      "30639_dce52be4",
+      "30639_e4379d7f"
+    ]
+  },
+  "groups": [
+    {
+      "sha256": "0076b08f20381772fc63df16b380643dfe149f1fb6688f195c9cd277ebf8784b",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_9bbe6faa",
+        "30618_9c10cd0d"
+      ],
+      "representative": "30618_9bbe6faa",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "01596e5686b943f7a88c76437b20a3923a637969bddbb97881dd531387d40911",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_0e41eac3"
+      ],
+      "representative": "30618_0e41eac3",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "028dcb9d08506a8650d0947ff6c1548fd2784acad7d7f86c76637af4e6734956",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_44226bde"
+      ],
+      "representative": "30639_44226bde",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "038bc86008f6ec6abe9ba32f89354370fbed16a83dd5b4b9504294893ba62c94",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_2f2f1175",
+        "30618_ddad08d6"
+      ],
+      "representative": "30618_2f2f1175",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "03cb0035fb3bed81d1b401d4549e3953649816b4d5dfe6947ac6c34f303fc9bb",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_073f08d1"
+      ],
+      "representative": "30618_073f08d1",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "053439d6e17a0d5d659601ecc7980ab5967b9a42434789e30e858402e5cf0d70",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_79b204dc",
+        "30618_887a2b9a"
+      ],
+      "representative": "30618_79b204dc",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "057f524825af8a004baf8b41eefe4a595dfaf8da9d478c884c527b60c015f05a",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_e3d94878"
+      ],
+      "representative": "30618_e3d94878",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "073300bc783d1e49ee32c4b15b0130fcb2c43189003728a31cd80b732cd75b2d",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_21dd3af3",
+        "30618_f3b8c99b"
+      ],
+      "representative": "30618_21dd3af3",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "09c2ed2b4269ef19d704558cfaefd53e455a931079f09737680748233b488525",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_3ba2326f",
+        "30618_b1098bdb"
+      ],
+      "representative": "30618_3ba2326f",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "0c63f7d8a45c605ee40853a6018ff2899e7825b4dea5a2ea50874ed80ff61de6",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_2050d396"
+      ],
+      "representative": "30618_2050d396",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "0fdf2c3e42c798d704f59c3f48b889c1c5abe1636163b7f5b9ac0833d8af87ee",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_1cc230fa",
+        "30618_a395846d"
+      ],
+      "representative": "30618_1cc230fa",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "10269922b4a107d8f3ebcc04e13d03f463e3736950ff54d86d8024fb94c5b320",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_6cb3280a",
+        "30618_f3a0694d"
+      ],
+      "representative": "30618_6cb3280a",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "1056f798971cabb555d8bd3ec480d6a215898d1437970410fb87745d831fe919",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_437e855c"
+      ],
+      "representative": "30618_437e855c",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "1179578af884ac21fe4f666bc5aa82e207cdfb7af586f916897828ce6d85e939",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_e4379d7f"
+      ],
+      "representative": "30639_e4379d7f",
+      "has_master_fix": false,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "1239aab936d3add5d34474a86b26f4a0dbc1f652911f610fffaed4cf688d7ae7",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_74559c73"
+      ],
+      "representative": "30618_74559c73",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "16e6dded664ce235fb160aaa7b3452926bf80e9af4be7df95b1898cc0e246e40",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_9c362687"
+      ],
+      "representative": "30639_9c362687",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "18701124b81d963695e47df0d838ccff8f61d4b7cecf204e3d8290bc094459e1",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_87afe526"
+      ],
+      "representative": "30618_87afe526",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "18d8cb9ecb9a6a64def468929daf7a9f974b6b4e15a5ed950c00223e7d3a4c44",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_d927f360"
+      ],
+      "representative": "30639_d927f360",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "18dbb0251cf555263db1b34771afe702e36c615db4fe8e347fd7be04610b2a87",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_a53d5f6f"
+      ],
+      "representative": "30618_a53d5f6f",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "1c4bf92c3b3dc242cf10651eccc6b353e523d70ac5da002bfa387a9ae1c6cbcd",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_e2dcf65f"
+      ],
+      "representative": "30618_e2dcf65f",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "1ed5b1c83e793c9b982b3a236b3eb2bf19f5625647533bb3b50a78cff3616091",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_b95ca60a"
+      ],
+      "representative": "30618_b95ca60a",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "1f5a479b7790a92463b81b1b1e871da4ab3e65071045e7d156dd062fbcaea735",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_e9a34502"
+      ],
+      "representative": "30618_e9a34502",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "2213264f131b41a2ef40c91794d304dec825dc08bcbb194a37829bf4e1e4b3eb",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_dd8d0741"
+      ],
+      "representative": "30618_dd8d0741",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "22b7dcd7139aa45ed1e992f7077243b0d83e903bbb02c2bfa7e663417e9720c1",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_0652866c"
+      ],
+      "representative": "30618_0652866c",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "267b881e1091dde5166e8b1ec2ceffc67cf025aaa438b0b9559fe606ad140503",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_0d865417"
+      ],
+      "representative": "30618_0d865417",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "2710e9ddfce91c0c20881698b888b193c49712e5da8abaa3114679febb02e54b",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_253671cc"
+      ],
+      "representative": "30639_253671cc",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "32d61479abc1169568dcb7c135df2d54f7e6dd21c365c5e4324b3525200242b0",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_50956d6e"
+      ],
+      "representative": "30639_50956d6e",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "37625a8377119e27193263c5bf3663194127bfd9a10f0fa804387a6d435917ea",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_2b4a6347"
+      ],
+      "representative": "30639_2b4a6347",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "38afc28c3441401d0fc70f57bb19ac9880ee461b822480d78d71803d89d35dfc",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_117c2d02",
+        "30618_46e21b9b"
+      ],
+      "representative": "30618_117c2d02",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "3a412e6cc81aa4649d07f80a77bf074c1ca11e152eb9b87be29d4f0846688f30",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_67b89902"
+      ],
+      "representative": "30618_67b89902",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "3c7cb9331296b196165cb3c4bf8f3343eb826e7a43bcc18377b1109fc21e2638",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_8158f0b0"
+      ],
+      "representative": "30618_8158f0b0",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "406132a1f86b17d284c6ce4e8a4f2569d801dc7262ba38af3b63787240d84556",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_0259fe53",
+        "30618_cfd9fd5a"
+      ],
+      "representative": "30618_0259fe53",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "42431f262548714ae7c1f15fdf1605d9e776d1cbc1efbacd353ff35013e849aa",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_49fe4c54"
+      ],
+      "representative": "30618_49fe4c54",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "447ec1edc79bea775b1aa0c6ed6764255524ca01954d61a981e6e10b4ca01182",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_082f1d65"
+      ],
+      "representative": "30618_082f1d65",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "44c1e2c5d4b970a5a1f24f4c717d70229779dc4fee56719f38718cef685a151b",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_92226df0"
+      ],
+      "representative": "30639_92226df0",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "45964307eda18dcc4cf9f94a5fbecf5517790594ba50d8479f645fe7a9d00aa9",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_e151d6e4"
+      ],
+      "representative": "30618_e151d6e4",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "47e6058bb142c9b4cba2d47bc9f535e55071446cf59ef96d82d8cddb4d5b6bc5",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_7b4d83f4"
+      ],
+      "representative": "30618_7b4d83f4",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "494e02075c0205b143926ee11d5e2f46a8fa81105b3b14fdc0c9c5a35979928b",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_a869780d"
+      ],
+      "representative": "30618_a869780d",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "4b250bec9f5956aadcf1e1199e71dcfe5ce74c914b9aa5db6534d6432be4353d",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_98161270"
+      ],
+      "representative": "30618_98161270",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "4e20ef480ecbd8418a331bcdbef4a7c664e6741dad14639bfa5498717d2dbfd6",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_2255aade",
+        "30618_7bfbb5ed"
+      ],
+      "representative": "30618_2255aade",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "5839e1b438b61795329451db5f211dbd7b37b6e2ad25774a0074e219c84246b4",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_dd8e6395"
+      ],
+      "representative": "30618_dd8e6395",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "5d6313d957aecbe0d48f9b74d34f48d337f052dc76f16b87bc6acdeba1726ae2",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-09-03",
+      "bags": [
+        "30618_88548b02"
+      ],
+      "representative": "30618_88548b02",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "5e04025afcd70665958865a7ec367d42408fb537b6a53a9485b063870a2e9649",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-09-03",
+      "bags": [
+        "30618_27e994fc"
+      ],
+      "representative": "30618_27e994fc",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "677a1990891ba7b259aa4734b3f1947e63783c3d4d977b2e43e790c850f1539f",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_7a152380",
+        "30618_8f08df08"
+      ],
+      "representative": "30618_7a152380",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "6a922cacad259b7bc2a2b04636bec44370d0cc6333373d7257aafd04a69415e5",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_6236f680",
+        "30618_7d88fa79"
+      ],
+      "representative": "30618_6236f680",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "6a9a726fb8ce73779640886f8571415c81eb8ff11175ba198b651df128dc0751",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_0ab96c59"
+      ],
+      "representative": "30639_0ab96c59",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "6b538462a593a792ac4066139020137a37098d3eda775c07c59f2b2bbe797ea1",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_20096314",
+        "30618_e7dcdab1"
+      ],
+      "representative": "30618_20096314",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "6e8b7e0a8e309abbd6b346d5acbbd4e4d04aa2df04da7467453de00d0bb89470",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_2366c74a",
+        "30618_93dc866e"
+      ],
+      "representative": "30618_2366c74a",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "70beb443db1d99ef3f06863a2aeca1578a70bc573596458c9b01fcc18ba28363",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_bc5e53c2"
+      ],
+      "representative": "30618_bc5e53c2",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "76bf11126452c9ba3ac196d35724fb3820fd5280c08c39d845f39d6545d376cb",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_81c22fee",
+        "30618_92b1b453"
+      ],
+      "representative": "30618_81c22fee",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "7875e75e2eb2b12d90878f2695d4b135e6152211f1bdb6b31b98882adc7c705f",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_2dbce472"
+      ],
+      "representative": "30618_2dbce472",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "7f36267fef31a0b49fb315f13ce8b2b8eabaffea84879b4d0bcc0a50bfbe5604",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_095a115b"
+      ],
+      "representative": "30618_095a115b",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "83dff475b9a25f5c97afc22b4c8ae48b5fdce2394343e8a9061f18e96b938ce1",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_b83d854d"
+      ],
+      "representative": "30618_b83d854d",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "87a566a33c504351d1beb9829ee8a8fd9e82ef2036c4a1cf7f8dbc73673b7be8",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_0be558e2"
+      ],
+      "representative": "30639_0be558e2",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "8a02fa1fc2e34bd5609e084c5451a29f5b98ab0e3796fa11d582727cb6b58e0f",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_bab2fe58"
+      ],
+      "representative": "30618_bab2fe58",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "92bca05cf633ba0b0b305518f9cd735910e749fa9c9fea0d53ff2d97b1cbc93c",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_b8044aa0"
+      ],
+      "representative": "30618_b8044aa0",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "936224a4627bd9cf1422e1101793e4a3e7b83443588faf7e87f0875c0a8478f9",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_2161b58b",
+        "30618_f28179bb"
+      ],
+      "representative": "30618_2161b58b",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "93bda8b631e528f755a57a22cae3628922f8bfa411a13f75e72daa22536ff50c",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_1551d0a9"
+      ],
+      "representative": "30618_1551d0a9",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "a2770d7a927ceac3c8102270deb7c07f747597e702f56dbf2f45e2e0bb7708ba",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_2f104a1d"
+      ],
+      "representative": "30618_2f104a1d",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "aa735093f2381521cec39b43795a52899b0de79e32a7ddc1fb2b98cd27853cdf",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-09-03",
+      "bags": [
+        "30618_0686195f"
+      ],
+      "representative": "30618_0686195f",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "aac3c05ca6c428ea8b5913bd717d385b7486f3359afaa3171add9aeaa32f9d34",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_40ffd323",
+        "30618_efb92709"
+      ],
+      "representative": "30618_40ffd323",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "ace1bb695ba9d6708c5ed499bdff7baa22a12a3f601e71d00401f5bda7c5c3c7",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_ab5921a4"
+      ],
+      "representative": "30618_ab5921a4",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "b2698b972241fd7a7ea3a3513f1a76970fde90e8af480313320c2b98005cf8a9",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_76e1f9c7"
+      ],
+      "representative": "30618_76e1f9c7",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "b2c975502880df8c9b37eec77fd37e26382090df19b464fddf81677e5a15e48e",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_af7496f0"
+      ],
+      "representative": "30618_af7496f0",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "b3330df01a4314314d4ef80681733e093627297a24f9098e21bfb027143fb6fd",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_616ec56b"
+      ],
+      "representative": "30618_616ec56b",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "b543dbfb789752f915c64662e2a4152e0822cd7a89e1fc0947afdbeefac7dd2e",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_c31df386"
+      ],
+      "representative": "30639_c31df386",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "b66b6ecfadf81f811891178b2567e0fa9de105ad2a893f9c8a2671b442bbdbf9",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_d601d28f"
+      ],
+      "representative": "30639_d601d28f",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "b6bfa5dd61b7a8b5ea433f9888cc157bdbc7e856b754b0dea09881927a77fe88",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_45ff6f99"
+      ],
+      "representative": "30618_45ff6f99",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "bb5b3b67fc2411880a0e81849c05751b89dac7c17780c1441848cd325cd66d7d",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_0a83c933",
+        "30618_e392e5bd"
+      ],
+      "representative": "30618_0a83c933",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "beb8aa1d14f7a382aef0565550caa3b645928c8ff1ee94d7de17a87d722fa0f9",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_2d2fa7be",
+        "30618_8eb8615c"
+      ],
+      "representative": "30618_2d2fa7be",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "bf8fde6fa063eab2836fb58d80225e8337f31c08d473925659a2eb245ca77045",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_584b6e32"
+      ],
+      "representative": "30639_584b6e32",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "bfa85c5d654e27599b17c90cc1b4265e48c106808f19484c48828a0bc4e90f5e",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_d4ba7005"
+      ],
+      "representative": "30618_d4ba7005",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "c06cb5b8ae3264db88494ac10081e6240a67455d7190c24349b16f7a90170fa7",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_01f73500"
+      ],
+      "representative": "30618_01f73500",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "c1cdc1a6a133e36b3a8a27b7c1c58797f2190647e0ba9f59dad5e2af1153f039",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-09-03",
+      "bags": [
+        "30618_defd0170"
+      ],
+      "representative": "30618_defd0170",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "c1e58ade51f9e3375aad0601f2f457e633e237f8e9bf90e3052df363d843d114",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_9c09b081"
+      ],
+      "representative": "30618_9c09b081",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "c55e65bf53e0bbb6b2cc5b4cb8d36009b35c3355046ceca0534fa98ab1e64925",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_5036aa78"
+      ],
+      "representative": "30618_5036aa78",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "c672d08359bd7fc432403be5aa3157cb6c196e4dae5b65e1a64e2a4b8cfbae41",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_28538acf"
+      ],
+      "representative": "30618_28538acf",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "c6b7887077c70bbf43b2bbe77507152f8421b7293615370224c606aac6cd6d80",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_3b36e5cd",
+        "30618_ae4eb346"
+      ],
+      "representative": "30618_3b36e5cd",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "c8c4a9644c73dff516b0d73625fd9163b2f3e2645f857decf39d5ca52718c47a",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_b15eafc3"
+      ],
+      "representative": "30618_b15eafc3",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "ca8b5bb63d47d7dd6942888417fe8c7cded967fdaeac1c4f74c60c17b50d03b3",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_4e1e3181",
+        "30618_95c49c30"
+      ],
+      "representative": "30618_4e1e3181",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "cfc4a873d53a1c2c9876a45a74225e00cb3640affa097828159a1ce28b72730f",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_d3c43d69"
+      ],
+      "representative": "30639_d3c43d69",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "d0a9c4a3af1ea752e18839a546bbbdc21e3715030605026f258078657e51a41d",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_33bec73f"
+      ],
+      "representative": "30618_33bec73f",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "d68a0ab25402a48352540149926ae4005a2a4eac81d1e949f5d8cd06d346a2a4",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_4d487b0d",
+        "30618_b3042f78"
+      ],
+      "representative": "30618_4d487b0d",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "d7d4fc570a0ae5cfb8bdcb7b1ebecf15e6a9dc9391b9d663125e3ba56ce5c9a5",
+      "split": "validation",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "bags": [
+        "30618_3e9f4952"
+      ],
+      "representative": "30618_3e9f4952",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "d9a2e045cdec986f2ca94f7eb9a490292a254739c89f69fb6e72f89afe52ef15",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_f19a4ac3"
+      ],
+      "representative": "30618_f19a4ac3",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "dcf86307e3fe4af971c0d75ece63921812551e144871a74d9b7737a94adb5678",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_dce52be4"
+      ],
+      "representative": "30639_dce52be4",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "de0fee7a4995364829e7c3eaf7cdc2e8c27fb5c982ef3fc0d61733a96608d74e",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_4285f2bc"
+      ],
+      "representative": "30639_4285f2bc",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "e0853b045c37da44aaba83a0fa0e41eec22713d1b1d8359cc1ee746bf35eb7f0",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_0f120b35"
+      ],
+      "representative": "30618_0f120b35",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "e638ce9ce5f6c77f636b67d8b4ec61e25492732f52f142587f116df3a20e197b",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_68d1748a"
+      ],
+      "representative": "30618_68d1748a",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "e94c05aac5fd3eb3bab52e6520e3f74caae410128ac04e239ef2b315daa9a4d1",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_9f0b519f"
+      ],
+      "representative": "30639_9f0b519f",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "f30728f07a80d51287620494925530a5c80d3aff2c774a71889a3e44213a1876",
+      "split": "train",
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": [
+        "30639_927002c2"
+      ],
+      "representative": "30639_927002c2",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "f60cebc5e9ed7c71fef9eca7b5058a2c73f41ae12f2eb069e8336352d411e5c5",
+      "split": "holdout",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "bags": [
+        "30639_3b3d9eb8"
+      ],
+      "representative": "30639_3b3d9eb8",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "f93fe443805741b52928d14f6c9b0baea60cd889e833e3777b529405114d310d",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_3e012faf",
+        "30618_bcc9e7a2"
+      ],
+      "representative": "30618_3e012faf",
+      "has_master_fix": false,
+      "has_rover_fix": false
+    },
+    {
+      "sha256": "f978eb341541f06c3e5d0cb48e293beb797dc9fadfdee492bae886b5b6c7905c",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_2cb9ce37",
+        "30618_5eb8d2c9"
+      ],
+      "representative": "30618_2cb9ce37",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "fac743fe65dd6a88da48d53f6086dfe2af66343af49762f02182ae3b0dc9a225",
+      "split": "holdout",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "bags": [
+        "30618_748832b9",
+        "30618_7849303f"
+      ],
+      "representative": "30618_748832b9",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "fd0cb7d9dea2cd6420b5c56e7d479eaf3b9ce7229b09e25706a9e14ff8f8f35e",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_68847170"
+      ],
+      "representative": "30618_68847170",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    },
+    {
+      "sha256": "fe16479c9f11ce3bdaab9910c48306caecba420688701bcba63cc02b37790d15",
+      "split": "train",
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": [
+        "30618_22c1c589"
+      ],
+      "representative": "30618_22c1c589",
+      "has_master_fix": true,
+      "has_rover_fix": true
+    }
+  ]
+}

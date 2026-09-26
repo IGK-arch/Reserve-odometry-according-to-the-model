@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Трамвай · 3D разбор телеметрии</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">МОСКОВСКИЙ ТРАНСПОРТ · ИССЛЕДОВАНИЕ ДАТАСЕТА</div>
+        <h1>Трамвай в моменте</h1>
+        <p>3D-схема, временная шкала и исходные сигналы каждого rosbag.</p>
+      </div>
+      <div class="bag-picker">
+        <label for="bag-select">Запись</label>
+        <select id="bag-select" aria-label="Выбрать rosbag"><option>Загрузка списка…</option></select>
+        <span id="bag-meta" class="muted">Подключение к локальным данным</span>
+      </div>
+    </header>
+
+    <div class="preset-strip" aria-label="Быстрый переход к эпизодам">
+      <span class="preset-caption">СМОТРЕТЬ</span>
+      <button class="preset" data-bag="30618_33bec73f" data-t="102">Задняя буксует</button>
+      <button class="preset" data-bag="30618_2050d396" data-t="397">Юз при торможении</button>
+      <button class="preset" data-bag="30639_50956d6e" data-t="94">Передняя буксует</button>
+      <button class="preset" data-bag="30639_3b3d9eb8" data-t="413">Пропуск задней</button>
+      <button class="preset" data-bag="30618_4d487b0d" data-t="103">Сбой GNSS</button>
+      <button class="preset" data-bag="30618_0259fe53" data-t="120">Без GNSS</button>
+    </div>
+
+    <main>
+      <div class="upper-grid">
+        <section class="panel scene-panel" aria-label="Трёхмерная схема трамвая">
+          <div class="panel-heading">
+            <div><span class="eyebrow">01 · ВИЗУАЛЬНАЯ МОДЕЛЬ</span><h2>Трамвай и тележки</h2></div>
+            <div class="scene-help">Тяните для поворота · колесо мыши для масштаба</div>
+          </div>
+          <div class="scene-wrap">
+            <canvas id="scene-canvas" aria-label="Трёхмерная схема трамвая, колёс и рельсов"></canvas>
+            <div id="scene-status" class="scene-status">C++ · загрузка</div>
+            <div class="scene-badge">СХЕМА · 2 ДАТЧИКА → 8 КОЛЁС</div>
+          </div>
+          <div class="scene-legend">
+            <span><i class="dot cyan"></i>передняя тележка</span>
+            <span><i class="dot orange"></i>задняя тележка</span>
+            <span><i class="dot red"></i>подозрительный сигнал</span>
+          </div>
+        </section>
+
+        <section class="panel state-panel" aria-label="Состояние в выбранный момент">
+          <div class="panel-heading"><div><span class="eyebrow">02 · СОСТОЯНИЕ</span><h2>Сейчас</h2></div><span id="clock" class="clock">00:00.0</span></div>
+          <div class="primary-speed"><span id="speed-value">—</span><small>м/с · оценка C++</small></div>
+          <div class="metric-grid">
+            <div class="metric"><span class="metric-label">Передняя</span><strong id="front-value">—</strong><small id="front-age">—</small></div>
+            <div class="metric"><span class="metric-label">Задняя</span><strong id="rear-value">—</strong><small id="rear-age">—</small></div>
+            <div class="metric"><span class="metric-label">Ручка</span><strong id="cmd-value">—</strong><small>−15…+15</small></div>
+            <div class="metric"><span class="metric-label">GNSS master</span><strong id="gnss-value">—</strong><small id="gnss-rover">rover — · только сравнение</small></div>
+            <div class="metric"><span class="metric-label">Δ тележек</span><strong id="delta-value">—</strong><small>м/с</small></div>
+            <div class="metric"><span class="metric-label">Путь от старта</span><strong id="distance-value">—</strong><small>оценка C++, м</small></div>
+            <div class="metric"><span class="metric-label">Сырые колёса</span><strong id="raw-speed-value">—</strong><small>среднее свежих, м/с</small></div>
+            <div class="metric"><span class="metric-label">Ускорение модели</span><strong id="model-accel-value">—</strong><small>м/с²</small></div>
+            <div class="metric"><span class="metric-label">Вес тележек</span><strong id="sensor-weights">—</strong><small>передняя / задняя</small></div>
+          </div>
+          <div id="estimator-status" class="diagnostic" role="status">Ожидание выхода оценивателя</div>
+          <div id="diagnostic" class="diagnostic" role="status">Ожидание данных</div>
+          <div class="data-note">Оцениватель получает только ручку и две скорости тележек. GNSS и нижний диагностический блок служат для визуальной проверки записи.</div>
+        </section>
+      </div>
+
+      <div class="lower-grid">
+        <section class="panel map-panel" aria-label="Маршрут по GNSS">
+          <div class="panel-heading"><div><span class="eyebrow">03 · МАРШРУТ</span><h2>Положение на пути</h2></div><button id="map-reset" class="subtle-btn" title="Показать весь маршрут">Весь маршрут</button></div>
+          <div class="map-wrap"><canvas id="map-canvas" aria-label="Маршрут GNSS и текущая позиция"></canvas><div id="map-empty" class="map-empty" hidden>В этой записи нет GNSS-позиции.<br>Доступен только относительный путь по колёсам.</div></div>
+          <div id="map-readout" class="map-readout">—</div>
+          <div class="map-caption">Master GNSS (сырой) <span class="key master"></span> · Rover GNSS (сырой) <span class="key rover"></span> · Оценка base_link по train-карте и стартовому master <span class="key estimate"></span> · ENU, метры</div>
+        </section>
+
+        <section class="panel controls-panel" aria-label="Управление воспроизведением">
+          <div class="panel-heading"><div><span class="eyebrow">04 · ПРОИГРЫВАНИЕ</span><h2>Время записи</h2></div><span id="duration-label" class="muted">—</span></div>
+          <div class="transport-row">
+            <button id="skip-back" class="transport small" title="Назад на 10 секунд" aria-label="Назад на 10 секунд">−10 с</button>
+            <button id="play-pause" class="transport play" aria-label="Воспроизвести">▶</button>
+            <button id="skip-forward" class="transport small" title="Вперёд на 10 секунд" aria-label="Вперёд на 10 секунд">+10 с</button>
+            <label class="rate-label" for="rate">Скорость</label>
+            <select id="rate" aria-label="Скорость воспроизведения"><option value="0.25">0,25×</option><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="5">5×</option><option value="10">10×</option></select>
+          </div>
+          <input id="scrubber" type="range" min="0" max="100" value="0" step="0.01" aria-label="Положение во времени">
+          <div class="time-row"><span>00:00</span><strong id="scrub-time">00:00.0</strong><span id="end-time">—</span></div>
+          <div class="window-row"><span>Окно графика</span><button data-window="20">20 с</button><button data-window="60" class="active">60 с</button><button data-window="180">3 мин</button><button data-window="0">Весь прогон</button></div>
+          <div id="load-status" class="load-status" role="status">Выберите запись</div>
+        </section>
+      </div>
+
+      <section class="panel timeline-panel" aria-label="Синхронные графики">
+        <div class="panel-heading"><div><span class="eyebrow">05 · ТЕЛЕМЕТРИЯ</span><h2>Сигналы вокруг текущего момента</h2></div><div class="chart-hint">Нажмите на график для перемотки</div></div>
+        <div class="chart-legend"><span><i class="line estimate"></i>Оценка C++</span><span><i class="line front"></i>Передняя</span><span><i class="line rear"></i>Задняя</span><span><i class="line master"></i>GNSS master</span><span><i class="line rover"></i>GNSS rover</span><span><i class="line cmd"></i>Ручка</span></div>
+        <div class="charts"><canvas id="speed-chart" aria-label="Скорости по времени"></canvas><canvas id="cmd-chart" aria-label="Положение ручки по времени"></canvas></div>
+        <div id="chart-readout" class="chart-readout">Жёлтая линия — выход C++ в порядке приёма сообщений; GNSS — только сравнение.</div>
+      </section>
+
+      <section class="panel events-panel" aria-label="События записи">
+        <div class="panel-heading"><div><span class="eyebrow">06 · ЗАКЛАДКИ</span><h2>Подозрительные участки</h2></div><span id="event-count" class="muted">—</span></div>
+        <div id="event-list" class="event-list"></div>
+        <p class="events-note">Есть автоматические отметки и вручную проверенные эпизоды. Расхождение двух тележек не доказывает, какая из них скользит.</p>
+      </section>
+    </main>
+    <footer>Исследовательский replay rosbag и выхода оценивателя. Габариты трамвая и рельсы на 3D-схеме условные; записи остаются неизменными.</footer>
+  </div>
+  <script src="scene.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
