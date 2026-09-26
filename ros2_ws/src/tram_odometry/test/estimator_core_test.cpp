@@ -51,6 +51,45 @@ int main() {
   require(near(late.state().stamp_s, 100.10, 1.0e-9),
           "isolated future wheel header cannot poison event time");
 
+  // A delayed older controller command must not replace a newer notch.
+  Estimator ordered_command;
+  ordered_command.reset(100.0, 5.0);
+  ordered_command.submitDriverPosition(15, 100.10);
+  ordered_command.advance(100.20);
+  Estimator reversed_command;
+  reversed_command.reset(100.0, 5.0);
+  reversed_command.submitDriverPosition(15, 100.10);
+  reversed_command.submitDriverPosition(-15, 100.00);
+  reversed_command.advance(100.20);
+  require(reversed_command.state().notch == 15,
+          "older controller header cannot overwrite newer notch");
+  require(near(reversed_command.state().velocity_mps,
+               ordered_command.state().velocity_mps, 1.0e-12),
+          "older controller header cannot change the model prediction");
+  // A newer header that arrives slightly behind the wheel time frontier is
+  // still a valid command and must be applied at the current filter time.
+  Estimator delayed_new_command;
+  delayed_new_command.reset(100.0, 5.0);
+  delayed_new_command.submitDriverPosition(0, 100.10);
+  delayed_new_command.advance(100.20);
+  delayed_new_command.submitDriverPosition(15, 100.15);
+  require(delayed_new_command.state().notch == 15,
+          "newer delayed controller header remains accepted");
+
+  // Some bags interleave a newer time branch with another copy about one
+  // second behind. The newer branch must remain live; old headers are dropped.
+  Estimator interleaved;
+  interleaved.reset(100.0, 5.0);
+  interleaved.submitFrontWheel(18.0, 100.0);
+  interleaved.submitDriverPosition(0, 100.0);
+  interleaved.submitDriverPosition(-7, 101.05);
+  interleaved.submitDriverPosition(-15, 100.05);
+  interleaved.submitDriverPosition(-8, 101.10);
+  require(near(interleaved.state().stamp_s, 101.10, 1.0e-9),
+          "newer interleaved time branch remains active");
+  require(interleaved.state().notch == -8,
+          "older interleaved controller header cannot replace new branch");
+
   // Rear bogie spin must not drag the estimated tram speed upward.
   Estimator spin;
   spin.reset(0.0, 5.0);

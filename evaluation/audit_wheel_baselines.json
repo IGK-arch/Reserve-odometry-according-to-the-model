@@ -1,0 +1,230 @@
+{
+  "policy": "Train-only per-vehicle wheel multipliers; front/rear hold-last when stale; guard uses 0.25s freshness, 0.3m/s wheel difference, otherwise wheel nearest previous guard output; no holdout tuning",
+  "summary": [
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "model": "deployed_core",
+      "bags": 13,
+      "matched": 209747,
+      "rmse_mps": 0.12407096852945093,
+      "bias_mps": -0.008319637423961863
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "model": "front_only",
+      "bags": 13,
+      "matched": 209747,
+      "rmse_mps": 0.1370764826496843,
+      "bias_mps": -0.0076748106679778135
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "model": "guarded",
+      "bags": 13,
+      "matched": 209747,
+      "rmse_mps": 0.13682836349038546,
+      "bias_mps": -0.007853146206591886
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "model": "raw_average",
+      "bags": 13,
+      "matched": 209747,
+      "rmse_mps": 0.1368596816482802,
+      "bias_mps": -0.008952187646290494
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "model": "rear_only",
+      "bags": 13,
+      "matched": 209747,
+      "rmse_mps": 0.13704781138618177,
+      "bias_mps": -0.008031180703236487
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "model": "deployed_core",
+      "bags": 10,
+      "matched": 222021,
+      "rmse_mps": 0.11450286201538748,
+      "bias_mps": 0.04204071741397647
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "model": "front_only",
+      "bags": 10,
+      "matched": 222021,
+      "rmse_mps": 0.1742212786940492,
+      "bias_mps": 0.041248920782783756
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "model": "guarded",
+      "bags": 10,
+      "matched": 222021,
+      "rmse_mps": 0.1214940600883832,
+      "bias_mps": 0.04603949036956844
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "model": "raw_average",
+      "bags": 10,
+      "matched": 222021,
+      "rmse_mps": 0.11078477625850909,
+      "bias_mps": 0.03074070794383179
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "model": "rear_only",
+      "bags": 10,
+      "matched": 222021,
+      "rmse_mps": 0.695652932766068,
+      "bias_mps": -0.020442223279695793
+    },
+    {
+      "split": "holdout",
+      "vehicle": "all",
+      "model": "deployed_core",
+      "bags": 23,
+      "matched": 431768,
+      "rmse_mps": 0.11924684406890931,
+      "bias_mps": 0.017576344541987227
+    },
+    {
+      "split": "holdout",
+      "vehicle": "all",
+      "model": "front_only",
+      "bags": 23,
+      "matched": 431768,
+      "rmse_mps": 0.15727638660577142,
+      "bias_mps": 0.01748243993982437
+    },
+    {
+      "split": "holdout",
+      "vehicle": "all",
+      "model": "guarded",
+      "bags": 23,
+      "matched": 431768,
+      "rmse_mps": 0.12917082026535304,
+      "bias_mps": 0.01985918325106985
+    },
+    {
+      "split": "holdout",
+      "vehicle": "all",
+      "model": "raw_average",
+      "bags": 23,
+      "matched": 431768,
+      "rmse_mps": 0.12413757553440836,
+      "bias_mps": 0.011458441144667937
+    },
+    {
+      "split": "holdout",
+      "vehicle": "all",
+      "model": "rear_only",
+      "bags": 23,
+      "matched": 431768,
+      "rmse_mps": 0.5079065324008524,
+      "bias_mps": -0.014413108228824465
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "model": "deployed_core",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.03451910429489794,
+      "bias_mps": -0.007947403291661697
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "model": "front_only",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.06302643390794323,
+      "bias_mps": -0.008526384345753441
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "model": "guarded",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.060799532389951304,
+      "bias_mps": -0.008477889709646186
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "model": "raw_average",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.06724529928756388,
+      "bias_mps": -0.009629808095537925
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "model": "rear_only",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.08046659602239446,
+      "bias_mps": -0.0085203249996625
+    },
+    {
+      "split": "validation",
+      "vehicle": "all",
+      "model": "deployed_core",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.03451910429489794,
+      "bias_mps": -0.007947403291661697
+    },
+    {
+      "split": "validation",
+      "vehicle": "all",
+      "model": "front_only",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.06302643390794323,
+      "bias_mps": -0.008526384345753441
+    },
+    {
+      "split": "validation",
+      "vehicle": "all",
+      "model": "guarded",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.060799532389951304,
+      "bias_mps": -0.008477889709646186
+    },
+    {
+      "split": "validation",
+      "vehicle": "all",
+      "model": "raw_average",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.06724529928756388,
+      "bias_mps": -0.009629808095537925
+    },
+    {
+      "split": "validation",
+      "vehicle": "all",
+      "model": "rear_only",
+      "bags": 13,
+      "matched": 286515,
+      "rmse_mps": 0.08046659602239446,
+      "bias_mps": -0.0085203249996625
+    }
+  ]
+}

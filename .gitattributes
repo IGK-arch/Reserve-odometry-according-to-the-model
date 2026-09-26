@@ -2,3 +2,4 @@
 *.csv -text
 *.json -text
 *.css -text
+*.md -text

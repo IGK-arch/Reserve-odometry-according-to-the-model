@@ -49,11 +49,11 @@ ros2 bag play /path/to/30618_2050d396 --clock
 `tools/split_manifest.json` делит уникальные bag **целыми сессиями**: 42 train, 13 validation, 42 holdout. Дубликаты SQLite по SHA-256 остаются в одном наборе. Чистые участки GNSS train использованы для калибровки масштабов колёс и построения карты. При воспроизведении оцениватель получает только три разрешённых топика в порядке поступления; GNSS декодируется отдельно для метрик после расчёта выходов.
 
 ```powershell
-py -3.12 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_core_table.csv
-py -3.12 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_position_table.csv
+py -3.12 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_core_table.csv
+py -3.12 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_position_table.csv
 ```
 
-Эти команды запускаются без ROS, но требуют распакованный датасет. Они дают **локальные прокси-метрики**, потому что эталонная объединённая локализация жюри не включена в исходные bag. Итоговые измерения и известные ограничения фиксируются в [`docs/RESULTS.md`](docs/RESULTS.md).
+Эти команды запускаются без ROS, но требуют распакованный датасет. Они дают **локальные прокси-метрики**, потому что эталонная объединённая локализация жюри не включена в исходные bag. Итоговые измерения приведены в [`docs/RESULTS.md`](docs/RESULTS.md); подробная проверка обобщения, утечки выбора режима и слабого holdout `30639` — в [`docs/VALIDATION_AUDIT.md`](docs/VALIDATION_AUDIT.md).
 
 ## Текущий статус среды
 

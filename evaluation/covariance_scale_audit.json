@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "scope": "train parameter evidence; train and validation proxy coverage; no holdout access",
+  "formula": "sigma_along^2 = P_s + anchor_variance + (scale_sigma * max(0, s - s_anchor))^2",
+  "coverage_approximation": "For scored GNSS intervals, use 4 m^2 master-anchor variance and (0.01 * core_distance_on_scored_intervals)^2; omit positive P_s, so this is a lower bound on the reported variance. It is not a probability confidence interval.",
+  "scale_sigma": 0.01,
+  "master_anchor_variance_m2": 4.0,
+  "min_reference_distance_m": 1000.0,
+  "source_sha256": {
+    "split_manifest.json": "9c7db9ea5df911692da03c2525843f20fd957a40ce01ce34ea8030696fc5f221",
+    "estimator.cpp": "938d8438ebeda7ff9068a58140bbd73a8e6b38b58a5279c88bd417ae8e101730",
+    "drive_accel_table.csv": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc"
+  },
+  "train_session_gnss_to_wheel_scale_medians": [
+    {
+      "vehicle": "30618",
+      "date": "2026-07-27",
+      "bags": 26,
+      "common_scale_median": 1.0001115976839667,
+      "common_scale_min": 0.9997328048285945,
+      "common_scale_max": 1.0012144128398028
+    },
+    {
+      "vehicle": "30618",
+      "date": "2026-09-03",
+      "bags": 4,
+      "common_scale_median": 1.0106308893826226,
+      "common_scale_min": 1.0065139417187565,
+      "common_scale_max": 1.01606190168928
+    },
+    {
+      "vehicle": "30639",
+      "date": "2026-08-26",
+      "bags": 8,
+      "common_scale_median": 1.0033825279812105,
+      "common_scale_min": 1.0025561435204007,
+      "common_scale_max": 1.003711016820129
+    }
+  ],
+  "coverage": {
+    "train": {
+      "bags": 38,
+      "inside_one_diagnostic_sigma": 36,
+      "inside_two_diagnostic_sigma": 38,
+      "max_normalized_drift": 1.7176655596649049
+    },
+    "validation": {
+      "bags": 12,
+      "inside_one_diagnostic_sigma": 12,
+      "inside_two_diagnostic_sigma": 12,
+      "max_normalized_drift": 0.23448891826944201
+    }
+  },
+  "rows": {
+    "train": [
+      {
+        "bag": "30618_0652866c",
+        "reference_distance_m": 5629.766434064501,
+        "core_distance_m": 5612.217384952552,
+        "core_drift_m": -17.54904911194899,
+        "diagnostic_sigma_m_lower_bound": 56.15779908077208,
+        "normalized_drift": 0.3124953149732256
+      },
+      {
+        "bag": "30618_0686195f",
+        "reference_distance_m": 5205.065725265727,
+        "core_distance_m": 5127.358553624501,
+        "core_drift_m": -77.70717164122652,
+        "diagnostic_sigma_m_lower_bound": 51.31257714968751,
+        "normalized_drift": 1.5143884006165094
+      },
+      {
+        "bag": "30618_073f08d1",
+        "reference_distance_m": 5416.647408864531,
+        "core_distance_m": 5408.960328762966,
+        "core_drift_m": -7.6870801015647885,
+        "diagnostic_sigma_m_lower_bound": 54.12656634050564,
+        "normalized_drift": 0.14202046464957743
+      },
+      {
+        "bag": "30618_095a115b",
+        "reference_distance_m": 5444.764437822502,
+        "core_distance_m": 5433.661657330494,
+        "core_drift_m": -11.102780492008606,
+        "diagnostic_sigma_m_lower_bound": 54.37341170677408,
+        "normalized_drift": 0.20419503105458753
+      },
+      {
+        "bag": "30618_0e41eac3",
+        "reference_distance_m": 5335.81061506498,
+        "core_distance_m": 5327.342524980555,
+        "core_drift_m": -8.468090084425057,
+        "diagnostic_sigma_m_lower_bound": 53.31095420123916,
+        "normalized_drift": 0.15884334113509874
+      },
+      {
+        "bag": "30618_0f120b35",
+        "reference_distance_m": 5413.9119655275235,
+        "core_distance_m": 5409.708566214887,
+        "core_drift_m": -4.203399312636975,
+        "diagnostic_sigma_m_lower_bound": 54.13404360601444,
+        "normalized_drift": 0.07764798327701436
+      },
+      {
+        "bag": "30618_22c1c589",
+        "reference_distance_m": 5424.279204382159,
+        "core_distance_m": 5417.207767277164,
+        "core_drift_m": -7.0714371049953115,
+        "diagnostic_sigma_m_lower_bound": 54.208984489518,
+        "normalized_drift": 0.13044769555427965
+      },
+      {
+        "bag": "30618_27e994fc",
+        "reference_distance_m": 5657.436582445079,
+        "core_distance_m": 5603.640048941963,
+        "core_drift_m": -53.796533503115825,
+        "diagnostic_sigma_m_lower_bound": 56.07208021654475,
+        "normalized_drift": 0.959417472926972
+      },
+      {
+        "bag": "30618_28538acf",
+        "reference_distance_m": 5453.190716003933,
+        "core_distance_m": 5439.8282356071595,
+        "core_drift_m": -13.362480396773208,
+        "diagnostic_sigma_m_lower_bound": 54.43503580683024,
+        "normalized_drift": 0.2454757344918757
+      },
+      {
+        "bag": "30618_2dbce472",
+        "reference_distance_m": 5427.360966320724,
+        "core_distance_m": 5415.923912747837,
+        "core_drift_m": -11.437053572887635,
+        "diagnostic_sigma_m_lower_bound": 54.19615468709366,
+        "normalized_drift": 0.2110307205173593
+      },
+      {
+        "bag": "30618_2f104a1d",
+        "reference_distance_m": 5411.818501809845,
+        "core_distance_m": 5407.71439558887,
+        "core_drift_m": -4.104106220975154,
+        "diagnostic_sigma_m_lower_bound": 54.11411551920542,
+        "normalized_drift": 0.07584169456707802
+      },
+      {
+        "bag": "30618_49fe4c54",
+        "reference_distance_m": 5491.069487519843,
+        "core_distance_m": 5472.708312042665,
+        "core_drift_m": -18.36117547717822,
+        "diagnostic_sigma_m_lower_bound": 54.763615903901815,
+        "normalized_drift": 0.3352805539611934
+      },
+      {
+        "bag": "30618_616ec56b",
+        "reference_distance_m": 5391.770190198259,
+        "core_distance_m": 5384.376471973445,
+        "core_drift_m": -7.3937182248137105,
+        "diagnostic_sigma_m_lower_bound": 53.880896421590094,
+        "normalized_drift": 0.1372233707279422
+      },
+      {
+        "bag": "30618_68847170",
+        "reference_distance_m": 5412.965961517901,
+        "core_distance_m": 5406.833253443812,
+        "core_drift_m": -6.132708074088441,
+        "diagnostic_sigma_m_lower_bound": 54.10531011882827,
+        "normalized_drift": 0.113347618942014
+      },
+      {
+        "bag": "30618_68d1748a",
+        "reference_distance_m": 5395.153440024936,
+        "core_distance_m": 5382.272619976915,
+        "core_drift_m": -12.880820048020723,
+        "diagnostic_sigma_m_lower_bound": 53.85987240585811,
+        "normalized_drift": 0.23915429934475171
+      },
+      {
+        "bag": "30618_76e1f9c7",
+        "reference_distance_m": 5468.866388359914,
+        "core_distance_m": 5461.6327892863455,
+        "core_drift_m": -7.233599073568257,
+        "diagnostic_sigma_m_lower_bound": 54.652934710779945,
+        "normalized_drift": 0.1323551811416538
+      },
+      {
+        "bag": "30618_7b4d83f4",
+        "reference_distance_m": 5418.498775778441,
+        "core_distance_m": 5413.300791560125,
+        "core_drift_m": -5.197984218316378,
+        "diagnostic_sigma_m_lower_bound": 54.16994135118246,
+        "normalized_drift": 0.09595698442089809
+      },
+      {
+        "bag": "30618_8158f0b0",
+        "reference_distance_m": 5525.25807270201,
+        "core_distance_m": 5512.646028667577,
+        "core_drift_m": -12.612044034432984,
+        "diagnostic_sigma_m_lower_bound": 55.162728574087424,
+        "normalized_drift": 0.22863343348750637
+      },
+      {
+        "bag": "30618_87afe526",
+        "reference_distance_m": 5432.575055898948,
+        "core_distance_m": 5423.461250536408,
+        "core_drift_m": -9.113805362540006,
+        "diagnostic_sigma_m_lower_bound": 54.271476795891544,
+        "normalized_drift": 0.16792993116468757
+      },
+      {
+        "bag": "30618_88548b02",
+        "reference_distance_m": 5372.806786171186,
+        "core_distance_m": 5330.786287617121,
+        "core_drift_m": -42.02049855406494,
+        "diagnostic_sigma_m_lower_bound": 53.34536760042687,
+        "normalized_drift": 0.7877066077941639
+      },
+      {
+        "bag": "30618_9c09b081",
+        "reference_distance_m": 5479.958394493202,
+        "core_distance_m": 5464.787653015608,
+        "core_drift_m": -15.170741477593765,
+        "diagnostic_sigma_m_lower_bound": 54.68446222881948,
+        "normalized_drift": 0.27742325441756965
+      },
+      {
+        "bag": "30618_ab5921a4",
+        "reference_distance_m": 5464.492712579849,
+        "core_distance_m": 5453.804161982852,
+        "core_drift_m": -10.68855059699672,
+        "diagnostic_sigma_m_lower_bound": 54.57470094948893,
+        "normalized_drift": 0.1958517483566131
+      },
+      {
+        "bag": "30618_b15eafc3",
+        "reference_distance_m": 5415.988813128719,
+        "core_distance_m": 5408.830461850508,
+        "core_drift_m": -7.15835127821083,
+        "diagnostic_sigma_m_lower_bound": 54.12526855826397,
+        "normalized_drift": 0.1322552565352191
+      },
+      {
+        "bag": "30618_b8044aa0",
+        "reference_distance_m": 5408.605815146925,
+        "core_distance_m": 5404.538206057218,
+        "core_drift_m": -4.067609089706821,
+        "diagnostic_sigma_m_lower_bound": 54.08237533682501,
+        "normalized_drift": 0.07521136163812615
+      },
+      {
+        "bag": "30618_b83d854d",
+        "reference_distance_m": 5424.19387492004,
+        "core_distance_m": 5419.0310188128005,
+        "core_drift_m": -5.1628561072393495,
+        "diagnostic_sigma_m_lower_bound": 54.22720459589937,
+        "normalized_drift": 0.09520786007158041
+      },
+      {
+        "bag": "30618_b95ca60a",
+        "reference_distance_m": 5401.228136941019,
+        "core_distance_m": 5398.331370323752,
+        "core_drift_m": -2.896766617267531,
+        "diagnostic_sigma_m_lower_bound": 54.02034948408009,
+        "normalized_drift": 0.053623618598047276
+      },
+      {
+        "bag": "30618_defd0170",
+        "reference_distance_m": 5208.240058669848,
+        "core_distance_m": 5120.224655392044,
+        "core_drift_m": -88.01540327780367,
+        "diagnostic_sigma_m_lower_bound": 51.24129245216652,
+        "normalized_drift": 1.7176655596649049
+      },
+      {
+        "bag": "30618_e2dcf65f",
+        "reference_distance_m": 5327.065442616248,
+        "core_distance_m": 5320.854387037521,
+        "core_drift_m": -6.21105557872761,
+        "diagnostic_sigma_m_lower_bound": 53.24611855154931,
+        "normalized_drift": 0.11664804398304608
+      },
+      {
+        "bag": "30618_e3d94878",
+        "reference_distance_m": 5407.962800479691,
+        "core_distance_m": 5403.454852006225,
+        "core_drift_m": -4.507948473466058,
+        "diagnostic_sigma_m_lower_bound": 54.07154920812757,
+        "normalized_drift": 0.08337006317526523
+      },
+      {
+        "bag": "30618_f19a4ac3",
+        "reference_distance_m": 5418.292094527453,
+        "core_distance_m": 5413.736550735733,
+        "core_drift_m": -4.555543791720083,
+        "diagnostic_sigma_m_lower_bound": 54.17429597214165,
+        "normalized_drift": 0.0840905028846652
+      },
+      {
+        "bag": "30639_0be558e2",
+        "reference_distance_m": 5545.925802025487,
+        "core_distance_m": 5529.015921312195,
+        "core_drift_m": -16.909880713292296,
+        "diagnostic_sigma_m_lower_bound": 55.32632019041547,
+        "normalized_drift": 0.3056389916244909
+      },
+      {
+        "bag": "30639_2b4a6347",
+        "reference_distance_m": 5410.599544396327,
+        "core_distance_m": 5406.236730131037,
+        "core_drift_m": -4.362814265289671,
+        "diagnostic_sigma_m_lower_bound": 54.09934896301241,
+        "normalized_drift": 0.0806444873906434
+      },
+      {
+        "bag": "30639_4285f2bc",
+        "reference_distance_m": 5440.2702836166945,
+        "core_distance_m": 5431.361543997246,
+        "core_drift_m": -8.90873961944817,
+        "diagnostic_sigma_m_lower_bound": 54.35042614516666,
+        "normalized_drift": 0.16391296722593254
+      },
+      {
+        "bag": "30639_50956d6e",
+        "reference_distance_m": 5448.883598926172,
+        "core_distance_m": 5434.386882201324,
+        "core_drift_m": -14.496716724848739,
+        "diagnostic_sigma_m_lower_bound": 54.380659048453815,
+        "normalized_drift": 0.26657854057877434
+      },
+      {
+        "bag": "30639_584b6e32",
+        "reference_distance_m": 5484.583446514801,
+        "core_distance_m": 5473.215087493049,
+        "core_drift_m": -11.36835902175153,
+        "diagnostic_sigma_m_lower_bound": 54.76868027802163,
+        "normalized_drift": 0.20757043923721474
+      },
+      {
+        "bag": "30639_927002c2",
+        "reference_distance_m": 5392.976089685549,
+        "core_distance_m": 5381.343228073629,
+        "core_drift_m": -11.632861611919907,
+        "diagnostic_sigma_m_lower_bound": 53.85058489778352,
+        "normalized_drift": 0.2160210819251234
+      },
+      {
+        "bag": "30639_9f0b519f",
+        "reference_distance_m": 5391.434521748096,
+        "core_distance_m": 5386.306475362695,
+        "core_drift_m": -5.128046385400921,
+        "diagnostic_sigma_m_lower_bound": 53.90018315973898,
+        "normalized_drift": 0.09513968385234249
+      },
+      {
+        "bag": "30639_d927f360",
+        "reference_distance_m": 5406.843328258008,
+        "core_distance_m": 5400.484136651949,
+        "core_drift_m": -6.3591916060595395,
+        "diagnostic_sigma_m_lower_bound": 54.041862394100875,
+        "normalized_drift": 0.1176715850331927
+      }
+    ],
+    "validation": [
+      {
+        "bag": "30618_01f73500",
+        "reference_distance_m": 5454.087580534065,
+        "core_distance_m": 5441.672224368418,
+        "core_drift_m": -12.415356165646699,
+        "diagnostic_sigma_m_lower_bound": 54.45346324841307,
+        "normalized_drift": 0.2279993856223372
+      },
+      {
+        "bag": "30618_2050d396",
+        "reference_distance_m": 5368.030359997353,
+        "core_distance_m": 5359.502217727312,
+        "core_drift_m": -8.528142270040917,
+        "diagnostic_sigma_m_lower_bound": 53.63232609334037,
+        "normalized_drift": 0.15901123242722587
+      },
+      {
+        "bag": "30618_33bec73f",
+        "reference_distance_m": 5375.15017896323,
+        "core_distance_m": 5369.5709182860555,
+        "core_drift_m": -5.579260677174716,
+        "diagnostic_sigma_m_lower_bound": 53.732943197356455,
+        "normalized_drift": 0.10383314862695263
+      },
+      {
+        "bag": "30618_3e9f4952",
+        "reference_distance_m": 5439.528104332745,
+        "core_distance_m": 5428.728667354518,
+        "core_drift_m": -10.799436978227277,
+        "diagnostic_sigma_m_lower_bound": 54.324115219446284,
+        "normalized_drift": 0.19879637127272395
+      },
+      {
+        "bag": "30618_437e855c",
+        "reference_distance_m": 5436.2250271948515,
+        "core_distance_m": 5424.221474725994,
+        "core_drift_m": -12.003552468857379,
+        "diagnostic_sigma_m_lower_bound": 54.27907387463298,
+        "normalized_drift": 0.22114512300968298
+      },
+      {
+        "bag": "30618_67b89902",
+        "reference_distance_m": 5390.676070988003,
+        "core_distance_m": 5384.67202683074,
+        "core_drift_m": -6.004044157262797,
+        "diagnostic_sigma_m_lower_bound": 53.883849933475865,
+        "normalized_drift": 0.1114256714150027
+      },
+      {
+        "bag": "30618_a53d5f6f",
+        "reference_distance_m": 5439.885862174732,
+        "core_distance_m": 5429.620036705404,
+        "core_drift_m": -10.265825469327865,
+        "diagnostic_sigma_m_lower_bound": 54.33302287098776,
+        "normalized_drift": 0.18894265267926982
+      },
+      {
+        "bag": "30618_a869780d",
+        "reference_distance_m": 5307.667486826633,
+        "core_distance_m": 5300.492531657714,
+        "core_drift_m": -7.174955168919041,
+        "diagnostic_sigma_m_lower_bound": 53.04264423853622,
+        "normalized_drift": 0.13526767513046298
+      },
+      {
+        "bag": "30618_d4ba7005",
+        "reference_distance_m": 5351.389090624731,
+        "core_distance_m": 5341.349914927585,
+        "core_drift_m": -10.039175697145765,
+        "diagnostic_sigma_m_lower_bound": 53.450929752153904,
+        "normalized_drift": 0.18782041292258753
+      },
+      {
+        "bag": "30618_dd8d0741",
+        "reference_distance_m": 5461.493005651174,
+        "core_distance_m": 5448.707785463881,
+        "core_drift_m": -12.785220187292907,
+        "diagnostic_sigma_m_lower_bound": 54.52377145005169,
+        "normalized_drift": 0.23448891826944201
+      },
+      {
+        "bag": "30618_dd8e6395",
+        "reference_distance_m": 5379.868622959693,
+        "core_distance_m": 5367.883414647007,
+        "core_drift_m": -11.985208312686154,
+        "diagnostic_sigma_m_lower_bound": 53.716079858122946,
+        "normalized_drift": 0.2231214255459811
+      },
+      {
+        "bag": "30618_e9a34502",
+        "reference_distance_m": 5390.101900124401,
+        "core_distance_m": 5382.006110328205,
+        "core_drift_m": -8.095789796196186,
+        "diagnostic_sigma_m_lower_bound": 53.85720914753208,
+        "normalized_drift": 0.15031951941696858
+      }
+    ]
+  },
+  "limitations": [
+    "GNSS speed is an imperfect proxy, not the hidden fused reference.",
+    "Sampled points within one trip are correlated; counts are whole bags.",
+    "30639 has only one training date, so its between-session scale variance is not identified.",
+    "Route branch, map geometry, and startup GNSS errors are separate from this longitudinal floor."
+  ]
+}

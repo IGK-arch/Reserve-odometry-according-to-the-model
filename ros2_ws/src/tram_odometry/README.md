@@ -61,6 +61,11 @@ g++ -std=c++17 -O2 -Wall -Wextra -pedantic \
   ros2_ws/src/tram_odometry/test/startup_output_gate_test.cpp \
   -o startup_output_gate_test
 ./startup_output_gate_test
+g++ -std=c++17 -O2 -Wall -Wextra -pedantic \
+  -I ros2_ws/src/tram_odometry/include \
+  ros2_ws/src/tram_odometry/test/uncertainty_test.cpp \
+  -o uncertainty_test
+./uncertainty_test
 ```
 
 ## Drive model and reproducible evaluation
@@ -72,7 +77,9 @@ default for vehicle `30618` and uses physics only for `30639`. The standalone
 C++ `EstimatorConfig` defaults to physics only, so experiments must request
 the CSV explicitly. The exact equations, gating, assumptions and split
 protocol are in [`docs/CORE_MODEL.md`](../../../docs/CORE_MODEL.md) and
-[`docs/DRIVE_CALIBRATION.md`](../../../docs/DRIVE_CALIBRATION.md).
+[`docs/DRIVE_CALIBRATION.md`](../../../docs/DRIVE_CALIBRATION.md). The
+session-split quality and overfitting audit is
+[`docs/VALIDATION_AUDIT.md`](../../../docs/VALIDATION_AUDIT.md).
 
 To override the vehicle default, add `enable_drive_table: false` or `true`
 under `ros__parameters` in `config/default.yaml`. Set `drive_table_path` to
@@ -134,6 +141,10 @@ The organiser specified the target point as `base_link`, centred on the front bo
 The default `/result/position` uses a fixed, continuous MGRS `37UCB` plane: `x = UTM zone 37N easting − 300000`, `y = UTM northing − 6100000`, and `z = base_link` height in metres. The transformation is WGS84 ENU → ECEF → geodetic → UTM; it remains continuous if a route crosses a 100-km MGRS letter boundary. The official control point `lat=55.8088325462547°, lon=37.4602768500852°` projects to `x=103501.6309, y=85876.1201` m. Our standalone C++ test differs by approximately 0.6 mm in `y`. `output_projection=enu` is for internal inspection. `output_scale`, `output_rotation_rad`, and `output_offset_*_m` remain available for a revised judge frame. `nav_msgs/Odometry` twist is expressed in `child_frame_id`.
 
 Parameters are documented in [`config/default.yaml`](config/default.yaml). `map_file` can override the installed map. With `route_direction=auto`, starts near the east terminal (`ENU x > -200 m`) use `out` and starts near the west terminal (`ENU x < -4400 m`) use `return`; these thresholds are valid for the supplied map datum. Elsewhere the node chooses the nearest track and warns that the direction is ambiguous. Explicitly set `out` or `return` for a mid-route start if known. A bad startup GNSS fix farther than `map_match_max_distance_m` from the selected mapped route is rejected. The west terminal has mapped branch offsets up to tens of metres; an initial horizontal residual is reduced smoothly over `anchor_residual_decay_m`. The GNSS subscriber itself is optional (`use_startup_gnss=false`).
+
+`wheel_common_scale_sigma=0.01` adds a train-derived distance-proportional
+variance floor to the published along-track covariance. It changes
+diagnostics, not the estimated velocity or position.
 
 ## Operational limits
 

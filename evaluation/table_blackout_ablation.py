@@ -1,4 +1,4 @@
-"""Exact C++ model-only blackout ablation on frozen validation sessions.
+"""Exact C++ model-only blackout ablation on frozen dataset sessions.
 
 Select clean 5 s reference windows using GNSS only in this evaluator, then
 replay the permitted three inputs in SQLite receive order through the same C++
@@ -123,6 +123,10 @@ def main():
                                 "assets" / "drive_accel_table.csv")
     parser.add_argument("--out", type=Path,
                         default=ROOT / "evaluation" / "table_blackout_validation.json")
+    parser.add_argument("--split", choices=("validation", "holdout"),
+                        default="validation", help="Frozen bag split to audit")
+    parser.add_argument("--vehicle", choices=("30618", "30639", "all"),
+                        default="all", help="Optional vehicle filter")
     args = parser.parse_args()
     exe = args.exe.resolve()
     table = args.table.resolve()
@@ -131,7 +135,9 @@ def main():
     manifest = json.loads((ROOT / "tools" / "split_manifest.json").read_text(
         encoding="utf-8"))
     scored = []
-    for bag in manifest["representatives"]["validation"]:
+    for bag in manifest["representatives"][args.split]:
+        if args.vehicle != "all" and not bag.startswith(args.vehicle + "_"):
+            continue
         starts, t, g = select_windows(bag)
         if not starts:
             continue
@@ -179,7 +185,7 @@ def main():
             "table": summarize(scored, horizon, "table"),
             "table_used_at_end_fraction": sum(r["table_used_at_end"] for r in group) / len(group),
         }
-    result = {"protocol": "C++ Estimator in SQLite receive order; GNSS only selects clean non-overlapping 30 s validation windows and evaluates outputs; 5.12 s paired-wheel blackouts", "summary": summary,
+    result = {"protocol": "C++ Estimator in SQLite receive order; GNSS only selects clean non-overlapping 30 s windows and evaluates outputs; 5.12 s paired-wheel blackouts", "split": args.split, "vehicle": args.vehicle, "summary": summary,
               "windows": scored}
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2),
                         encoding="utf-8")

@@ -1,0 +1,110 @@
+{
+  "bag": "30639_3b3d9eb8",
+  "sample_file": "evaluation\\ros_smoke\\anchored_20260927_000129_myd6\\samples.csv",
+  "ros_speed_stamps": 25859,
+  "ros_position_stamps": 25854,
+  "ros_duplicate_output_stamps": 0,
+  "offline_controller_stamps": 24322,
+  "exact_stamp_intersection": 24314,
+  "bag_first_input_topic_for_ros_stamps": {
+    "/vehicle/rear_bogie_velocity": 1332,
+    "/vehicle/driver_position_cmd": 24314,
+    "/vehicle/front_bogie_velocity": 213
+  },
+  "ros_minus_offline_mps": {
+    "n": 24314,
+    "rmse": 0.003346432091790778,
+    "mae": 0.0017113200452291118,
+    "bias": 0.000238295850091227,
+    "p50_abs": 0.000718049654964581,
+    "p95_abs": 0.006476899718794726,
+    "max_abs": 0.06836666036694797
+  },
+  "ros_vs_offline_delta_gt_0_01_mps": 487,
+  "ros_vs_offline_delta_gt_0_10_mps": 0,
+  "largest_ros_offline_differences": [
+    {
+      "stamp_ns": 1777967911770550778,
+      "delta_mps": -0.06836666036694797,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967911820544543,
+      "delta_mps": -0.06832074602226487,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967911670590083,
+      "delta_mps": -0.05790710458454967,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967911720558163,
+      "delta_mps": -0.057861568911606376,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967911570552551,
+      "delta_mps": -0.044236901409602986,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967911620540730,
+      "delta_mps": -0.04419196488271179,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967612470545200,
+      "delta_mps": 0.04323178699070951,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    },
+    {
+      "stamp_ns": 1777967612520595975,
+      "delta_mps": 0.04319595354220063,
+      "bag_event_topics": [
+        "/vehicle/driver_position_cmd"
+      ]
+    }
+  ],
+  "ros_minus_gnss_mps": {
+    "n": 25846,
+    "rmse": 0.22331271531248273,
+    "mae": 0.12605626444862023,
+    "bias": 0.04587771104334109,
+    "p50_abs": 0.06544775387053481,
+    "p95_abs": 0.544690465594436,
+    "max_abs": 1.152569798795391
+  },
+  "offline_minus_gnss_on_same_stamps_mps": {
+    "n": 24303,
+    "rmse": 0.2248445647323968,
+    "mae": 0.12704406106843233,
+    "bias": 0.04608625435611433,
+    "p50_abs": 0.06602675021974225,
+    "p95_abs": 0.5483877299759783,
+    "max_abs": 1.154895486556035
+  },
+  "ros_position_minus_dual_gnss_base_proxy_3d_m": {
+    "n": 18412,
+    "rmse": 38.10916245738778,
+    "mae": 31.986274788667274,
+    "bias": 31.986274788667274,
+    "p50_abs": 23.640149577559587,
+    "p95_abs": 67.34881021106295,
+    "max_abs": 68.26666031799334
+  }
+}

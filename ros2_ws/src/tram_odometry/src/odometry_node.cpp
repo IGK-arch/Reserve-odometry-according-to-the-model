@@ -28,6 +28,7 @@
 #include "tram_odometry/estimator.hpp"
 #include "tram_odometry/geo_projection.hpp"
 #include "tram_odometry/startup_output_gate.hpp"
+#include "tram_odometry/uncertainty.hpp"
 
 namespace tram_odometry {
 namespace {
@@ -311,6 +312,13 @@ class OdometryNode final : public rclcpp::Node {
     output_scale_ = declare_parameter<double>("output_scale", 1.0);
     if (!std::isfinite(output_scale_) || output_scale_ <= 0.0) {
       throw std::invalid_argument("output_scale must be positive and finite");
+    }
+    wheel_common_scale_sigma_ =
+      declare_parameter<double>("wheel_common_scale_sigma", 0.01);
+    if (!std::isfinite(wheel_common_scale_sigma_) ||
+        wheel_common_scale_sigma_ < 0.0) {
+      throw std::invalid_argument(
+        "wheel_common_scale_sigma must be nonnegative and finite");
     }
     output_offset_ = {declare_parameter<double>("output_offset_x_m", 0.0),
                       declare_parameter<double>("output_offset_y_m", 0.0),
@@ -701,27 +709,38 @@ class OdometryNode final : public rclcpp::Node {
     odometry.pose.pose.position.z = pose.p.z;
     odometry.pose.pose.orientation.z = std::sin(pose.yaw * 0.5);
     odometry.pose.pose.orientation.w = std::cos(pose.yaw * 0.5);
-    odometry.twist.twist.linear.x = state.velocity_mps;
+    odometry.twist.twist.linear.x = output_scale_ * state.velocity_mps;
     // ROS Odometry expresses pose in header.frame_id and twist in child_frame_id.
     odometry.pose.covariance.fill(0.0);
     odometry.twist.covariance.fill(0.0);
+    const double scale_distance_var = commonScaleDistanceVariance(
+      state.distance_m, has_gnss_anchor_ ? anchor_distance_m_ : 0.0,
+      wheel_common_scale_sigma_);
     const double along_var = std::max(0.01, state.distance_variance) +
+      scale_distance_var +
       (anchor_source_ == "master" ? 4.0 :
        anchor_source_ == "rover_fallback" ? 144.0 : 25.0);
     const double cross_var = pose.mapped ? 9.0 : 100.0;
+    const double output_scale_sq = output_scale_ * output_scale_;
     const double c = std::cos(pose.yaw);
     const double s = std::sin(pose.yaw);
-    odometry.pose.covariance[0] = along_var * c * c + cross_var * s * s;
-    odometry.pose.covariance[1] = (along_var - cross_var) * c * s;
+    odometry.pose.covariance[0] =
+      output_scale_sq * (along_var * c * c + cross_var * s * s);
+    odometry.pose.covariance[1] =
+      output_scale_sq * (along_var - cross_var) * c * s;
     odometry.pose.covariance[6] = odometry.pose.covariance[1];
-    odometry.pose.covariance[7] = along_var * s * s + cross_var * c * c;
-    odometry.pose.covariance[14] = pose.mapped ? 16.0 : 100.0;
+    odometry.pose.covariance[7] =
+      output_scale_sq * (along_var * s * s + cross_var * c * c);
+    odometry.pose.covariance[14] =
+      output_scale_sq * (pose.mapped ? 16.0 : 100.0);
+    // Orientation covariance remains in rad^2 under a length scale change.
     odometry.pose.covariance[21] = 1e3;
     odometry.pose.covariance[28] = 1e3;
     odometry.pose.covariance[35] = pose.mapped ? 0.1 : 10.0;
-    odometry.twist.covariance[0] = std::max(0.0001, state.velocity_variance);
-    odometry.twist.covariance[7] = 1e3;
-    odometry.twist.covariance[14] = 1e3;
+    odometry.twist.covariance[0] =
+      output_scale_sq * std::max(0.0001, state.velocity_variance);
+    odometry.twist.covariance[7] = output_scale_sq * 1e3;
+    odometry.twist.covariance[14] = output_scale_sq * 1e3;
     odometry.twist.covariance[21] = 1e3;
     odometry.twist.covariance[28] = 1e3;
     odometry.twist.covariance[35] = 1e3;
@@ -777,6 +796,10 @@ class OdometryNode final : public rclcpp::Node {
                        std::to_string(state.model_acceleration_mps2));
     addDiagnosticValue(status, "acceleration_mps2", std::to_string(state.acceleration_mps2));
     addDiagnosticValue(status, "distance_m", std::to_string(state.distance_m));
+    addDiagnosticValue(status, "wheel_common_scale_sigma",
+                       std::to_string(wheel_common_scale_sigma_));
+    addDiagnosticValue(status, "scale_drift_sigma_m",
+                       std::to_string(std::sqrt(scale_distance_var)));
     addDiagnosticValue(status, "callback_to_position_publish_ms",
                        std::to_string(callback_to_publish_ms));
     addDiagnosticValue(status, "output_rate_hz_1s", std::to_string(output_rate_hz));
@@ -817,6 +840,7 @@ class OdometryNode final : public rclcpp::Node {
   double configured_relative_heading_rad_ = 0.0;
   double output_rotation_rad_ = 0.0;
   double output_scale_ = 1.0;
+  double wheel_common_scale_sigma_ = 0.01;
   double reset_on_large_time_jump_s_ = 60.0;
   Point3 initial_pose_;
   Point3 configured_initial_pose_;

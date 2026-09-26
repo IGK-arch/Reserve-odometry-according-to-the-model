@@ -154,6 +154,8 @@ def main():
     parser.add_argument("--build", action="store_true")
     parser.add_argument("--drive-table", type=Path,
                         help="Experimental train-only acceleration CSV; default off")
+    parser.add_argument("--table-vehicle", choices=("30618", "30639", "all"),
+                        default="all", help="Vehicle receiving --drive-table; use 30618 for deployed mode")
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
     executable = args.exe.resolve()
@@ -171,7 +173,8 @@ def main():
     rows = []
     for bag in bag_ids:
         events, truth = read_run(bag)
-        core = replay_cpp(executable, bag, events, args.drive_table)
+        table = args.drive_table if args.table_vehicle == "all" or bag.startswith(args.table_vehicle + "_") else None
+        core = replay_cpp(executable, bag, events, table)
         row = compare(bag, events, truth, core)
         rows.append(row)
         if row["matched"]:

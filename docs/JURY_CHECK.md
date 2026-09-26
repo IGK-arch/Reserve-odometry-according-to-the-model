@@ -70,9 +70,9 @@ ros2 topic echo /result/diagnostics
 Нужен распакованный `dataset/data` и Python 3.12. Для `position_proxy.py` и построения графиков дополнительно нужны NumPy, SciPy, pyproj и Matplotlib; это **офлайн-инструменты анализа**, пакет ROS от них не зависит. На Windows или Linux (замените команду `py -3.12` на `python3` при необходимости):
 
 ```bash
-python3 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_core_table.csv
-python3 evaluation/distance_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_distance_table.csv
-python3 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_position_table.csv
+python3 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_core_table.csv
+python3 evaluation/distance_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_distance_table.csv
+python3 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_position_table.csv
 ```
 
 `core_benchmark.py` собирает CLI из **того же** `estimator.cpp`, что и ROS-нода. Параметр `--drive-table` повторяет режим ROS для трамвая `30618`; для `30639` таблица в ROS по умолчанию отключена. Replay идёт в порядке фактического поступления SQLite-сообщений, без будущих колесных отсчётов. Базовый метод использует среднюю доступную скорость тележек. GNSS и 3D-позиции читаются только отдельным кодом расчёта ошибок; полученные таблицы — прокси-оценка относительно сырых GNSS, а не скрытая метрика организаторов. Train/validation/holdout разделены в `tools/split_manifest.json` по полным сессиям и SHA-256 дубликатам.
@@ -82,6 +82,12 @@ python3 evaluation/position_proxy.py --split validation --drive-table ros2_ws/sr
 В `/result/diagnostics` наблюдать `front_slip`, `rear_slip`, `front_stale`, `rear_stale` и `model_only`. На интервалах юза и буксования фильтр уменьшает вес подозрительного колеса; при потере обоих датчиков интегрирует ограниченное модельное ускорение и увеличивает ковариацию. После возврата согласованных колесных измерений заново привязывает скорость к ним. Для проверки поведения удобно открыть локальный 3D-просмотр из `analysis/simulator/README.md` и записи `30618_2050d396`, `30618_33bec73f`, `30639_50956d6e`.
 
 ## 7. Статус независимой проверки
+
+Перед интерпретацией чисел см. [аудит разделения и обобщения](VALIDATION_AUDIT.md):
+validation содержит только одну дату `30618`, а отложенная майская дата
+`30639` показывает ухудшение дрейфа и положения. Таблицы текущего режима —
+`evaluation/*_deployed.csv`; исторические `*_final.csv` не относятся к
+исправленному оценивателю и в пакет не включены.
 
 В Ubuntu 22.04/ROS 2 Humble на WSL оба пакета успешно собраны через `colcon`. Реальные bag-прогоны для `30618`, `30639` и без GNSS прошли; полный движущийся bag `30618_af7496f0` за 263 с выдал 5313 сообщений скорости и 5312 положения при средней частоте 20,2 Гц. Метки времени и кадры проверены. JSON-отчёты и логи находятся в [`evaluation/ros_smoke`](../evaluation/ros_smoke), команда автоматического воспроизведения — `bash tools/ros_smoke_wsl.sh anchored` либо `no-gnss`. Измерение `callback_to_position_publish_ms` охватывает начало callback → вызов публикации внутри ноды; полную задержку от датчика через DDS и поведение на многочасовом прогоне эти измерения не подтверждают.
 

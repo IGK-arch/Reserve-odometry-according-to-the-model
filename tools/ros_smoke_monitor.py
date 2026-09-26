@@ -66,6 +66,9 @@ class Monitor:
         self.position_modes = Counter()
         self.callback_ms = []
         self.output_rate_diagnostics = []
+        self.pose_x_variance = []
+        self.scale_drift_sigma_m = []
+        self.wheel_common_scale_sigma = []
         node.create_subscription(
             VelocitySensor, "/vehicle/front_bogie_velocity",
             self.on_input, qos_profile_sensor_data)
@@ -150,6 +153,13 @@ class Monitor:
                    message.twist.twist.linear.x)
         if not all(math.isfinite(number) for number in numbers):
             self.invalid_numeric["position"] += 1
+        if not all(math.isfinite(number) for number in (
+                *message.pose.covariance, *message.twist.covariance)):
+            self.invalid_numeric["covariance"] += 1
+        elif any(message.pose.covariance[index] < 0 for index in (0, 7, 14, 21, 28, 35)):
+            self.invalid_numeric["covariance"] += 1
+        else:
+            self.pose_x_variance.append(message.pose.covariance[0])
 
     def on_diagnostics(self, message):
         for status in message.status:
@@ -161,7 +171,9 @@ class Monitor:
             if "position_mode" in values:
                 self.position_modes[values["position_mode"]] += 1
             for key, target in (("callback_to_position_publish_ms", self.callback_ms),
-                                ("output_rate_hz_1s", self.output_rate_diagnostics)):
+                                ("output_rate_hz_1s", self.output_rate_diagnostics),
+                                ("scale_drift_sigma_m", self.scale_drift_sigma_m),
+                                ("wheel_common_scale_sigma", self.wheel_common_scale_sigma)):
                 try:
                     value = float(values[key])
                 except (KeyError, ValueError):
@@ -207,6 +219,14 @@ class Monitor:
                 if self.callback_ms else None,
             "reported_rate_hz_p50": statistics.median(self.output_rate_diagnostics)
                 if self.output_rate_diagnostics else None,
+            "pose_x_variance_m2_min": min(self.pose_x_variance)
+                if self.pose_x_variance else None,
+            "pose_x_variance_m2_max": max(self.pose_x_variance)
+                if self.pose_x_variance else None,
+            "scale_drift_sigma_m_max": max(self.scale_drift_sigma_m)
+                if self.scale_drift_sigma_m else None,
+            "wheel_common_scale_sigma": statistics.median(self.wheel_common_scale_sigma)
+                if self.wheel_common_scale_sigma else None,
             "node_resource_pids": sorted(self.resource_pids),
             "node_resource_samples": len(self.rss_mb),
             "node_peak_rss_mb": max(self.rss_mb) if self.rss_mb else None,
@@ -250,6 +270,8 @@ class Monitor:
             failures.append("callback-to-publish diagnostics absent")
         elif results["callback_to_publish_ms_p95"] > 100.0:
             failures.append("p95 callback-to-position-publication exceeded 100 ms")
+        if not self.pose_x_variance or not self.scale_drift_sigma_m or not self.wheel_common_scale_sigma:
+            failures.append("position covariance or wheel-scale diagnostics absent")
         results["failures"] = failures
         results["passed"] = not failures
         return results
