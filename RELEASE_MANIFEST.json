@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "d2d16575656a3f887cac3fad36a78b1ad3113292d8d29f0e52df3356f0f19bd7",
-      "size": 7625
+      "sha256": "6a90daf453eb1f78ea252e6dfe4da9d07774b468ca723babcf75afd589c059c9",
+      "size": 7731
     },
     {
       "path": "analysis/README.md",
@@ -203,8 +203,8 @@
     },
     {
       "path": "docs/RESULTS.md",
-      "sha256": "561478de3041975e86c5a7c2a8cfc7657e52b07812c26cb08f16205bcf063d90",
-      "size": 17466
+      "sha256": "5712eca90f59d397a7134aee5804a354d09ebda58dd9c61b35529b92075498b3",
+      "size": 17938
     },
     {
       "path": "docs/STOP_LANDMARKS.md",
@@ -213,8 +213,8 @@
     },
     {
       "path": "docs/SUBMISSION_CHECKLIST.md",
-      "sha256": "5f3716e57430a052f223dbaebbd82c0016008f4a12bd986e8a0748e997375840",
-      "size": 11604
+      "sha256": "d6d0a0f364a4aba58ffd0c736f44a05813614371b87e489da50f28ec3fa5c005",
+      "size": 11955
     },
     {
       "path": "docs/route_map_preview.png",
