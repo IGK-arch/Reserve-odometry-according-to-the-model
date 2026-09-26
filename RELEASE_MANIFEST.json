@@ -2,6 +2,11 @@
   "description": "ROS 2 source, derived route assets, documentation, evaluation and visualisation code; no raw bags",
   "files": [
     {
+      "path": ".gitattributes",
+      "sha256": "ad5c1800651a718e126bd6352f389d6c3c0008bef9bbdd9757aa05eea32250a8",
+      "size": 132
+    },
+    {
       "path": ".gitignore",
       "sha256": "36ac8ec9509c0a03cc9f5eb6dd611db055b4f21b0071e74a2bbd30a28e4d1bce",
       "size": 520
@@ -13,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "ba726d9aae8f410240d7186a52bf7f64566ba3416cb5750166d0f8264b0d8506",
-      "size": 7435
+      "sha256": "d2d16575656a3f887cac3fad36a78b1ad3113292d8d29f0e52df3356f0f19bd7",
+      "size": 7625
     },
     {
       "path": "analysis/README.md",
@@ -198,8 +203,8 @@
     },
     {
       "path": "docs/RESULTS.md",
-      "sha256": "6477c2905cbb650be33cccc9d9cd5d6152cabcaac1cec9c56f8f5089905f46b2",
-      "size": 17435
+      "sha256": "561478de3041975e86c5a7c2a8cfc7657e52b07812c26cb08f16205bcf063d90",
+      "size": 17466
     },
     {
       "path": "docs/STOP_LANDMARKS.md",
@@ -208,8 +213,8 @@
     },
     {
       "path": "docs/SUBMISSION_CHECKLIST.md",
-      "sha256": "050bcf97144babc49900c16aa10b0336270da7130b01d2c01d840951aa94f432",
-      "size": 11488
+      "sha256": "5f3716e57430a052f223dbaebbd82c0016008f4a12bd986e8a0748e997375840",
+      "size": 11604
     },
     {
       "path": "docs/route_map_preview.png",
@@ -558,8 +563,8 @@
     },
     {
       "path": "tools/make_release.py",
-      "sha256": "6f71ca06bb3d35db7a9428fec1d1a1c3035b5a6fe3ca088f639143c99f683ad4",
-      "size": 10546
+      "sha256": "bbca17e9e587843998e296289d6d3f12cb5dd28e20a40450f3b7f06234692724",
+      "size": 10590
     },
     {
       "path": "tools/make_split.py",

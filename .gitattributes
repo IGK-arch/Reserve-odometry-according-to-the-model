@@ -1,0 +1,4 @@
+# Keep generated calibration tables, derived reports, and the release manifest byte-identical.
+*.csv -text
+*.json -text
+*.css -text

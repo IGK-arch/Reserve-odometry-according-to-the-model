@@ -27,6 +27,7 @@ MAX_FILE_SIZE = 8 * 1024 * 1024
 # Explicit, reviewable release scope. No glob targets dataset/, build/, install/,
 # log/, release/, generated visualisation HTML, or raw telemetry exports.
 ALLOWLIST = (
+    ".gitattributes",
     ".gitignore",
     "README.md",
     "LICENSE",
@@ -94,6 +95,7 @@ ALLOWLIST = (
 )
 
 REQUIRED = (
+    ".gitattributes",
     ".gitignore",
     "README.md",
     "ros2_ws/src/tram_odometry/package.xml",
