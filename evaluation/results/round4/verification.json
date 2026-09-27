@@ -1,0 +1,26 @@
+{
+  "runtime_commit": "816406199bd86327b7bcb5e11822d1823c83fab6",
+  "accepted": "pure rover rigid geometry only",
+  "kalman_default": false,
+  "cpp_tests": 19,
+  "ros_cpp_tests": 19,
+  "python_tests": 40,
+  "extracted_release_cpp_tests": 19,
+  "cfr_parity_bags": 97,
+  "cfr_parity_rows": 2061664,
+  "gnss_integration_parity_replays": 184,
+  "ros_status": "completed",
+  "ros_playback_completed": true,
+  "reference_messages": 65579,
+  "runtime_hashes_unchanged": true,
+  "diff_check": "passes excluding generated *.patch (unified-diff blank context lines contain a required space); CRLF logs retained",
+  "evidence_sha256": {
+    "portable_ctest.log": "1afe5fcd57dab4b06de1a34306631616c5d1f377c6a376bad9f91a8fa9ff9dc6",
+    "python_tests.log": "f5e6e29bbc217613e3f6d2b6629af0d5a56dcc6529740be6c014d89fb62dc30a",
+    "release_ctest.log": "8f8a0c3a7f21999271f53d1f5ea4f898678766860c7906b4fac01308ad31c41c",
+    "ros_final_ctest.log": "ef19e34d892f22d6be35efe45539c777f0ec2dd50113046d92b2c489c2968e1e",
+    "ros_run_summary.json": "b3a9fc49060490ca5a689481f82d8e39aa1de359447f85932e6771a15b5bb442",
+    "ros_common_round3_round4.json": "ec8e3c767a80031f2f5522ebce42b4eee9831634e547c134a046ad63d049f430",
+    "final_review.md": "b280311d7290734cbff94752fc6a56e40fa40319a6cafda3478099e8111add23"
+  }
+}

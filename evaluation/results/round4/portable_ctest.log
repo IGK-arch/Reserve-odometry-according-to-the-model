@@ -1,0 +1,44 @@
+Internal ctest changing into directory: /tmp/odometry-round4-pure
+Test project /tmp/odometry-round4-pure
+      Start  1: elevation_profile_test
+ 1/19 Test  #1: elevation_profile_test ..............   Passed    0.01 sec
+      Start  2: estimator_core_test
+ 2/19 Test  #2: estimator_core_test .................   Passed    0.00 sec
+      Start  3: estimator_jump_rate_test
+ 3/19 Test  #3: estimator_jump_rate_test ............   Passed    0.00 sec
+      Start  4: estimator_jump_recovery_test
+ 4/19 Test  #4: estimator_jump_recovery_test ........   Passed    0.00 sec
+      Start  5: estimator_pair_freeze_test
+ 5/19 Test  #5: estimator_pair_freeze_test ..........   Passed    0.01 sec
+      Start  6: estimator_standstill_dropout_test
+ 6/19 Test  #6: estimator_standstill_dropout_test ...   Passed    0.02 sec
+      Start  7: estimator_wheel_residual_test
+ 7/19 Test  #7: estimator_wheel_residual_test .......   Passed    0.00 sec
+      Start  8: geo_projection_test
+ 8/19 Test  #8: geo_projection_test .................   Passed    0.00 sec
+      Start  9: navigation_branch_test
+ 9/19 Test  #9: navigation_branch_test ..............   Passed    0.00 sec
+      Start 10: navigation_gnss_robustness_test
+10/19 Test #10: navigation_gnss_robustness_test .....   Passed    0.01 sec
+      Start 11: navigation_rover_anchor_test
+11/19 Test #11: navigation_rover_anchor_test ........   Passed    0.01 sec
+      Start 12: navigation_startup_heading_test
+12/19 Test #12: navigation_startup_heading_test .....   Passed    0.04 sec
+      Start 13: navigation_startup_quality_test
+13/19 Test #13: navigation_startup_quality_test .....   Passed    0.00 sec
+      Start 14: navigation_test
+14/19 Test #14: navigation_test .....................   Passed    0.00 sec
+      Start 15: odometry_statistics_test
+15/19 Test #15: odometry_statistics_test ............   Passed    0.00 sec
+      Start 16: route_body_heading_test
+16/19 Test #16: route_body_heading_test .............   Passed    0.01 sec
+      Start 17: route_tf_test
+17/19 Test #17: route_tf_test .......................   Passed    0.00 sec
+      Start 18: startup_output_gate_test
+18/19 Test #18: startup_output_gate_test ............   Passed    0.00 sec
+      Start 19: uncertainty_test
+19/19 Test #19: uncertainty_test ....................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 19
+
+Total Test time (real) =   0.15 sec

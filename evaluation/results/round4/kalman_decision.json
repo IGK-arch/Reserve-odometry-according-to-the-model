@@ -1,0 +1,3453 @@
+{
+  "protocol": "Freeze train-only Kalman research recommendation with explicit rejection gates.",
+  "selected_for_validation": "long_guarded",
+  "selection_basis": "Train only, after analytic fixtures. Existing estimator behavior tests are a hard gate; synthetic coverage and recovery delays are checked. No claim that all synthetic error metrics improve.",
+  "provenance": {
+    "protocol": "Train-only scratch generator: coupled [velocity, acceleration residual] filter.\nNo GNSS or fused truth enters generated estimators. Source is immutable5a82712.\n",
+    "generator_sha256": "5752f00154f600f33efc886adab78ba418df154c92337f0a2d2117584bd4d57b",
+    "variants": [
+      {
+        "variant": "short",
+        "parameters": {
+          "tau_s": 0.5,
+          "jerk_psd": 0.1
+        },
+        "build_command": [
+          "c++",
+          "-std=c++17",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-pedantic",
+          "-I/private/tmp/round4-kalman/short/include",
+          "/private/tmp/round4-kalman/short/estimator.cpp",
+          "/private/tmp/odometry-round4-source/evaluation/replay_cli.cpp",
+          "-o",
+          "/private/tmp/round4-kalman/short/replay_cli"
+        ],
+        "source_baseline": {
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140"
+        },
+        "artifacts": {
+          "estimator.cpp": "17beb6990c176e1721e6ef7db40941af71dc407bcb225d6184422dbf0e5f5580",
+          "include/tram_odometry/estimator.hpp": "d15c9e67cdea2d335cd0f90ef153fee8c16c12eb24eccacab9ea228008f2a4d5",
+          "candidate.patch": "7b465c81fd4cd7786415210c039bee1a83cefeeac42867d5f1eeea76a9aec40b",
+          "replay_cli": "28dc9513aa2b077a5f902d8a2473604107cbd6ed3836df078cc4d41891220a17"
+        }
+      },
+      {
+        "variant": "medium",
+        "parameters": {
+          "tau_s": 1.5,
+          "jerk_psd": 0.4
+        },
+        "build_command": [
+          "c++",
+          "-std=c++17",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-pedantic",
+          "-I/private/tmp/round4-kalman/medium/include",
+          "/private/tmp/round4-kalman/medium/estimator.cpp",
+          "/private/tmp/odometry-round4-source/evaluation/replay_cli.cpp",
+          "-o",
+          "/private/tmp/round4-kalman/medium/replay_cli"
+        ],
+        "source_baseline": {
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140"
+        },
+        "artifacts": {
+          "estimator.cpp": "ab48cf87dee3cfeba2a74d740f7c94442f7157bf7914be5e63a2a6245b0b7e97",
+          "include/tram_odometry/estimator.hpp": "d15c9e67cdea2d335cd0f90ef153fee8c16c12eb24eccacab9ea228008f2a4d5",
+          "candidate.patch": "afe7020169b8a2509f6af4e7736c57ad0049036efeee86f8fef5d4a600f4499b",
+          "replay_cli": "47f1ec551ab607c1937af35a9e484c3bac5019696f0d977d25f735a5f264af33"
+        }
+      },
+      {
+        "variant": "long",
+        "parameters": {
+          "tau_s": 3.0,
+          "jerk_psd": 1.0
+        },
+        "build_command": [
+          "c++",
+          "-std=c++17",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-pedantic",
+          "-I/private/tmp/round4-kalman/long/include",
+          "/private/tmp/round4-kalman/long/estimator.cpp",
+          "/private/tmp/odometry-round4-source/evaluation/replay_cli.cpp",
+          "-o",
+          "/private/tmp/round4-kalman/long/replay_cli"
+        ],
+        "source_baseline": {
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140"
+        },
+        "artifacts": {
+          "estimator.cpp": "207167116e8e9a8fee6fb0d000782b0f105f7e73e1d525569b8ccf8bf5dec367",
+          "include/tram_odometry/estimator.hpp": "d15c9e67cdea2d335cd0f90ef153fee8c16c12eb24eccacab9ea228008f2a4d5",
+          "candidate.patch": "7848d2476895e98e6e3e5bac4115a3b49643ec1a3fea4c290fa848094d97cbea",
+          "replay_cli": "a0b499a09b4653372246e3500961e791e888e8aeba65e75ccedca20fb6539c4c"
+        }
+      },
+      {
+        "variant": "long_guarded",
+        "parameters": {
+          "tau_s": 3.0,
+          "jerk_psd": 1.0,
+          "guarded": true
+        },
+        "build_command": [
+          "c++",
+          "-std=c++17",
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-pedantic",
+          "-I/private/tmp/round4-kalman/long_guarded/include",
+          "/private/tmp/round4-kalman/long_guarded/estimator.cpp",
+          "/private/tmp/odometry-round4-source/evaluation/replay_cli.cpp",
+          "-o",
+          "/private/tmp/round4-kalman/long_guarded/replay_cli"
+        ],
+        "source_baseline": {
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+          "/private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140"
+        },
+        "artifacts": {
+          "estimator.cpp": "a62db61a8df442b8d89e703eb9cfc9e68ccc158db77e1319aa2a5c4b155b0c1b",
+          "include/tram_odometry/estimator.hpp": "4dff47c2540223bf107555f375b65c9eb97a52e94a2614a090cdce43f5b3ad5d",
+          "candidate.patch": "dfd0e5b01c04548e74b63868b1be320394e57eb5416d23412771080a6f03ff93",
+          "replay_cli": "b37a73245bfc141b2975f4b65482ee6c736cd19e44ebdecf8c5e581e4da2c143"
+        }
+      }
+    ]
+  },
+  "variants": [
+    {
+      "variant": "short",
+      "parameters": {
+        "tau_s": 0.5,
+        "jerk_psd": 0.1
+      },
+      "pooled": {
+        "baseline": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.05798232767964794,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2373867257296318,
+              "distance_rmse_m": 0.14872136729167582
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.49390894950856756,
+              "distance_rmse_m": 0.8817920928405618
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.660423447395649,
+              "distance_rmse_m": 1.9780298764091189
+            }
+          }
+        },
+        "candidate": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.060237839267309676,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2524541325760704,
+              "distance_rmse_m": 0.15767011116126878
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.5089559532295239,
+              "distance_rmse_m": 0.9221741295752528
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.675190165179371,
+              "distance_rmse_m": 2.0499754602852778
+            }
+          }
+        }
+      },
+      "sessions": [
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "baseline",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05475772486581904,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.2505623702892193,
+            "distance_rmse_m": 0.15670017653914384
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.47174661958234465,
+            "distance_rmse_m": 0.8928432249410566
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5784852378775186,
+            "distance_rmse_m": 1.8868942181349546
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "candidate",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05669031601036567,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.2628219959570473,
+            "distance_rmse_m": 0.16539440389499646
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.4857867978978588,
+            "distance_rmse_m": 0.9287507546983067
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5934670161522194,
+            "distance_rmse_m": 1.9527963457230828
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "baseline",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08813319522030133,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.18477939104076851,
+            "distance_rmse_m": 0.13665722155808238
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.43260999363401936,
+            "distance_rmse_m": 0.7281038304247774
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5873739661769369,
+            "distance_rmse_m": 1.7039285946047467
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "candidate",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08891728653464617,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.19917376276591311,
+            "distance_rmse_m": 0.14243552248029157
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.444671149732289,
+            "distance_rmse_m": 0.764099423474837
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5982502460523244,
+            "distance_rmse_m": 1.763264279098502
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "baseline",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.04550369845255582,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.21145939712594575,
+            "distance_rmse_m": 0.1204309652148562
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6056815097183683,
+            "distance_rmse_m": 0.9261414081975836
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.950987751510445,
+            "distance_rmse_m": 2.4460933081793255
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "candidate",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.050920424088648164,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.24015294295466236,
+            "distance_rmse_m": 0.13317744298879727
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6256871245002295,
+            "distance_rmse_m": 0.9863649971615446
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.9681058944052144,
+            "distance_rmse_m": 2.5447138530377345
+          }
+        }
+      ],
+      "failed_existing_tests": [
+        {
+          "variant": "short",
+          "test": "estimator_jump_rate_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\n"
+        },
+        {
+          "variant": "short",
+          "test": "estimator_core_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL: agreeing late wheels limit steady-speed model bias\n"
+        },
+        {
+          "variant": "short",
+          "test": "estimator_pair_freeze_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL: a command change alone cannot invalidate healthy constant-speed wheels\nFAIL: a command change alone cannot invalidate healthy constant-speed wheels\nFAIL: a command change alone cannot invalidate healthy constant-speed wheels\n"
+        },
+        {
+          "variant": "short",
+          "test": "estimator_jump_recovery_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL: hard braking cannot remain latched to the neutral force model\n"
+        },
+        {
+          "variant": "short",
+          "test": "estimator_wheel_residual_test.cpp",
+          "returncode": 1,
+          "stdout": "paired dropout one-second error: 0.361102\n",
+          "stderr": "FAIL: recent healthy wheel acceleration reduces paired dropout error\nFAIL: fresh wheels recover promptly after residual-assisted fallback\n"
+        }
+      ],
+      "synthetic": {
+        "30618": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.059270498131066884,
+                "after": 0.0655057412396666
+              },
+              "distance_rmse_m": {
+                "before": 0.6120918250661049,
+                "after": 0.4501277065411765
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.05920963540573447,
+                "after": 0.0643439102394511
+              },
+              "distance_rmse_m": {
+                "before": 0.5833739132495515,
+                "after": 0.4649622159630941
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_dropout",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.08127337738955182,
+                "after": 0.08591790357958504
+              },
+              "distance_rmse_m": {
+                "before": 1.1029895769060445,
+                "after": 1.087210257359147
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.060386804541693075,
+                "after": 0.06491059894683976
+              },
+              "distance_rmse_m": {
+                "before": 0.5564097804124981,
+                "after": 0.4503582963056666
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_dropout",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.07834594138773565,
+                "after": 0.08282319844497175
+              },
+              "distance_rmse_m": {
+                "before": 1.0466152494074907,
+                "after": 1.0294713434015748
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "steady",
+              "fault": "clean",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.0074426662913372865,
+                "after": 0.004796461679770086
+              },
+              "distance_rmse_m": {
+                "before": 0.006857488992886227,
+                "after": 0.1425683175465605
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "front_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.0073357496543387055,
+                "after": 0.004803773275249007
+              },
+              "distance_rmse_m": {
+                "before": 0.010050943189753964,
+                "after": 0.14564799467475614
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "pair_freeze_brake",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.007142125038827407,
+                "after": 0.004804843956755585
+              },
+              "distance_rmse_m": {
+                "before": 0.011410257669095125,
+                "after": 0.14664606803787247
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.007245548556210165,
+                "after": 0.004876550286995811
+              },
+              "distance_rmse_m": {
+                "before": 0.01787128784759745,
+                "after": 0.15279929771342313
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.008561247650568099,
+                "after": 0.006692762350844075
+              },
+              "distance_rmse_m": {
+                "before": 0.06753164597066362,
+                "after": 0.20165680389594695
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            }
+          ]
+        },
+        "30639": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "front_jump",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.008672571110525358,
+                "after": 0.011110291556917121
+              },
+              "distance_rmse_m": {
+                "before": 0.04413159348939369,
+                "after": 0.09717673245230427
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_dropout",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.02028300363792058,
+                "after": 0.0227149262816927
+              },
+              "distance_rmse_m": {
+                "before": 0.26623427463407856,
+                "after": 0.2498518023130503
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "front_dropout",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.008657892967083204,
+                "after": 0.011089033646077323
+              },
+              "distance_rmse_m": {
+                "before": 0.04240575425227234,
+                "after": 0.09743462225291498
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "front_delay",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.008657892967083204,
+                "after": 0.011089033646077323
+              },
+              "distance_rmse_m": {
+                "before": 0.04240575425227234,
+                "after": 0.09743462225291498
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_dropout",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.017858614534638613,
+                "after": 0.020277971565368622
+              },
+              "distance_rmse_m": {
+                "before": 0.2111423059600304,
+                "after": 0.20035605616924862
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "steady",
+              "fault": "clean",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.007442666291337294,
+                "after": 0.0050879466369581116
+              },
+              "distance_rmse_m": {
+                "before": 0.00685748899290793,
+                "after": 0.16380502030599323
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "front_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.007335749654338692,
+                "after": 0.005102596436790407
+              },
+              "distance_rmse_m": {
+                "before": 0.010050943189718645,
+                "after": 0.16689201915644655
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "pair_freeze_brake",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.007142125038827414,
+                "after": 0.0050969186075043955
+              },
+              "distance_rmse_m": {
+                "before": 0.011410257669063109,
+                "after": 0.16791477675239033
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.007245548556210185,
+                "after": 0.005184198809141257
+              },
+              "distance_rmse_m": {
+                "before": 0.017871287847559043,
+                "after": 0.1740620685127313
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            },
+            {
+              "profile": "steady",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.008561247650568142,
+                "after": 0.006977733640126318
+              },
+              "distance_rmse_m": {
+                "before": 0.06753164597069236,
+                "after": 0.22275286987060836
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.0,
+                "after": 0.0
+              }
+            }
+          ]
+        }
+      },
+      "bag_tails": [
+        {
+          "bag": "30618_0d865417",
+          "baseline": 0.03191315687113121,
+          "candidate": 0.053273510233652684,
+          "delta": 0.021360353362521477
+        },
+        {
+          "bag": "30639_0ab96c59",
+          "baseline": 0.024839118503485927,
+          "candidate": 0.04172599911181945,
+          "delta": 0.016886880608333522
+        },
+        {
+          "bag": "30618_616ec56b",
+          "baseline": 0.05577702288239058,
+          "candidate": 0.06600908809698998,
+          "delta": 0.0102320652145994
+        },
+        {
+          "bag": "30639_4285f2bc",
+          "baseline": 0.055365994188651096,
+          "candidate": 0.0653949745716322,
+          "delta": 0.010028980382981098
+        },
+        {
+          "bag": "30618_e3d94878",
+          "baseline": 0.038096777975549403,
+          "candidate": 0.04634937543718121,
+          "delta": 0.00825259746163181
+        },
+        {
+          "bag": "30639_2b4a6347",
+          "baseline": 0.03349024744120238,
+          "candidate": 0.04085893906039506,
+          "delta": 0.00736869161919268
+        },
+        {
+          "bag": "30639_927002c2",
+          "baseline": 0.04103939165224275,
+          "candidate": 0.047360568104926705,
+          "delta": 0.0063211764526839576
+        },
+        {
+          "bag": "30639_d927f360",
+          "baseline": 0.038638475792594475,
+          "candidate": 0.044491065208626675,
+          "delta": 0.0058525894160322
+        },
+        {
+          "bag": "30639_584b6e32",
+          "baseline": 0.03690540416793857,
+          "candidate": 0.04253665854514313,
+          "delta": 0.0056312543772045615
+        },
+        {
+          "bag": "30639_0be558e2",
+          "baseline": 0.040797176602379866,
+          "candidate": 0.04468293750960261,
+          "delta": 0.0038857609072227434
+        },
+        {
+          "bag": "30639_9f0b519f",
+          "baseline": 0.03447643216455158,
+          "candidate": 0.03834973982187676,
+          "delta": 0.00387330765732518
+        },
+        {
+          "bag": "30618_87afe526",
+          "baseline": 0.03634396433875233,
+          "candidate": 0.03994005222776513,
+          "delta": 0.0035960878890127987
+        },
+        {
+          "bag": "30618_073f08d1",
+          "baseline": 0.030153919104323225,
+          "candidate": 0.033718913899743054,
+          "delta": 0.003564994795419829
+        },
+        {
+          "bag": "30618_0652866c",
+          "baseline": 0.03403870765262398,
+          "candidate": 0.03736309513197923,
+          "delta": 0.003324387479355255
+        },
+        {
+          "bag": "30618_0f120b35",
+          "baseline": 0.029274235797268813,
+          "candidate": 0.03259320686974885,
+          "delta": 0.0033189710724800363
+        },
+        {
+          "bag": "30618_49fe4c54",
+          "baseline": 0.03980448492975728,
+          "candidate": 0.042721990085773306,
+          "delta": 0.0029175051560160273
+        },
+        {
+          "bag": "30618_e2dcf65f",
+          "baseline": 0.03221536773539338,
+          "candidate": 0.03495214858497467,
+          "delta": 0.0027367808495812884
+        },
+        {
+          "bag": "30618_f19a4ac3",
+          "baseline": 0.030869976916134273,
+          "candidate": 0.03360273654057537,
+          "delta": 0.0027327596244410973
+        },
+        {
+          "bag": "30618_b83d854d",
+          "baseline": 0.03826535949433577,
+          "candidate": 0.040964854512963264,
+          "delta": 0.0026994950186274916
+        },
+        {
+          "bag": "30618_28538acf",
+          "baseline": 0.12446843692953657,
+          "candidate": 0.1269745972288464,
+          "delta": 0.002506160299309834
+        },
+        {
+          "bag": "30618_27e994fc",
+          "baseline": 0.08447440225002353,
+          "candidate": 0.08689428225628296,
+          "delta": 0.002419880006259423
+        },
+        {
+          "bag": "30618_2dbce472",
+          "baseline": 0.044854728973404145,
+          "candidate": 0.04680412114309132,
+          "delta": 0.0019493921696871752
+        },
+        {
+          "bag": "30618_76e1f9c7",
+          "baseline": 0.02891117956364347,
+          "candidate": 0.030649668758863477,
+          "delta": 0.0017384891952200061
+        },
+        {
+          "bag": "30618_ab5921a4",
+          "baseline": 0.03492792641368602,
+          "candidate": 0.036530199588972856,
+          "delta": 0.001602273175286835
+        },
+        {
+          "bag": "30618_68847170",
+          "baseline": 0.030129591776511644,
+          "candidate": 0.031642271651970665,
+          "delta": 0.0015126798754590207
+        },
+        {
+          "bag": "30618_b8044aa0",
+          "baseline": 0.02902994856281974,
+          "candidate": 0.03044939570927548,
+          "delta": 0.0014194471464557407
+        },
+        {
+          "bag": "30639_50956d6e",
+          "baseline": 0.07068749549433762,
+          "candidate": 0.07207083238008613,
+          "delta": 0.001383336885748515
+        },
+        {
+          "bag": "30618_0e41eac3",
+          "baseline": 0.028471018884272718,
+          "candidate": 0.02981674025860512,
+          "delta": 0.001345721374332403
+        },
+        {
+          "bag": "30618_2f104a1d",
+          "baseline": 0.028156919464692808,
+          "candidate": 0.029330781299142558,
+          "delta": 0.0011738618344497506
+        },
+        {
+          "bag": "30618_b95ca60a",
+          "baseline": 0.030174468322802756,
+          "candidate": 0.031304789241554346,
+          "delta": 0.0011303209187515893
+        },
+        {
+          "bag": "30618_8158f0b0",
+          "baseline": 0.03170030776639703,
+          "candidate": 0.03282201067477254,
+          "delta": 0.001121702908375509
+        },
+        {
+          "bag": "30618_22c1c589",
+          "baseline": 0.02910128578267146,
+          "candidate": 0.03020707359034892,
+          "delta": 0.00110578780767746
+        },
+        {
+          "bag": "30618_095a115b",
+          "baseline": 0.031206204317631894,
+          "candidate": 0.032295609486814675,
+          "delta": 0.0010894051691827805
+        },
+        {
+          "bag": "30618_9c09b081",
+          "baseline": 0.03170689159661366,
+          "candidate": 0.03278890373280223,
+          "delta": 0.0010820121361885676
+        },
+        {
+          "bag": "30618_7b4d83f4",
+          "baseline": 0.02925629110344356,
+          "candidate": 0.0303059099064403,
+          "delta": 0.0010496188029967407
+        },
+        {
+          "bag": "30618_88548b02",
+          "baseline": 0.05371150705324603,
+          "candidate": 0.05474467580449964,
+          "delta": 0.001033168751253609
+        },
+        {
+          "bag": "30618_b15eafc3",
+          "baseline": 0.030834460238369367,
+          "candidate": 0.03186424728101709,
+          "delta": 0.001029787042647723
+        },
+        {
+          "bag": "30618_defd0170",
+          "baseline": 0.11493434419213766,
+          "candidate": 0.11511793733169319,
+          "delta": 0.00018359313955552958
+        },
+        {
+          "bag": "30618_68d1748a",
+          "baseline": 0.18508212900827437,
+          "candidate": 0.18522956905240964,
+          "delta": 0.00014744004413527745
+        },
+        {
+          "bag": "30618_1551d0a9",
+          "baseline": 0.004300823494202478,
+          "candidate": 0.004300823494202478,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_bc5e53c2",
+          "baseline": 0.007242036246346365,
+          "candidate": 0.007242036246346365,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_0686195f",
+          "baseline": 0.09564178916559783,
+          "candidate": 0.09464291082857122,
+          "delta": -0.0009988783370266097
+        }
+      ],
+      "identical_nominal_coverage_masks": true,
+      "eligible_for_validation": false,
+      "decision": "rejected: existing behavioral test failures and/or train degradation"
+    },
+    {
+      "variant": "medium",
+      "parameters": {
+        "tau_s": 1.5,
+        "jerk_psd": 0.4
+      },
+      "pooled": {
+        "baseline": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.05798232767964794,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2373867257296318,
+              "distance_rmse_m": 0.14872136729167582
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.49390894950856756,
+              "distance_rmse_m": 0.8817920928405618
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.660423447395649,
+              "distance_rmse_m": 1.9780298764091189
+            }
+          }
+        },
+        "candidate": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.055777793669678624,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2129500331590924,
+              "distance_rmse_m": 0.1317739552828213
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.4388035026334531,
+              "distance_rmse_m": 0.7778901741856287
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.5931260990811208,
+              "distance_rmse_m": 1.7399414911330624
+            }
+          }
+        }
+      },
+      "sessions": [
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "baseline",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05475772486581904,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.2505623702892193,
+            "distance_rmse_m": 0.15670017653914384
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.47174661958234465,
+            "distance_rmse_m": 0.8928432249410566
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5784852378775186,
+            "distance_rmse_m": 1.8868942181349546
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "candidate",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05319681205203817,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.23569715613391898,
+            "distance_rmse_m": 0.14527344477221513
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.4376537787439799,
+            "distance_rmse_m": 0.8307447087750947
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5349048324372788,
+            "distance_rmse_m": 1.7413269045540858
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "baseline",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08813319522030133,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.18477939104076851,
+            "distance_rmse_m": 0.13665722155808238
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.43260999363401936,
+            "distance_rmse_m": 0.7281038304247774
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5873739661769369,
+            "distance_rmse_m": 1.7039285946047467
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "candidate",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08530425063750521,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.16189297768217417,
+            "distance_rmse_m": 0.12227095756164372
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.38712162881049106,
+            "distance_rmse_m": 0.6323524093787104
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5406440428514552,
+            "distance_rmse_m": 1.5080246320848594
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "baseline",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.04550369845255582,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.21145939712594575,
+            "distance_rmse_m": 0.1204309652148562
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6056815097183683,
+            "distance_rmse_m": 0.9261414081975836
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.950987751510445,
+            "distance_rmse_m": 2.4460933081793255
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "candidate",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.04085990787485627,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.12844631288294012,
+            "distance_rmse_m": 0.06189216151584735
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.47338790985946955,
+            "distance_rmse_m": 0.627893200971347
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.8093572578413256,
+            "distance_rmse_m": 1.868933822214442
+          }
+        }
+      ],
+      "failed_existing_tests": [
+        {
+          "variant": "medium",
+          "test": "estimator_jump_rate_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\n"
+        },
+        {
+          "variant": "medium",
+          "test": "estimator_jump_recovery_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL: hard braking cannot remain latched to the neutral force model\n"
+        }
+      ],
+      "synthetic": {
+        "30618": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.5421360727978507,
+                "after": 0.5576731576792038
+              },
+              "distance_rmse_m": {
+                "before": 8.174325524674925,
+                "after": 8.379631946629518
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.5466703041782854,
+                "after": 0.5618661330858395
+              },
+              "distance_rmse_m": {
+                "before": 8.289800371477405,
+                "after": 8.489304922200605
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.546247586305256,
+                "after": 0.561160484302864
+              },
+              "distance_rmse_m": {
+                "before": 8.278676843360318,
+                "after": 8.474791752380522
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.19551445534048517,
+                "after": 0.20164003575771577
+              },
+              "distance_rmse_m": {
+                "before": 0.7924217856935301,
+                "after": 0.8511575677016516
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.19480514794856704,
+                "after": 0.20058972398138272
+              },
+              "distance_rmse_m": {
+                "before": 0.7825786690054949,
+                "after": 0.837066861495531
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 1.786069007957339,
+                "after": 1.791470748090458
+              },
+              "distance_rmse_m": {
+                "before": 52.590594741295696,
+                "after": 52.95834791371695
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 1.786036840378211,
+                "after": 1.7913608394157081
+              },
+              "distance_rmse_m": {
+                "before": 52.60691108117631,
+                "after": 52.94287107046848
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.5421360727978507,
+                "after": 0.5576731576792038
+              },
+              "distance_rmse_m": {
+                "before": 8.174325524674925,
+                "after": 8.379631946629518
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.5466703041782854,
+                "after": 0.5618661330858395
+              },
+              "distance_rmse_m": {
+                "before": 8.289800371477405,
+                "after": 8.489304922200605
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.546247586305256,
+                "after": 0.561160484302864
+              },
+              "distance_rmse_m": {
+                "before": 8.278676843360318,
+                "after": 8.474791752380522
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            }
+          ]
+        },
+        "30639": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6091200593331481,
+                "after": 0.6237232226149546
+              },
+              "distance_rmse_m": {
+                "before": 9.379749556863276,
+                "after": 9.585727630363078
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.140074360668848,
+                "after": 0.14905470258995573
+              },
+              "distance_rmse_m": {
+                "before": 0.7786819148758755,
+                "after": 0.8516359499204362
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1418787601326824,
+                "after": 0.1496375965559176
+              },
+              "distance_rmse_m": {
+                "before": 0.8012343826399912,
+                "after": 0.8618384231107441
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.6219453989498142,
+                "after": 0.6280574628463932
+              },
+              "distance_rmse_m": {
+                "before": 9.68032027975068,
+                "after": 9.701889131658607
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.6214713010474054,
+                "after": 0.627336033568256
+              },
+              "distance_rmse_m": {
+                "before": 9.66420174872677,
+                "after": 9.684387187592794
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6091200593331481,
+                "after": 0.6237232226149546
+              },
+              "distance_rmse_m": {
+                "before": 9.379749556863276,
+                "after": 9.585727630363078
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.140074360668848,
+                "after": 0.14905470258995573
+              },
+              "distance_rmse_m": {
+                "before": 0.7786819148758755,
+                "after": 0.8516359499204362
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1418787601326824,
+                "after": 0.1496375965559176
+              },
+              "distance_rmse_m": {
+                "before": 0.8012343826399912,
+                "after": 0.8618384231107441
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 1.757336948229581,
+                "after": 1.7574170172313355
+              },
+              "distance_rmse_m": {
+                "before": 50.82183183617961,
+                "after": 50.88040668891601
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1990644442861935,
+                "after": 0.20420153224955717
+              },
+              "distance_rmse_m": {
+                "before": 0.8282397312456898,
+                "after": 0.8806338430635804
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            }
+          ]
+        }
+      },
+      "bag_tails": [
+        {
+          "bag": "30618_616ec56b",
+          "baseline": 0.05577702288239058,
+          "candidate": 0.05588267038306304,
+          "delta": 0.0001056475006724622
+        },
+        {
+          "bag": "30618_1551d0a9",
+          "baseline": 0.004300823494202478,
+          "candidate": 0.004300823494202478,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_bc5e53c2",
+          "baseline": 0.007242036246346365,
+          "candidate": 0.007242036246346365,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_68d1748a",
+          "baseline": 0.18508212900827437,
+          "candidate": 0.18497356905602852,
+          "delta": -0.0001085599522458458
+        },
+        {
+          "bag": "30618_0686195f",
+          "baseline": 0.09564178916559783,
+          "candidate": 0.09450057193452048,
+          "delta": -0.0011412172310773516
+        },
+        {
+          "bag": "30618_0e41eac3",
+          "baseline": 0.028471018884272718,
+          "candidate": 0.027266841503726186,
+          "delta": -0.0012041773805465325
+        },
+        {
+          "bag": "30618_8158f0b0",
+          "baseline": 0.03170030776639703,
+          "candidate": 0.030430793501923317,
+          "delta": -0.0012695142644737166
+        },
+        {
+          "bag": "30618_095a115b",
+          "baseline": 0.031206204317631894,
+          "candidate": 0.02993249469619197,
+          "delta": -0.0012737096214399252
+        },
+        {
+          "bag": "30618_76e1f9c7",
+          "baseline": 0.02891117956364347,
+          "candidate": 0.02755950871152761,
+          "delta": -0.0013516708521158598
+        },
+        {
+          "bag": "30618_b95ca60a",
+          "baseline": 0.030174468322802756,
+          "candidate": 0.028642560730023116,
+          "delta": -0.0015319075927796404
+        },
+        {
+          "bag": "30618_9c09b081",
+          "baseline": 0.03170689159661366,
+          "candidate": 0.030156963368684366,
+          "delta": -0.001549928227929296
+        },
+        {
+          "bag": "30618_22c1c589",
+          "baseline": 0.02910128578267146,
+          "candidate": 0.02753878093312529,
+          "delta": -0.0015625048495461688
+        },
+        {
+          "bag": "30618_7b4d83f4",
+          "baseline": 0.02925629110344356,
+          "candidate": 0.02759184355998287,
+          "delta": -0.001664447543460689
+        },
+        {
+          "bag": "30618_2dbce472",
+          "baseline": 0.044854728973404145,
+          "candidate": 0.043150338839824345,
+          "delta": -0.0017043901335798
+        },
+        {
+          "bag": "30618_28538acf",
+          "baseline": 0.12446843692953657,
+          "candidate": 0.12268150214989945,
+          "delta": -0.0017869347796371227
+        },
+        {
+          "bag": "30618_27e994fc",
+          "baseline": 0.08447440225002353,
+          "candidate": 0.08249709044418418,
+          "delta": -0.001977311805839349
+        },
+        {
+          "bag": "30618_b15eafc3",
+          "baseline": 0.030834460238369367,
+          "candidate": 0.02882427165669436,
+          "delta": -0.0020101885816750063
+        },
+        {
+          "bag": "30618_0652866c",
+          "baseline": 0.03403870765262398,
+          "candidate": 0.03201451550060619,
+          "delta": -0.0020241921520177883
+        },
+        {
+          "bag": "30618_68847170",
+          "baseline": 0.030129591776511644,
+          "candidate": 0.028033585110122945,
+          "delta": -0.0020960066663886986
+        },
+        {
+          "bag": "30618_2f104a1d",
+          "baseline": 0.028156919464692808,
+          "candidate": 0.02596106112968428,
+          "delta": -0.0021958583350085263
+        },
+        {
+          "bag": "30639_50956d6e",
+          "baseline": 0.07068749549433762,
+          "candidate": 0.0684435311916418,
+          "delta": -0.002243964302695814
+        },
+        {
+          "bag": "30618_b8044aa0",
+          "baseline": 0.02902994856281974,
+          "candidate": 0.0267571369020835,
+          "delta": -0.0022728116607362396
+        },
+        {
+          "bag": "30618_ab5921a4",
+          "baseline": 0.03492792641368602,
+          "candidate": 0.032468233794994604,
+          "delta": -0.002459692618691417
+        },
+        {
+          "bag": "30618_f19a4ac3",
+          "baseline": 0.030869976916134273,
+          "candidate": 0.02831285865623043,
+          "delta": -0.002557118259903842
+        },
+        {
+          "bag": "30618_073f08d1",
+          "baseline": 0.030153919104323225,
+          "candidate": 0.02749417975620582,
+          "delta": -0.002659739348117404
+        },
+        {
+          "bag": "30639_0ab96c59",
+          "baseline": 0.024839118503485927,
+          "candidate": 0.021925055243510544,
+          "delta": -0.002914063259975383
+        },
+        {
+          "bag": "30639_d927f360",
+          "baseline": 0.038638475792594475,
+          "candidate": 0.03554993148387422,
+          "delta": -0.0030885443087202563
+        },
+        {
+          "bag": "30618_49fe4c54",
+          "baseline": 0.03980448492975728,
+          "candidate": 0.03653786457248411,
+          "delta": -0.0032666203572731672
+        },
+        {
+          "bag": "30618_0f120b35",
+          "baseline": 0.029274235797268813,
+          "candidate": 0.025663788814291273,
+          "delta": -0.0036104469829775394
+        },
+        {
+          "bag": "30639_584b6e32",
+          "baseline": 0.03690540416793857,
+          "candidate": 0.03324895566372032,
+          "delta": -0.00365644850421825
+        },
+        {
+          "bag": "30618_e2dcf65f",
+          "baseline": 0.03221536773539338,
+          "candidate": 0.027677743749786463,
+          "delta": -0.004537623985606917
+        },
+        {
+          "bag": "30618_88548b02",
+          "baseline": 0.05371150705324603,
+          "candidate": 0.04895461297023592,
+          "delta": -0.00475689408301011
+        },
+        {
+          "bag": "30639_9f0b519f",
+          "baseline": 0.03447643216455158,
+          "candidate": 0.02967261059100454,
+          "delta": -0.004803821573547043
+        },
+        {
+          "bag": "30618_defd0170",
+          "baseline": 0.11493434419213766,
+          "candidate": 0.11007613971490986,
+          "delta": -0.004858204477227804
+        },
+        {
+          "bag": "30639_2b4a6347",
+          "baseline": 0.03349024744120238,
+          "candidate": 0.02844784521454922,
+          "delta": -0.005042402226653159
+        },
+        {
+          "bag": "30618_b83d854d",
+          "baseline": 0.03826535949433577,
+          "candidate": 0.03233063805036768,
+          "delta": -0.005934721443968095
+        },
+        {
+          "bag": "30618_0d865417",
+          "baseline": 0.03191315687113121,
+          "candidate": 0.025643299672571986,
+          "delta": -0.006269857198559221
+        },
+        {
+          "bag": "30618_87afe526",
+          "baseline": 0.03634396433875233,
+          "candidate": 0.029947963757728097,
+          "delta": -0.006396000581024235
+        },
+        {
+          "bag": "30639_4285f2bc",
+          "baseline": 0.055365994188651096,
+          "candidate": 0.04891203007075523,
+          "delta": -0.006453964117895866
+        },
+        {
+          "bag": "30618_e3d94878",
+          "baseline": 0.038096777975549403,
+          "candidate": 0.03137101068852769,
+          "delta": -0.0067257672870217125
+        },
+        {
+          "bag": "30639_927002c2",
+          "baseline": 0.04103939165224275,
+          "candidate": 0.03414149171641488,
+          "delta": -0.006897899935827866
+        },
+        {
+          "bag": "30639_0be558e2",
+          "baseline": 0.040797176602379866,
+          "candidate": 0.03339245436040555,
+          "delta": -0.007404722241974318
+        }
+      ],
+      "identical_nominal_coverage_masks": true,
+      "eligible_for_validation": false,
+      "decision": "rejected: existing behavioral test failures and/or train degradation"
+    },
+    {
+      "variant": "long",
+      "parameters": {
+        "tau_s": 3.0,
+        "jerk_psd": 1.0
+      },
+      "pooled": {
+        "baseline": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.05798232767964794,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2373867257296318,
+              "distance_rmse_m": 0.14872136729167582
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.49390894950856756,
+              "distance_rmse_m": 0.8817920928405618
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.660423447395649,
+              "distance_rmse_m": 1.9780298764091189
+            }
+          }
+        },
+        "candidate": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.0555630419644954,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.20996056098124036,
+              "distance_rmse_m": 0.1291336104150753
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.42505874742759575,
+              "distance_rmse_m": 0.7628309639928337
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.564566471835105,
+              "distance_rmse_m": 1.6802103437947151
+            }
+          }
+        }
+      },
+      "sessions": [
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "baseline",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05475772486581904,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.2505623702892193,
+            "distance_rmse_m": 0.15670017653914384
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.47174661958234465,
+            "distance_rmse_m": 0.8928432249410566
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5784852378775186,
+            "distance_rmse_m": 1.8868942181349546
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "candidate",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05315547694199906,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.234151941767401,
+            "distance_rmse_m": 0.14292194186654186
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.438029296320459,
+            "distance_rmse_m": 0.8293091571950836
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5309261608254295,
+            "distance_rmse_m": 1.738821310434695
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "baseline",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08813319522030133,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.18477939104076851,
+            "distance_rmse_m": 0.13665722155808238
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.43260999363401936,
+            "distance_rmse_m": 0.7281038304247774
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5873739661769369,
+            "distance_rmse_m": 1.7039285946047467
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "candidate",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08481579748389928,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.15933777889349587,
+            "distance_rmse_m": 0.1199286934262502
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.3759268012625538,
+            "distance_rmse_m": 0.6148601406867663
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5356801795018422,
+            "distance_rmse_m": 1.4702395590399455
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "baseline",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.04550369845255582,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.21145939712594575,
+            "distance_rmse_m": 0.1204309652148562
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6056815097183683,
+            "distance_rmse_m": 0.9261414081975836
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.950987751510445,
+            "distance_rmse_m": 2.4460933081793255
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "candidate",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.040141318848874535,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.11303615467286138,
+            "distance_rmse_m": 0.054939161634131414
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.4010612774930191,
+            "distance_rmse_m": 0.534945825198193
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6984773763378805,
+            "distance_rmse_m": 1.562232973435453
+          }
+        }
+      ],
+      "failed_existing_tests": [
+        {
+          "variant": "long",
+          "test": "estimator_jump_rate_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\n"
+        },
+        {
+          "variant": "long",
+          "test": "estimator_jump_recovery_test.cpp",
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FAIL: hard braking cannot remain latched to the neutral force model\n"
+        }
+      ],
+      "synthetic": {
+        "30618": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.5421360727978507,
+                "after": 0.5597987399385215
+              },
+              "distance_rmse_m": {
+                "before": 8.174325524674925,
+                "after": 8.416885159414718
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.5466703041782854,
+                "after": 0.5639916296930905
+              },
+              "distance_rmse_m": {
+                "before": 8.289800371477405,
+                "after": 8.526573136545577
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.546247586305256,
+                "after": 0.5632866846620299
+              },
+              "distance_rmse_m": {
+                "before": 8.278676843360318,
+                "after": 8.511842386996879
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.19551445534048517,
+                "after": 0.20509899278167865
+              },
+              "distance_rmse_m": {
+                "before": 0.7924217856935301,
+                "after": 0.887693669823867
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.19480514794856704,
+                "after": 0.2040245663675237
+              },
+              "distance_rmse_m": {
+                "before": 0.7825786690054949,
+                "after": 0.8725156309967932
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 1.786069007957339,
+                "after": 1.7915228198712785
+              },
+              "distance_rmse_m": {
+                "before": 52.590594741295696,
+                "after": 52.99172573298684
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 1.786036840378211,
+                "after": 1.7913915715576605
+              },
+              "distance_rmse_m": {
+                "before": 52.60691108117631,
+                "after": 52.969290822029485
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.5421360727978507,
+                "after": 0.5597987399385215
+              },
+              "distance_rmse_m": {
+                "before": 8.174325524674925,
+                "after": 8.416885159414718
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.5466703041782854,
+                "after": 0.5639916296930905
+              },
+              "distance_rmse_m": {
+                "before": 8.289800371477405,
+                "after": 8.526573136545577
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.546247586305256,
+                "after": 0.5632866846620299
+              },
+              "distance_rmse_m": {
+                "before": 8.278676843360318,
+                "after": 8.511842386996879
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            }
+          ]
+        },
+        "30639": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6091200593331481,
+                "after": 0.6255097974658402
+              },
+              "distance_rmse_m": {
+                "before": 9.379749556863276,
+                "after": 9.625697140300783
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.140074360668848,
+                "after": 0.15405882419609937
+              },
+              "distance_rmse_m": {
+                "before": 0.7786819148758755,
+                "after": 0.9077182315373326
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1418787601326824,
+                "after": 0.15457506685336986
+              },
+              "distance_rmse_m": {
+                "before": 0.8012343826399912,
+                "after": 0.9171540870678081
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.14186990948918085,
+                "after": 0.1523530465154067
+              },
+              "distance_rmse_m": {
+                "before": 0.8228228633140154,
+                "after": 0.9182026510227765
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1990644442861935,
+                "after": 0.20833737718026638
+              },
+              "distance_rmse_m": {
+                "before": 0.8282397312456898,
+                "after": 0.9270918778785507
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6091200593331481,
+                "after": 0.6255097974658402
+              },
+              "distance_rmse_m": {
+                "before": 9.379749556863276,
+                "after": 9.625697140300783
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.140074360668848,
+                "after": 0.15405882419609937
+              },
+              "distance_rmse_m": {
+                "before": 0.7786819148758755,
+                "after": 0.9077182315373326
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1418787601326824,
+                "after": 0.15457506685336986
+              },
+              "distance_rmse_m": {
+                "before": 0.8012343826399912,
+                "after": 0.9171540870678081
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1990644442861935,
+                "after": 0.20833737718026638
+              },
+              "distance_rmse_m": {
+                "before": 0.8282397312456898,
+                "after": 0.9270918778785507
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.14186990948918085,
+                "after": 0.1523530465154067
+              },
+              "distance_rmse_m": {
+                "before": 0.8228228633140154,
+                "after": 0.9182026510227765
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            }
+          ]
+        }
+      },
+      "bag_tails": [
+        {
+          "bag": "30618_0d865417",
+          "baseline": 0.03191315687113121,
+          "candidate": 0.03311789461590217,
+          "delta": 0.0012047377447709645
+        },
+        {
+          "bag": "30618_68d1748a",
+          "baseline": 0.18508212900827437,
+          "candidate": 0.18512084224604095,
+          "delta": 3.871323776657998e-05
+        },
+        {
+          "bag": "30618_1551d0a9",
+          "baseline": 0.004300823494202478,
+          "candidate": 0.004300823494202478,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_bc5e53c2",
+          "baseline": 0.007242036246346365,
+          "candidate": 0.007242036246346365,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_0686195f",
+          "baseline": 0.09564178916559783,
+          "candidate": 0.09483646398151914,
+          "delta": -0.0008053251840786924
+        },
+        {
+          "bag": "30618_095a115b",
+          "baseline": 0.031206204317631894,
+          "candidate": 0.03033189163207002,
+          "delta": -0.0008743126855618732
+        },
+        {
+          "bag": "30618_0e41eac3",
+          "baseline": 0.028471018884272718,
+          "candidate": 0.027594760349421626,
+          "delta": -0.0008762585348510918
+        },
+        {
+          "bag": "30618_8158f0b0",
+          "baseline": 0.03170030776639703,
+          "candidate": 0.03073785449481946,
+          "delta": -0.0009624532715775715
+        },
+        {
+          "bag": "30618_76e1f9c7",
+          "baseline": 0.02891117956364347,
+          "candidate": 0.027931796945036683,
+          "delta": -0.0009793826186067882
+        },
+        {
+          "bag": "30618_b95ca60a",
+          "baseline": 0.030174468322802756,
+          "candidate": 0.029187210520969464,
+          "delta": -0.0009872578018332925
+        },
+        {
+          "bag": "30618_7b4d83f4",
+          "baseline": 0.02925629110344356,
+          "candidate": 0.0279638571404711,
+          "delta": -0.0012924339629724578
+        },
+        {
+          "bag": "30618_22c1c589",
+          "baseline": 0.02910128578267146,
+          "candidate": 0.027807604524856724,
+          "delta": -0.0012936812578147362
+        },
+        {
+          "bag": "30618_9c09b081",
+          "baseline": 0.03170689159661366,
+          "candidate": 0.03037251340815258,
+          "delta": -0.0013343781884610807
+        },
+        {
+          "bag": "30618_b15eafc3",
+          "baseline": 0.030834460238369367,
+          "candidate": 0.02933896958299433,
+          "delta": -0.0014954906553750376
+        },
+        {
+          "bag": "30618_2f104a1d",
+          "baseline": 0.028156919464692808,
+          "candidate": 0.026511629177861106,
+          "delta": -0.0016452902868317014
+        },
+        {
+          "bag": "30618_2dbce472",
+          "baseline": 0.044854728973404145,
+          "candidate": 0.04320721816512038,
+          "delta": -0.0016475108082837642
+        },
+        {
+          "bag": "30618_68847170",
+          "baseline": 0.030129591776511644,
+          "candidate": 0.028300650756042527,
+          "delta": -0.0018289410204691166
+        },
+        {
+          "bag": "30618_b8044aa0",
+          "baseline": 0.02902994856281974,
+          "candidate": 0.027157788579084102,
+          "delta": -0.0018721599837356363
+        },
+        {
+          "bag": "30618_0652866c",
+          "baseline": 0.03403870765262398,
+          "candidate": 0.03207509438661982,
+          "delta": -0.001963613266004159
+        },
+        {
+          "bag": "30639_50956d6e",
+          "baseline": 0.07068749549433762,
+          "candidate": 0.0686475415075152,
+          "delta": -0.0020399539868224126
+        },
+        {
+          "bag": "30618_616ec56b",
+          "baseline": 0.05577702288239058,
+          "candidate": 0.05371214859438479,
+          "delta": -0.002064874288005787
+        },
+        {
+          "bag": "30618_28538acf",
+          "baseline": 0.12446843692953657,
+          "candidate": 0.12224018846287366,
+          "delta": -0.0022282484666629188
+        },
+        {
+          "bag": "30618_ab5921a4",
+          "baseline": 0.03492792641368602,
+          "candidate": 0.0326609642921633,
+          "delta": -0.00226696212152272
+        },
+        {
+          "bag": "30618_f19a4ac3",
+          "baseline": 0.030869976916134273,
+          "candidate": 0.028377808526448417,
+          "delta": -0.002492168389685856
+        },
+        {
+          "bag": "30618_073f08d1",
+          "baseline": 0.030153919104323225,
+          "candidate": 0.0275028986810419,
+          "delta": -0.0026510204232813236
+        },
+        {
+          "bag": "30618_0f120b35",
+          "baseline": 0.029274235797268813,
+          "candidate": 0.02595806858496714,
+          "delta": -0.003316167212301671
+        },
+        {
+          "bag": "30618_49fe4c54",
+          "baseline": 0.03980448492975728,
+          "candidate": 0.03647851621489979,
+          "delta": -0.0033259687148574912
+        },
+        {
+          "bag": "30618_27e994fc",
+          "baseline": 0.08447440225002353,
+          "candidate": 0.08090564266148226,
+          "delta": -0.003568759588541276
+        },
+        {
+          "bag": "30639_584b6e32",
+          "baseline": 0.03690540416793857,
+          "candidate": 0.032676239709574,
+          "delta": -0.004229164458364569
+        },
+        {
+          "bag": "30618_88548b02",
+          "baseline": 0.05371150705324603,
+          "candidate": 0.04928248711912885,
+          "delta": -0.004429019934117179
+        },
+        {
+          "bag": "30618_e2dcf65f",
+          "baseline": 0.03221536773539338,
+          "candidate": 0.02774964773695207,
+          "delta": -0.004465719998441309
+        },
+        {
+          "bag": "30618_defd0170",
+          "baseline": 0.11493434419213766,
+          "candidate": 0.10977467188350305,
+          "delta": -0.005159672308634608
+        },
+        {
+          "bag": "30639_9f0b519f",
+          "baseline": 0.03447643216455158,
+          "candidate": 0.02925732620402186,
+          "delta": -0.005219105960529723
+        },
+        {
+          "bag": "30639_2b4a6347",
+          "baseline": 0.03349024744120238,
+          "candidate": 0.028009479055225946,
+          "delta": -0.005480768385976435
+        },
+        {
+          "bag": "30639_d927f360",
+          "baseline": 0.038638475792594475,
+          "candidate": 0.032575722052527525,
+          "delta": -0.006062753740066949
+        },
+        {
+          "bag": "30618_87afe526",
+          "baseline": 0.03634396433875233,
+          "candidate": 0.030058835054602072,
+          "delta": -0.006285129284150259
+        },
+        {
+          "bag": "30618_b83d854d",
+          "baseline": 0.03826535949433577,
+          "candidate": 0.03168786861590545,
+          "delta": -0.00657749087843032
+        },
+        {
+          "bag": "30639_4285f2bc",
+          "baseline": 0.055365994188651096,
+          "candidate": 0.04816573886984182,
+          "delta": -0.007200255318809273
+        },
+        {
+          "bag": "30639_0be558e2",
+          "baseline": 0.040797176602379866,
+          "candidate": 0.033473048237859966,
+          "delta": -0.0073241283645199
+        },
+        {
+          "bag": "30639_0ab96c59",
+          "baseline": 0.024839118503485927,
+          "candidate": 0.017373316314393494,
+          "delta": -0.007465802189092433
+        },
+        {
+          "bag": "30618_e3d94878",
+          "baseline": 0.038096777975549403,
+          "candidate": 0.029874514687625607,
+          "delta": -0.008222263287923796
+        },
+        {
+          "bag": "30639_927002c2",
+          "baseline": 0.04103939165224275,
+          "candidate": 0.03213380049453715,
+          "delta": -0.008905591157705596
+        }
+      ],
+      "identical_nominal_coverage_masks": true,
+      "eligible_for_validation": false,
+      "decision": "rejected: existing behavioral test failures and/or train degradation"
+    },
+    {
+      "variant": "long_guarded",
+      "parameters": {
+        "tau_s": 3.0,
+        "jerk_psd": 1.0,
+        "guarded": true
+      },
+      "pooled": {
+        "baseline": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.05798232767964794,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2373867257296318,
+              "distance_rmse_m": 0.14872136729167582
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.49390894950856756,
+              "distance_rmse_m": 0.8817920928405618
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.660423447395649,
+              "distance_rmse_m": 1.9780298764091189
+            }
+          }
+        },
+        "candidate": {
+          "bags": 42,
+          "matched_n": 939478,
+          "nominal_rmse_mps": 0.05552553666038439,
+          "blackouts": {
+            "1": {
+              "n": 829,
+              "speed_rmse_mps": 0.2098408030667472,
+              "distance_rmse_m": 0.1290810201647282
+            },
+            "3": {
+              "n": 829,
+              "speed_rmse_mps": 0.4247218669985494,
+              "distance_rmse_m": 0.7622950077559214
+            },
+            "5": {
+              "n": 829,
+              "speed_rmse_mps": 0.5640754569602406,
+              "distance_rmse_m": 1.6785757133688113
+            }
+          }
+        }
+      },
+      "sessions": [
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "baseline",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.05475772486581904,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.2505623702892193,
+            "distance_rmse_m": 0.15670017653914384
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.47174661958234465,
+            "distance_rmse_m": 0.8928432249410566
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5784852378775186,
+            "distance_rmse_m": 1.8868942181349546
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-07-27",
+          "variant": "candidate",
+          "bags": 29,
+          "n": 648428,
+          "nominal_rmse_mps": 0.053104474609032115,
+          "blackout1": {
+            "windows": 589,
+            "speed_rmse_mps": 0.23415093579006932,
+            "distance_rmse_m": 0.14292174094205204
+          },
+          "blackout3": {
+            "windows": 589,
+            "speed_rmse_mps": 0.43802638851068043,
+            "distance_rmse_m": 0.8293033048942793
+          },
+          "blackout5": {
+            "windows": 589,
+            "speed_rmse_mps": 0.5309419022927157,
+            "distance_rmse_m": 1.7388204331212531
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "baseline",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08813319522030133,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.18477939104076851,
+            "distance_rmse_m": 0.13665722155808238
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.43260999363401936,
+            "distance_rmse_m": 0.7281038304247774
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5873739661769369,
+            "distance_rmse_m": 1.7039285946047467
+          }
+        },
+        {
+          "vehicle": "30618",
+          "date": "2026-09-03",
+          "variant": "candidate",
+          "bags": 4,
+          "n": 107354,
+          "nominal_rmse_mps": 0.08477084583580947,
+          "blackout1": {
+            "windows": 94,
+            "speed_rmse_mps": 0.15933777751184566,
+            "distance_rmse_m": 0.11992869256205209
+          },
+          "blackout3": {
+            "windows": 94,
+            "speed_rmse_mps": 0.37592670634346764,
+            "distance_rmse_m": 0.6148600631762831
+          },
+          "blackout5": {
+            "windows": 94,
+            "speed_rmse_mps": 0.5356800365097751,
+            "distance_rmse_m": 1.4702392184505813
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "baseline",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.04550369845255582,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.21145939712594575,
+            "distance_rmse_m": 0.1204309652148562
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6056815097183683,
+            "distance_rmse_m": 0.9261414081975836
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.950987751510445,
+            "distance_rmse_m": 2.4460933081793255
+          }
+        },
+        {
+          "vehicle": "30639",
+          "date": "2026-08-26",
+          "variant": "candidate",
+          "bags": 9,
+          "n": 183696,
+          "nominal_rmse_mps": 0.04016967199955366,
+          "blackout1": {
+            "windows": 146,
+            "speed_rmse_mps": 0.11177481890788876,
+            "distance_rmse_m": 0.05423501993241327
+          },
+          "blackout3": {
+            "windows": 146,
+            "speed_rmse_mps": 0.3990425806890424,
+            "distance_rmse_m": 0.5306269760283278
+          },
+          "blackout5": {
+            "windows": 146,
+            "speed_rmse_mps": 0.6961728453121022,
+            "distance_rmse_m": 1.5522274389820119
+          }
+        }
+      ],
+      "failed_existing_tests": [],
+      "synthetic": {
+        "30618": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.5421360727978507,
+                "after": 0.5597987399385215
+              },
+              "distance_rmse_m": {
+                "before": 8.174325524674925,
+                "after": 8.416809467583954
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.5466703041782854,
+                "after": 0.5639916296930905
+              },
+              "distance_rmse_m": {
+                "before": 8.289800371477405,
+                "after": 8.526506355992225
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.546247586305256,
+                "after": 0.5632866846620281
+              },
+              "distance_rmse_m": {
+                "before": 8.278676843360318,
+                "after": 8.511791529412376
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "front_freeze",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6986194211572535,
+                "after": 0.70824179607037
+              },
+              "distance_rmse_m": {
+                "before": 13.925072805918731,
+                "after": 14.152473571502336
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.25,
+                "after": 0.25
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.19551445534048517,
+                "after": 0.20509805743827758
+              },
+              "distance_rmse_m": {
+                "before": 0.7924217856935301,
+                "after": 0.8875205058905355
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 1.786069007957339,
+                "after": 1.791522828759496
+              },
+              "distance_rmse_m": {
+                "before": 52.590594741295696,
+                "after": 52.99162586850318
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_jump_long",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 1.786036840378211,
+                "after": 1.791391663064539
+              },
+              "distance_rmse_m": {
+                "before": 52.60691108117631,
+                "after": 52.96895520869004
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.5499999999999972,
+                "after": 0.5499999999999972
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.5421360727978507,
+                "after": 0.5597987399385215
+              },
+              "distance_rmse_m": {
+                "before": 8.174325524674925,
+                "after": 8.416809467583954
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.5466703041782854,
+                "after": 0.5639916296930905
+              },
+              "distance_rmse_m": {
+                "before": 8.289800371477405,
+                "after": 8.526506355992225
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.546247586305256,
+                "after": 0.5632866846620281
+              },
+              "distance_rmse_m": {
+                "before": 8.278676843360318,
+                "after": 8.511791529412376
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 2.549999999999997,
+                "after": 2.6499999999999986
+              }
+            }
+          ]
+        },
+        "30639": {
+          "scenarios": 84,
+          "full_coverage": true,
+          "recovery_regressions_over_0p2s": [],
+          "worst_speed_deltas": [
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6091200593331481,
+                "after": 0.6255097974658402
+              },
+              "distance_rmse_m": {
+                "before": 9.379749556863276,
+                "after": 9.62561927363239
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.140074360668848,
+                "after": 0.15405882419609937
+              },
+              "distance_rmse_m": {
+                "before": 0.7786819148758755,
+                "after": 0.9077120965544263
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1418787601326824,
+                "after": 0.15457506685336986
+              },
+              "distance_rmse_m": {
+                "before": 0.8012343826399912,
+                "after": 0.9171300645347044
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "front_freeze",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6966279991375894,
+                "after": 0.7073086825629084
+              },
+              "distance_rmse_m": {
+                "before": 13.872173402255955,
+                "after": 14.133009393584892
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.25,
+                "after": 0.25
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 7,
+              "speed_rmse_mps": {
+                "before": 0.14186990948918085,
+                "after": 0.1523530465164702
+              },
+              "distance_rmse_m": {
+                "before": 0.8228228633140154,
+                "after": 0.9181783888904974
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            }
+          ],
+          "worst_distance_deltas": [
+            {
+              "profile": "trip",
+              "fault": "front_freeze",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6966279991375894,
+                "after": 0.7073086825629084
+              },
+              "distance_rmse_m": {
+                "before": 13.872173402255955,
+                "after": 14.133009393584892
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.25,
+                "after": 0.25
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_transition",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.6091200593331481,
+                "after": 0.6255097974658402
+              },
+              "distance_rmse_m": {
+                "before": 9.379749556863276,
+                "after": 9.62561927363239
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 3.1499999999999986,
+                "after": 3.1499999999999986
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 137,
+              "speed_rmse_mps": {
+                "before": 0.140074360668848,
+                "after": 0.15405882419609937
+              },
+              "distance_rmse_m": {
+                "before": 0.7786819148758755,
+                "after": 0.9077120965544263
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze_brake",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1418787601326824,
+                "after": 0.15457506685336986
+              },
+              "distance_rmse_m": {
+                "before": 0.8012343826399912,
+                "after": 0.9171300645347044
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.04999999999999716,
+                "after": 0.04999999999999716
+              }
+            },
+            {
+              "profile": "trip",
+              "fault": "pair_freeze",
+              "seed": 911,
+              "speed_rmse_mps": {
+                "before": 0.1990644442861935,
+                "after": 0.20833743848011552
+              },
+              "distance_rmse_m": {
+                "before": 0.8282397312456898,
+                "after": 0.9270953791501058
+              },
+              "recovery_to_0p1_mps_for_1s_s": {
+                "before": 0.14999999999999858,
+                "after": 0.14999999999999858
+              }
+            }
+          ]
+        }
+      },
+      "bag_tails": [
+        {
+          "bag": "30618_0d865417",
+          "baseline": 0.03191315687113121,
+          "candidate": 0.03311789461590217,
+          "delta": 0.0012047377447709645
+        },
+        {
+          "bag": "30618_68d1748a",
+          "baseline": 0.18508212900827437,
+          "candidate": 0.18567699706179383,
+          "delta": 0.000594868053519465
+        },
+        {
+          "bag": "30618_1551d0a9",
+          "baseline": 0.004300823494202478,
+          "candidate": 0.004300823494202478,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_bc5e53c2",
+          "baseline": 0.007242036246346365,
+          "candidate": 0.007242036246346365,
+          "delta": 0.0
+        },
+        {
+          "bag": "30618_0686195f",
+          "baseline": 0.09564178916559783,
+          "candidate": 0.09483646398151914,
+          "delta": -0.0008053251840786924
+        },
+        {
+          "bag": "30618_0e41eac3",
+          "baseline": 0.028471018884272718,
+          "candidate": 0.027594760349421626,
+          "delta": -0.0008762585348510918
+        },
+        {
+          "bag": "30618_095a115b",
+          "baseline": 0.031206204317631894,
+          "candidate": 0.030322137195359932,
+          "delta": -0.0008840671222719622
+        },
+        {
+          "bag": "30618_8158f0b0",
+          "baseline": 0.03170030776639703,
+          "candidate": 0.030737854494819486,
+          "delta": -0.0009624532715775472
+        },
+        {
+          "bag": "30618_76e1f9c7",
+          "baseline": 0.02891117956364347,
+          "candidate": 0.027931796945036683,
+          "delta": -0.0009793826186067882
+        },
+        {
+          "bag": "30618_b95ca60a",
+          "baseline": 0.030174468322802756,
+          "candidate": 0.029187210520969464,
+          "delta": -0.0009872578018332925
+        },
+        {
+          "bag": "30618_7b4d83f4",
+          "baseline": 0.02925629110344356,
+          "candidate": 0.0279638571404711,
+          "delta": -0.0012924339629724578
+        },
+        {
+          "bag": "30618_22c1c589",
+          "baseline": 0.02910128578267146,
+          "candidate": 0.027807604524856724,
+          "delta": -0.0012936812578147362
+        },
+        {
+          "bag": "30618_9c09b081",
+          "baseline": 0.03170689159661366,
+          "candidate": 0.03037251340815258,
+          "delta": -0.0013343781884610807
+        },
+        {
+          "bag": "30618_b15eafc3",
+          "baseline": 0.030834460238369367,
+          "candidate": 0.02933896958299433,
+          "delta": -0.0014954906553750376
+        },
+        {
+          "bag": "30639_50956d6e",
+          "baseline": 0.07068749549433762,
+          "candidate": 0.06916390687857667,
+          "delta": -0.0015235886157609485
+        },
+        {
+          "bag": "30618_2f104a1d",
+          "baseline": 0.028156919464692808,
+          "candidate": 0.026511629177861106,
+          "delta": -0.0016452902868317014
+        },
+        {
+          "bag": "30618_2dbce472",
+          "baseline": 0.044854728973404145,
+          "candidate": 0.04318206656206051,
+          "delta": -0.001672662411343638
+        },
+        {
+          "bag": "30618_68847170",
+          "baseline": 0.030129591776511644,
+          "candidate": 0.028300650756042527,
+          "delta": -0.0018289410204691166
+        },
+        {
+          "bag": "30618_b8044aa0",
+          "baseline": 0.02902994856281974,
+          "candidate": 0.027157788579084102,
+          "delta": -0.0018721599837356363
+        },
+        {
+          "bag": "30618_0652866c",
+          "baseline": 0.03403870765262398,
+          "candidate": 0.03198933404401901,
+          "delta": -0.002049373608604965
+        },
+        {
+          "bag": "30618_28538acf",
+          "baseline": 0.12446843692953657,
+          "candidate": 0.12227732671276408,
+          "delta": -0.002191110216772499
+        },
+        {
+          "bag": "30618_ab5921a4",
+          "baseline": 0.03492792641368602,
+          "candidate": 0.0326609642921633,
+          "delta": -0.00226696212152272
+        },
+        {
+          "bag": "30618_f19a4ac3",
+          "baseline": 0.030869976916134273,
+          "candidate": 0.028377808526448417,
+          "delta": -0.002492168389685856
+        },
+        {
+          "bag": "30618_073f08d1",
+          "baseline": 0.030153919104323225,
+          "candidate": 0.027425720357646288,
+          "delta": -0.0027281987466769367
+        },
+        {
+          "bag": "30618_0f120b35",
+          "baseline": 0.029274235797268813,
+          "candidate": 0.025959563678722694,
+          "delta": -0.0033146721185461185
+        },
+        {
+          "bag": "30618_49fe4c54",
+          "baseline": 0.03980448492975728,
+          "candidate": 0.036259396661167495,
+          "delta": -0.003545088268589784
+        },
+        {
+          "bag": "30618_27e994fc",
+          "baseline": 0.08447440225002353,
+          "candidate": 0.08082245547040624,
+          "delta": -0.0036519467796172905
+        },
+        {
+          "bag": "30639_584b6e32",
+          "baseline": 0.03690540416793857,
+          "candidate": 0.03266978113494398,
+          "delta": -0.004235623032994587
+        },
+        {
+          "bag": "30618_e2dcf65f",
+          "baseline": 0.03221536773539338,
+          "candidate": 0.02774964773695207,
+          "delta": -0.004465719998441309
+        },
+        {
+          "bag": "30618_88548b02",
+          "baseline": 0.05371150705324603,
+          "candidate": 0.04924291030920103,
+          "delta": -0.0044685967440450045
+        },
+        {
+          "bag": "30618_616ec56b",
+          "baseline": 0.05577702288239058,
+          "candidate": 0.05088090814974109,
+          "delta": -0.00489611473264949
+        },
+        {
+          "bag": "30618_defd0170",
+          "baseline": 0.11493434419213766,
+          "candidate": 0.1097285321891905,
+          "delta": -0.0052058120029471605
+        },
+        {
+          "bag": "30639_9f0b519f",
+          "baseline": 0.03447643216455158,
+          "candidate": 0.02919328364337362,
+          "delta": -0.005283148521177963
+        },
+        {
+          "bag": "30639_2b4a6347",
+          "baseline": 0.03349024744120238,
+          "candidate": 0.027751423798489053,
+          "delta": -0.0057388236427133275
+        },
+        {
+          "bag": "30618_b83d854d",
+          "baseline": 0.03826535949433577,
+          "candidate": 0.03168786861590545,
+          "delta": -0.00657749087843032
+        },
+        {
+          "bag": "30618_87afe526",
+          "baseline": 0.03634396433875233,
+          "candidate": 0.029766389024134005,
+          "delta": -0.006577575314618327
+        },
+        {
+          "bag": "30639_d927f360",
+          "baseline": 0.038638475792594475,
+          "candidate": 0.03190328220455028,
+          "delta": -0.006735193588044197
+        },
+        {
+          "bag": "30639_4285f2bc",
+          "baseline": 0.055365994188651096,
+          "candidate": 0.048511403102900835,
+          "delta": -0.006854591085750261
+        },
+        {
+          "bag": "30639_0be558e2",
+          "baseline": 0.040797176602379866,
+          "candidate": 0.03321866352105235,
+          "delta": -0.007578513081327516
+        },
+        {
+          "bag": "30618_e3d94878",
+          "baseline": 0.038096777975549403,
+          "candidate": 0.02963322709772561,
+          "delta": -0.008463550877823793
+        },
+        {
+          "bag": "30639_0ab96c59",
+          "baseline": 0.024839118503485927,
+          "candidate": 0.016347663245970534,
+          "delta": -0.008491455257515393
+        },
+        {
+          "bag": "30639_927002c2",
+          "baseline": 0.04103939165224275,
+          "candidate": 0.032041109572414635,
+          "delta": -0.008998282079828113
+        }
+      ],
+      "identical_nominal_coverage_masks": true,
+      "eligible_for_validation": true,
+      "decision": "eligible train-only candidate"
+    }
+  ],
+  "limitations": [
+    "This is an experimental train-only recommendation, not a production deployment decision.",
+    "Three original noise/time-constant variants preceded measurement. A fourth structural repair was added after existing behavior tests failed: reset acceleration variance1, residual bound\u00b14, legacy velocity uncertainty during unhealthy-wheel fallback.",
+    "Finite covariance is propagated jointly, but clamped state innovations and residual saturation make Gaussian covariance approximate.",
+    "Synthetic trip pair_freeze_transition and some pair_freeze_brake/distance errors increase; inspect per-case tails.",
+    "Existing original fault gates are preserved syntactically, but changing predictor trajectories can change their decisions.",
+    "No validation, holdout, or public results were inspected for this experiment."
+  ]
+}

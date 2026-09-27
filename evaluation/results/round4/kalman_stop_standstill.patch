@@ -1,0 +1,12 @@
+--- a/estimator.cpp
++++ b/estimator.cpp
+@@ -957,6 +957,9 @@
+   if (trusted(other) && measured_mps < 0.055 &&
+       other_projected_mps < 0.055 && velocity_mps_ < 0.15) {
+     velocity_mps_ = 0.0;
++    // This authoritative standstill also constrains latent acceleration.
++    kalman_residual_mps2_ = 0.0;
++    kalman_va_ = 0.0;
+     acceleration_mps2_ = std::min(0.0, acceleration_mps2_);
+     velocity_variance_ = std::min(velocity_variance_, 0.0025);
+   }

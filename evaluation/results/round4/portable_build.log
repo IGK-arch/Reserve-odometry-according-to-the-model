@@ -1,0 +1,28 @@
+-- GLOB mismatch!
+-- Configuring done (0.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/odometry-round4-pure
+[  6%] Built target tram_navigation
+[ 24%] Built target elevation_profile_test
+[ 24%] Built target replay_cli
+[ 24%] Built target estimator_core_test
+[ 24%] Built target navigation_replay
+[ 26%] Building CXX object CMakeFiles/estimator_standstill_dropout_test.dir/ros2_ws/src/tram_odometry/test/estimator_standstill_dropout_test.cpp.o
+[ 40%] Built target estimator_jump_recovery_test
+[ 40%] Built target estimator_jump_rate_test
+[ 40%] Built target estimator_pair_freeze_test
+[ 46%] Built target geo_projection_test
+[ 48%] Built target estimator_wheel_residual_test
+[ 53%] Built target navigation_branch_test
+[ 57%] Built target navigation_startup_heading_test
+[ 66%] Built target navigation_rover_anchor_test
+[ 66%] Built target navigation_gnss_robustness_test
+[ 71%] Built target navigation_startup_quality_test
+[ 80%] Built target odometry_statistics_test
+[ 80%] Built target navigation_test
+[ 84%] Built target route_body_heading_test
+[ 88%] Built target route_tf_test
+[ 93%] Built target startup_output_gate_test
+[ 97%] Built target uncertainty_test
+[100%] Linking CXX executable estimator_standstill_dropout_test
+[100%] Built target estimator_standstill_dropout_test

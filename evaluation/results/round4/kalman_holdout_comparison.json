@@ -1,0 +1,1184 @@
+{
+  "protocol": "Post-freeze validation/holdout report; never changes the selected estimator.",
+  "split": "holdout",
+  "selected_variant": "long_guarded",
+  "candidate_frozen_sha256": "b37a73245bfc141b2975f4b65482ee6c736cd19e44ebdecf8c5e581e4da2c143",
+  "pooled": {
+    "baseline": {
+      "bags": 42,
+      "scored_bags": 23,
+      "n": 431768,
+      "nominal_rmse_mps": 0.1180751821092251,
+      "blackouts": {
+        "1": {
+          "n": 442,
+          "speed_rmse_mps": 0.1719729971826072,
+          "distance_rmse_m": 0.10701981519479448,
+          "speed_error_mps_abs_p95": 0.3021624942677545,
+          "speed_error_mps_abs_max": 1.2738878793500605,
+          "distance_error_m_abs_p95": 0.19815843461920413,
+          "distance_error_m_abs_max": 0.8138403444159943
+        },
+        "3": {
+          "n": 442,
+          "speed_rmse_mps": 0.49758842877285336,
+          "distance_rmse_m": 0.7395422200705826,
+          "speed_error_mps_abs_p95": 0.9397555177207777,
+          "speed_error_mps_abs_max": 3.6930147769622965,
+          "distance_error_m_abs_p95": 1.3444456023144564,
+          "distance_error_m_abs_max": 5.307672833283098
+        },
+        "5": {
+          "n": 442,
+          "speed_rmse_mps": 0.7232737580185763,
+          "distance_rmse_m": 1.9346558135118437,
+          "speed_error_mps_abs_p95": 1.429325129013786,
+          "speed_error_mps_abs_max": 3.912534417018053,
+          "distance_error_m_abs_p95": 3.7078800110057353,
+          "distance_error_m_abs_max": 12.866067965603012
+        }
+      }
+    },
+    "candidate": {
+      "bags": 42,
+      "scored_bags": 23,
+      "n": 431768,
+      "nominal_rmse_mps": 0.11699114224174566,
+      "blackouts": {
+        "1": {
+          "n": 442,
+          "speed_rmse_mps": 0.13024557078512522,
+          "distance_rmse_m": 0.08020313483898239,
+          "speed_error_mps_abs_p95": 0.2648320292542782,
+          "speed_error_mps_abs_max": 0.5015663867145959,
+          "distance_error_m_abs_p95": 0.16753887179412322,
+          "distance_error_m_abs_max": 0.306588607635641
+        },
+        "3": {
+          "n": 442,
+          "speed_rmse_mps": 0.4028766111039167,
+          "distance_rmse_m": 0.5564237360571561,
+          "speed_error_mps_abs_p95": 0.6747409667934515,
+          "speed_error_mps_abs_max": 2.9393953692579347,
+          "distance_error_m_abs_p95": 1.049785898706368,
+          "distance_error_m_abs_max": 2.7538813527772703
+        },
+        "5": {
+          "n": 442,
+          "speed_rmse_mps": 0.6165633930813141,
+          "distance_rmse_m": 1.534807499069265,
+          "speed_error_mps_abs_p95": 1.1683178103468697,
+          "speed_error_mps_abs_max": 4.786080139160055,
+          "distance_error_m_abs_p95": 2.80115601455658,
+          "distance_error_m_abs_max": 11.111631967891459
+        }
+      }
+    }
+  },
+  "vehicles": {
+    "30618": {
+      "baseline": {
+        "bags": 32,
+        "scored_bags": 13,
+        "n": 209747,
+        "nominal_rmse_mps": 0.12203288680645616,
+        "blackouts": {
+          "1": {
+            "n": 211,
+            "speed_rmse_mps": 0.14665701572815754,
+            "distance_rmse_m": 0.08342407227932411,
+            "speed_error_mps_abs_p95": 0.2585931928281524,
+            "speed_error_mps_abs_max": 1.0199161571703952,
+            "distance_error_m_abs_p95": 0.1563202233941543,
+            "distance_error_m_abs_max": 0.5376227287967863
+          },
+          "3": {
+            "n": 211,
+            "speed_rmse_mps": 0.46528365982499115,
+            "distance_rmse_m": 0.6494926629883058,
+            "speed_error_mps_abs_p95": 0.5776610130169435,
+            "speed_error_mps_abs_max": 3.6930147769622965,
+            "distance_error_m_abs_p95": 0.8621360630631507,
+            "distance_error_m_abs_max": 5.307672833283098
+          },
+          "5": {
+            "n": 211,
+            "speed_rmse_mps": 0.6405331118673073,
+            "distance_rmse_m": 1.7275269119900496,
+            "speed_error_mps_abs_p95": 1.0006067051025405,
+            "speed_error_mps_abs_max": 3.912534417018053,
+            "distance_error_m_abs_p95": 2.1097874416589324,
+            "distance_error_m_abs_max": 12.866067965603012
+          }
+        }
+      },
+      "candidate": {
+        "bags": 32,
+        "scored_bags": 13,
+        "n": 209747,
+        "nominal_rmse_mps": 0.1187729625726696,
+        "blackouts": {
+          "1": {
+            "n": 211,
+            "speed_rmse_mps": 0.11937758271710994,
+            "distance_rmse_m": 0.06170632953217081,
+            "speed_error_mps_abs_p95": 0.24754227821208707,
+            "speed_error_mps_abs_max": 0.5015663867145959,
+            "distance_error_m_abs_p95": 0.13341398568400775,
+            "distance_error_m_abs_max": 0.23808717204722551
+          },
+          "3": {
+            "n": 211,
+            "speed_rmse_mps": 0.4094109428655124,
+            "distance_rmse_m": 0.5385352290580222,
+            "speed_error_mps_abs_p95": 0.6007301317403473,
+            "speed_error_mps_abs_max": 2.9393953692579347,
+            "distance_error_m_abs_p95": 0.912353775116733,
+            "distance_error_m_abs_max": 2.7538813527772703
+          },
+          "5": {
+            "n": 211,
+            "speed_rmse_mps": 0.6284746360861635,
+            "distance_rmse_m": 1.5363979356275226,
+            "speed_error_mps_abs_p95": 1.0887669585609716,
+            "speed_error_mps_abs_max": 4.786080139160055,
+            "distance_error_m_abs_p95": 2.3713275150080158,
+            "distance_error_m_abs_max": 11.111631967891459
+          }
+        }
+      }
+    },
+    "30639": {
+      "baseline": {
+        "bags": 10,
+        "scored_bags": 10,
+        "n": 222021,
+        "nominal_rmse_mps": 0.11421035858421746,
+        "blackouts": {
+          "1": {
+            "n": 231,
+            "speed_rmse_mps": 0.19220497111205936,
+            "distance_rmse_m": 0.12473108653209981,
+            "speed_error_mps_abs_p95": 0.3447247700682663,
+            "speed_error_mps_abs_max": 1.2738878793500605,
+            "distance_error_m_abs_p95": 0.23755095406127147,
+            "distance_error_m_abs_max": 0.8138403444159943
+          },
+          "3": {
+            "n": 231,
+            "speed_rmse_mps": 0.5253632077002137,
+            "distance_rmse_m": 0.8131267201041154,
+            "speed_error_mps_abs_p95": 1.0206697480690603,
+            "speed_error_mps_abs_max": 2.1426004963705028,
+            "distance_error_m_abs_p95": 1.4519706598927913,
+            "distance_error_m_abs_max": 4.5189031217297675
+          },
+          "5": {
+            "n": 231,
+            "speed_rmse_mps": 0.7913262904109384,
+            "distance_rmse_m": 2.1061249266397417,
+            "speed_error_mps_abs_p95": 1.573351396145561,
+            "speed_error_mps_abs_max": 3.2781228160072255,
+            "distance_error_m_abs_p95": 3.993103399447106,
+            "distance_error_m_abs_max": 9.945625010173671
+          }
+        }
+      },
+      "candidate": {
+        "bags": 10,
+        "scored_bags": 10,
+        "n": 222021,
+        "nominal_rmse_mps": 0.11528253080097405,
+        "blackouts": {
+          "1": {
+            "n": 231,
+            "speed_rmse_mps": 0.1394343104123074,
+            "distance_rmse_m": 0.09396889352176391,
+            "speed_error_mps_abs_p95": 0.27585856983739765,
+            "speed_error_mps_abs_max": 0.4744714521498903,
+            "distance_error_m_abs_p95": 0.18494394172411222,
+            "distance_error_m_abs_max": 0.306588607635641
+          },
+          "3": {
+            "n": 231,
+            "speed_rmse_mps": 0.3968140035540815,
+            "distance_rmse_m": 0.572275017209874,
+            "speed_error_mps_abs_p95": 0.7103867680414467,
+            "speed_error_mps_abs_max": 2.048291505411554,
+            "distance_error_m_abs_p95": 1.066233424893432,
+            "distance_error_m_abs_max": 2.238270816193886
+          },
+          "5": {
+            "n": 231,
+            "speed_rmse_mps": 0.605478691261614,
+            "distance_rmse_m": 1.5333533210583568,
+            "speed_error_mps_abs_p95": 1.1928393313911676,
+            "speed_error_mps_abs_max": 3.2781228160072255,
+            "distance_error_m_abs_p95": 2.8892360116609783,
+            "distance_error_m_abs_max": 7.971308226202213
+          }
+        }
+      }
+    }
+  },
+  "sessions": [
+    {
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "variant": "baseline",
+      "bags": 13,
+      "n": 209747,
+      "nominal_rmse_mps": 0.12203288680645616,
+      "blackout1": {
+        "windows": 211,
+        "speed_rmse_mps": 0.14665701572815754,
+        "distance_rmse_m": 0.08342407227932411
+      },
+      "blackout3": {
+        "windows": 211,
+        "speed_rmse_mps": 0.46528365982499115,
+        "distance_rmse_m": 0.6494926629883058
+      },
+      "blackout5": {
+        "windows": 211,
+        "speed_rmse_mps": 0.6405331118673073,
+        "distance_rmse_m": 1.7275269119900496
+      }
+    },
+    {
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "variant": "candidate",
+      "bags": 13,
+      "n": 209747,
+      "nominal_rmse_mps": 0.1187729625726696,
+      "blackout1": {
+        "windows": 211,
+        "speed_rmse_mps": 0.11937758271710994,
+        "distance_rmse_m": 0.06170632953217081
+      },
+      "blackout3": {
+        "windows": 211,
+        "speed_rmse_mps": 0.4094109428655124,
+        "distance_rmse_m": 0.5385352290580222
+      },
+      "blackout5": {
+        "windows": 211,
+        "speed_rmse_mps": 0.6284746360861635,
+        "distance_rmse_m": 1.5363979356275226
+      }
+    },
+    {
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "variant": "baseline",
+      "bags": 10,
+      "n": 222021,
+      "nominal_rmse_mps": 0.11421035858421746,
+      "blackout1": {
+        "windows": 231,
+        "speed_rmse_mps": 0.19220497111205936,
+        "distance_rmse_m": 0.12473108653209981
+      },
+      "blackout3": {
+        "windows": 231,
+        "speed_rmse_mps": 0.5253632077002137,
+        "distance_rmse_m": 0.8131267201041154
+      },
+      "blackout5": {
+        "windows": 231,
+        "speed_rmse_mps": 0.7913262904109384,
+        "distance_rmse_m": 2.1061249266397417
+      }
+    },
+    {
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "variant": "candidate",
+      "bags": 10,
+      "n": 222021,
+      "nominal_rmse_mps": 0.11528253080097405,
+      "blackout1": {
+        "windows": 231,
+        "speed_rmse_mps": 0.1394343104123074,
+        "distance_rmse_m": 0.09396889352176391
+      },
+      "blackout3": {
+        "windows": 231,
+        "speed_rmse_mps": 0.3968140035540815,
+        "distance_rmse_m": 0.572275017209874
+      },
+      "blackout5": {
+        "windows": 231,
+        "speed_rmse_mps": 0.605478691261614,
+        "distance_rmse_m": 1.5333533210583568
+      }
+    }
+  ],
+  "nominal_bag_tails": [
+    {
+      "bag": "30639_3b3d9eb8",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.22756023435126588,
+      "candidate": 0.23388396024309174,
+      "delta": 0.006323725891825865,
+      "ratio": 1.0277892396703392
+    },
+    {
+      "bag": "30639_dce52be4",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.11221287906610715,
+      "candidate": 0.1133682054653543,
+      "delta": 0.0011553263992471474,
+      "ratio": 1.0102958449053474
+    },
+    {
+      "bag": "30639_d601d28f",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.1303077622902748,
+      "candidate": 0.13066156638410095,
+      "delta": 0.0003538040938261544,
+      "ratio": 1.0027151421189937
+    },
+    {
+      "bag": "30618_45ff6f99",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.008577250639322359,
+      "candidate": 0.008577250639322359,
+      "delta": 0.0,
+      "ratio": 1.0
+    },
+    {
+      "bag": "30618_98161270",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.013913135238369723,
+      "candidate": 0.013913135238369723,
+      "delta": 0.0,
+      "ratio": 1.0
+    },
+    {
+      "bag": "30639_e4379d7f",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.1334762305742627,
+      "candidate": 0.13342079948069965,
+      "delta": -5.543109356304088e-05,
+      "ratio": 0.9995847118747319
+    },
+    {
+      "bag": "30639_d3c43d69",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.058917195632589965,
+      "candidate": 0.0588237111234601,
+      "delta": -9.348450912986805e-05,
+      "ratio": 0.998413289904142
+    },
+    {
+      "bag": "30639_c31df386",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.07807536910981577,
+      "candidate": 0.07777153261698949,
+      "delta": -0.00030383649282628156,
+      "ratio": 0.9961084206672283
+    },
+    {
+      "bag": "30639_92226df0",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.08039595105970387,
+      "candidate": 0.08002120880574176,
+      "delta": -0.0003747422539621126,
+      "ratio": 0.995338791953791
+    },
+    {
+      "bag": "30639_253671cc",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.0670977515660441,
+      "candidate": 0.06633451439320445,
+      "delta": -0.0007632371728396453,
+      "ratio": 0.9886249962923364
+    },
+    {
+      "bag": "30639_44226bde",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.0669121138595907,
+      "candidate": 0.0657379498377608,
+      "delta": -0.0011741640218299043,
+      "ratio": 0.9824521457460784
+    },
+    {
+      "bag": "30618_40ffd323",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.17967874730148542,
+      "candidate": 0.17745251667609374,
+      "delta": -0.0022262306253916786,
+      "ratio": 0.9876099390783472
+    },
+    {
+      "bag": "30618_1cc230fa",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.0422293464025185,
+      "candidate": 0.0391912969381785,
+      "delta": -0.003038049464339998,
+      "ratio": 0.9280583356563905
+    },
+    {
+      "bag": "30639_9c362687",
+      "vehicle": "30639",
+      "date": "2026-05-05",
+      "baseline": 0.08917107568108766,
+      "candidate": 0.08592722272382652,
+      "delta": -0.003243852957261137,
+      "ratio": 0.9636221394383254
+    },
+    {
+      "bag": "30618_4d487b0d",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.28449399080953086,
+      "candidate": 0.2811897286400159,
+      "delta": -0.00330426216951496,
+      "ratio": 0.9883854764028138
+    },
+    {
+      "bag": "30618_748832b9",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.06532370993238361,
+      "candidate": 0.0614569863329413,
+      "delta": -0.0038667235994423108,
+      "ratio": 0.9408067361231512
+    },
+    {
+      "bag": "30618_2366c74a",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.08608975741808769,
+      "candidate": 0.0817575098519835,
+      "delta": -0.004332247566104189,
+      "ratio": 0.9496775493852888
+    },
+    {
+      "bag": "30618_6cb3280a",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.03379446518528868,
+      "candidate": 0.02876464082321228,
+      "delta": -0.005029824362076402,
+      "ratio": 0.8511642562029367
+    },
+    {
+      "bag": "30618_af7496f0",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.17069077626070767,
+      "candidate": 0.16528379353953693,
+      "delta": -0.005406982721170739,
+      "ratio": 0.9683229355468377
+    },
+    {
+      "bag": "30618_3b36e5cd",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.03895310276948181,
+      "candidate": 0.03195750870439752,
+      "delta": -0.006995594065084286,
+      "ratio": 0.8204098372732184
+    },
+    {
+      "bag": "30618_2cb9ce37",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.041739408730214554,
+      "candidate": 0.031192959339722763,
+      "delta": -0.010546449390491791,
+      "ratio": 0.7473263347197976
+    },
+    {
+      "bag": "30618_21dd3af3",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.048290322704665586,
+      "candidate": 0.03341306183578897,
+      "delta": -0.01487726086887662,
+      "ratio": 0.691920450400319
+    },
+    {
+      "bag": "30618_bab2fe58",
+      "vehicle": "30618",
+      "date": "2026-08-10",
+      "baseline": 0.073610397483691,
+      "candidate": 0.029463284226497674,
+      "delta": -0.044147113257193324,
+      "ratio": 0.40025981700513863
+    }
+  ],
+  "blackout_window_tails": {
+    "1": {
+      "speed_error_mps": [
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374990.0,
+          "baseline_error": 0.008728147841289058,
+          "candidate_error": -0.5015663867145959,
+          "absolute_error_delta": 0.4928382388733068
+        },
+        {
+          "bag": "30639_9c362687",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777999830.0,
+          "baseline_error": 0.0014773101439705671,
+          "candidate_error": 0.2381542461529469,
+          "absolute_error_delta": 0.23667693600897632
+        },
+        {
+          "bag": "30618_21dd3af3",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786373160.0,
+          "baseline_error": 0.035747522418369204,
+          "candidate_error": -0.24817100489668054,
+          "absolute_error_delta": 0.21242348247831133
+        },
+        {
+          "bag": "30618_6cb3280a",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786377660.0,
+          "baseline_error": -0.11213416161392331,
+          "candidate_error": -0.32140669148927437,
+          "absolute_error_delta": 0.20927252987535105
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967820.0,
+          "baseline_error": 0.1009919125680323,
+          "candidate_error": 0.2836215451349755,
+          "absolute_error_delta": 0.1826296325669432
+        },
+        {
+          "bag": "30639_dce52be4",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777978260.0,
+          "baseline_error": -0.054352019846023225,
+          "candidate_error": -0.22718136740066264,
+          "absolute_error_delta": 0.1728293475546394
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967130.0,
+          "baseline_error": 0.04989772283659555,
+          "candidate_error": 0.22235126020245222,
+          "absolute_error_delta": 0.17245353736585667
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777968330.0,
+          "baseline_error": 0.17244121744181617,
+          "candidate_error": 0.3415112452993103,
+          "absolute_error_delta": 0.16907002785749414
+        },
+        {
+          "bag": "30618_40ffd323",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786385190.0,
+          "baseline_error": 0.058807744208566604,
+          "candidate_error": 0.21889576280105594,
+          "absolute_error_delta": 0.16008801859248933
+        },
+        {
+          "bag": "30618_af7496f0",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786387710.0,
+          "baseline_error": -0.015607638219948594,
+          "candidate_error": -0.17362338736183203,
+          "absolute_error_delta": 0.15801574914188343
+        }
+      ],
+      "distance_error_m": [
+        {
+          "bag": "30639_9c362687",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777999830.0,
+          "baseline_error": 0.023420300071856248,
+          "candidate_error": 0.1859738878811268,
+          "absolute_error_delta": 0.16255358780927054
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374990.0,
+          "baseline_error": 0.07074006353014273,
+          "candidate_error": -0.20995687682306663,
+          "absolute_error_delta": 0.1392168132929239
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967820.0,
+          "baseline_error": 0.037334897137156986,
+          "candidate_error": 0.15035118225284805,
+          "absolute_error_delta": 0.11301628511569106
+        },
+        {
+          "bag": "30618_6cb3280a",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786377660.0,
+          "baseline_error": -0.05705357750555429,
+          "candidate_error": -0.16531797096702228,
+          "absolute_error_delta": 0.10826439346146799
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967280.0,
+          "baseline_error": 0.03895923374015453,
+          "candidate_error": 0.14673676200122188,
+          "absolute_error_delta": 0.10777752826106735
+        },
+        {
+          "bag": "30639_253671cc",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778000940.0,
+          "baseline_error": 0.004280099834257811,
+          "candidate_error": 0.10925762611060108,
+          "absolute_error_delta": 0.10497752627634327
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374690.0,
+          "baseline_error": -0.014045451056556857,
+          "candidate_error": -0.10955455378147505,
+          "absolute_error_delta": 0.0955091027249182
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967340.0,
+          "baseline_error": 0.013172362291260953,
+          "candidate_error": 0.10710849483486484,
+          "absolute_error_delta": 0.09393613254360389
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967130.0,
+          "baseline_error": 0.11040273728584005,
+          "candidate_error": 0.20267954315939285,
+          "absolute_error_delta": 0.0922768058735528
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777968330.0,
+          "baseline_error": 0.055468626004809174,
+          "candidate_error": 0.1473947552240551,
+          "absolute_error_delta": 0.09192612921924592
+        }
+      ]
+    },
+    "3": {
+      "speed_error_mps": [
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374990.0,
+          "baseline_error": -0.29301040844791437,
+          "candidate_error": -1.6266840055577103,
+          "absolute_error_delta": 1.333673597109796
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374480.0,
+          "baseline_error": 2.3161004911505207,
+          "candidate_error": 2.9393953692579347,
+          "absolute_error_delta": 0.6232948781074139
+        },
+        {
+          "bag": "30618_21dd3af3",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786373760.0,
+          "baseline_error": -0.06289695119935068,
+          "candidate_error": 0.6165587445180094,
+          "absolute_error_delta": 0.5536617933186587
+        },
+        {
+          "bag": "30618_2cb9ce37",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786387200.0,
+          "baseline_error": 0.19873761097112386,
+          "candidate_error": 0.7302702512107917,
+          "absolute_error_delta": 0.5315326402396678
+        },
+        {
+          "bag": "30618_6cb3280a",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786377660.0,
+          "baseline_error": -0.6007922660181197,
+          "candidate_error": -1.0663093687542045,
+          "absolute_error_delta": 0.4655171027360847
+        },
+        {
+          "bag": "30639_253671cc",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778000700.0,
+          "baseline_error": -0.07332105150309687,
+          "candidate_error": -0.5246836074747545,
+          "absolute_error_delta": 0.45136255597165764
+        },
+        {
+          "bag": "30639_44226bde",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778002740.0,
+          "baseline_error": 0.6013847368920544,
+          "candidate_error": 1.0235292437936838,
+          "absolute_error_delta": 0.4221445069016294
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967820.0,
+          "baseline_error": 0.047039900342893404,
+          "candidate_error": 0.45996734694378905,
+          "absolute_error_delta": 0.41292744660089564
+        },
+        {
+          "bag": "30618_40ffd323",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786385190.0,
+          "baseline_error": 0.15757419601027323,
+          "candidate_error": 0.5595831568460525,
+          "absolute_error_delta": 0.4020089608357793
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777968330.0,
+          "baseline_error": 0.677967420020476,
+          "candidate_error": 1.0749076105233328,
+          "absolute_error_delta": 0.3969401905028568
+        }
+      ],
+      "distance_error_m": [
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374990.0,
+          "baseline_error": -0.3856469960508022,
+          "candidate_error": -2.569600372578627,
+          "absolute_error_delta": 2.1839533765278247
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374480.0,
+          "baseline_error": 1.7433707714198903,
+          "candidate_error": 2.7538813527772703,
+          "absolute_error_delta": 1.01051058135738
+        },
+        {
+          "bag": "30618_21dd3af3",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786373160.0,
+          "baseline_error": 0.0716850112238685,
+          "candidate_error": -0.9774405458920032,
+          "absolute_error_delta": 0.9057555346681347
+        },
+        {
+          "bag": "30618_6cb3280a",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786377660.0,
+          "baseline_error": -0.731205375488198,
+          "candidate_error": -1.544405055673078,
+          "absolute_error_delta": 0.81319968018488
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967820.0,
+          "baseline_error": 0.3125732367114864,
+          "candidate_error": 1.0435325870276841,
+          "absolute_error_delta": 0.7309593503161977
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967130.0,
+          "baseline_error": -0.04590513668836138,
+          "candidate_error": 0.7621949311628669,
+          "absolute_error_delta": 0.7162897944745055
+        },
+        {
+          "bag": "30639_44226bde",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778002740.0,
+          "baseline_error": 1.0047691022326788,
+          "candidate_error": 1.698267887258119,
+          "absolute_error_delta": 0.6934987850254402
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777968330.0,
+          "baseline_error": 1.146164967560665,
+          "candidate_error": 1.8275047400274644,
+          "absolute_error_delta": 0.6813397724667993
+        },
+        {
+          "bag": "30639_dce52be4",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777978260.0,
+          "baseline_error": -0.25621665780366953,
+          "candidate_error": -0.935513350222017,
+          "absolute_error_delta": 0.6792966924183474
+        },
+        {
+          "bag": "30618_40ffd323",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786385190.0,
+          "baseline_error": 0.17354092917287467,
+          "candidate_error": 0.8472670043414627,
+          "absolute_error_delta": 0.6737260751685881
+        }
+      ]
+    },
+    "5": {
+      "speed_error_mps": [
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374990.0,
+          "baseline_error": -0.23323031569299868,
+          "candidate_error": -2.0063305442031156,
+          "absolute_error_delta": 1.773100228510117
+        },
+        {
+          "bag": "30618_21dd3af3",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786373760.0,
+          "baseline_error": 0.01915339803819549,
+          "candidate_error": 0.9731896480056452,
+          "absolute_error_delta": 0.9540362499674497
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374480.0,
+          "baseline_error": 3.912534417018053,
+          "candidate_error": 4.786080139160055,
+          "absolute_error_delta": 0.8735457221420022
+        },
+        {
+          "bag": "30618_2cb9ce37",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786387200.0,
+          "baseline_error": 2.1160817751780936,
+          "candidate_error": 2.8571079635011642,
+          "absolute_error_delta": 0.7410261883230707
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374930.0,
+          "baseline_error": 0.21890430932391336,
+          "candidate_error": 0.9521652035886752,
+          "absolute_error_delta": 0.7332608942647618
+        },
+        {
+          "bag": "30618_6cb3280a",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786377660.0,
+          "baseline_error": -0.6362530733241645,
+          "candidate_error": -1.3669704366980362,
+          "absolute_error_delta": 0.7307173633738717
+        },
+        {
+          "bag": "30639_d3c43d69",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778004150.0,
+          "baseline_error": 0.11103815010840634,
+          "candidate_error": 0.8189921347566109,
+          "absolute_error_delta": 0.7079539846482046
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967130.0,
+          "baseline_error": 0.1002831619782647,
+          "candidate_error": 0.789240299356381,
+          "absolute_error_delta": 0.6889571373781163
+        },
+        {
+          "bag": "30639_44226bde",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778002740.0,
+          "baseline_error": 0.9990793496384907,
+          "candidate_error": 1.5580037128949336,
+          "absolute_error_delta": 0.5589243632564429
+        },
+        {
+          "bag": "30618_40ffd323",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786385190.0,
+          "baseline_error": 0.41057891558852244,
+          "candidate_error": 0.9264698307999852,
+          "absolute_error_delta": 0.5158909152114628
+        }
+      ],
+      "distance_error_m": [
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374990.0,
+          "baseline_error": -0.8682460869793154,
+          "candidate_error": -6.213259816048566,
+          "absolute_error_delta": 5.345013729069251
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374480.0,
+          "baseline_error": 8.586533858277608,
+          "candidate_error": 11.111631967891459,
+          "absolute_error_delta": 2.5250981096138503
+        },
+        {
+          "bag": "30618_2cb9ce37",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786387200.0,
+          "baseline_error": 1.847023282688511,
+          "candidate_error": 3.9749287358827274,
+          "absolute_error_delta": 2.1279054531942165
+        },
+        {
+          "bag": "30618_6cb3280a",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786377660.0,
+          "baseline_error": -2.006282935709102,
+          "candidate_error": -3.983275587184359,
+          "absolute_error_delta": 1.976992651475257
+        },
+        {
+          "bag": "30639_d601d28f",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967130.0,
+          "baseline_error": -0.054293685701559014,
+          "candidate_error": 1.9873860452683587,
+          "absolute_error_delta": 1.9330923595667997
+        },
+        {
+          "bag": "30618_21dd3af3",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786373760.0,
+          "baseline_error": -0.4304055422983595,
+          "candidate_error": 2.342900944525553,
+          "absolute_error_delta": 1.9124954022271936
+        },
+        {
+          "bag": "30639_d3c43d69",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778004150.0,
+          "baseline_error": -0.18175698562466813,
+          "candidate_error": 1.97052397131589,
+          "absolute_error_delta": 1.7887669856912218
+        },
+        {
+          "bag": "30618_4d487b0d",
+          "vehicle": "30618",
+          "date": "2026-08-10",
+          "start_s": 1786374930.0,
+          "baseline_error": 0.9205402517784513,
+          "candidate_error": 2.636536882784416,
+          "absolute_error_delta": 1.7159966310059644
+        },
+        {
+          "bag": "30639_44226bde",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1778002740.0,
+          "baseline_error": 2.5512078944884777,
+          "candidate_error": 4.24210515299729,
+          "absolute_error_delta": 1.6908972585088122
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "vehicle": "30639",
+          "date": "2026-05-05",
+          "start_s": 1777967820.0,
+          "baseline_error": 0.1472245999004116,
+          "candidate_error": 1.8351172735867038,
+          "absolute_error_delta": 1.6878926736862923
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "identical_masks_and_output_counts": true,
+    "unscored_bags": [
+      "30618_0259fe53",
+      "30618_0a83c933",
+      "30618_117c2d02",
+      "30618_20096314",
+      "30618_2161b58b",
+      "30618_2255aade",
+      "30618_2d2fa7be",
+      "30618_2f2f1175",
+      "30618_3ba2326f",
+      "30618_3e012faf",
+      "30618_4e1e3181",
+      "30618_5036aa78",
+      "30618_6236f680",
+      "30618_74559c73",
+      "30618_79b204dc",
+      "30618_7a152380",
+      "30618_81c22fee",
+      "30618_9bbe6faa",
+      "30618_e151d6e4"
+    ],
+    "identical_blackout_endpoints": true
+  },
+  "provenance": {
+    "baseline": {
+      "path": "/private/tmp/odometry-round4-baseline/replay_cli",
+      "binary": "360b8c08afcb727a9283911eae3a328c0ae9884760447aacaed3718d0f3bb555"
+    },
+    "candidate": {
+      "path": "/private/tmp/round4-kalman/long_guarded/replay_cli",
+      "binary": "b37a73245bfc141b2975f4b65482ee6c736cd19e44ebdecf8c5e581e4da2c143"
+    },
+    "_evaluation": {
+      "script_sha256": "946112b444b4b9030d632f6135a1dbfccb21c2dc96faec0590dcb534cab29d5f",
+      "manifest_sha256": "9c7db9ea5df911692da03c2525843f20fd957a40ce01ce34ea8030696fc5f221",
+      "table_sha256": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+      "data_sha256": {
+        "30618_0259fe53": "406132a1f86b17d284c6ce4e8a4f2569d801dc7262ba38af3b63787240d84556",
+        "30618_0a83c933": "bb5b3b67fc2411880a0e81849c05751b89dac7c17780c1441848cd325cd66d7d",
+        "30618_117c2d02": "38afc28c3441401d0fc70f57bb19ac9880ee461b822480d78d71803d89d35dfc",
+        "30618_1cc230fa": "0fdf2c3e42c798d704f59c3f48b889c1c5abe1636163b7f5b9ac0833d8af87ee",
+        "30618_20096314": "6b538462a593a792ac4066139020137a37098d3eda775c07c59f2b2bbe797ea1",
+        "30618_2161b58b": "936224a4627bd9cf1422e1101793e4a3e7b83443588faf7e87f0875c0a8478f9",
+        "30618_21dd3af3": "073300bc783d1e49ee32c4b15b0130fcb2c43189003728a31cd80b732cd75b2d",
+        "30618_2255aade": "4e20ef480ecbd8418a331bcdbef4a7c664e6741dad14639bfa5498717d2dbfd6",
+        "30618_2366c74a": "6e8b7e0a8e309abbd6b346d5acbbd4e4d04aa2df04da7467453de00d0bb89470",
+        "30618_2cb9ce37": "f978eb341541f06c3e5d0cb48e293beb797dc9fadfdee492bae886b5b6c7905c",
+        "30618_2d2fa7be": "beb8aa1d14f7a382aef0565550caa3b645928c8ff1ee94d7de17a87d722fa0f9",
+        "30618_2f2f1175": "038bc86008f6ec6abe9ba32f89354370fbed16a83dd5b4b9504294893ba62c94",
+        "30618_3b36e5cd": "c6b7887077c70bbf43b2bbe77507152f8421b7293615370224c606aac6cd6d80",
+        "30618_3ba2326f": "09c2ed2b4269ef19d704558cfaefd53e455a931079f09737680748233b488525",
+        "30618_3e012faf": "f93fe443805741b52928d14f6c9b0baea60cd889e833e3777b529405114d310d",
+        "30618_40ffd323": "aac3c05ca6c428ea8b5913bd717d385b7486f3359afaa3171add9aeaa32f9d34",
+        "30618_45ff6f99": "b6bfa5dd61b7a8b5ea433f9888cc157bdbc7e856b754b0dea09881927a77fe88",
+        "30618_4d487b0d": "d68a0ab25402a48352540149926ae4005a2a4eac81d1e949f5d8cd06d346a2a4",
+        "30618_4e1e3181": "ca8b5bb63d47d7dd6942888417fe8c7cded967fdaeac1c4f74c60c17b50d03b3",
+        "30618_5036aa78": "c55e65bf53e0bbb6b2cc5b4cb8d36009b35c3355046ceca0534fa98ab1e64925",
+        "30618_6236f680": "6a922cacad259b7bc2a2b04636bec44370d0cc6333373d7257aafd04a69415e5",
+        "30618_6cb3280a": "10269922b4a107d8f3ebcc04e13d03f463e3736950ff54d86d8024fb94c5b320",
+        "30618_74559c73": "1239aab936d3add5d34474a86b26f4a0dbc1f652911f610fffaed4cf688d7ae7",
+        "30618_748832b9": "fac743fe65dd6a88da48d53f6086dfe2af66343af49762f02182ae3b0dc9a225",
+        "30618_79b204dc": "053439d6e17a0d5d659601ecc7980ab5967b9a42434789e30e858402e5cf0d70",
+        "30618_7a152380": "677a1990891ba7b259aa4734b3f1947e63783c3d4d977b2e43e790c850f1539f",
+        "30618_81c22fee": "76bf11126452c9ba3ac196d35724fb3820fd5280c08c39d845f39d6545d376cb",
+        "30618_98161270": "4b250bec9f5956aadcf1e1199e71dcfe5ce74c914b9aa5db6534d6432be4353d",
+        "30618_9bbe6faa": "0076b08f20381772fc63df16b380643dfe149f1fb6688f195c9cd277ebf8784b",
+        "30618_af7496f0": "b2c975502880df8c9b37eec77fd37e26382090df19b464fddf81677e5a15e48e",
+        "30618_bab2fe58": "8a02fa1fc2e34bd5609e084c5451a29f5b98ab0e3796fa11d582727cb6b58e0f",
+        "30618_e151d6e4": "45964307eda18dcc4cf9f94a5fbecf5517790594ba50d8479f645fe7a9d00aa9",
+        "30639_253671cc": "2710e9ddfce91c0c20881698b888b193c49712e5da8abaa3114679febb02e54b",
+        "30639_3b3d9eb8": "f60cebc5e9ed7c71fef9eca7b5058a2c73f41ae12f2eb069e8336352d411e5c5",
+        "30639_44226bde": "028dcb9d08506a8650d0947ff6c1548fd2784acad7d7f86c76637af4e6734956",
+        "30639_92226df0": "44c1e2c5d4b970a5a1f24f4c717d70229779dc4fee56719f38718cef685a151b",
+        "30639_9c362687": "16e6dded664ce235fb160aaa7b3452926bf80e9af4be7df95b1898cc0e246e40",
+        "30639_c31df386": "b543dbfb789752f915c64662e2a4152e0822cd7a89e1fc0947afdbeefac7dd2e",
+        "30639_d3c43d69": "cfc4a873d53a1c2c9876a45a74225e00cb3640affa097828159a1ce28b72730f",
+        "30639_d601d28f": "b66b6ecfadf81f811891178b2567e0fa9de105ad2a893f9c8a2671b442bbdbf9",
+        "30639_dce52be4": "dcf86307e3fe4af971c0d75ece63921812551e144871a74d9b7737a94adb5678",
+        "30639_e4379d7f": "1179578af884ac21fe4f666bc5aa82e207cdfb7af586f916897828ce6d85e939"
+      }
+    },
+    "additional_source_hashes": {
+      "evaluation/round4_kalman.py": "5752f00154f600f33efc886adab78ba418df154c92337f0a2d2117584bd4d57b",
+      "evaluation/round4_kalman_generalization.py": "bb260dc58b130a3f49a77a07fe4c999d6e16cd318178d8c188ca63c47fda360f",
+      "evaluation/causal_baseline.py": "7c32f7aed01a6f8a97f3fefb8e20fbb537f8058efedd1fe88eb52ac39ee23bbc",
+      "evaluation/core_benchmark.py": "477dd08fdd3b0782f77500181671586c26e26e4288f0bfa66607f531d7c78836",
+      "evaluation/table_blackout_ablation.py": "de2b0d13603cd45ca2bd78000ddc36a5dc42407894ff7016943ed90a643a5b38",
+      "evaluation/calibrate_drive.py": "ffa6fe1d5b59df5bce46cabd3082216c32a5f668adfe1ef579526c28b092d391"
+    },
+    "frozen_candidate_sources": {
+      "estimator.cpp": "a62db61a8df442b8d89e703eb9cfc9e68ccc158db77e1319aa2a5c4b155b0c1b",
+      "include/tram_odometry/estimator.hpp": "4dff47c2540223bf107555f375b65c9eb97a52e94a2614a090cdce43f5b3ad5d",
+      "candidate.patch": "dfd0e5b01c04548e74b63868b1be320394e57eb5416d23412771080a6f03ff93"
+    }
+  }
+}

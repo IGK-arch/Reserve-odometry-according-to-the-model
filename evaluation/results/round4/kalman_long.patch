@@ -1,0 +1,108 @@
+--- a/estimator.cpp
++++ b/estimator.cpp
+@@ -282,6 +282,10 @@
+ }
+ 
+ void Estimator::invalidateWheelResidual() {
++  // Fault evidence erases learned acceleration; rejected wheels cannot train it.
++  kalman_residual_mps2_ = 0.0;
++  kalman_va_ = 0.0;
++  kalman_aa_ = 0.25;
+   propagation_acceleration_mps2_ = model_acceleration_mps2_;
+   wheel_accel_residual_mps2_ = 0.0;
+   wheel_residual_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+@@ -330,23 +334,22 @@
+       }
+     }
+   }
+-  // Healthy prediction remains the physical/table model. Only a paired
+-  // dropout uses recent independent wheel evidence, fading on the existing
+-  // sensor-staleness time scale. Preserve the original model acceleration for
+-  // slow adaptation; correcting that residual with itself would suppress it.
+-  propagation_acceleration_mps2_ = model_acceleration_mps2_;
+-  if (!fresh(front_) && !fresh(rear_) &&
+-      !front_.jump_pending && !rear_.jump_pending &&
+-      !front_.jump_tentative && !rear_.jump_tentative &&
+-      stamp_s_ >= front_.slip_until_s && stamp_s_ >= rear_.slip_until_s &&
+-      std::isfinite(wheel_residual_stamp_s_)) {
+-    const double age_s = std::max(0.0, stamp_s_ - wheel_residual_stamp_s_);
+-    const double weight = std::exp(
+-        -std::max(0.0, age_s - config_.wheel_stale_s) / config_.wheel_stale_s);
+-    propagation_acceleration_mps2_ = clamp(
+-        model_acceleration_mps2_ + weight * wheel_accel_residual_mps2_,
+-        -4.0, 3.0);
+-  }
++  // Exact OU transition: residual acceleration decays toward the model.
++  constexpr double kTau = 3.0;
++  constexpr double kJerkPsd = 1.0;
++  const double rho = std::exp(-dt_s / kTau);
++  const double h = kTau * (1.0 - rho);
++  propagation_acceleration_mps2_ = clamp(
++      model_acceleration_mps2_ + kalman_residual_mps2_ * h / dt_s, -4.0, 3.0);
++  kalman_residual_mps2_ *= rho;
++  const double qvv = kJerkPsd * kTau * kTau *
++      (dt_s - 2.0 * h + 0.5 * kTau * (1.0 - rho * rho));
++  const double qva = 0.5 * kJerkPsd * h * h;
++  const double qaa = 0.5 * kJerkPsd * kTau * (1.0 - rho * rho);
++  velocity_variance_ = std::max(1.0e-8, velocity_variance_ +
++      2.0 * h * kalman_va_ + h * h * kalman_aa_ + qvv);
++  kalman_va_ = rho * (kalman_va_ + h * kalman_aa_) + qva;
++  kalman_aa_ = rho * rho * kalman_aa_ + qaa;
+   velocity_mps_ =
+       clamp(before + propagation_acceleration_mps2_ * dt_s, 0.0,
+             config_.max_speed_mps);
+@@ -375,7 +378,7 @@
+       std::min(1.0e12,
+                distance_variance_ + velocity_variance_ * dt_s * dt_s +
+                    0.25 * process_var * dt_s * dt_s);
+-  velocity_variance_ = std::min(1.0e6, velocity_variance_ + process_var);
++  velocity_variance_ = std::min(1.0e6, velocity_variance_);
+   clampState();
+ }
+ 
+@@ -838,11 +841,27 @@
+                             2.0);
+   // An accepted wheel agreeing with its recent partner should retain little
+   // model bias. Isolated measurements keep variance weighting.
+-  const double kalman_gain = (pair_recovery || pair_consistent)
+-                                 ? 0.90
+-                                 : clamp(velocity_variance_ /
+-                                             (velocity_variance_ + r),
+-                                         0.40, 0.88);
++  const bool kalman_healthy_pair =
++      pair_consistent && trusted(other) && !other_bad &&
++      !wheel.jump_pending && !other.jump_pending &&
++      !wheel.jump_tentative && !other.jump_tentative;
++  const double kalman_gain = kalman_healthy_pair
++      ? velocity_variance_ / (velocity_variance_ + r)
++      : ((pair_recovery || pair_consistent) ? 0.90
++         : clamp(velocity_variance_ / (velocity_variance_ + r), 0.40, 0.88));
++  if (kalman_healthy_pair) {
++    const double accel_gain = kalman_va_ / (velocity_variance_ + r);
++    kalman_residual_mps2_ = clamp(kalman_residual_mps2_ +
++        accel_gain * clamp(corrected_innovation, -0.5, 0.5), -1.5, 1.5);
++    kalman_aa_ = std::max(1.0e-8, kalman_aa_ - accel_gain * kalman_va_);
++    kalman_va_ *= 1.0 - kalman_gain;
++    if (measured_mps < 0.01 && velocity_mps_ < 0.05) {
++      kalman_residual_mps2_ = 0.0;
++      kalman_va_ = 0.0;
++    }
++  } else {
++    kalman_va_ = 0.0;
++  }
+   const double before_update = velocity_mps_;
+   velocity_mps_ =
+       clamp(velocity_mps_ + kalman_gain * corrected_innovation, 0.0,
+--- a/estimator.hpp
++++ b/estimator.hpp
+@@ -166,6 +166,10 @@
+   double acceleration_mps2_ = 0.0;
+   double model_acceleration_mps2_ = 0.0;
+   double propagation_acceleration_mps2_ = 0.0;
++  // Research only: covariance of coupled velocity/acceleration residual.
++  double kalman_residual_mps2_ = 0.0;
++  double kalman_va_ = 0.0;
++  double kalman_aa_ = 0.25;
+   double wheel_accel_residual_mps2_ = 0.0;
+   double wheel_residual_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   double velocity_variance_ = 1.0;

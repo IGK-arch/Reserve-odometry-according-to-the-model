@@ -1,0 +1,18 @@
+{
+  "frozen_utc": "2026-09-27T15:01:43.789627+00:00",
+  "decision": "Accept pure rigid-body rover-anchor geometry correction for parent integration; reject mixed-quality and joint-pose variants. Freeze before validation, historical holdout or public reference.",
+  "candidate": {
+    "source_sha256": "804049365060a270e17c8e34feeebe5ac15086a31a9d0fe9fe5a209c1bf095c2",
+    "binary_sha256": "9262ab33ea5f81201ada070ca3aa4d9824498f300d72c76e74cef8e1e71b99b6"
+  },
+  "source": "/private/tmp/round4-startup/pure/navigation.cpp",
+  "binary": "/private/tmp/round4-startup/pure/navigation_replay",
+  "production_file": "ros2_ws/src/tram_odometry/src/navigation.cpp",
+  "patch": "evaluation/round4_startup_pure.patch",
+  "behavioral_test": "evaluation/round4_startup_geometry_test.cpp",
+  "train_report_sha256": "bd7664b7a13a419571cead23de61ab36c84d16f6de5c40f187e5c5dd8fc47338",
+  "train_bags": 42,
+  "train_absolute_and_numeric_parity_bags": 42,
+  "synthetic_geometric_cases_pass": 8,
+  "held_out_or_public_read": false
+}

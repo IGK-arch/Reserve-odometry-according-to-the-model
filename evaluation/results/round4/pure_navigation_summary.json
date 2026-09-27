@@ -1,0 +1,237 @@
+{
+  "protocol": "Frozen pure rover correction; full original GNSS study, all 46 cached bags (33 train, 13 validation), four modes. Clean paired-GNSS proxy shares receivers with input; not independent fused truth. Existing source-provenance entries describe current workspace; frozen executable and scratch-source hashes below identify evaluated implementation.",
+  "selection_frozen_before_evaluation": "2026-09-27T15:01:43.789627+00:00",
+  "frozen_source_sha256": "804049365060a270e17c8e34feeebe5ac15086a31a9d0fe9fe5a209c1bf095c2",
+  "candidate_binary_sha256": "9262ab33ea5f81201ada070ca3aa4d9824498f300d72c76e74cef8e1e71b99b6",
+  "baseline_binary_sha256": "eee5b9826c9c9341feca513b5394a08b63882b2d59a27e570c52be4fbcdb313b",
+  "report_sha256": "dc360005a6a62c55a0abe70d361321dc8cf7a16e1320c7a1ff023e62216b80f2",
+  "bags": 46,
+  "skipped": [],
+  "sessions": {
+    "2026-07-27": {
+      "startup": {
+        "bags": 29,
+        "common_n": 709806,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 709806,
+        "baseline_common_rmse_m": 5.423888199528884,
+        "candidate_n": 709806,
+        "candidate_common_rmse_m": 5.423888199528884
+      },
+      "sparse": {
+        "bags": 29,
+        "common_n": 709806,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 709806,
+        "baseline_common_rmse_m": 4.971965222451025,
+        "candidate_n": 709806,
+        "candidate_common_rmse_m": 4.971965222451025
+      },
+      "delayed": {
+        "bags": 29,
+        "common_n": 709806,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 709806,
+        "baseline_common_rmse_m": 5.423888199528884,
+        "candidate_n": 709806,
+        "candidate_common_rmse_m": 5.423888199528884
+      },
+      "frozen": {
+        "bags": 29,
+        "common_n": 709806,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 709806,
+        "baseline_common_rmse_m": 4.667901473791554,
+        "candidate_n": 709806,
+        "candidate_common_rmse_m": 4.667901473791554
+      }
+    },
+    "2026-08-26": {
+      "startup": {
+        "bags": 13,
+        "common_n": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 301243,
+        "baseline_common_rmse_m": 2.7981367888641815,
+        "candidate_n": 301243,
+        "candidate_common_rmse_m": 2.7981367888641815
+      },
+      "sparse": {
+        "bags": 13,
+        "common_n": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 301243,
+        "baseline_common_rmse_m": 1.8409865070374305,
+        "candidate_n": 301243,
+        "candidate_common_rmse_m": 1.8409865070374305
+      },
+      "delayed": {
+        "bags": 13,
+        "common_n": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 301243,
+        "baseline_common_rmse_m": 2.7981367888641815,
+        "candidate_n": 301243,
+        "candidate_common_rmse_m": 2.7981367888641815
+      },
+      "frozen": {
+        "bags": 13,
+        "common_n": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 301243,
+        "baseline_common_rmse_m": 1.7525682569523402,
+        "candidate_n": 301243,
+        "candidate_common_rmse_m": 1.7525682569523402
+      }
+    },
+    "2026-09-03": {
+      "startup": {
+        "bags": 4,
+        "common_n": 102217,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 102217,
+        "baseline_common_rmse_m": 37.17507810587369,
+        "candidate_n": 102217,
+        "candidate_common_rmse_m": 37.17507810587369
+      },
+      "sparse": {
+        "bags": 4,
+        "common_n": 102217,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 102217,
+        "baseline_common_rmse_m": 11.47327678331591,
+        "candidate_n": 102217,
+        "candidate_common_rmse_m": 11.47327678331591
+      },
+      "delayed": {
+        "bags": 4,
+        "common_n": 102217,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 102217,
+        "baseline_common_rmse_m": 37.17507810587369,
+        "candidate_n": 102217,
+        "candidate_common_rmse_m": 37.17507810587369
+      },
+      "frozen": {
+        "bags": 4,
+        "common_n": 102217,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_n": 102217,
+        "baseline_common_rmse_m": 28.197196969456424,
+        "candidate_n": 102217,
+        "candidate_common_rmse_m": 28.197196969456424
+      }
+    }
+  },
+  "all_output_bytes_identical": true,
+  "all_longitudinal_values_identical": true,
+  "lost_absolute_matches": 0,
+  "gained_absolute_matches": 0,
+  "different_modes": [],
+  "by_split": {
+    "train": {
+      "startup": {
+        "bags": 33,
+        "scored_bags": 31,
+        "common_n": 812023,
+        "baseline_absolute_matches": 812023,
+        "candidate_absolute_matches": 812023,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 14.13078371022238,
+        "candidate_rmse_m": 14.13078371022238
+      },
+      "sparse": {
+        "bags": 33,
+        "scored_bags": 31,
+        "common_n": 812023,
+        "baseline_absolute_matches": 812023,
+        "candidate_absolute_matches": 812023,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 6.178909227795251,
+        "candidate_rmse_m": 6.178909227795251
+      },
+      "delayed": {
+        "bags": 33,
+        "scored_bags": 31,
+        "common_n": 812023,
+        "baseline_absolute_matches": 812023,
+        "candidate_absolute_matches": 812023,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 14.13078371022238,
+        "candidate_rmse_m": 14.13078371022238
+      },
+      "frozen": {
+        "bags": 33,
+        "scored_bags": 31,
+        "common_n": 812023,
+        "baseline_absolute_matches": 812023,
+        "candidate_absolute_matches": 812023,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 10.914712306658638,
+        "candidate_rmse_m": 10.914712306658638
+      }
+    },
+    "validation": {
+      "startup": {
+        "bags": 13,
+        "scored_bags": 13,
+        "common_n": 301243,
+        "baseline_absolute_matches": 301243,
+        "candidate_absolute_matches": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 2.7981367888641815,
+        "candidate_rmse_m": 2.7981367888641815
+      },
+      "sparse": {
+        "bags": 13,
+        "scored_bags": 13,
+        "common_n": 301243,
+        "baseline_absolute_matches": 301243,
+        "candidate_absolute_matches": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 1.8409865070374305,
+        "candidate_rmse_m": 1.8409865070374305
+      },
+      "delayed": {
+        "bags": 13,
+        "scored_bags": 13,
+        "common_n": 301243,
+        "baseline_absolute_matches": 301243,
+        "candidate_absolute_matches": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 2.7981367888641815,
+        "candidate_rmse_m": 2.7981367888641815
+      },
+      "frozen": {
+        "bags": 13,
+        "scored_bags": 13,
+        "common_n": 301243,
+        "baseline_absolute_matches": 301243,
+        "candidate_absolute_matches": 301243,
+        "lost_absolute_matches": 0,
+        "gained_absolute_matches": 0,
+        "baseline_rmse_m": 1.7525682569523402,
+        "candidate_rmse_m": 1.7525682569523402
+      }
+    }
+  }
+}

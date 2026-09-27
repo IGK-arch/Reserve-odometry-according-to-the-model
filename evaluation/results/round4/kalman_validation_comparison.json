@@ -1,0 +1,927 @@
+{
+  "protocol": "Post-freeze validation/holdout report; never changes the selected estimator.",
+  "split": "validation",
+  "selected_variant": "long_guarded",
+  "candidate_frozen_sha256": "b37a73245bfc141b2975f4b65482ee6c736cd19e44ebdecf8c5e581e4da2c143",
+  "pooled": {
+    "baseline": {
+      "bags": 13,
+      "scored_bags": 13,
+      "n": 286515,
+      "nominal_rmse_mps": 0.03314561937610315,
+      "blackouts": {
+        "1": {
+          "n": 284,
+          "speed_rmse_mps": 0.1344841325503035,
+          "distance_rmse_m": 0.07653643140262617,
+          "speed_error_mps_abs_p95": 0.2173243638266252,
+          "speed_error_mps_abs_max": 1.4896070236378278,
+          "distance_error_m_abs_p95": 0.12161842711327066,
+          "distance_error_m_abs_max": 0.845637985604939
+        },
+        "3": {
+          "n": 284,
+          "speed_rmse_mps": 0.3791712417075869,
+          "distance_rmse_m": 0.5774860752658652,
+          "speed_error_mps_abs_p95": 0.5411420884347662,
+          "speed_error_mps_abs_max": 4.282837401822587,
+          "distance_error_m_abs_p95": 0.8309539522940955,
+          "distance_error_m_abs_max": 6.799849493570118
+        },
+        "5": {
+          "n": 284,
+          "speed_rmse_mps": 0.5338827828407926,
+          "distance_rmse_m": 1.4668223215802199,
+          "speed_error_mps_abs_p95": 0.8764732934632679,
+          "speed_error_mps_abs_max": 5.267944157738313,
+          "distance_error_m_abs_p95": 2.149345082464278,
+          "distance_error_m_abs_max": 16.74523967308023
+        }
+      }
+    },
+    "candidate": {
+      "bags": 13,
+      "scored_bags": 13,
+      "n": 286515,
+      "nominal_rmse_mps": 0.030683561048760726,
+      "blackouts": {
+        "1": {
+          "n": 284,
+          "speed_rmse_mps": 0.0993601370835074,
+          "distance_rmse_m": 0.050210176591061154,
+          "speed_error_mps_abs_p95": 0.19662789480201526,
+          "speed_error_mps_abs_max": 0.4669494300784578,
+          "distance_error_m_abs_p95": 0.09472397748071723,
+          "distance_error_m_abs_max": 0.22986117326600297
+        },
+        "3": {
+          "n": 284,
+          "speed_rmse_mps": 0.26125692383373644,
+          "distance_rmse_m": 0.38991386970252895,
+          "speed_error_mps_abs_p95": 0.4949210212884647,
+          "speed_error_mps_abs_max": 1.1453201017762784,
+          "distance_error_m_abs_p95": 0.7266106351265422,
+          "distance_error_m_abs_max": 1.9592386796169556
+        },
+        "5": {
+          "n": 284,
+          "speed_rmse_mps": 0.3882306095419641,
+          "distance_rmse_m": 0.9847433112154432,
+          "speed_error_mps_abs_p95": 0.7547332553186283,
+          "speed_error_mps_abs_max": 1.7547583866638714,
+          "distance_error_m_abs_p95": 1.8567659339739775,
+          "distance_error_m_abs_max": 4.355740160690811
+        }
+      }
+    }
+  },
+  "vehicles": {
+    "30618": {
+      "baseline": {
+        "bags": 13,
+        "scored_bags": 13,
+        "n": 286515,
+        "nominal_rmse_mps": 0.03314561937610315,
+        "blackouts": {
+          "1": {
+            "n": 284,
+            "speed_rmse_mps": 0.1344841325503035,
+            "distance_rmse_m": 0.07653643140262617,
+            "speed_error_mps_abs_p95": 0.2173243638266252,
+            "speed_error_mps_abs_max": 1.4896070236378278,
+            "distance_error_m_abs_p95": 0.12161842711327066,
+            "distance_error_m_abs_max": 0.845637985604939
+          },
+          "3": {
+            "n": 284,
+            "speed_rmse_mps": 0.3791712417075869,
+            "distance_rmse_m": 0.5774860752658652,
+            "speed_error_mps_abs_p95": 0.5411420884347662,
+            "speed_error_mps_abs_max": 4.282837401822587,
+            "distance_error_m_abs_p95": 0.8309539522940955,
+            "distance_error_m_abs_max": 6.799849493570118
+          },
+          "5": {
+            "n": 284,
+            "speed_rmse_mps": 0.5338827828407926,
+            "distance_rmse_m": 1.4668223215802199,
+            "speed_error_mps_abs_p95": 0.8764732934632679,
+            "speed_error_mps_abs_max": 5.267944157738313,
+            "distance_error_m_abs_p95": 2.149345082464278,
+            "distance_error_m_abs_max": 16.74523967308023
+          }
+        }
+      },
+      "candidate": {
+        "bags": 13,
+        "scored_bags": 13,
+        "n": 286515,
+        "nominal_rmse_mps": 0.030683561048760726,
+        "blackouts": {
+          "1": {
+            "n": 284,
+            "speed_rmse_mps": 0.0993601370835074,
+            "distance_rmse_m": 0.050210176591061154,
+            "speed_error_mps_abs_p95": 0.19662789480201526,
+            "speed_error_mps_abs_max": 0.4669494300784578,
+            "distance_error_m_abs_p95": 0.09472397748071723,
+            "distance_error_m_abs_max": 0.22986117326600297
+          },
+          "3": {
+            "n": 284,
+            "speed_rmse_mps": 0.26125692383373644,
+            "distance_rmse_m": 0.38991386970252895,
+            "speed_error_mps_abs_p95": 0.4949210212884647,
+            "speed_error_mps_abs_max": 1.1453201017762784,
+            "distance_error_m_abs_p95": 0.7266106351265422,
+            "distance_error_m_abs_max": 1.9592386796169556
+          },
+          "5": {
+            "n": 284,
+            "speed_rmse_mps": 0.3882306095419641,
+            "distance_rmse_m": 0.9847433112154432,
+            "speed_error_mps_abs_p95": 0.7547332553186283,
+            "speed_error_mps_abs_max": 1.7547583866638714,
+            "distance_error_m_abs_p95": 1.8567659339739775,
+            "distance_error_m_abs_max": 4.355740160690811
+          }
+        }
+      }
+    }
+  },
+  "sessions": [
+    {
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "variant": "baseline",
+      "bags": 13,
+      "n": 286515,
+      "nominal_rmse_mps": 0.03314561937610315,
+      "blackout1": {
+        "windows": 284,
+        "speed_rmse_mps": 0.1344841325503035,
+        "distance_rmse_m": 0.07653643140262617
+      },
+      "blackout3": {
+        "windows": 284,
+        "speed_rmse_mps": 0.3791712417075869,
+        "distance_rmse_m": 0.5774860752658652
+      },
+      "blackout5": {
+        "windows": 284,
+        "speed_rmse_mps": 0.5338827828407926,
+        "distance_rmse_m": 1.4668223215802199
+      }
+    },
+    {
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "variant": "candidate",
+      "bags": 13,
+      "n": 286515,
+      "nominal_rmse_mps": 0.030683561048760726,
+      "blackout1": {
+        "windows": 284,
+        "speed_rmse_mps": 0.0993601370835074,
+        "distance_rmse_m": 0.050210176591061154
+      },
+      "blackout3": {
+        "windows": 284,
+        "speed_rmse_mps": 0.26125692383373644,
+        "distance_rmse_m": 0.38991386970252895
+      },
+      "blackout5": {
+        "windows": 284,
+        "speed_rmse_mps": 0.3882306095419641,
+        "distance_rmse_m": 0.9847433112154432
+      }
+    }
+  ],
+  "nominal_bag_tails": [
+    {
+      "bag": "30618_33bec73f",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.04896797007635878,
+      "candidate": 0.04973290666041556,
+      "delta": 0.0007649365840567829,
+      "ratio": 1.0156211618097293
+    },
+    {
+      "bag": "30618_082f1d65",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.028723214305187053,
+      "candidate": 0.02857051054894836,
+      "delta": -0.00015270375623869376,
+      "ratio": 0.9946836118473301
+    },
+    {
+      "bag": "30618_dd8e6395",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.03050914089929781,
+      "candidate": 0.028953511302981596,
+      "delta": -0.0015556295963162145,
+      "ratio": 0.9490110324164514
+    },
+    {
+      "bag": "30618_437e855c",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.031838687467172624,
+      "candidate": 0.029964555260282577,
+      "delta": -0.0018741322068900473,
+      "ratio": 0.9411366373434088
+    },
+    {
+      "bag": "30618_dd8d0741",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.032195571195308276,
+      "candidate": 0.030263677346240553,
+      "delta": -0.0019318938490677229,
+      "ratio": 0.9399950434999814
+    },
+    {
+      "bag": "30618_01f73500",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.031200314868540125,
+      "candidate": 0.0292243697957285,
+      "delta": -0.0019759450728116246,
+      "ratio": 0.9366690662854814
+    },
+    {
+      "bag": "30618_a869780d",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.030856285583463497,
+      "candidate": 0.028754699766221872,
+      "delta": -0.0021015858172416246,
+      "ratio": 0.9318911600180448
+    },
+    {
+      "bag": "30618_67b89902",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.028967943475052566,
+      "candidate": 0.026749469426724296,
+      "delta": -0.00221847404832827,
+      "ratio": 0.9234162393944589
+    },
+    {
+      "bag": "30618_3e9f4952",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.030757987639120053,
+      "candidate": 0.02853285667473789,
+      "delta": -0.002225130964382163,
+      "ratio": 0.9276568093306568
+    },
+    {
+      "bag": "30618_a53d5f6f",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.03137893267942048,
+      "candidate": 0.02898281821580807,
+      "delta": -0.0023961144636124136,
+      "ratio": 0.9236393892650187
+    },
+    {
+      "bag": "30618_d4ba7005",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.031586290396022274,
+      "candidate": 0.027217280344748032,
+      "delta": -0.004369010051274241,
+      "ratio": 0.8616801784414532
+    },
+    {
+      "bag": "30618_e9a34502",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.031109146684404305,
+      "candidate": 0.0263296767644197,
+      "delta": -0.004779469919984604,
+      "ratio": 0.8463644802452696
+    },
+    {
+      "bag": "30618_2050d396",
+      "vehicle": "30618",
+      "date": "2026-08-26",
+      "baseline": 0.03353902356661264,
+      "candidate": 0.0265203578550013,
+      "delta": -0.00701866571161134,
+      "ratio": 0.7907313640878243
+    }
+  ],
+  "blackout_window_tails": {
+    "1": {
+      "speed_error_mps": [
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742720.0,
+          "baseline_error": -0.010769326077117114,
+          "candidate_error": 0.26432407082731757,
+          "absolute_error_delta": 0.25355474475020046
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733840.0,
+          "baseline_error": -0.01514792336120685,
+          "candidate_error": 0.23730338158008557,
+          "absolute_error_delta": 0.22215545821887872
+        },
+        {
+          "bag": "30618_01f73500",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787732310.0,
+          "baseline_error": -0.008476945370546218,
+          "candidate_error": -0.22227232832185972,
+          "absolute_error_delta": 0.2137953829513135
+        },
+        {
+          "bag": "30618_d4ba7005",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787728050.0,
+          "baseline_error": 0.009272354144119532,
+          "candidate_error": 0.17090307475857358,
+          "absolute_error_delta": 0.16163072061445405
+        },
+        {
+          "bag": "30618_dd8e6395",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787728710.0,
+          "baseline_error": 0.007983905385024581,
+          "candidate_error": -0.15027713689959254,
+          "absolute_error_delta": 0.14229323151456796
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787731560.0,
+          "baseline_error": 0.0011574064593213862,
+          "candidate_error": -0.14305767484883747,
+          "absolute_error_delta": 0.14190026838951608
+        },
+        {
+          "bag": "30618_437e855c",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787725320.0,
+          "baseline_error": -0.005945296696934221,
+          "candidate_error": -0.14055891238703833,
+          "absolute_error_delta": 0.1346136156901041
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787736810.0,
+          "baseline_error": 0.04989513138210899,
+          "candidate_error": 0.17976882920522197,
+          "absolute_error_delta": 0.12987369782311298
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787730720.0,
+          "baseline_error": 0.07198874046166637,
+          "candidate_error": 0.20151702527204307,
+          "absolute_error_delta": 0.1295282848103767
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733720.0,
+          "baseline_error": 0.003641829910543848,
+          "candidate_error": 0.12328945894709875,
+          "absolute_error_delta": 0.1196476290365549
+        }
+      ],
+      "distance_error_m": [
+        {
+          "bag": "30618_01f73500",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787732310.0,
+          "baseline_error": -0.06085069232046525,
+          "candidate_error": -0.16929342409054815,
+          "absolute_error_delta": 0.1084427317700829
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787730720.0,
+          "baseline_error": 0.03976947821310439,
+          "candidate_error": 0.11978324692917575,
+          "absolute_error_delta": 0.08001376871607135
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733840.0,
+          "baseline_error": -0.03364482099499533,
+          "candidate_error": 0.11150349995074116,
+          "absolute_error_delta": 0.07785867895574583
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787736810.0,
+          "baseline_error": 0.003722100345488144,
+          "candidate_error": 0.0803179992986891,
+          "absolute_error_delta": 0.07659589895320096
+        },
+        {
+          "bag": "30618_437e855c",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787725320.0,
+          "baseline_error": 0.008076478454916547,
+          "candidate_error": -0.07504051095528386,
+          "absolute_error_delta": 0.06696403250036731
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787736300.0,
+          "baseline_error": -0.011490631441322563,
+          "candidate_error": -0.07385975951669721,
+          "absolute_error_delta": 0.06236912807537465
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733720.0,
+          "baseline_error": -0.004218011868338145,
+          "candidate_error": 0.06557281595147746,
+          "absolute_error_delta": 0.061354804083139314
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733210.0,
+          "baseline_error": 0.006218182999475186,
+          "candidate_error": 0.06531349333912884,
+          "absolute_error_delta": 0.05909531033965365
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787736600.0,
+          "baseline_error": -0.0028229004920885536,
+          "candidate_error": -0.0534989782594093,
+          "absolute_error_delta": 0.05067607776732075
+        },
+        {
+          "bag": "30618_dd8e6395",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787728890.0,
+          "baseline_error": -0.006479688487908142,
+          "candidate_error": 0.05708986409597738,
+          "absolute_error_delta": 0.05061017560806924
+        }
+      ]
+    },
+    "3": {
+      "speed_error_mps": [
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742720.0,
+          "baseline_error": 0.0014683773961863267,
+          "candidate_error": 0.7462449182157016,
+          "absolute_error_delta": 0.7447765408195153
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787734320.0,
+          "baseline_error": 0.31470672164225366,
+          "candidate_error": 0.7103994979642181,
+          "absolute_error_delta": 0.3956927763219644
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787737290.0,
+          "baseline_error": 0.06963302693803675,
+          "candidate_error": 0.3969876345594687,
+          "absolute_error_delta": 0.327354607621432
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787730720.0,
+          "baseline_error": 0.09302674654356302,
+          "candidate_error": 0.41959354380938585,
+          "absolute_error_delta": 0.32656679726582283
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733390.0,
+          "baseline_error": 0.07794489341485189,
+          "candidate_error": 0.38768331664226174,
+          "absolute_error_delta": 0.30973842322740985
+        },
+        {
+          "bag": "30618_3e9f4952",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742960.0,
+          "baseline_error": -0.014537825465755105,
+          "candidate_error": -0.32163805707132864,
+          "absolute_error_delta": 0.30710023160557354
+        },
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742750.0,
+          "baseline_error": -0.045770660147987474,
+          "candidate_error": -0.33015759231410957,
+          "absolute_error_delta": 0.2843869321661221
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787731290.0,
+          "baseline_error": 0.2647872267569942,
+          "candidate_error": 0.5417116377242008,
+          "absolute_error_delta": 0.27692441096720666
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733720.0,
+          "baseline_error": 0.05111916148469842,
+          "candidate_error": 0.3257164738647651,
+          "absolute_error_delta": 0.2745973123800667
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787736690.0,
+          "baseline_error": 0.01504754513748896,
+          "candidate_error": 0.2857786182537536,
+          "absolute_error_delta": 0.27073107311626465
+        }
+      ],
+      "distance_error_m": [
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742720.0,
+          "baseline_error": -0.06761366669293523,
+          "candidate_error": 1.1528976896648118,
+          "absolute_error_delta": 1.0852840229718765
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787734320.0,
+          "baseline_error": 0.044298261396743754,
+          "candidate_error": 0.6786314864557248,
+          "absolute_error_delta": 0.634333225058981
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787730720.0,
+          "baseline_error": 0.2748822698429869,
+          "candidate_error": 0.8284294495854958,
+          "absolute_error_delta": 0.5535471797425089
+        },
+        {
+          "bag": "30618_01f73500",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787732310.0,
+          "baseline_error": 0.223644339425201,
+          "candidate_error": -0.7286596931578142,
+          "absolute_error_delta": 0.5050153537326132
+        },
+        {
+          "bag": "30618_d4ba7005",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787728050.0,
+          "baseline_error": -0.10911030406278144,
+          "candidate_error": 0.6070636377528871,
+          "absolute_error_delta": 0.49795333369010564
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733390.0,
+          "baseline_error": 0.11770898525818652,
+          "candidate_error": 0.6062613133787771,
+          "absolute_error_delta": 0.4885523281205906
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733720.0,
+          "baseline_error": 0.041087803860826,
+          "candidate_error": 0.5222522702529275,
+          "absolute_error_delta": 0.48116446639210153
+        },
+        {
+          "bag": "30618_3e9f4952",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787743650.0,
+          "baseline_error": -0.2715946142442718,
+          "candidate_error": -0.7486287442151607,
+          "absolute_error_delta": 0.4770341299708889
+        },
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742450.0,
+          "baseline_error": 0.09387462452400186,
+          "candidate_error": 0.5329062557095732,
+          "absolute_error_delta": 0.4390316311855713
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787731290.0,
+          "baseline_error": 0.4206913551265874,
+          "candidate_error": 0.8583123945768651,
+          "absolute_error_delta": 0.43762103945027775
+        }
+      ]
+    },
+    "5": {
+      "speed_error_mps": [
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742720.0,
+          "baseline_error": 0.7537384457308036,
+          "candidate_error": 1.7547583866638714,
+          "absolute_error_delta": 1.0010199409330678
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787734320.0,
+          "baseline_error": 0.6656340420480897,
+          "candidate_error": 1.210598793393903,
+          "absolute_error_delta": 0.5449647513458133
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787737290.0,
+          "baseline_error": 0.26001228731639703,
+          "candidate_error": 0.6893650496222867,
+          "absolute_error_delta": 0.4293527623058897
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787730720.0,
+          "baseline_error": 0.1908949840562144,
+          "candidate_error": 0.6099221107237502,
+          "absolute_error_delta": 0.41902712666753583
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733390.0,
+          "baseline_error": 0.062136331188625604,
+          "candidate_error": 0.47284227438667337,
+          "absolute_error_delta": 0.41070594319804776
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787736600.0,
+          "baseline_error": -0.18878584113959818,
+          "candidate_error": -0.5465549318279987,
+          "absolute_error_delta": 0.35776909068840057
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787731290.0,
+          "baseline_error": 0.34407250507275977,
+          "candidate_error": 0.6957685722982159,
+          "absolute_error_delta": 0.3516960672254561
+        },
+        {
+          "bag": "30618_dd8e6395",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787729730.0,
+          "baseline_error": -0.07471807453845614,
+          "candidate_error": 0.4186698743845696,
+          "absolute_error_delta": 0.34395179984611346
+        },
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742690.0,
+          "baseline_error": -0.2482464711297201,
+          "candidate_error": -0.5908132114710378,
+          "absolute_error_delta": 0.34256674034131773
+        },
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742450.0,
+          "baseline_error": 0.44099616425075894,
+          "candidate_error": 0.7659026422616328,
+          "absolute_error_delta": 0.3249064780108739
+        }
+      ],
+      "distance_error_m": [
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742720.0,
+          "baseline_error": 0.4490920455924865,
+          "candidate_error": 3.439734035921582,
+          "absolute_error_delta": 2.9906419903290953
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787734320.0,
+          "baseline_error": 1.0742391916802223,
+          "candidate_error": 2.6638679848821045,
+          "absolute_error_delta": 1.5896287932018822
+        },
+        {
+          "bag": "30618_2050d396",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787737290.0,
+          "baseline_error": 0.17147499417573542,
+          "candidate_error": 1.4848812712726094,
+          "absolute_error_delta": 1.313406277096874
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787730720.0,
+          "baseline_error": 0.6186034530028905,
+          "candidate_error": 1.9313634811961151,
+          "absolute_error_delta": 1.3127600281932246
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733390.0,
+          "baseline_error": 0.359808327469068,
+          "candidate_error": 1.5774945766912651,
+          "absolute_error_delta": 1.2176862492221971
+        },
+        {
+          "bag": "30618_e9a34502",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787731290.0,
+          "baseline_error": 1.0105440652379176,
+          "candidate_error": 2.089798725481268,
+          "absolute_error_delta": 1.0792546602433504
+        },
+        {
+          "bag": "30618_33bec73f",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787733720.0,
+          "baseline_error": 0.11343210209870946,
+          "candidate_error": 1.1821802945367885,
+          "absolute_error_delta": 1.068748192438079
+        },
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742450.0,
+          "baseline_error": 0.660775280177667,
+          "candidate_error": 1.6970444992396452,
+          "absolute_error_delta": 1.0362692190619782
+        },
+        {
+          "bag": "30618_67b89902",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787742690.0,
+          "baseline_error": -0.809608228719533,
+          "candidate_error": -1.828451348502547,
+          "absolute_error_delta": 1.0188431197830141
+        },
+        {
+          "bag": "30618_a869780d",
+          "vehicle": "30618",
+          "date": "2026-08-26",
+          "start_s": 1787770890.0,
+          "baseline_error": -0.055064355393637854,
+          "candidate_error": -0.9780001509487146,
+          "absolute_error_delta": 0.9229357955550768
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "identical_masks_and_output_counts": true,
+    "unscored_bags": [],
+    "identical_blackout_endpoints": true
+  },
+  "provenance": {
+    "baseline": {
+      "path": "/private/tmp/odometry-round4-baseline/replay_cli",
+      "binary": "360b8c08afcb727a9283911eae3a328c0ae9884760447aacaed3718d0f3bb555"
+    },
+    "candidate": {
+      "path": "/private/tmp/round4-kalman/long_guarded/replay_cli",
+      "binary": "b37a73245bfc141b2975f4b65482ee6c736cd19e44ebdecf8c5e581e4da2c143"
+    },
+    "_evaluation": {
+      "script_sha256": "946112b444b4b9030d632f6135a1dbfccb21c2dc96faec0590dcb534cab29d5f",
+      "manifest_sha256": "9c7db9ea5df911692da03c2525843f20fd957a40ce01ce34ea8030696fc5f221",
+      "table_sha256": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+      "data_sha256": {
+        "30618_01f73500": "c06cb5b8ae3264db88494ac10081e6240a67455d7190c24349b16f7a90170fa7",
+        "30618_082f1d65": "447ec1edc79bea775b1aa0c6ed6764255524ca01954d61a981e6e10b4ca01182",
+        "30618_2050d396": "0c63f7d8a45c605ee40853a6018ff2899e7825b4dea5a2ea50874ed80ff61de6",
+        "30618_33bec73f": "d0a9c4a3af1ea752e18839a546bbbdc21e3715030605026f258078657e51a41d",
+        "30618_3e9f4952": "d7d4fc570a0ae5cfb8bdcb7b1ebecf15e6a9dc9391b9d663125e3ba56ce5c9a5",
+        "30618_437e855c": "1056f798971cabb555d8bd3ec480d6a215898d1437970410fb87745d831fe919",
+        "30618_67b89902": "3a412e6cc81aa4649d07f80a77bf074c1ca11e152eb9b87be29d4f0846688f30",
+        "30618_a53d5f6f": "18dbb0251cf555263db1b34771afe702e36c615db4fe8e347fd7be04610b2a87",
+        "30618_a869780d": "494e02075c0205b143926ee11d5e2f46a8fa81105b3b14fdc0c9c5a35979928b",
+        "30618_d4ba7005": "bfa85c5d654e27599b17c90cc1b4265e48c106808f19484c48828a0bc4e90f5e",
+        "30618_dd8d0741": "2213264f131b41a2ef40c91794d304dec825dc08bcbb194a37829bf4e1e4b3eb",
+        "30618_dd8e6395": "5839e1b438b61795329451db5f211dbd7b37b6e2ad25774a0074e219c84246b4",
+        "30618_e9a34502": "1f5a479b7790a92463b81b1b1e871da4ab3e65071045e7d156dd062fbcaea735"
+      }
+    },
+    "additional_source_hashes": {
+      "evaluation/round4_kalman.py": "5752f00154f600f33efc886adab78ba418df154c92337f0a2d2117584bd4d57b",
+      "evaluation/round4_kalman_generalization.py": "bb260dc58b130a3f49a77a07fe4c999d6e16cd318178d8c188ca63c47fda360f",
+      "evaluation/causal_baseline.py": "7c32f7aed01a6f8a97f3fefb8e20fbb537f8058efedd1fe88eb52ac39ee23bbc",
+      "evaluation/core_benchmark.py": "477dd08fdd3b0782f77500181671586c26e26e4288f0bfa66607f531d7c78836",
+      "evaluation/table_blackout_ablation.py": "de2b0d13603cd45ca2bd78000ddc36a5dc42407894ff7016943ed90a643a5b38",
+      "evaluation/calibrate_drive.py": "ffa6fe1d5b59df5bce46cabd3082216c32a5f668adfe1ef579526c28b092d391"
+    },
+    "frozen_candidate_sources": {
+      "estimator.cpp": "a62db61a8df442b8d89e703eb9cfc9e68ccc158db77e1319aa2a5c4b155b0c1b",
+      "include/tram_odometry/estimator.hpp": "4dff47c2540223bf107555f375b65c9eb97a52e94a2614a090cdce43f5b3ad5d",
+      "candidate.patch": "dfd0e5b01c04548e74b63868b1be320394e57eb5416d23412771080a6f03ff93"
+    }
+  }
+}

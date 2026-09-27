@@ -1,0 +1,31 @@
+{
+  "baseline": "5a82712",
+  "candidate": "pure rover geometry; production longitudinal estimator unchanged; artifacts frozen before ROS run",
+  "files_sha256": {
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": "8ec202c373a5b7f071791395938844d21e402db9ccf7db1e1f8d0207eda9c863",
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+    "ros2_ws/src/tram_odometry/src/odometry_node.cpp": "29e1ada193786dd1c033b9498f90ff5b1ab83392fc47dddd805f4967db992f9a",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/startup_output_gate.hpp": "0fb79ef4cd297d125cbcae6a83a40671d97d646ad12e57ab2400dccbd2d02276",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/uncertainty.hpp": "1d231a74e907605a52580aab38bd629df5905c374523c6befba49cad986bf426",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp": "93d263325fc13892549dd3104d2d51e6da3e77495d4e5846acfba88a8bf961e1",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "d3a2f7b7436a183aa7ad6b0298d605e950a57d6f9ffa3633896874e8af519d7b",
+    "ros2_ws/src/tram_odometry/assets/route_map_branch_a.csv": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+    "ros2_ws/src/tram_odometry/assets/stops.csv": "e235428d9203c4e7406503a75da254fce4e8d94faceb3f8ec9273c930ccca5df",
+    "ros2_ws/src/tram_odometry/assets/drive_accel_table.csv": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+    "ros2_ws/src/tram_odometry/assets/route_map_meta.json": "5f9792bc31b5f9fa7c1d7b1453f4ed5e58913b3a8b7a2fbb39567105c18e9a98",
+    "ros2_ws/src/tram_odometry/assets/official_elevation_meta.json": "23093a2c45f8bf34eeaddd19be92339a590ef118a54f13c4254b5a8a24659906",
+    "ros2_ws/src/tram_odometry/assets/route_map.csv": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+    "ros2_ws/src/tram_odometry/assets/official_elevation.csv": "86ec3d223f1b76de6bc8ffc4f5b1a8eb87a457b570de00d97f996d859b53e686",
+    "ros2_ws/src/tram_odometry/assets/route_map_branch_a_meta.json": "2a8f9a27730ab958a3e451a81ed6fec8cee65f10a68c3b3244f78e18f71215f2",
+    "ros2_ws/src/tram_odometry/config/default.yaml": "aef74a217068eefcb450fa6585e88542507a7cdddc7f8c390a6c972780100f6b"
+  },
+  "binaries_sha256": {
+    "/private/tmp/odometry-round4-pure/replay_cli": "360b8c08afcb727a9283911eae3a328c0ae9884760447aacaed3718d0f3bb555",
+    "/private/tmp/odometry-round4-pure/navigation_replay": "e171377143e894461f7cfb846dfe0c4d1575b3358b0991cf18c2247a29e4ae55",
+    "ros2_ws/install/tram_odometry/lib/tram_odometry/odometry_node": "1ffb7998885c207835f01c284036b46bd044e12710e037fe66a70ea336a82f52"
+  },
+  "runtime_commit": "816406199bd86327b7bcb5e11822d1823c83fab6"
+}

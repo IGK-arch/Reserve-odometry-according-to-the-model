@@ -1,0 +1,4 @@
+[INFO] [launch]: All log files can be found below /root/.ros/log/2026-09-27-15-26-57-726335-d6ed14cd3008-38
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [odometry_node-1]: process started with pid [40]
+[odometry_node-1] [INFO] [1790522817.784274548] [tram_odometry]: Ready: vehicle=30639, route_direction=auto, startup GNSS=yes

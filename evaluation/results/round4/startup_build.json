@@ -1,0 +1,18 @@
+{
+  "mixed": {
+    "source_sha256": "0e56d6111452e0524923788943e38f85055def4925f6be93c33ab7a189f8bb37",
+    "binary_sha256": "4f3bfee9c1c6dcb7143fee814c1984445d4fba6df41d980aa608676182da37c1"
+  },
+  "rigid": {
+    "source_sha256": "1aaa18c0a4c95f24eb69a0c99a0abfbc5edeeb5db67d5ef7bf0b3c17d5039f1b",
+    "binary_sha256": "ae494544f61827ef279a21944f5b94c87a546d7394d20406ca3afd65b8aa0866"
+  },
+  "joint": {
+    "source_sha256": "49f42d2c28eec476ccdc7901c8b76b50a30385735ccac5a1af691190c1ddc050",
+    "binary_sha256": "7b9dac6affb1aea24fc9085096309e5adc6ddbd6ed9585c6f2c79ab6f75b0079"
+  },
+  "pure": {
+    "source_sha256": "804049365060a270e17c8e34feeebe5ac15086a31a9d0fe9fe5a209c1bf095c2",
+    "binary_sha256": "9262ab33ea5f81201ada070ca3aa4d9824498f300d72c76e74cef8e1e71b99b6"
+  }
+}

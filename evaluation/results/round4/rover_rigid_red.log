@@ -1,0 +1,2 @@
+libc++abi: terminating due to uncaught exception of type std::runtime_error: rover-to-master and master-to-base must use the same observed body course
+RTK rover rigid-body startup error: 4.30484 m

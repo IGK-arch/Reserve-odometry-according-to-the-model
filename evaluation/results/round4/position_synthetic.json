@@ -1,0 +1,455 @@
+{
+  "cases": {
+    "scale_sparse": {
+      "baseline": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 5.204600859463372,
+          "p95": 10.401469015645608,
+          "max": 12.089476016479937,
+          "last": 0.01774925864899419
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 2.4221308753446165,
+          "p95": 2.432161509247668,
+          "max": 2.432161509247668,
+          "last": 0.01774925864899419
+        },
+        "stopped_position_range_m": 2.414412250598674,
+        "corrections": 636,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "76406b5d8233fb501b4e116ed49379ed42f64b8254927ac4ef69afc21f334fe9",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "scalar": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 6.8458439318234765,
+          "p95": 12.081530590040998,
+          "max": 13.769536911993981,
+          "last": 1.8018248838561302
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 6.087920618434649,
+          "p95": 6.10881029834856,
+          "max": 6.10881029834856,
+          "last": 1.8018248838561302
+        },
+        "stopped_position_range_m": 4.30698541449243,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "3a7facbd4ec22ce39d7c888b2c29941626959db1e2d648250123543245670ec5",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_005": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 4.3594984573261035,
+          "p95": 7.72734878982126,
+          "max": 9.415361790600581,
+          "last": 0.2384618122365497
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 2.324485600848278,
+          "p95": 2.3343142274707396,
+          "max": 2.3343142274707396,
+          "last": 0.2384618122365497
+        },
+        "stopped_position_range_m": 2.0958524152341904,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "f783c4249f7ea8a2ab979bc9e658474e93121f0a222a388fd67348a5a2205faf",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_015": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 3.326948176557916,
+          "p95": 7.72734878982126,
+          "max": 9.415361790600581,
+          "last": 0.006462374232427788
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 0.051712283355578544,
+          "p95": 0.051929332128389225,
+          "max": 0.051929332128389225,
+          "last": 0.006462374232427788
+        },
+        "stopped_position_range_m": 0.045466957895961446,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "65ddfac2fd4b19733f2b90555c2b53c94bdca5329886c2fe6a66ffe6328aad28",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      }
+    },
+    "scale_bad_shared": {
+      "baseline": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 20.87482282948384,
+          "p95": 30.394979433747633,
+          "max": 32.08297834285253,
+          "last": 20.011362169863762
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 22.408590736325255,
+          "p95": 22.42577430036444,
+          "max": 22.42577430036444,
+          "last": 20.011362169863762
+        },
+        "stopped_position_range_m": 2.41441213050068,
+        "corrections": 636,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "e9451545bbd71d0d983cdfda29ea66708d41079ecb5414acfcbab8c15ab91785",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "scalar": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 20.799106791047407,
+          "p95": 28.36406167217839,
+          "max": 30.052061403747732,
+          "last": 20.802605151882215
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.363805380085353,
+          "p95": 24.389398272041657,
+          "max": 24.389398272041657,
+          "last": 20.802605151882215
+        },
+        "stopped_position_range_m": 3.5867931201594376,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "204fc9a388f03adeb8c18afcb27586bec00576c5904c20534b24663a373f89c8",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_005": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 23.111326406048313,
+          "p95": 33.60144955897739,
+          "max": 36.124873873909884,
+          "last": 21.8680264653181
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 26.36585494423897,
+          "p95": 26.39354644946468,
+          "max": 26.39354644946468,
+          "last": 21.8680264653181
+        },
+        "stopped_position_range_m": 4.525519984146583,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "e6528b1a339940e006b86b492085f3981b0f94cb05fafec1fef754b9fb35188b",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_015": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 25.981295435002302,
+          "p95": 37.68010403915168,
+          "max": 40.75212429506387,
+          "last": 24.69767421469121
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 30.664770840374054,
+          "p95": 30.695757829798286,
+          "max": 30.695757829798286,
+          "last": 24.69767421469121
+        },
+        "stopped_position_range_m": 5.998083615107073,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "e48341351b03252f6f25894ddb26fec2802f8d4a77adecb2f70ff3b56dfa756e",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      }
+    },
+    "scale_frozen": {
+      "baseline": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.406116915307877,
+          "p95": 24.04544015026021,
+          "max": 24.04544015026021,
+          "last": 3.052146772709788
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 23.973988915219138,
+          "p95": 24.04544015026021,
+          "max": 24.04544015026021,
+          "last": 3.052146772709788
+        },
+        "stopped_position_range_m": 20.99329337755042,
+        "corrections": 600,
+        "rejected": 36,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "24837e90087c6bd4d6a484e44a89ac4515f24e6d32e5a6c940f845e6fdc1ff90",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "scalar": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.606612041494877,
+          "p95": 24.255145494705392,
+          "max": 24.255145494705392,
+          "last": 18.257061785163575
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.22477950176732,
+          "p95": 24.255145494705392,
+          "max": 24.255145494705392,
+          "last": 18.257061785163575
+        },
+        "stopped_position_range_m": 5.998083709541814,
+        "corrections": 62,
+        "rejected": 36,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "d52ed758bcf8b11c592586f775cf663bbaf31d4168e5f273cfccbe1ef00c2ae7",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_005": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.597244491646453,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 18.246550038733414
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.214269039398943,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 18.246550038733414
+        },
+        "stopped_position_range_m": 5.998083710065554,
+        "corrections": 62,
+        "rejected": 36,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "596b5f5b370eb42d311e53fa0712bcb244c91ed16b62a5e3daa09735427f0e38",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_015": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.597244491646453,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 18.246550038733414
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.214269039398943,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 18.246550038733414
+        },
+        "stopped_position_range_m": 5.998083710065554,
+        "corrections": 62,
+        "rejected": 36,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "596b5f5b370eb42d311e53fa0712bcb244c91ed16b62a5e3daa09735427f0e38",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      }
+    },
+    "scale_delayed": {
+      "baseline": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.4302188158452,
+          "p95": 24.04544015026021,
+          "max": 24.04544015026021,
+          "last": 24.04544015026021
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.04544015026021,
+          "p95": 24.04544015026021,
+          "max": 24.04544015026021,
+          "last": 24.04544015026021
+        },
+        "stopped_position_range_m": 0.0,
+        "corrections": 593,
+        "rejected": 40,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "99614c0bb51851be6494967820d2460af6695a0e10582193770dd3844c85b80f",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "scalar": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.616839660438686,
+          "p95": 24.255145494705392,
+          "max": 24.255145494705392,
+          "last": 24.255145494705392
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.255145494705392,
+          "p95": 24.255145494705392,
+          "max": 24.255145494705392,
+          "last": 24.255145494705392
+        },
+        "stopped_position_range_m": 0.0,
+        "corrections": 60,
+        "rejected": 40,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "fee514f776225a11e8c4194e4e968a57de96335c095ec36e525f7b8ee766c3f5",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_005": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.607472683629762,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 24.244633748798964
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.244633748798964,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 24.244633748798964
+        },
+        "stopped_position_range_m": 0.0,
+        "corrections": 60,
+        "rejected": 40,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "f64e8c5d8665121a01c80f58671982f72072d6c133752b094eecf121b4ba45e0",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_015": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 17.607472683629762,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 24.244633748798964
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 24.244633748798964,
+          "p95": 24.244633748798964,
+          "max": 24.244633748798964,
+          "last": 24.244633748798964
+        },
+        "stopped_position_range_m": 0.0,
+        "corrections": 60,
+        "rejected": 40,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "f64e8c5d8665121a01c80f58671982f72072d6c133752b094eecf121b4ba45e0",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      }
+    },
+    "healthy_sparse": {
+      "baseline": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 0.11415127636554066,
+          "p95": 0.20729552128164502,
+          "max": 0.24103038650852077,
+          "last": 0.0004565351500065142
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 0.10139907044457667,
+          "p95": 0.1018199283473091,
+          "max": 0.1018199283473091,
+          "last": 0.0004565351500065142
+        },
+        "stopped_position_range_m": 0.10227646349731538,
+        "corrections": 636,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "d00bbf623d07b5fb8d624b58553dd06e2aa5367f32a64d798f83ebee0476bc57",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "scalar": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 0.11899889350846786,
+          "p95": 0.2133340797535085,
+          "max": 0.24706894296521129,
+          "last": 0.016241587526963017
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 0.10744285072897211,
+          "p95": 0.10788298499545623,
+          "max": 0.10788298499545623,
+          "last": 0.016241587526963017
+        },
+        "stopped_position_range_m": 0.09164139746849322,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "f68d5134fd048fc8ed91164ccecb09f29af390d34c8a4daf4ebe6faf31919c38",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_005": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 0.06480220642543931,
+          "p95": 0.15430432334635338,
+          "max": 0.18803930856647494,
+          "last": 0.0045214443869606175
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 0.054132639938574145,
+          "p95": 0.05436274186200564,
+          "max": 0.05436274186200564,
+          "last": 0.0045214443869606175
+        },
+        "stopped_position_range_m": 0.04984129747504506,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "94105bde0d155399d892e810be5716ffeec5bb34f4cf2b4dc3aeaa244ac03a6d",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      },
+      "drift_015": {
+        "moving_and_stop_after30s": {
+          "n": 3310,
+          "rmse": 0.06480220642543931,
+          "p95": 0.15430432334635338,
+          "max": 0.18803930856647494,
+          "last": 0.0045214443869606175
+        },
+        "stopped_after280s": {
+          "n": 810,
+          "rmse": 0.054132639938574145,
+          "p95": 0.05436274186200564,
+          "max": 0.05436274186200564,
+          "last": 0.0045214443869606175
+        },
+        "stopped_position_range_m": 0.04984129747504506,
+        "corrections": 70,
+        "rejected": 0,
+        "same_velocity_distance_stamps": true,
+        "output_sha256": "94105bde0d155399d892e810be5716ffeec5bb34f4cf2b4dc3aeaa244ac03a6d",
+        "stopped_blackout_280_350_position_range_m": 0.0
+      }
+    }
+  },
+  "protocol": "Known straight ENU trajectory,10m/s cruise,1% wheel scale, sparseGNSS, stationary after270s; unchanged vehicle inputs pervariant."
+}

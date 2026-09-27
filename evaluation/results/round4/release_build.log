@@ -1,0 +1,76 @@
+-- The CXX compiler identification is AppleClang 21.0.0.21000334
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/round4-release-preflight-build
+[  4%] Building CXX object CMakeFiles/tram_navigation.dir/ros2_ws/src/tram_odometry/src/estimator.cpp.o
+[  4%] Building CXX object CMakeFiles/tram_navigation.dir/ros2_ws/src/tram_odometry/src/navigation.cpp.o
+[  6%] Linking CXX static library libtram_navigation.a
+[  6%] Built target tram_navigation
+[ 15%] Building CXX object CMakeFiles/replay_cli.dir/evaluation/replay_cli.cpp.o
+[ 15%] Building CXX object CMakeFiles/estimator_core_test.dir/ros2_ws/src/tram_odometry/test/estimator_core_test.cpp.o
+[ 15%] Building CXX object CMakeFiles/elevation_profile_test.dir/ros2_ws/src/tram_odometry/test/elevation_profile_test.cpp.o
+[ 15%] Building CXX object CMakeFiles/navigation_replay.dir/evaluation/navigation_replay.cpp.o
+[ 17%] Linking CXX executable replay_cli
+[ 17%] Built target replay_cli
+[ 20%] Building CXX object CMakeFiles/estimator_jump_rate_test.dir/ros2_ws/src/tram_odometry/test/estimator_jump_rate_test.cpp.o
+[ 22%] Linking CXX executable estimator_core_test
+[ 24%] Linking CXX executable elevation_profile_test
+[ 24%] Built target estimator_core_test
+[ 24%] Built target elevation_profile_test
+[ 26%] Linking CXX executable navigation_replay
+[ 28%] Building CXX object CMakeFiles/estimator_jump_recovery_test.dir/ros2_ws/src/tram_odometry/test/estimator_jump_recovery_test.cpp.o
+[ 31%] Building CXX object CMakeFiles/estimator_pair_freeze_test.dir/ros2_ws/src/tram_odometry/test/estimator_pair_freeze_test.cpp.o
+[ 31%] Built target navigation_replay
+[ 33%] Building CXX object CMakeFiles/estimator_standstill_dropout_test.dir/ros2_ws/src/tram_odometry/test/estimator_standstill_dropout_test.cpp.o
+[ 35%] Linking CXX executable estimator_jump_rate_test
+[ 35%] Built target estimator_jump_rate_test
+[ 37%] Building CXX object CMakeFiles/estimator_wheel_residual_test.dir/ros2_ws/src/tram_odometry/test/estimator_wheel_residual_test.cpp.o
+[ 40%] Linking CXX executable estimator_jump_recovery_test
+[ 42%] Linking CXX executable estimator_standstill_dropout_test
+[ 44%] Linking CXX executable estimator_pair_freeze_test
+[ 44%] Built target estimator_jump_recovery_test
+[ 44%] Built target estimator_standstill_dropout_test
+[ 46%] Building CXX object CMakeFiles/geo_projection_test.dir/ros2_ws/src/tram_odometry/test/geo_projection_test.cpp.o
+[ 46%] Built target estimator_pair_freeze_test
+[ 48%] Building CXX object CMakeFiles/navigation_branch_test.dir/ros2_ws/src/tram_odometry/test/navigation_branch_test.cpp.o
+[ 51%] Building CXX object CMakeFiles/navigation_gnss_robustness_test.dir/ros2_ws/src/tram_odometry/test/navigation_gnss_robustness_test.cpp.o
+[ 53%] Linking CXX executable estimator_wheel_residual_test
+[ 55%] Linking CXX executable geo_projection_test
+[ 55%] Built target estimator_wheel_residual_test
+[ 55%] Built target geo_projection_test
+[ 57%] Building CXX object CMakeFiles/navigation_rover_anchor_test.dir/ros2_ws/src/tram_odometry/test/navigation_rover_anchor_test.cpp.o
+[ 60%] Building CXX object CMakeFiles/navigation_startup_heading_test.dir/ros2_ws/src/tram_odometry/test/navigation_startup_heading_test.cpp.o
+[ 62%] Linking CXX executable navigation_gnss_robustness_test
+[ 62%] Built target navigation_gnss_robustness_test
+[ 64%] Building CXX object CMakeFiles/navigation_startup_quality_test.dir/ros2_ws/src/tram_odometry/test/navigation_startup_quality_test.cpp.o
+[ 66%] Linking CXX executable navigation_rover_anchor_test
+[ 66%] Built target navigation_rover_anchor_test
+[ 68%] Linking CXX executable navigation_startup_heading_test
+[ 71%] Building CXX object CMakeFiles/navigation_test.dir/ros2_ws/src/tram_odometry/test/navigation_test.cpp.o
+[ 73%] Linking CXX executable navigation_branch_test
+[ 73%] Built target navigation_startup_heading_test
+[ 73%] Built target navigation_branch_test
+[ 75%] Building CXX object CMakeFiles/odometry_statistics_test.dir/ros2_ws/src/tram_odometry/test/odometry_statistics_test.cpp.o
+[ 77%] Building CXX object CMakeFiles/route_body_heading_test.dir/ros2_ws/src/tram_odometry/test/route_body_heading_test.cpp.o
+[ 80%] Linking CXX executable navigation_test
+[ 80%] Built target navigation_test
+[ 82%] Building CXX object CMakeFiles/route_tf_test.dir/ros2_ws/src/tram_odometry/test/route_tf_test.cpp.o
+[ 84%] Linking CXX executable odometry_statistics_test
+[ 84%] Built target odometry_statistics_test
+[ 86%] Linking CXX executable route_body_heading_test
+[ 88%] Building CXX object CMakeFiles/startup_output_gate_test.dir/ros2_ws/src/tram_odometry/test/startup_output_gate_test.cpp.o
+[ 88%] Built target route_body_heading_test
+[ 91%] Building CXX object CMakeFiles/uncertainty_test.dir/ros2_ws/src/tram_odometry/test/uncertainty_test.cpp.o
+[ 93%] Linking CXX executable navigation_startup_quality_test
+[ 93%] Built target navigation_startup_quality_test
+[ 97%] Linking CXX executable route_tf_test
+[ 97%] Linking CXX executable startup_output_gate_test
+[ 97%] Built target startup_output_gate_test
+[ 97%] Built target route_tf_test
+[100%] Linking CXX executable uncertainty_test
+[100%] Built target uncertainty_test

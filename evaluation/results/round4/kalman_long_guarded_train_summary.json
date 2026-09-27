@@ -1,0 +1,140 @@
+[
+  {
+    "vehicle": "30618",
+    "date": "2026-07-27",
+    "variant": "baseline",
+    "bags": 29,
+    "n": 648428,
+    "nominal_rmse_mps": 0.05475772486581904,
+    "blackout1": {
+      "windows": 589,
+      "speed_rmse_mps": 0.2505623702892193,
+      "distance_rmse_m": 0.15670017653914384
+    },
+    "blackout3": {
+      "windows": 589,
+      "speed_rmse_mps": 0.47174661958234465,
+      "distance_rmse_m": 0.8928432249410566
+    },
+    "blackout5": {
+      "windows": 589,
+      "speed_rmse_mps": 0.5784852378775186,
+      "distance_rmse_m": 1.8868942181349546
+    }
+  },
+  {
+    "vehicle": "30618",
+    "date": "2026-07-27",
+    "variant": "candidate",
+    "bags": 29,
+    "n": 648428,
+    "nominal_rmse_mps": 0.053104474609032115,
+    "blackout1": {
+      "windows": 589,
+      "speed_rmse_mps": 0.23415093579006932,
+      "distance_rmse_m": 0.14292174094205204
+    },
+    "blackout3": {
+      "windows": 589,
+      "speed_rmse_mps": 0.43802638851068043,
+      "distance_rmse_m": 0.8293033048942793
+    },
+    "blackout5": {
+      "windows": 589,
+      "speed_rmse_mps": 0.5309419022927157,
+      "distance_rmse_m": 1.7388204331212531
+    }
+  },
+  {
+    "vehicle": "30618",
+    "date": "2026-09-03",
+    "variant": "baseline",
+    "bags": 4,
+    "n": 107354,
+    "nominal_rmse_mps": 0.08813319522030133,
+    "blackout1": {
+      "windows": 94,
+      "speed_rmse_mps": 0.18477939104076851,
+      "distance_rmse_m": 0.13665722155808238
+    },
+    "blackout3": {
+      "windows": 94,
+      "speed_rmse_mps": 0.43260999363401936,
+      "distance_rmse_m": 0.7281038304247774
+    },
+    "blackout5": {
+      "windows": 94,
+      "speed_rmse_mps": 0.5873739661769369,
+      "distance_rmse_m": 1.7039285946047467
+    }
+  },
+  {
+    "vehicle": "30618",
+    "date": "2026-09-03",
+    "variant": "candidate",
+    "bags": 4,
+    "n": 107354,
+    "nominal_rmse_mps": 0.08477084583580947,
+    "blackout1": {
+      "windows": 94,
+      "speed_rmse_mps": 0.15933777751184566,
+      "distance_rmse_m": 0.11992869256205209
+    },
+    "blackout3": {
+      "windows": 94,
+      "speed_rmse_mps": 0.37592670634346764,
+      "distance_rmse_m": 0.6148600631762831
+    },
+    "blackout5": {
+      "windows": 94,
+      "speed_rmse_mps": 0.5356800365097751,
+      "distance_rmse_m": 1.4702392184505813
+    }
+  },
+  {
+    "vehicle": "30639",
+    "date": "2026-08-26",
+    "variant": "baseline",
+    "bags": 9,
+    "n": 183696,
+    "nominal_rmse_mps": 0.04550369845255582,
+    "blackout1": {
+      "windows": 146,
+      "speed_rmse_mps": 0.21145939712594575,
+      "distance_rmse_m": 0.1204309652148562
+    },
+    "blackout3": {
+      "windows": 146,
+      "speed_rmse_mps": 0.6056815097183683,
+      "distance_rmse_m": 0.9261414081975836
+    },
+    "blackout5": {
+      "windows": 146,
+      "speed_rmse_mps": 0.950987751510445,
+      "distance_rmse_m": 2.4460933081793255
+    }
+  },
+  {
+    "vehicle": "30639",
+    "date": "2026-08-26",
+    "variant": "candidate",
+    "bags": 9,
+    "n": 183696,
+    "nominal_rmse_mps": 0.04016967199955366,
+    "blackout1": {
+      "windows": 146,
+      "speed_rmse_mps": 0.11177481890788876,
+      "distance_rmse_m": 0.05423501993241327
+    },
+    "blackout3": {
+      "windows": 146,
+      "speed_rmse_mps": 0.3990425806890424,
+      "distance_rmse_m": 0.5306269760283278
+    },
+    "blackout5": {
+      "windows": 146,
+      "speed_rmse_mps": 0.6961728453121022,
+      "distance_rmse_m": 1.5522274389820119
+    }
+  }
+]

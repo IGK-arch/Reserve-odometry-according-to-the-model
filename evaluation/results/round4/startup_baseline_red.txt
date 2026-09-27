@@ -1,0 +1,15 @@
+geometry,rtk_sensor,scenario,position_error_m,heading_error_deg,heading_source,anchored,velocity,distance
+line,master,correct0,8.01628835689e-10,0,route_body_heading,1,0,0
+line,master,correct15,2.57737019235,15,route_body_heading,1,0,0
+line,master,correct30,5.11064086533,30,route_body_heading,1,0,0
+line,master,bad90,2.57737019235,15,route_body_heading,1,0,0
+line,master,baseline9,2.57737019235,15,route_body_heading,1,0,0
+line,master,baseline16,2.57737019235,15,route_body_heading,1,0,0
+line,master,inconsistent,2.57737019235,15,route_body_heading,1,0,0
+line,master,asynchronous,2.57737019235,15,route_body_heading,1,0,0
+line,master,coherent4bias,2.57737019235,15,route_body_heading,1,0,0
+line,master,common2bias,3.46244052237,15,route_body_heading,1,0,0
+line,master,moving,2.63020486431,15,route_body_heading,1,1.99995939813,0.401978658562
+line,master,no_map,8.01628875704e-10,0,configured,1,0,0
+line,master,sparse_master,3.24644745427,5.37089773228e-09,dual_antenna,1,0,0
+exit code: 2

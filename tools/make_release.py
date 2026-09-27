@@ -32,7 +32,7 @@ ALLOWLIST = (
     "README.md",
     "LICENSE",
     "CMakeLists.txt",
-    "docs/*.md",
+    "docs/**/*.md",
     "docs/validation_metrics.png",
     "docs/audit_generalization.png",
     "docs/route_map_preview.png",

@@ -1,6 +1,6 @@
 # Проверка объединённой версии перед публикацией — 27 сентября 2026
 
-Актуальный раунд и новые ответы организаторов: [ROUND3_RELIABILITY.md](ROUND3_RELIABILITY.md).
+Актуальный раунд, 12 экспериментов и решения: [ROUND4_EXPERIMENTS.md](ROUND4_EXPERIMENTS.md).
 Числа прежних раундов ниже сохранены со своими версиями и протоколами.
 
 Объединены измеренная версия двух раундов `e248a96` и новый коммит сокомандника
@@ -65,3 +65,12 @@ python3 evaluation/publish_parity.py \
 Исходные rosbags, context, бинарники и временные CSV в Git и исходный архив
 не включены. Пакет воспроизводится `python3 tools/make_release.py`, проверяется
 `python3 tools/make_release.py --verify-only`; manifest содержит SHA-256 файлов.
+
+
+## Раунд 4
+
+Runtime `8164061`: полный ROS 1× завершён, 65579 reference-сообщений,
+официальный 3D RMSE 1,561536 м и скорость 0,051795 м/с. Пройдены 19 portable,
+19 ROS C++ и 40 Python тестов, исходники из ZIP собираются и проходят 19 тестов.
+[Фиксация и доказательства](../evaluation/results/round4/verification.json),
+[12 экспериментов и решение](ROUND4_EXPERIMENTS.md).

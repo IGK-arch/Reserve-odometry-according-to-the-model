@@ -1,0 +1,54 @@
+--- /private/tmp/odometry-round4-source/ros2_ws/src/tram_odometry/src/navigation.cpp	2026-09-27 17:41:53
++++ /private/tmp/round4-startup/mixed/navigation.cpp	2026-09-27 18:00:19
+@@ -320,7 +320,51 @@
+         paired_heading_valid = true;
+         relative_heading_rad_ = paired_heading_rad;
+         heading_source_ = "dual_antenna";
++      }
++    }
++
++    // Experimental: position retains RTK priority. Mixed course requires
++    // synchronized independent pairs, known length and temporal agreement.
++    bool mixed_heading = false;
++    if (rtk && !paired_heading_valid && has_map_) {
++      const auto & hm = master_fixes.empty() ? startup_fixes_ : master_fixes;
++      const auto & hr = rover_fixes.empty() ? rover_startup_fixes_ : rover_fixes;
++      std::vector<double> angles, times;
++      double last_rover = -INFINITY;
++      for (const auto & m : hm) {
++        const StartupFix * r = nullptr;
++        double dt_best = 0.075;
++        for (const auto & q : hr) {
++          const double dt = std::abs(q.stamp_s-m.stamp_s);
++          if (q.stamp_s > last_rover && dt < dt_best) {r=&q;dt_best=dt;}
++        }
++        if (!r) continue;
++        last_rover=r->stamp_s;
++        const double dx=r->enu.x-m.enu.x, dy=r->enu.y-m.enu.y;
++        if (std::abs(std::hypot(dx,dy)-std::abs(rover_to_master_s_m_)) > 0.75) continue;
++        angles.push_back(std::atan2(dy,dx));times.push_back(m.stamp_s);
+       }
++      if (angles.size() >= 3 && times.back()-times.front() >= 0.15) {
++        double sx=0,sy=0;
++        for(double a:angles) {sx+=std::cos(a);sy+=std::sin(a);}
++        const double a=std::atan2(sy,sx);
++        double spread=0;
++        for(double q:angles) spread=std::max(spread,std::abs(std::atan2(std::sin(q-a),std::cos(q-a))));
++        double alignment=INFINITY;
++        for(const std::string d:{std::string("out"),std::string("return")}) {
++          if(configured_direction_!="auto" && configured_direction_!=d) continue;
++          auto match=map_.nearest(gnss_enu,d);
++          if(match.direction.empty()) continue;
++          if(rover) match=map_.nearestAntenna(gnss_enu,d,-rover_to_master_s_m_,
++            match.s+rover_to_master_s_m_,map_match_max_distance_m_+std::abs(rover_to_master_s_m_),config_.body_heading_lookahead_m);
++          const double delta=a-map_.bodyYaw(d,match.s,config_.body_heading_lookahead_m);
++          alignment=std::min(alignment,std::abs(std::atan2(std::sin(delta),std::cos(delta))));
++        }
++        if(spread <= 3.0*std::acos(-1.0)/180 && alignment <= 35.0*std::acos(-1.0)/180) {
++          paired_heading_rad=a;paired_heading_valid=true;mixed_heading=true;
++          relative_heading_rad_=a;heading_source_="mixed_antenna_constrained";
++        }
++      }
+     }
+     if (has_map_) {
+       std::string match_direction = configured_direction_;

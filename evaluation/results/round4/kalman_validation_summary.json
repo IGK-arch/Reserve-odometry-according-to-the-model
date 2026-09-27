@@ -1,0 +1,48 @@
+[
+  {
+    "vehicle": "30618",
+    "date": "2026-08-26",
+    "variant": "baseline",
+    "bags": 13,
+    "n": 286515,
+    "nominal_rmse_mps": 0.03314561937610315,
+    "blackout1": {
+      "windows": 284,
+      "speed_rmse_mps": 0.1344841325503035,
+      "distance_rmse_m": 0.07653643140262617
+    },
+    "blackout3": {
+      "windows": 284,
+      "speed_rmse_mps": 0.3791712417075869,
+      "distance_rmse_m": 0.5774860752658652
+    },
+    "blackout5": {
+      "windows": 284,
+      "speed_rmse_mps": 0.5338827828407926,
+      "distance_rmse_m": 1.4668223215802199
+    }
+  },
+  {
+    "vehicle": "30618",
+    "date": "2026-08-26",
+    "variant": "candidate",
+    "bags": 13,
+    "n": 286515,
+    "nominal_rmse_mps": 0.030683561048760726,
+    "blackout1": {
+      "windows": 284,
+      "speed_rmse_mps": 0.0993601370835074,
+      "distance_rmse_m": 0.050210176591061154
+    },
+    "blackout3": {
+      "windows": 284,
+      "speed_rmse_mps": 0.26125692383373644,
+      "distance_rmse_m": 0.38991386970252895
+    },
+    "blackout5": {
+      "windows": 284,
+      "speed_rmse_mps": 0.3882306095419641,
+      "distance_rmse_m": 0.9847433112154432
+    }
+  }
+]

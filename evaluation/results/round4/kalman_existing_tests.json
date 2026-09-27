@@ -1,0 +1,142 @@
+[
+  {
+    "variant": "short",
+    "test": "estimator_jump_rate_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\n"
+  },
+  {
+    "variant": "short",
+    "test": "estimator_core_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL: agreeing late wheels limit steady-speed model bias\n"
+  },
+  {
+    "variant": "short",
+    "test": "estimator_pair_freeze_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL: a command change alone cannot invalidate healthy constant-speed wheels\nFAIL: a command change alone cannot invalidate healthy constant-speed wheels\nFAIL: a command change alone cannot invalidate healthy constant-speed wheels\n"
+  },
+  {
+    "variant": "short",
+    "test": "estimator_jump_recovery_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL: hard braking cannot remain latched to the neutral force model\n"
+  },
+  {
+    "variant": "short",
+    "test": "estimator_wheel_residual_test.cpp",
+    "returncode": 1,
+    "stdout": "paired dropout one-second error: 0.361102\n",
+    "stderr": "FAIL: recent healthy wheel acceleration reduces paired dropout error\nFAIL: fresh wheels recover promptly after residual-assisted fallback\n"
+  },
+  {
+    "variant": "medium",
+    "test": "estimator_jump_rate_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\n"
+  },
+  {
+    "variant": "medium",
+    "test": "estimator_core_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: estimator core causal conversion, slip, dropout and bounds\n",
+    "stderr": ""
+  },
+  {
+    "variant": "medium",
+    "test": "estimator_pair_freeze_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: paired flatline detection and reacquisition\n",
+    "stderr": ""
+  },
+  {
+    "variant": "medium",
+    "test": "estimator_jump_recovery_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL: hard braking cannot remain latched to the neutral force model\n"
+  },
+  {
+    "variant": "medium",
+    "test": "estimator_wheel_residual_test.cpp",
+    "returncode": 0,
+    "stdout": "paired dropout one-second error: 0.159107\nPASS: causal wheel residual fallback, return, reset and fault isolation\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long",
+    "test": "estimator_jump_rate_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.1: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.05: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\nFAIL dt=0.04: plausible acceleration with bounded noise stays healthy\n"
+  },
+  {
+    "variant": "long",
+    "test": "estimator_core_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: estimator core causal conversion, slip, dropout and bounds\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long",
+    "test": "estimator_pair_freeze_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: paired flatline detection and reacquisition\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long",
+    "test": "estimator_jump_recovery_test.cpp",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "FAIL: hard braking cannot remain latched to the neutral force model\n"
+  },
+  {
+    "variant": "long",
+    "test": "estimator_wheel_residual_test.cpp",
+    "returncode": 0,
+    "stdout": "paired dropout one-second error: 0.0832518\nPASS: causal wheel residual fallback, return, reset and fault isolation\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded",
+    "test": "estimator_jump_rate_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: common-jump rejection and healthy motion at10-100Hz\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded",
+    "test": "estimator_core_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: estimator core causal conversion, slip, dropout and bounds\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded",
+    "test": "estimator_pair_freeze_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: paired flatline detection and reacquisition\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded",
+    "test": "estimator_jump_recovery_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: estimator persistent jump rejection and bounded recovery\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded",
+    "test": "estimator_wheel_residual_test.cpp",
+    "returncode": 0,
+    "stdout": "paired dropout one-second error: 0.0832518\nPASS: causal wheel residual fallback, return, reset and fault isolation\n",
+    "stderr": ""
+  }
+]

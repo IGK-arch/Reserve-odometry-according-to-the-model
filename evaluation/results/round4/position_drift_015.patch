@@ -1,0 +1,93 @@
+--- a/ros2_ws/src/tram_odometry/src/navigation.cpp
++++ b/ros2_ws/src/tram_odometry/src/navigation.cpp
+@@ -67,6 +67,7 @@
+   if(type=='R') estimator_.submitRearWheel(value,stamp_s);
+   if(type=='C') estimator_.submitDriverPosition(static_cast<int>(value),stamp_s);
+   const auto state=estimator_.state();
++  predictPositionBias();
+   if(!state.initialized || !std::isfinite(state.stamp_s) ||
+      state.stamp_s<=last_published_stamp_s_+1e-7 || std::abs(state.stamp_s-stamp_s)>1e-5) return false;
+   last_published_stamp_s_=state.stamp_s;
+@@ -110,6 +111,7 @@
+       last_published_stamp_s_ = -std::numeric_limits<double>::infinity();
+       run_start_s_ = stamp_s;
+       has_gnss_anchor_ = false;
++      resetPositionBias();
+       startup_fixes_.clear();
+       rover_startup_fixes_.clear();
+       for (auto & fixes : startup_rtk_fixes_) fixes.clear();
+@@ -244,6 +246,7 @@
+       if (branch_evidence_.size() >= 3 && fix.stamp_s-branch_evidence_.front().stamp_s >= 0.19) {
+         std::swap(map_,alternate_map_); alternate_active_=!alternate_active_;
+         start_s_m_=alternative.s-distance;
++        resetPositionBias();
+         anchor_residual_={}; anchor_heading_delta_rad_=0;
+         ++branch_switches_;
+         branch_evidence_.clear();
+@@ -266,9 +269,40 @@
+   if (window.size()<3 || fix.stamp_s-window.front().stamp_s < 0.15) return;
+   std::array<double,3> values{{window[0].innovation,window[1].innovation,window[2].innovation}};
+   std::sort(values.begin(),values.end());
+-  const double correction=std::clamp(config_.gnss_correction_gain*(values[1]-start_s_m_),
+-    -config_.gnss_correction_max_step_m,config_.gnss_correction_max_step_m);
+-  start_s_m_+=correction;
++  updatePositionBias(values[1],fix.stamp_s,fix.status);
++}
++
++void Navigation::resetPositionBias() {
++  position_p00_=4; position_p01_=0; position_p11_=0.015 > 0 ? 4e-6 : 0;
++  position_drift_=0; position_last_distance_=estimator_.state().distance_m;
++  position_last_update_=-INFINITY; position_windows_=0;
++}
++void Navigation::predictPositionBias() {
++  const auto state=estimator_.state();
++  if(!has_gnss_anchor_ || !state.initialized) return;
++  const double ds=std::max(0.,state.distance_m-position_last_distance_);
++  position_last_distance_=state.distance_m;
++  if(ds<=0) return;
++  start_s_m_+=position_drift_*ds;
++  position_p00_=std::min(400.,position_p00_+2*ds*position_p01_+ds*ds*position_p11_+.0025*ds);
++  position_p01_+=ds*position_p11_;
++  position_p11_=std::min(1e-4,position_p11_+1e-08*ds);
++}
++void Navigation::updatePositionBias(double anchor,double stamp,int status) {
++  if(stamp-position_last_update_<.5) return;
++  if(stamp-position_last_update_>10) ++position_windows_;
++  position_last_update_=stamp;
++  const double variance=status==2 ? .25 : 4.;
++  const double innovation=anchor-start_s_m_;
++  const double total=position_p00_+variance;
++  const double k0=position_p00_/total, k1=position_windows_>=2 ? position_p01_/total : 0;
++  const double used=std::clamp(innovation,-config_.gnss_correction_max_step_m/std::max(k0,1e-6),config_.gnss_correction_max_step_m/std::max(k0,1e-6));
++  start_s_m_+=k0*used;
++  position_drift_=std::clamp(position_drift_+k1*used,-0.015,0.015);
++  const double p00=position_p00_,p01=position_p01_;
++  position_p00_=std::max(.01,position_p00_-k0*p00);
++  position_p01_-=k0*p01;
++  position_p11_=std::max(0.,position_p11_-k1*p01);
+   ++corrections_;
+ }
+ 
+@@ -369,6 +403,7 @@
+                                         shift_m * std::sin(relative_heading_rad_), 0.0};
+     }
+     has_gnss_anchor_ = true;
++    resetPositionBias();
+     anchor_source_ = rover ? "rover_fallback" : "master";
+     startup_fixes_.clear();
+     rover_startup_fixes_.clear();
+--- a/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp
++++ b/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp
+@@ -90,6 +90,12 @@
+  void tryStartupAnchor(double stamp_s);
+  void finalizeStartupAnchor(bool rover, bool rtk);
+  void correctGnss(const Fix& message, bool rover);
++ void predictPositionBias();
++ void resetPositionBias();
++ void updatePositionBias(double anchor, double stamp, int status);
++ double position_p00_=4, position_p01_=0, position_p11_=4e-6;
++ double position_drift_=0, position_last_distance_=0, position_last_update_=-INFINITY;
++ int position_windows_=0;
+  PoseResult poseFromDistance(double distance_m) const;
+  NavigationConfig config_;
+  NavigationOutput output_;

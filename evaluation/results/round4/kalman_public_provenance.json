@@ -1,0 +1,31 @@
+{
+  "protocol": "Frozen candidates with identical pure navigation; no retuning; nearest-reference diagnostics, not ROS ATS.",
+  "variants": [
+    {
+      "variant": "long_guarded",
+      "artifacts_sha256": {
+        "/private/tmp/round4-combined/navigation_replay": "43cf41b773b0fe556c3a60da7a11f6869c729934f2e0d1b22d17c76c6abbebba",
+        "/private/tmp/round4-kalman/long_guarded/estimator.cpp": "a62db61a8df442b8d89e703eb9cfc9e68ccc158db77e1319aa2a5c4b155b0c1b",
+        "/private/tmp/round4-kalman/long_guarded/include/tram_odometry/estimator.hpp": "4dff47c2540223bf107555f375b65c9eb97a52e94a2614a090cdce43f5b3ad5d",
+        "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/ros2_ws/src/tram_odometry/src/navigation.cpp": "8ec202c373a5b7f071791395938844d21e402db9ccf7db1e1f8d0207eda9c863",
+        "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/navigation_replay.cpp": "3287da40f078263a0bf06f56ba16b5b5fc5384cb8c1dbf51a62fa548adf709d3",
+        "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/runs/round4_combined_reference/permitted_inputs.csv": "50b7ba4a11c674342b929cb1e95a6019a4fa9de2a4596b56a489af6a8cd86df2"
+      },
+      "ablation_sha256": "11d54b343102e9f789e578c56b3a6e8ed6623d9b924a9e2f22c456c46c859fcc",
+      "compiler_flags": "c++ -std=c++17 -O2; experimental include before production include"
+    },
+    {
+      "variant": "long_guarded_stop",
+      "artifacts_sha256": {
+        "/private/tmp/round4-combined-stop/navigation_replay": "e08cb886a408496102a967b02f953112a907829330d2a5a7c43eeed0cee53801",
+        "/private/tmp/round4-kalman/long_guarded_stop/estimator.cpp": "a2788799d272f4d4c30af7c8f1e6080cc5cf6132026e5ab99c307f57079d1ecd",
+        "/private/tmp/round4-kalman/long_guarded_stop/include/tram_odometry/estimator.hpp": "4dff47c2540223bf107555f375b65c9eb97a52e94a2614a090cdce43f5b3ad5d",
+        "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/ros2_ws/src/tram_odometry/src/navigation.cpp": "8ec202c373a5b7f071791395938844d21e402db9ccf7db1e1f8d0207eda9c863",
+        "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/navigation_replay.cpp": "3287da40f078263a0bf06f56ba16b5b5fc5384cb8c1dbf51a62fa548adf709d3",
+        "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/runs/round4_combined_stop_reference/permitted_inputs.csv": "50b7ba4a11c674342b929cb1e95a6019a4fa9de2a4596b56a489af6a8cd86df2"
+      },
+      "ablation_sha256": "e96d6128c769bb13c5bcb6d2a127bf68a7c695f831a2f0c459a40a756766ec91",
+      "compiler_flags": "c++ -std=c++17 -O2; experimental include before production include"
+    }
+  ]
+}

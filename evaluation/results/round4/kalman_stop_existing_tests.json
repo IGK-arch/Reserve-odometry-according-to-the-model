@@ -1,0 +1,37 @@
+[
+  {
+    "variant": "long_guarded_stop",
+    "test": "estimator_jump_rate_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: common-jump rejection and healthy motion at10-100Hz\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded_stop",
+    "test": "estimator_core_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: estimator core causal conversion, slip, dropout and bounds\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded_stop",
+    "test": "estimator_pair_freeze_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: paired flatline detection and reacquisition\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded_stop",
+    "test": "estimator_jump_recovery_test.cpp",
+    "returncode": 0,
+    "stdout": "PASS: estimator persistent jump rejection and bounded recovery\n",
+    "stderr": ""
+  },
+  {
+    "variant": "long_guarded_stop",
+    "test": "estimator_wheel_residual_test.cpp",
+    "returncode": 0,
+    "stdout": "paired dropout one-second error: 0.0832518\nPASS: causal wheel residual fallback, return, reset and fault isolation\n",
+    "stderr": ""
+  }
+]

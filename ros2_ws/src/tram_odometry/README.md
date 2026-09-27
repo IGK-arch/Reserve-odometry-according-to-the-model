@@ -79,6 +79,15 @@ command-only trigger deliberately loses the earlier synthetic transition-fault
 gain. See [`docs/ROUND3_RELIABILITY.md`](../../../docs/ROUND3_RELIABILITY.md)
 for measured improvements, regressions and limitations.
 
+Round 4 keeps this longitudinal estimator. The experimental coupled velocity /
+acceleration-residual Kalman filter is not enabled in the delivered node;
+its gains and regressions are recorded in
+[`docs/ROUND4_EXPERIMENTS.md`](../../../docs/ROUND4_EXPERIMENTS.md).
+Rover startup now rotates the rover-to-master lever consistently with the
+measured dual-RTK body course used for the master-to-base lever, retaining the
+map grade. This fixes the sparse-master / rover-anchor deadline case without
+changing RTK selection or publication timing.
+
 To override the vehicle default, add `enable_drive_table: false` or `true`
 under `ros__parameters` in `config/default.yaml`. Set `drive_table_path` to
 use another CSV; an empty value resolves to the installed

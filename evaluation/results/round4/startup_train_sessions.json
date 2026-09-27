@@ -1,0 +1,98 @@
+{
+  "2026-07-27": {
+    "baseline": {
+      "bags": 29,
+      "scored_bags": 27,
+      "n": 2856,
+      "rmse": 5.644657374884522
+    },
+    "mixed": {
+      "bags": 29,
+      "scored_bags": 27,
+      "n": 2856,
+      "rmse": 5.647437854130411
+    },
+    "rigid": {
+      "bags": 29,
+      "scored_bags": 27,
+      "n": 2856,
+      "rmse": 5.6448706352054865
+    },
+    "joint": {
+      "bags": 29,
+      "scored_bags": 27,
+      "n": 2856,
+      "rmse": 5.644818831779255
+    },
+    "pure": {
+      "bags": 29,
+      "scored_bags": 27,
+      "n": 2856,
+      "rmse": 5.644657374884522
+    }
+  },
+  "2026-08-26": {
+    "baseline": {
+      "bags": 9,
+      "scored_bags": 9,
+      "n": 994,
+      "rmse": 0.7747101942572501
+    },
+    "mixed": {
+      "bags": 9,
+      "scored_bags": 9,
+      "n": 994,
+      "rmse": 0.773565811907051
+    },
+    "rigid": {
+      "bags": 9,
+      "scored_bags": 9,
+      "n": 994,
+      "rmse": 0.7738586509314037
+    },
+    "joint": {
+      "bags": 9,
+      "scored_bags": 9,
+      "n": 994,
+      "rmse": 0.7738429071409956
+    },
+    "pure": {
+      "bags": 9,
+      "scored_bags": 9,
+      "n": 994,
+      "rmse": 0.7747101942572501
+    }
+  },
+  "2026-09-03": {
+    "baseline": {
+      "bags": 4,
+      "scored_bags": 4,
+      "n": 394,
+      "rmse": 3.1941420958494513
+    },
+    "mixed": {
+      "bags": 4,
+      "scored_bags": 4,
+      "n": 394,
+      "rmse": 3.1941420958494513
+    },
+    "rigid": {
+      "bags": 4,
+      "scored_bags": 4,
+      "n": 394,
+      "rmse": 3.1941420958494513
+    },
+    "joint": {
+      "bags": 4,
+      "scored_bags": 4,
+      "n": 394,
+      "rmse": 3.1941420958494513
+    },
+    "pure": {
+      "bags": 4,
+      "scored_bags": 4,
+      "n": 394,
+      "rmse": 3.1941420958494513
+    }
+  }
+}

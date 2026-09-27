@@ -1,0 +1,40 @@
+Internal ctest changing into directory: /tmp/round4-startup/pure-tests/build
+Test project /tmp/round4-startup/pure-tests/build
+      Start  1: elevation_profile_test
+ 1/17 Test  #1: elevation_profile_test ............   Passed    0.17 sec
+      Start  2: estimator_core_test
+ 2/17 Test  #2: estimator_core_test ...............   Passed    0.20 sec
+      Start  3: estimator_jump_rate_test
+ 3/17 Test  #3: estimator_jump_rate_test ..........   Passed    0.17 sec
+      Start  4: estimator_jump_recovery_test
+ 4/17 Test  #4: estimator_jump_recovery_test ......   Passed    0.17 sec
+      Start  5: estimator_pair_freeze_test
+ 5/17 Test  #5: estimator_pair_freeze_test ........   Passed    0.19 sec
+      Start  6: estimator_wheel_residual_test
+ 6/17 Test  #6: estimator_wheel_residual_test .....   Passed    0.17 sec
+      Start  7: geo_projection_test
+ 7/17 Test  #7: geo_projection_test ...............   Passed    0.16 sec
+      Start  8: navigation_branch_test
+ 8/17 Test  #8: navigation_branch_test ............   Passed    0.22 sec
+      Start  9: navigation_gnss_robustness_test
+ 9/17 Test  #9: navigation_gnss_robustness_test ...   Passed    0.18 sec
+      Start 10: navigation_startup_heading_test
+10/17 Test #10: navigation_startup_heading_test ...   Passed    0.23 sec
+      Start 11: navigation_startup_quality_test
+11/17 Test #11: navigation_startup_quality_test ...   Passed    0.23 sec
+      Start 12: navigation_test
+12/17 Test #12: navigation_test ...................   Passed    0.17 sec
+      Start 13: odometry_statistics_test
+13/17 Test #13: odometry_statistics_test ..........   Passed    0.22 sec
+      Start 14: route_body_heading_test
+14/17 Test #14: route_body_heading_test ...........   Passed    0.18 sec
+      Start 15: route_tf_test
+15/17 Test #15: route_tf_test .....................   Passed    0.17 sec
+      Start 16: startup_output_gate_test
+16/17 Test #16: startup_output_gate_test ..........   Passed    0.17 sec
+      Start 17: uncertainty_test
+17/17 Test #17: uncertainty_test ..................   Passed    0.17 sec
+
+100% tests passed, 0 tests failed out of 17
+
+Total Test time (real) =   3.16 sec
