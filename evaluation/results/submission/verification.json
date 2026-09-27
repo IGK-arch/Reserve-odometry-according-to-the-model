@@ -3,11 +3,20 @@
   "runtime_commit": "816406199bd86327b7bcb5e11822d1823c83fab6",
   "frozen_runtime_files_verified": 19,
   "ros_declared_parameters_documented": 68,
-  "local_document_links_verified": 23,
+  "local_document_links_verified": 24,
   "ros_humble_build": "passed; ros_build_check.log",
   "ros_cpp_tests_passed": 19,
   "python_tests_passed": 40,
   "anchored_30618_ros_contract": "passed; ros_smoke_report.json",
   "plot": "all 28538 matched samples; numeric RMSE verified against frozen offline metrics; image visually inspected",
-  "review": "no critical or important findings; both minor findings resolved; review.md"
+  "review": "no critical or important findings; both minor findings resolved; review.md",
+  "editorial_revision": {
+    "scope": "User-selected wording, terminology, shorter jury text and translated plot labels",
+    "numeric_metric_tables_unchanged": true,
+    "parameter_keys_and_values_unchanged": true,
+    "existing_bash_commands_preserved": true,
+    "semicolons_removed_from_jury_documents": true,
+    "historical_data_usage_disclosure_preserved_once": true,
+    "plot_samples_and_metrics_unchanged": true
+  }
 }

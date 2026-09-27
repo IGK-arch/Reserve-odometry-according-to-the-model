@@ -228,8 +228,8 @@
     },
     {
       "path": "docs/JURY_CHECK.md",
-      "sha256": "e77d7516254ec2a676cf58789b5f4582dd38d7202a762760223761ab4c869908",
-      "size": 6751
+      "sha256": "508d530c2d9c1c70963c51e7483df07c935dc07ebfc4e47485c43c4860184761",
+      "size": 6934
     },
     {
       "path": "docs/MAP_METHOD.md",
@@ -318,38 +318,38 @@
     },
     {
       "path": "docs/submission/LIMITATIONS.md",
-      "sha256": "50a4d7f2ad10f82f2568dc7efd3407175fd0b42a062d6a8cacbb761eea5a4e39",
-      "size": 5719
+      "sha256": "b89636be5ea38816531b1d4117e1e4b8b1ffd341e847ebea5ef90a240ce2d201",
+      "size": 4941
     },
     {
       "path": "docs/submission/MODEL.md",
-      "sha256": "71da6877b4331639f14cb8b299ba1ac68c84128207470e28e115a63bf55de6af",
-      "size": 9428
+      "sha256": "fe25768b7c4dee7d5ed739db24ffab8a0f41f7386f86a729357478932ed1825f",
+      "size": 10467
     },
     {
       "path": "docs/submission/PARAMETERS.md",
-      "sha256": "c22f9494aaa8e64fd97948342715cd7ec92e2de8a64756170186bdc46b921473",
-      "size": 11369
+      "sha256": "82972e1e07b6eec430912d0305c42bc0abfc5b3c67689d7ed733a7a287902012",
+      "size": 11893
     },
     {
       "path": "docs/submission/README.md",
-      "sha256": "610297359780a82e9550383b3d6da547360bc5d759e2948e0286bdc12c20334a",
-      "size": 2292
+      "sha256": "f1484bc656274305f9220977cbfe3f6bd3a4c0283887644c6e6f4af4c793a79c",
+      "size": 2219
     },
     {
       "path": "docs/submission/RESULTS.md",
-      "sha256": "0e9eeb623ec1c2136146aa83ea4e3f00616ed7845859cb6d759c91a4f14f5f46",
-      "size": 7246
+      "sha256": "4b4fed0b90d6ebf8dfd7c5f631ef8e88ab2dd382be4deb4407470428328030c4",
+      "size": 8128
     },
     {
       "path": "docs/submission/reference_errors.json",
-      "sha256": "67582b4b59f906047b0fa144876a49dfd9747bfd59dd88c7228c9fc651b27649",
+      "sha256": "50fbbf5c2c712d0f6dfde892f8b7480c6e44badd30b82fcc64f156dc7e4766c9",
       "size": 857
     },
     {
       "path": "docs/submission/reference_errors.png",
-      "sha256": "088e62589556bc97a631d948548ada99a28d0b91612b221bf5b7639c0a965891",
-      "size": 176318
+      "sha256": "82266d5cd8569dc25c2bef90ae94ae43441f9d0581d56e3a01ba968b29cb7611",
+      "size": 181279
     },
     {
       "path": "docs/superpowers/plans/2026-09-27-odometry-round2.md",
@@ -2158,8 +2158,8 @@
     },
     {
       "path": "evaluation/results/submission/verification.json",
-      "sha256": "8a3bb28bac45345c15229129b345e29035b4eae2774a6a6a8e1b7f93df236704",
-      "size": 664
+      "sha256": "c06249bbc0da82e0ba857cc2564d73006c7712ed92e8a384ed040c6a1619aa2d",
+      "size": 1092
     },
     {
       "path": "evaluation/results/train_original.pair_gain.json",
@@ -2803,8 +2803,8 @@
     },
     {
       "path": "tools/make_submission_plot.py",
-      "sha256": "b6b53564d8918302d883249353c934d998e13ca51909aa85c95887b1ba07c57d",
-      "size": 4192
+      "sha256": "1d7d57067c2643278813258742d5ed11f747072485cafae17bd9c59190029a46",
+      "size": 4232
     },
     {
       "path": "tools/map_builder.py",

@@ -1,6 +1,6 @@
 # Инструкция для жюри
 
-Ubuntu 22.04, ROS 2 Humble, C++17, `colcon`. Команды выполняются из корня репозитория или распакованного решения. Рабочий код — `8164061`, параметры — поставляемый `default.yaml`.
+Ubuntu 22.04, ROS 2 Humble, C++17, `colcon`. Команды выполняются из корня репозитория или распакованного решения. Параметры — поставляемый `default.yaml`.
 
 ## 1. Сборка
 
@@ -12,9 +12,9 @@ colcon build --packages-up-to tram_odometry --cmake-args -DCMAKE_BUILD_TYPE=Rele
 source install/setup.bash
 ```
 
-`rosdep` устанавливает отсутствующие зависимости; на подготовленной машине этот шаг можно пропустить. Собираются `tram_vehicle_msgs` и `tram_odometry`. Карта и калибровки устанавливаются вместе с нодой.
+На машине с установленными зависимостями шаг `rosdep` можно пропустить. Собираются `tram_vehicle_msgs` и `tram_odometry`. Карта и калибровки устанавливаются вместе с нодой.
 
-## 2. Воспроизведение rosbag
+## 2. Воспроизведение записи ROS (rosbag)
 
 В каждом терминале откройте корень решения и выполните:
 
@@ -29,20 +29,20 @@ source ros2_ws/install/setup.bash
 ros2 launch tram_odometry tram_odometry.launch.py vehicle_id:=30618 2>&1 | tee node.log
 ```
 
-**Терминал B — запись:** замените путь на каталог bag с `metadata.yaml`.
+**Терминал B — запись:** замените путь на каталог записи с `metadata.yaml`.
 
 ```bash
 ros2 bag play /absolute/path/to/bag --clock --rate 1
 ```
 
-Для трамвая 30639 укажите `vehicle_id:=30639`. Перед следующим bag остановите ноду через Ctrl+C и запустите заново. [Входы и единицы](submission/MODEL.md).
+Для трамвая 30639 укажите `vehicle_id:=30639`. Перед следующей записью остановите ноду через Ctrl+C и запустите заново. [Входы и единицы](submission/MODEL.md).
 
 ## 3. Ожидаемые выходы и логи
 
 | Топик | Тип | Содержимое |
 |---|---|---|
-| `/result/velocity` | `tram_vehicle_msgs/msg/VelocitySensor` | `velocity` в м/с; точный `header.stamp` вызвавшего публикацию входа |
-| `/result/position` | `nav_msgs/msg/Odometry` | Положение `base_link`: `pose.pose.position.x/y/z` в метрах; скорость в `twist.twist.linear.x` |
+| `/result/velocity` | `tram_vehicle_msgs/msg/VelocitySensor` | `velocity` в м/с. Точный `header.stamp` вызвавшего публикацию входа |
+| `/result/position` | `nav_msgs/msg/Odometry` | Положение `base_link`: `pose.pose.position.x/y/z` в метрах. Скорость в `twist.twist.linear.x` |
 | `/result/diagnostics` | `diagnostic_msgs/msg/DiagnosticArray` | Состояние колёс, привязка, ускорение, задержка и частота |
 
 **Терминал C:**
@@ -60,23 +60,23 @@ ros2 topic hz /result/position
 ros2 topic echo /result/diagnostics
 ```
 
-Ожидаемая частота при штатном bag — выше 10 Гц; на полном контрольном прогоне около 21,75 Гц. Скорость появляется после первого принятого колёсного измерения. Положение — после стартовой GNSS-привязки; без GNSS после окна 5 с выдаётся относительная одометрия. Без новых входов нода не создаёт искусственные отсчёты.
+Ожидаемая частота при штатной записи — выше 10 Гц. На полном контрольном прогоне около 21,75 Гц. Скорость появляется после первого принятого колёсного измерения. Положение — после стартовой GNSS-привязки. Без GNSS после окна 5 с выдаётся относительная одометрия. Результаты публикуются при поступлении новых входных сообщений.
 
 | Проверка | Где смотреть |
 |---|---|
-| Абсолютная привязка | `frame_id=mgrs_37UCB`; `position_mode`, `anchor_source` в диагностике |
+| Абсолютная привязка | `frame_id=mgrs_37UCB`. Поля `position_mode`, `anchor_source` в диагностике |
 | Относительная одометрия без GNSS | `frame_id=odom` |
 | Работа по модели при потере колёс | `model_only`, `front_stale/rear_stale`, `front_slip/rear_slip` |
 | Таблица ускорения загружена / используется | `drive_table_active`, `drive_table_used` |
-| Задержка внутри callback | `callback_to_position_publish_ms`, мс |
+| Задержка внутри обработчика сообщения | `callback_to_position_publish_ms`, мс |
 | Частота публикации | `output_rate_hz_1s`, Гц |
 | Ошибки запуска | Консоль терминала A и `node.log` |
 
-Абсолютный кадр фиксирован: `x=UTM37N.E−300000`, `y=UTM37N.N−6100000`; x может превышать 100000 м. Выравнивания по эталону нет.
+Абсолютная система координат фиксирована: `x=UTM37N.E−300000`, `y=UTM37N.N−6100000`. Координата x может превышать 100000 м. Координаты сравниваются с эталоном напрямую.
 
 ## 4. Полный замер точности, задержки и ресурсов
 
-Нужны предоставленный организаторами пакет `hackathon_solution_checker` в собранном ROS workspace и bag с `/localization/kinematic_state`. Для offline-пересчёта — `python3-numpy` и `python3-scipy`. Остановите ручной запуск из шага 2: следующая команда сама запускает ноду, checker, проигрыватель и запись результатов.
+Требуется собранный пакет `hackathon_solution_checker` в рабочем пространстве ROS и запись с `/localization/kinematic_state`. Для офлайн-пересчёта — `python3-numpy` и `python3-scipy`. Остановите ручной запуск из шага 2: следующая команда сама запускает ноду, проверяющую программу, проигрыватель и запись результатов.
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -89,20 +89,20 @@ bash tools/ros_reference_check.sh \
   --ros-ws "$PWD/ros2_ws" --vehicle-id 30618 --rate 1 --timeout 1800
 ```
 
-`CHECKER_WS/install/setup.bash` должен существовать. Каталог `--outdir` должен быть новым или пустым. Для записи длиннее 30 минут увеличьте `--timeout`. Нода не подписывается на эталон; его читают checker и оценщик.
+`CHECKER_WS/install/setup.bash` должен существовать. Каталог `--outdir` должен быть новым или пустым. Для записи длиннее 30 минут увеличьте `--timeout`. Эталон используется инструментами проверки точности.
 
 | Файл в `evaluation/runs/jury_check/` | Содержимое |
 |---|---|
-| `run_summary.json` | `status=completed`, `playback_completed=true`, официальный score, задержки и CPU/RAM |
-| `checker.log` | RMSE и максимальные ошибки официального checker |
+| `run_summary.json` | `status=completed`, `playback_completed=true`, официальные метрики, задержки и CPU/RAM |
+| `checker.log` | RMSE и максимальные ошибки официальной проверяющей программы |
 | `node.log`, `player.log`, `recorder.log` | Логи процессов |
-| `offline_metrics.json` | Пересчёт по ближайшей метке ≤50 мс; это не официальный ATS |
+| `offline_metrics.json` | Дополнительный расчёт по ближайшей временной метке с допуском 50 мс |
 | `result_bag/`, `candidate.csv` | Записанные результаты для анализа |
 | `effective_parameters.yaml`, `runtime_samples.csv` | Конфигурация и замеры ресурсов |
 
 [Методика и результаты](submission/RESULTS.md).
 
-## 5. Проверка исходников без rosbag
+## 5. Проверка исходников без записи ROS
 
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
