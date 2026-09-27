@@ -39,6 +39,10 @@ if(BUILD_TESTING)
     target_compile_options("${name}" PRIVATE -UNDEBUG)
     if(name STREQUAL "route_tf_test")
       add_test(NAME "${name}" COMMAND "${name}" "${CMAKE_CURRENT_SOURCE_DIR}/assets/route_map.csv")
+    elseif(name STREQUAL "navigation_behavior_branch_test")
+      add_test(NAME "${name}" COMMAND "${name}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/assets/route_map.csv"
+        "${CMAKE_CURRENT_SOURCE_DIR}/assets/route_map_branch_a.csv")
     elseif(name STREQUAL "stop_landmark_test")
       add_test(NAME "${name}" COMMAND "${name}" "${CMAKE_CURRENT_SOURCE_DIR}/assets/route_map.csv")
     elseif(name STREQUAL "elevation_profile_test")

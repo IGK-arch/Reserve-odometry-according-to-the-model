@@ -1,0 +1,20 @@
+[
+  {
+    "variant": "front_step",
+    "final_branch": "primary",
+    "switches": 0,
+    "max_speed_near_fork_mps": 3.0274249518248912
+  },
+  {
+    "variant": "dual_step",
+    "final_branch": "primary",
+    "switches": 0,
+    "max_speed_near_fork_mps": 2.949297535091506
+  },
+  {
+    "variant": "dual_ramp",
+    "final_branch": "primary",
+    "switches": 0,
+    "max_speed_near_fork_mps": 7.099387210299283
+  }
+]

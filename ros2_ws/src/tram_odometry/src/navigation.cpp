@@ -49,6 +49,18 @@ Navigation::Navigation(EstimatorConfig ec, NavigationConfig c)
     throw std::invalid_argument("body_heading_lookahead_m must be finite and within [0,20]");
   has_map_ = map_.load(c.map_file);
   has_alternate_ = !c.alternate_map_file.empty() && alternate_map_.load(c.alternate_map_file);
+  if (has_map_ && has_alternate_ && map_.has("out") &&
+      alternate_map_.has("out") && estimator_.config().vehicle_id == 30618) {
+    const auto b_start=map_.sample("out",5400.0).p;
+    const auto a_start=alternate_map_.sample("out",5400.0).p;
+    const auto b_end=map_.sample("out",5460.0).p;
+    const auto a_end=alternate_map_.sample("out",5460.0).p;
+    branch_rule_map_compatible_ =
+      std::hypot(b_start.x+4530.536,b_start.y+1130.722)<2.0 &&
+      std::hypot(a_start.x+4529.776,a_start.y+1131.066)<2.0 &&
+      std::hypot(b_end.x+4576.878,b_end.y+1167.442)<2.0 &&
+      std::hypot(a_end.x+4553.279,a_end.y+1185.328)<2.0;
+  }
   if (c.enable_stop_landmarks && estimator_.config().vehicle_id == 30618 && has_map_) {
     if (c.stop_landmarks_file.empty())
       throw std::invalid_argument("Stop landmarks require a catalog file");
@@ -99,6 +111,28 @@ bool Navigation::submitVehicle(char type, double value, double stamp_s) {
   if(!state.initialized || !std::isfinite(state.stamp_s) ||
      state.stamp_s<=last_published_stamp_s_+1e-7 || std::abs(state.stamp_s-stamp_s)>1e-5) return false;
   updateStopLandmark(type, value, state);
+  // On the known fork, use sustained traction and healthy wheel speed as
+  // causal evidence for branch A when no recent GNSS fix is available.
+  const double predicted_s = start_s_m_ + state.distance_m;
+  if (branch_rule_map_compatible_ && !branch_behavior_used_ &&
+      has_alternate_ && !alternate_active_ && has_gnss_anchor_ &&
+      state.stamp_s - std::max(last_fix_stamp_[0],last_fix_stamp_[1]) > 1.0 &&
+      selected_direction_ == "out" && predicted_s > 5395.0 &&
+      predicted_s < 5402.0 && state.velocity_mps > 4.0 && state.notch >= 10 &&
+      !state.front_stale && !state.rear_stale &&
+      !state.front_slip && !state.rear_slip) {
+    if (!std::isfinite(branch_highspeed_begin_s_)) branch_highspeed_begin_s_ = state.stamp_s;
+    if (state.stamp_s - branch_highspeed_begin_s_ >= 0.2) {
+      std::swap(map_, alternate_map_);
+      alternate_active_ = true;
+      branch_behavior_used_ = true;
+      branch_transition_distance_m_ = state.distance_m;
+      ++branch_switches_;
+      branch_evidence_.clear();
+      for (auto & window : correction_windows_) window.clear();
+      branch_highspeed_begin_s_ = NAN;
+    }
+  } else branch_highspeed_begin_s_ = NAN;
   last_published_stamp_s_=state.stamp_s;
   output_.estimate=state;
   output_.position_valid=!shouldHoldPositionForStartup(use_startup_gnss_,has_gnss_anchor_,
@@ -159,6 +193,9 @@ void Navigation::prepareInput(double stamp_s) {
       fix_motion_={};
       pair_fixes_={};
       branch_evidence_.clear();
+      branch_highspeed_begin_s_ = NAN;
+      branch_behavior_used_ = false;
+      branch_transition_distance_m_ = NAN;
       corrections_=rejected_=branch_switches_=0;
       stop_wheels_ = {};
       stop_begin_s_ = NAN;
@@ -281,6 +318,9 @@ void Navigation::correctGnss(const Fix & fix, bool rover) {
         branch_evidence_.push_back({fix.stamp_s,alternative_anchor});
       if (branch_evidence_.size() >= 3 && fix.stamp_s-branch_evidence_.front().stamp_s >= 0.19) {
         std::swap(map_,alternate_map_); alternate_active_=!alternate_active_;
+        branch_behavior_used_ = true;
+        branch_transition_distance_m_ = NAN;
+        branch_highspeed_begin_s_ = NAN;
         start_s_m_=alternative.s-distance;
         anchor_residual_={}; anchor_heading_delta_rad_=0;
         ++branch_switches_;
@@ -537,6 +577,49 @@ PoseResult Navigation::poseFromDistance(double distance_m) const {
     pose.p.y = output_scale_ * (s * x + c * y) + output_offset_.y;
     pose.p.z = output_scale_ * pose.p.z + output_offset_.z;
     pose.yaw += output_rotation_rad_;
+    // Preserve the old route pose at the switch, then follow a continuous
+    // weighted path until the alternative is fully selected. Scalar distance
+    // and speed are untouched. No future measurements are used.
+    if (alternate_active_ && std::isfinite(branch_transition_distance_m_) &&
+        alternate_map_.has(selected_direction_)) {
+      const double progressed = std::max(0.0, distance_m - branch_transition_distance_m_);
+      const double new_weight = std::clamp(progressed / 20.0, 0.0, 1.0);
+      if (new_weight < 1.0) {
+        const double s_m = start_s_m_ + distance_m;
+        const auto old_route = alternate_map_.sample(selected_direction_, s_m);
+        const auto old_tangent = alternate_map_.bodyDirection(
+          selected_direction_, s_m, config_.body_heading_lookahead_m);
+        const double weight = has_gnss_anchor_ && anchor_residual_decay_m_ > 0.0 ?
+          std::exp(-std::max(0.0, distance_m - anchor_distance_m_) /
+                   anchor_residual_decay_m_) : 0.0;
+        const double heading_delta = anchor_heading_delta_rad_ * weight;
+        const double ch=std::cos(heading_delta), sh=std::sin(heading_delta);
+        const Point3 old_body{ch*old_tangent.x-sh*old_tangent.y,
+                              sh*old_tangent.x+ch*old_tangent.y,old_tangent.z};
+        Point3 old_position = old_route.p + old_body*route_longitudinal_offset_m_ +
+          Point3{anchor_residual_.x*weight,anchor_residual_.y*weight,0.0};
+        double old_yaw=std::atan2(old_tangent.y,old_tangent.x)+heading_delta;
+        if(output_projection_=="mgrs37ucb") {
+          const Point3 ahead=old_position+Point3{std::cos(old_yaw),std::sin(old_yaw),0};
+          const auto q=projection_.mgrsFromEnu(old_position);
+          const auto qa=projection_.mgrsFromEnu(ahead);
+          old_yaw=std::atan2(qa.y-q.y,qa.x-q.x);
+          old_position=q;
+        }
+        old_position.z+=antenna_to_base_z_m_;
+        if(output_projection_=="mgrs37ucb")
+          old_position.z=elevation_.sample(old_position.x,old_position.y,old_position.z);
+        const double ox=old_position.x,oy=old_position.y;
+        old_position.x=output_scale_*(c*ox-s*oy)+output_offset_.x;
+        old_position.y=output_scale_*(s*ox+c*oy)+output_offset_.y;
+        old_position.z=output_scale_*old_position.z+output_offset_.z;
+        old_yaw+=output_rotation_rad_;
+        pose.p=old_position*(1.0-new_weight)+pose.p*new_weight;
+        const double x=(1.0-new_weight)*std::cos(old_yaw)+new_weight*std::cos(pose.yaw);
+        const double y=(1.0-new_weight)*std::sin(old_yaw)+new_weight*std::sin(pose.yaw);
+        pose.yaw=std::atan2(y,x);
+      }
+    }
     return pose;
   }
 

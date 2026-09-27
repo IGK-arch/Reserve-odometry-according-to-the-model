@@ -1,0 +1,52 @@
+{
+  "ros_positions": 27886,
+  "offline_positions": 27908,
+  "matched_stamps_within_1ms": 27886,
+  "matched_position_delta_m": {
+    "median": 8.346813862465565e-07,
+    "p95": 6.916359890791763e-05,
+    "max": 0.15239156121486486,
+    "last": 1.599379159766777e-06,
+    "max_after_startup_5s": 0.002197327697963716
+  },
+  "matched_speed_abs_delta_mps": {
+    "median": 1.6244290357292357e-09,
+    "max": 4.113697755769863e-07
+  },
+  "nonincreasing_ros_stamps": 0,
+  "max_3d_step_speed_mps": 79.50810762146233,
+  "max_3d_step_stamp_s": 1787770675.0992975,
+  "max_3d_step_distance_m": 1.5364008242415241,
+  "max_3d_step_distance_stamp_s": 1787770675.0992975,
+  "max_3d_step_distance_dt_s": 0.01932382583618164,
+  "offline_first_alternate_stamp_s": 1787771320.2802634,
+  "ros_position_stamp_at_final_158_count_s": 1787771320.2802634,
+  "first_ros_position_matched_to_alternate_stamp_s": 1787771320.2802634,
+  "largest_matched_position_deltas": [
+    [
+      1787770244.829972,
+      0.15239156121486486,
+      "primary"
+    ],
+    [
+      1787770244.9800348,
+      0.10020848526651648,
+      "primary"
+    ],
+    [
+      1787770244.8800116,
+      0.07621916163337994,
+      "primary"
+    ],
+    [
+      1787770244.9300125,
+      0.03816054445481968,
+      "primary"
+    ],
+    [
+      1787770245.0299642,
+      0.009779590898571205,
+      "primary"
+    ]
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "bag": "30618_a869780d",
+  "input_policy": "three vehicle topics and GNSS fixes from the first 1.5 seconds only; no GNSS velocity or localization reference",
+  "ros": "Ubuntu 22.04, ROS 2 Humble",
+  "realtime_1x_first_80_seconds": {
+    "replay_completed": false,
+    "velocity_outputs": 2093,
+    "position_outputs": 2088,
+    "velocity_rate_from_message_stamps_hz": 25.2493399333666,
+    "position_rate_from_message_stamps_hz": 26.101053252856467,
+    "callback_to_position_publish_p50_ms": 0.134708,
+    "callback_to_position_publish_p95_ms": 0.27206695,
+    "callback_to_position_publish_max_ms": 1.394653,
+    "all_outputs_finite": true,
+    "frame_id": "mgrs_37UCB",
+    "child_frame_id": "base_link"
+  },
+  "full_8x_1083_8_simulated_seconds": {
+    "replay_completed": true,
+    "node_exit_code": 0,
+    "player_exit_code": 0,
+    "velocity_outputs": 27890,
+    "position_outputs": 27886,
+    "diagnostic_outputs": 27890,
+    "velocity_rate_from_message_stamps_hz": 25.732408043616562,
+    "position_rate_from_message_stamps_hz": 25.744356939030066,
+    "callback_to_position_publish_p50_ms": 0.1145985,
+    "callback_to_position_publish_p95_ms": 0.196084,
+    "callback_to_position_publish_max_ms": 1.510002,
+    "node_peak_rss_mib": 24.98828125,
+    "node_average_cpu_cores_during_8x": 0.0861451155095402,
+    "primary_position_outputs": 27728,
+    "alternate_position_outputs": 158,
+    "all_outputs_finite": true,
+    "frame_id": "mgrs_37UCB",
+    "child_frame_id": "base_link"
+  },
+  "latency_note": "Callback-to-publication is instrumented inside the node; this is not end-to-end input delivery latency. The full run used 8x playback, so only the first-80-s run represents real-time rate."
+}

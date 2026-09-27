@@ -1,0 +1,62 @@
+{
+  "candidate": "local_final_2026-09-27",
+  "protocol": {
+    "input": "wheel speeds and driver command; GNSS fixes only during the first 1.5 seconds",
+    "position_reference": "paired GNSS proxy, not the official fused checker",
+    "split": "whole-bag train/validation/historical holdout; validation has been inspected during development",
+    "speed_reference": "GNSS velocity proxy; rare reference spikes remain"
+  },
+  "validation_position": {
+    "bags": 13,
+    "matched_timestamps": 301243,
+    "pooled_3d_rmse_m_before_branch_rule": 2.644237687799031,
+    "pooled_3d_rmse_m_final": 2.615324873246008,
+    "mean_bag_3d_rmse_m_before_branch_rule": 2.317092133655582,
+    "mean_bag_3d_rmse_m_final": 2.2765844920952416,
+    "mean_end_error_m_before_branch_rule": 5.348433223258103,
+    "mean_end_error_m_final": 3.2919291954267718,
+    "changed_bags": 1,
+    "changed_bag": "30618_a869780d",
+    "changed_bag_3d_rmse_m_before": 2.2562313058305197,
+    "changed_bag_3d_rmse_m_final": 1.7296319655460977,
+    "changed_bag_end_error_m_before": 30.061107890487342,
+    "changed_bag_end_error_m_final": 3.326555528680043,
+    "speed_and_scalar_distance_arrays_identical_before_after": true
+  },
+  "speed_gnss_proxy_mps": {
+    "gain": 0.9,
+    "train_42_bags_939478_matches_rmse": 0.057982328,
+    "validation_rmse": 0.033146,
+    "historical_holdout_scored_23_of_42_rmse": 0.118075
+  },
+  "branch_decisions": {
+    "train_labeled_A": "2/2 switched to A",
+    "train_labeled_B": "0/10 switched to A",
+    "validation_switches": "1/13 bags, on offline-labeled A trip",
+    "historical_holdout_switches": "0/32 vehicle-30618 bags; only 4 had a reliable offline B label",
+    "injected_front_step_dual_step_dual_ramp": "0/3 switched to A"
+  },
+  "rejected_stop_correction_smoothing": {
+    "duration_s": 5,
+    "observed_original_single_step_m": 1.5364,
+    "validation_matched_timestamps": 301243,
+    "pooled_3d_rmse_m_original": 2.615325,
+    "pooled_3d_rmse_m_smoothed": 2.619641,
+    "decision": "reject; less abrupt output but worse position RMSE"
+  },
+  "ros_humble": {
+    "colcon_build": "passed",
+    "ctest": "21/21 passed",
+    "python_unittest_on_ubuntu": "40/40 passed",
+    "explicit_vehicle_id_launch_override": "passed",
+    "custom_yaml_preservation": "passed",
+    "one_x_partial_real_bag_replay": "passed",
+    "full_eight_x_real_bag_replay": "passed; branch A chosen; see ros_runtime.json"
+  },
+  "official_open_checker": {
+    "status": "not available for this final revision",
+    "historical_commit": "8164061",
+    "historical_3d_rmse_m": 1.561536,
+    "historical_speed_rmse_mps": 0.051795
+  }
+}

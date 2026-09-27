@@ -19,6 +19,10 @@ foreach(source IN LISTS TRAM_TESTS)
   target_compile_options("${name}" PRIVATE -UNDEBUG)
   if(name STREQUAL "route_tf_test" OR name STREQUAL "stop_landmark_test")
     add_test(NAME "${name}" COMMAND "${name}" "${TRAM_ROOT}/assets/route_map.csv")
+  elseif(name STREQUAL "navigation_behavior_branch_test")
+    add_test(NAME "${name}" COMMAND "${name}"
+      "${TRAM_ROOT}/assets/route_map.csv"
+      "${TRAM_ROOT}/assets/route_map_branch_a.csv")
   elseif(name STREQUAL "elevation_profile_test")
     add_test(NAME "${name}" COMMAND "${name}" "${TRAM_ROOT}/assets/official_elevation.csv")
   else()

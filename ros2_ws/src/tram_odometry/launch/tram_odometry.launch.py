@@ -13,7 +13,7 @@ def _launch_node(context):
     }
     vehicle_id = LaunchConfiguration('vehicle_id').perform(context)
     if vehicle_id:
-        overrides['vehicle_id'] = ParameterValue(vehicle_id, value_type=int)
+        overrides['vehicle_id'] = ParameterValue(int(vehicle_id), value_type=int)
     # Empty launch arguments preserve values from a custom YAML config.
     for name in ('route_direction', 'map_file', 'alternate_map_file'):
         value = LaunchConfiguration(name).perform(context)

@@ -106,6 +106,10 @@ class Navigation {
  RouteMap alternate_map_;
  bool has_alternate_ = false;
  bool alternate_active_ = false;
+ bool branch_rule_map_compatible_ = false;
+ bool branch_behavior_used_ = false;
+ double branch_highspeed_begin_s_ = NAN;
+ double branch_transition_distance_m_ = NAN;
  std::array<double,2> last_fix_stamp_{{-INFINITY,-INFINITY}};
  std::array<std::deque<Correction>,2> correction_windows_;
  std::array<FixMotion,2> fix_motion_;

@@ -1,0 +1,218 @@
+[
+  {
+    "bag": "30618_095a115b",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 3.2441665080091,
+      "final_distance_m": 5435.232766921713
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 3.2441665080091,
+      "final_distance_m": 5435.232766921713
+    }
+  },
+  {
+    "bag": "30618_27e994fc",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.01248883652235061,
+      "final_distance_m": 5622.05642323238
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.01248883652235061,
+      "final_distance_m": 5622.05642323238
+    }
+  },
+  {
+    "bag": "30618_28538acf",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5453.9898466532595
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5453.9898466532595
+    }
+  },
+  {
+    "bag": "30618_2dbce472",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 2.861452534999404,
+      "final_distance_m": 5430.670426293941
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 2.861452534999404,
+      "final_distance_m": 5430.670426293941
+    }
+  },
+  {
+    "bag": "30618_49fe4c54",
+    "GNSS_offline_label": "A",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5519.849078586381
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "alternate",
+      "switches": 1,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5519.849078586381
+    }
+  },
+  {
+    "bag": "30618_68d1748a",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 3.380497671815865,
+      "final_distance_m": 5433.241390447179
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 3.380497671815865,
+      "final_distance_m": 5433.241390447179
+    }
+  },
+  {
+    "bag": "30618_76e1f9c7",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 4.007285309424181,
+      "final_distance_m": 5463.076350321783
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 4.007285309424181,
+      "final_distance_m": 5463.076350321783
+    }
+  },
+  {
+    "bag": "30618_8158f0b0",
+    "GNSS_offline_label": "A",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0010250708063217833,
+      "final_distance_m": 5513.756197169755
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "alternate",
+      "switches": 1,
+      "final_speed_mps": 0.0010250708063217833,
+      "final_distance_m": 5513.756197169755
+    }
+  },
+  {
+    "bag": "30618_87afe526",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 4.075411576871763,
+      "final_distance_m": 5440.140289828623
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 4.075411576871763,
+      "final_distance_m": 5440.140289828623
+    }
+  },
+  {
+    "bag": "30618_9c09b081",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5471.295696629333
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5471.295696629333
+    }
+  },
+  {
+    "bag": "30618_ab5921a4",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5455.635425687124
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 0.0,
+      "final_distance_m": 5455.635425687124
+    }
+  },
+  {
+    "bag": "30618_b83d854d",
+    "GNSS_offline_label": "B",
+    "baseline": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 2.649318304722636,
+      "final_distance_m": 5423.525002475058
+    },
+    "branch_rule": {
+      "anchored": "1",
+      "branch": "primary",
+      "switches": 0,
+      "final_speed_mps": 2.649318304722636,
+      "final_distance_m": 5423.525002475058
+    }
+  }
+]

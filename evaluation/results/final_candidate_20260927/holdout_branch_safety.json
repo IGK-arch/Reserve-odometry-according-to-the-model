@@ -1,0 +1,258 @@
+[
+  {
+    "bag": "30618_0259fe53",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_0a83c933",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_117c2d02",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_1cc230fa",
+    "offline_GNSS_label": "B",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_20096314",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_2161b58b",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_21dd3af3",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_2255aade",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_2366c74a",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_2cb9ce37",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_2d2fa7be",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_2f2f1175",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_3b36e5cd",
+    "offline_GNSS_label": "B",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_3ba2326f",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_3e012faf",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_40ffd323",
+    "offline_GNSS_label": "B",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_45ff6f99",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_4d487b0d",
+    "offline_GNSS_label": "B",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_4e1e3181",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_5036aa78",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_6236f680",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_6cb3280a",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_74559c73",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_748832b9",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_79b204dc",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_7a152380",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_81c22fee",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_98161270",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_9bbe6faa",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_af7496f0",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "1",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_bab2fe58",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  },
+  {
+    "bag": "30618_e151d6e4",
+    "offline_GNSS_label": "unknown",
+    "runtime_branch": "B",
+    "switches": 0,
+    "anchored": "0",
+    "false_switch": false
+  }
+]

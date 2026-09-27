@@ -1,0 +1,32 @@
+{
+  "method": "Compare same-timestamp XYZ steps from the final branch candidate and the prior B-route candidate; transition spans 20 m of accumulated path",
+  "bags": [
+    {
+      "bag": "30618_a869780d",
+      "split": "validation",
+      "switch_step_m": 0.2106,
+      "same_step_on_B_baseline_m": 0.2106,
+      "maximum_step_in_30s_window_m": 0.4303,
+      "maximum_step_on_B_baseline_in_30s_window_m": 0.3632,
+      "maximum_transition_step_over_1_25_v_dt_m": -0.0012
+    },
+    {
+      "bag": "30618_49fe4c54",
+      "split": "train",
+      "switch_step_m": 0.0504,
+      "same_step_on_B_baseline_m": 0.0504,
+      "maximum_step_in_30s_window_m": 0.4255,
+      "maximum_step_on_B_baseline_in_30s_window_m": 0.3598,
+      "maximum_transition_step_over_1_25_v_dt_m": 0.0004
+    },
+    {
+      "bag": "30618_8158f0b0",
+      "split": "train",
+      "switch_step_m": 0.2104,
+      "same_step_on_B_baseline_m": 0.2104,
+      "maximum_step_in_30s_window_m": 0.4285,
+      "maximum_step_on_B_baseline_in_30s_window_m": 0.3727,
+      "maximum_transition_step_over_1_25_v_dt_m": -0.001
+    }
+  ]
+}

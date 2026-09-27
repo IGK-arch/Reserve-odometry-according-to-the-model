@@ -1,6 +1,6 @@
 # Инструкция для жюри
 
-Ubuntu 22.04, ROS 2 Humble, C++17, `colcon`. Команды выполняются из корня репозитория или распакованного решения. Параметры — поставляемый `default.yaml`. Открытый официальный checker в [RESULTS.md](RESULTS.md) относится к коду `8164061`; новая коррекция по остановкам измерена отдельным [validation A/B](STOP_LANDMARKS_2026-09-27.md).
+Ubuntu 22.04, ROS 2 Humble, C++17, `colcon`. Команды выполняются из корня репозитория или распакованного решения. Параметры — поставляемый `default.yaml`. Открытый официальный checker в [RESULTS.md](RESULTS.md) относится к коду `8164061`; текущий кандидат измерен отдельно по [GNSS-прокси](submission/RESULTS.md), включая [коррекцию по остановкам](STOP_LANDMARKS_2026-09-27.md) и [выбор ветви](BRANCH_BEHAVIOR_2026-09-27.md).
 
 ## 1. Сборка
 
@@ -37,13 +37,24 @@ ros2 bag play /absolute/path/to/bag --clock --rate 1
 
 Для трамвая 30639 укажите `vehicle_id:=30639`. Перед следующей записью остановите ноду через Ctrl+C и запустите заново. [Входы и единицы](submission/MODEL.md).
 
+Чтобы воспроизвести режим проверки с GNSS **только в первые 1,5 с** без ручной фильтрации, из корня решения после `source ros2_ws/install/setup.bash` запустите:
+
+```bash
+python3 evaluation/ros_startup_smoke.py \
+  --bag /absolute/path/to/30618_a869780d \
+  --out evaluation/runs/startup_smoke \
+  --rate 8 --wall-limit 180
+```
+
+Скрипт делает отдельную копию одного SQLite `.db3` bag в новом каталоге `--out`, оставляет пять разрешённых входных топиков, удаляет из копии поздние GNSS-fix и GNSS-скорость, запускает ноду с `--clock` и сохраняет `summary.json` и `observations.csv`. Исходный bag не меняется. Для измерения частоты и задержки при обычной скорости укажите `--rate 1 --wall-limit 80`; такой прогон покрывает первые 80 с, а не всю запись. [Отчёт текущего кандидата](../evaluation/results/final_candidate_20260927/ros_runtime.json).
+
 ## 3. Ожидаемые выходы и логи
 
 | Топик | Тип | Содержимое |
 |---|---|---|
 | `/result/velocity` | `tram_vehicle_msgs/msg/VelocitySensor` | `velocity` в м/с. Точный `header.stamp` вызвавшего публикацию входа |
 | `/result/position` | `nav_msgs/msg/Odometry` | Положение `base_link`: `pose.pose.position.x/y/z` в метрах. Скорость в `twist.twist.linear.x` |
-| `/result/diagnostics` | `diagnostic_msgs/msg/DiagnosticArray` | Состояние колёс, привязка, число коррекций `stop_corrections`, ускорение, задержка и частота |
+| `/result/diagnostics` | `diagnostic_msgs/msg/DiagnosticArray` | Состояние колёс, привязка, `stop_corrections`, `route_branch`, `branch_switches`, ускорение, задержка и частота |
 
 **Терминал C:**
 
@@ -60,7 +71,7 @@ ros2 topic hz /result/position
 ros2 topic echo /result/diagnostics
 ```
 
-Ожидаемая частота при штатной записи — выше 10 Гц. На полном контрольном прогоне около 21,75 Гц. Скорость появляется после первого принятого колёсного измерения. Положение — после стартовой GNSS-привязки. Без GNSS после окна 5 с выдаётся относительная одометрия. Результаты публикуются при поступлении новых входных сообщений.
+Ожидаемая частота при штатной записи — выше 10 Гц. На текущем validation bag при 1× измерено 26,10 Гц позиции за первые 80 с; на историческом официальном прогоне `8164061` — 21,75 Гц. Скорость появляется после первого принятого колёсного измерения. Положение — после стартовой GNSS-привязки. Без GNSS после окна 5 с выдаётся относительная одометрия. Результаты публикуются при поступлении новых входных сообщений.
 
 | Проверка | Где смотреть |
 |---|---|
@@ -111,4 +122,4 @@ ctest --test-dir build --output-on-failure
 python3 -m unittest discover -s evaluation/tests -v
 ```
 
-Проверены 19 C++ и 40 Python-тестов. Для Python-тестов нужны зависимости из `evaluation/requirements.txt`. [Настройка](submission/PARAMETERS.md), [ограничения](submission/LIMITATIONS.md).
+На текущем исходном дереве в Ubuntu 22.04 / ROS 2 Humble проверены **21/21 C++** и **40/40 Python** тестов. Для Python-тестов нужны зависимости из `evaluation/requirements.txt`. [Настройка](submission/PARAMETERS.md), [ограничения](submission/LIMITATIONS.md).
