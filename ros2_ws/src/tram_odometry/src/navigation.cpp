@@ -355,6 +355,16 @@ void Navigation::finalizeStartupAnchor(bool rover, bool rtk) {
       anchor_residual_ = gnss_enu - map_.antennaPosition(selected_direction_, match.s,
         rover ? -rover_to_master_s_m_ : 0,config_.body_heading_lookahead_m);
       const double route_yaw = map_.bodyYaw(selected_direction_, match.s, config_.body_heading_lookahead_m);
+      // Both antenna-to-master and master-to-base offsets use the measured
+      // body course. Keep the map arm's vertical component on graded track.
+      if (paired_heading_valid && rover) {
+        const Point3 arm = map_.antennaPosition(
+            selected_direction_, match.s, -rover_to_master_s_m_,
+            config_.body_heading_lookahead_m) - map_.sample(selected_direction_, match.s).p;
+        const double delta = paired_heading_rad - route_yaw;
+        anchor_residual_.x += arm.x - (std::cos(delta) * arm.x - std::sin(delta) * arm.y);
+        anchor_residual_.y += arm.y - (std::sin(delta) * arm.x + std::cos(delta) * arm.y);
+      }
       if (paired_heading_valid) {
         anchor_heading_delta_rad_ = std::atan2(
           std::sin(paired_heading_rad - route_yaw),

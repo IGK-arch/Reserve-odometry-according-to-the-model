@@ -70,6 +70,8 @@ ALLOWLIST = (
     "evaluation/results/**/*.log",
     "evaluation/*.patch",
     "evaluation/*study*.cpp",
+    "evaluation/round4_*.cpp",
+    "evaluation/results/**/*.txt",
     "evaluation/results/**/*.csv",
     "evaluation/validation_baseline.csv",
     "evaluation/holdout_baseline.csv",
