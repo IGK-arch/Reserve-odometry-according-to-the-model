@@ -1,0 +1,46 @@
+Internal ctest changing into directory: /tmp/odometry-peer-review-build
+Test project /tmp/odometry-peer-review-build
+      Start  1: elevation_profile_test
+ 1/20 Test  #1: elevation_profile_test ..............   Passed    0.58 sec
+      Start  2: estimator_core_test
+ 2/20 Test  #2: estimator_core_test .................   Passed    0.17 sec
+      Start  3: estimator_jump_rate_test
+ 3/20 Test  #3: estimator_jump_rate_test ............   Passed    0.21 sec
+      Start  4: estimator_jump_recovery_test
+ 4/20 Test  #4: estimator_jump_recovery_test ........   Passed    0.23 sec
+      Start  5: estimator_pair_freeze_test
+ 5/20 Test  #5: estimator_pair_freeze_test ..........   Passed    0.17 sec
+      Start  6: estimator_standstill_dropout_test
+ 6/20 Test  #6: estimator_standstill_dropout_test ...   Passed    0.25 sec
+      Start  7: estimator_wheel_residual_test
+ 7/20 Test  #7: estimator_wheel_residual_test .......   Passed    0.18 sec
+      Start  8: geo_projection_test
+ 8/20 Test  #8: geo_projection_test .................   Passed    0.21 sec
+      Start  9: navigation_branch_test
+ 9/20 Test  #9: navigation_branch_test ..............   Passed    0.18 sec
+      Start 10: navigation_gnss_robustness_test
+10/20 Test #10: navigation_gnss_robustness_test .....   Passed    0.18 sec
+      Start 11: navigation_rover_anchor_test
+11/20 Test #11: navigation_rover_anchor_test ........   Passed    0.20 sec
+      Start 12: navigation_startup_heading_test
+12/20 Test #12: navigation_startup_heading_test .....   Passed    0.24 sec
+      Start 13: navigation_startup_quality_test
+13/20 Test #13: navigation_startup_quality_test .....   Passed    0.25 sec
+      Start 14: navigation_test
+14/20 Test #14: navigation_test .....................   Passed    0.19 sec
+      Start 15: odometry_statistics_test
+15/20 Test #15: odometry_statistics_test ............   Passed    0.19 sec
+      Start 16: route_body_heading_test
+16/20 Test #16: route_body_heading_test .............   Passed    0.30 sec
+      Start 17: route_tf_test
+17/20 Test #17: route_tf_test .......................   Passed    0.25 sec
+      Start 18: startup_output_gate_test
+18/20 Test #18: startup_output_gate_test ............   Passed    0.25 sec
+      Start 19: stop_landmark_test
+19/20 Test #19: stop_landmark_test ..................   Passed    0.23 sec
+      Start 20: uncertainty_test
+20/20 Test #20: uncertainty_test ....................   Passed    0.18 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) =   4.68 sec

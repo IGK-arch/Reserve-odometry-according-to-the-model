@@ -17,7 +17,7 @@ foreach(source IN LISTS TRAM_TESTS)
   target_link_libraries("${name}" PRIVATE tram_navigation)
   # Existing standalone tests use assert, including in release builds.
   target_compile_options("${name}" PRIVATE -UNDEBUG)
-  if(name STREQUAL "route_tf_test")
+  if(name STREQUAL "route_tf_test" OR name STREQUAL "stop_landmark_test")
     add_test(NAME "${name}" COMMAND "${name}" "${TRAM_ROOT}/assets/route_map.csv")
   elseif(name STREQUAL "elevation_profile_test")
     add_test(NAME "${name}" COMMAND "${name}" "${TRAM_ROOT}/assets/official_elevation.csv")
