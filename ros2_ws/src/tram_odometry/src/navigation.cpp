@@ -93,8 +93,10 @@ void Navigation::submitFix(bool rover,double latitude,double longitude,double al
   const auto state=estimator_.state();
   if (state.initialized && (stamp_s > state.stamp_s + 0.3 ||
       stamp_s < state.stamp_s - config_.gnss_correction_max_age_s)) {++rejected_;return;}
-  if(stamp_s<=last_fix_stamp_[sensor]) {++rejected_;return;}
-  last_fix_stamp_[sensor]=stamp_s;
+  auto & last_stamp = !has_gnss_anchor_ && status == 2 ?
+    startup_rtk_last_stamp_[sensor] : last_fix_stamp_[sensor];
+  if(stamp_s<=last_stamp) {++rejected_;return;}
+  last_stamp=stamp_s;
   Fix fix{latitude,longitude,altitude,status,stamp_s};
   if(has_gnss_anchor_) {
     if(config_.enable_gnss_corrections) correctGnss(fix,rover);
@@ -110,6 +112,8 @@ void Navigation::prepareInput(double stamp_s) {
       has_gnss_anchor_ = false;
       startup_fixes_.clear();
       rover_startup_fixes_.clear();
+      for (auto & fixes : startup_rtk_fixes_) fixes.clear();
+      startup_rtk_last_stamp_.fill(-std::numeric_limits<double>::infinity());
       anchor_source_ = "none";
       anchor_residual_ = {};
       anchor_distance_m_ = 0.0;
@@ -128,16 +132,27 @@ void Navigation::prepareInput(double stamp_s) {
       if (alternate_active_) std::swap(map_,alternate_map_);
       alternate_active_=false;
     }
-    if (!has_gnss_anchor_) {
-      if (stamp_s > run_start_s_ + startup_gnss_window_s_) {
-        if (!startup_fixes_.empty()) finalizeStartupAnchor(false);
-        else if (!rover_startup_fixes_.empty()) finalizeStartupAnchor(true);
-      } else if (startup_fixes_.empty() &&
-                 static_cast<int>(rover_startup_fixes_.size()) >=
-                   std::max(1, startup_min_fixes_) &&
-                 stamp_s > run_start_s_ + rover_fallback_delay_s_) {
-        finalizeStartupAnchor(true);
-      }
+    tryStartupAnchor(stamp_s);
+  }
+
+void Navigation::tryStartupAnchor(double stamp_s) {
+    if (has_gnss_anchor_) return;
+    const auto & master = startup_rtk_fixes_[0];
+    const auto & rover = startup_rtk_fixes_[1];
+    const auto minimum = static_cast<size_t>(std::max(1, startup_min_fixes_));
+    const bool expired = stamp_s > run_start_s_ + startup_gnss_window_s_;
+    if (master.size() >= minimum) {
+      finalizeStartupAnchor(false, true);
+    } else if (rover.size() >= minimum &&
+               (expired || (master.empty() && stamp_s > run_start_s_ + rover_fallback_delay_s_))) {
+      finalizeStartupAnchor(true, true);
+    } else if (expired) {
+      // The deadline also preserves sparse-fix startup. Never mix qualities in
+      // a median or let a single RTK fix promote a usable window before then.
+      if (!master.empty()) finalizeStartupAnchor(false, true);
+      else if (!rover.empty()) finalizeStartupAnchor(true, true);
+      else if (!startup_fixes_.empty()) finalizeStartupAnchor(false, false);
+      else if (!rover_startup_fixes_.empty()) finalizeStartupAnchor(true, false);
     }
   }
 
@@ -149,8 +164,7 @@ void Navigation::collectStartupGnss(const Fix * message, bool rover) {
     const double stamp_s = message->stamp_s;
     if (!std::isfinite(run_start_s_)) run_start_s_ = stamp_s;
     if (stamp_s > run_start_s_ + startup_gnss_window_s_) {
-      if (!startup_fixes_.empty()) finalizeStartupAnchor(false);
-      else if (!rover_startup_fixes_.empty()) finalizeStartupAnchor(true);
+      tryStartupAnchor(stamp_s);
       return;
     }
     const double altitude_m = std::isfinite(message->altitude) ?
@@ -165,15 +179,10 @@ void Navigation::collectStartupGnss(const Fix * message, bool rover) {
       const RouteMatch match = map_.nearest(gnss_enu, configured_direction_);
       if (match.direction.empty() || match.distance_m > map_match_max_distance_m_) return;
     }
-    auto & fixes = rover ? rover_startup_fixes_ : startup_fixes_;
+    auto & fixes = message->status == 2 ? startup_rtk_fixes_[rover ? 1 : 0] :
+      (rover ? rover_startup_fixes_ : startup_fixes_);
     fixes.push_back({gnss_enu, distance_m, stamp_s});
-    if (!rover && static_cast<int>(fixes.size()) >= std::max(1, startup_min_fixes_)) {
-      finalizeStartupAnchor(false);
-    } else if (rover && startup_fixes_.empty() &&
-               static_cast<int>(fixes.size()) >= std::max(1, startup_min_fixes_) &&
-               stamp_s > run_start_s_ + rover_fallback_delay_s_) {
-      finalizeStartupAnchor(true);
-    }
+    tryStartupAnchor(stamp_s);
     // Position anchoring is independent of the velocity estimator.
   }
 
@@ -263,8 +272,10 @@ void Navigation::correctGnss(const Fix & fix, bool rover) {
   ++corrections_;
 }
 
-void Navigation::finalizeStartupAnchor(bool rover) {
-    const auto & fixes = rover ? rover_startup_fixes_ : startup_fixes_;
+void Navigation::finalizeStartupAnchor(bool rover, bool rtk) {
+    auto & master_fixes = rtk ? startup_rtk_fixes_[0] : startup_fixes_;
+    auto & rover_fixes = rtk ? startup_rtk_fixes_[1] : rover_startup_fixes_;
+    auto & fixes = rover ? rover_fixes : master_fixes;
     if (fixes.empty() || has_gnss_anchor_) return;
     auto median = [&fixes](const std::function<double(const StartupFix &)> & field) {
       std::vector<double> values;
@@ -281,14 +292,14 @@ void Navigation::finalizeStartupAnchor(bool rover) {
     });
     double paired_heading_rad = 0.0;
     bool paired_heading_valid = false;
-    if (!startup_fixes_.empty() && !rover_startup_fixes_.empty()) {
+    if (!master_fixes.empty() && !rover_fixes.empty()) {
       double sum_x = 0.0;
       double sum_y = 0.0;
       int valid_pairs = 0;
-      for (const auto & master : startup_fixes_) {
+      for (const auto & master : master_fixes) {
         const StartupFix * nearest_rover = nullptr;
         double best_dt = 0.20;
-        for (const auto & candidate : rover_startup_fixes_) {
+        for (const auto & candidate : rover_fixes) {
           const double dt = std::abs(candidate.stamp_s - master.stamp_s);
           if (dt < best_dt) {
             nearest_rover = &candidate;
@@ -335,8 +346,7 @@ void Navigation::finalizeStartupAnchor(bool rover) {
           match.s+rover_to_master_s_m_,map_match_max_distance_m_+std::abs(rover_to_master_s_m_),config_.body_heading_lookahead_m);
       }
       if (match.direction.empty() || match.distance_m > map_match_max_distance_m_) {
-        if (rover) rover_startup_fixes_.clear();
-        else startup_fixes_.clear();
+        fixes.clear();
         return;
       }
       selected_direction_ = match.direction;
@@ -362,6 +372,10 @@ void Navigation::finalizeStartupAnchor(bool rover) {
     anchor_source_ = rover ? "rover_fallback" : "master";
     startup_fixes_.clear();
     rover_startup_fixes_.clear();
+    for (size_t sensor = 0; sensor < startup_rtk_fixes_.size(); ++sensor) {
+      startup_rtk_fixes_[sensor].clear();
+      last_fix_stamp_[sensor] = std::max(last_fix_stamp_[sensor], startup_rtk_last_stamp_[sensor]);
+    }
   }
 
 PoseResult Navigation::poseFromDistance(double distance_m) const {

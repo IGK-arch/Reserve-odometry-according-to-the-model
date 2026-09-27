@@ -87,7 +87,8 @@ class Navigation {
  struct FixMotion { Point3 p; double distance=0, start=0, last=0; bool valid=false; };
  void prepareInput(double stamp_s);
  void collectStartupGnss(const Fix* message, bool rover);
- void finalizeStartupAnchor(bool rover);
+ void tryStartupAnchor(double stamp_s);
+ void finalizeStartupAnchor(bool rover, bool rtk);
  void correctGnss(const Fix& message, bool rover);
  PoseResult poseFromDistance(double distance_m) const;
  NavigationConfig config_;
@@ -116,6 +117,9 @@ class Navigation {
   int startup_min_fixes_ = 3;
   std::vector<StartupFix> startup_fixes_;
   std::vector<StartupFix> rover_startup_fixes_;
+  // Keep RTK evidence and timestamp ordering independent of lower-quality fixes.
+  std::array<std::vector<StartupFix>,2> startup_rtk_fixes_;
+  std::array<double,2> startup_rtk_last_stamp_{{-INFINITY,-INFINITY}};
   double rover_fallback_delay_s_ = 1.5;
   double rover_to_master_s_m_ = -12.44;
   std::string anchor_source_ = "none";

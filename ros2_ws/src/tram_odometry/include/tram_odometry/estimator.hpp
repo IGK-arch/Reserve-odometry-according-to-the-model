@@ -116,6 +116,8 @@ class Estimator {
     // Monotonic raw sensor history is distinct from callback-effective time.
     double ordered_raw_speed_mps = 0.0;
     double ordered_raw_stamp_s = std::numeric_limits<double>::quiet_NaN();
+    // Header corresponding to raw_speed_mps, which may arrive out of order.
+    double raw_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
     double last_good_raw_mps = 0.0;
     double last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
     double speed_mps = 0.0;
@@ -129,6 +131,9 @@ class Estimator {
     // An impossible jump is independent evidence, unlike pair disagreement.
     // Retain it until an independent prediction can support the measurement.
     bool jump_pending = false;
+    // Retain a frozen peer quarantine after the other channel recovers alone.
+    bool pair_frozen = false;
+    double freeze_recovery_since_s = std::numeric_limits<double>::quiet_NaN();
     bool jump_tentative = false;
     bool present = false;
   };
@@ -184,7 +189,7 @@ class Estimator {
   double pair_freeze_front_mps_ = 0.0;
   double pair_freeze_rear_mps_ = 0.0;
   double pair_freeze_start_s_ = std::numeric_limits<double>::quiet_NaN();
-  int pair_freeze_notch_ = 0;
+  bool pair_freeze_command_unchanged_ = true;
   double pair_freeze_distance_correction_total_m_ = 0.0;
   double pair_freeze_distance_correction_pending_m_ = 0.0;
   int notch_ = 0;

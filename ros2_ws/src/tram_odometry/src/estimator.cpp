@@ -93,7 +93,7 @@ void Estimator::reset(double stamp_s, double velocity_mps, double distance_m) {
   pair_freeze_front_mps_ = 0.0;
   pair_freeze_rear_mps_ = 0.0;
   pair_freeze_start_s_ = std::numeric_limits<double>::quiet_NaN();
-  pair_freeze_notch_ = 0;
+  pair_freeze_command_unchanged_ = true;
   pair_freeze_distance_correction_total_m_ = 0.0;
   pair_freeze_distance_correction_pending_m_ = 0.0;
   notch_ = 0;
@@ -116,6 +116,9 @@ void Estimator::submitDriverPosition(int notch, double stamp_s) {
   const double effective_stamp_s = stamp_s_;
   if (notch != notch_) {
     command_change_stamp_s_ = effective_stamp_s;
+    if (pair_freeze_active_) {
+      pair_freeze_command_unchanged_ = false;
+    }
   }
   notch_ = notch;
   last_command_stamp_s_ = effective_stamp_s;
@@ -463,6 +466,12 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
   const double previous_raw_mps = wheel.ordered_raw_speed_mps;
   const double previous_dt_s = stamp_s - wheel.ordered_raw_stamp_s;
   const bool had_previous = std::isfinite(wheel.ordered_raw_stamp_s);
+  // A second payload for one sensor timestamp is not new motion evidence.
+  // Keep the original ordered sample so duplicates cannot fabricate recovery.
+  if (had_previous && stamp_s == wheel.ordered_raw_stamp_s &&
+      physical_raw_mps != previous_raw_mps) {
+    return;
+  }
   if (!had_previous || stamp_s > wheel.ordered_raw_stamp_s) {
     wheel.ordered_raw_speed_mps = physical_raw_mps;
     wheel.ordered_raw_stamp_s = stamp_s;
@@ -471,37 +480,47 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
       wheel.present && std::isfinite(wheel.stamp_s) &&
       effective_stamp_s - wheel.stamp_s <= 0.5 &&
       std::abs(physical_raw_mps - wheel.raw_speed_mps) <= 0.002;
-  if (had_previous && previous_dt_s >= 0.045 && previous_dt_s <= 0.3 &&
+  if (had_previous && previous_dt_s > 1.0e-6 && previous_dt_s <= 0.3 &&
       std::abs(physical_raw_mps - previous_raw_mps) > 0.002) {
     const double observed_accel = clamp(
         (physical_raw_mps - previous_raw_mps) / previous_dt_s, -4.0, 4.0);
-    wheel.recent_motion_accel_mps2 =
-        0.8 * wheel.recent_motion_accel_mps2 + 0.2 * observed_accel;
+    // Preserve the 10 Hz smoothing time constant across sensor rates. Raw
+    // changes below quantization tolerance provide no derivative evidence.
+    const double alpha = 1.0 - std::exp(std::log(0.8) * previous_dt_s / 0.1);
+    wheel.recent_motion_accel_mps2 +=
+        alpha * (observed_accel - wheel.recent_motion_accel_mps2);
   }
   if (!same_as_previous || !std::isfinite(wheel.unchanged_since_s)) {
     wheel.unchanged_since_s = effective_stamp_s;
   }
   wheel.raw_speed_mps = physical_raw_mps;
+  wheel.raw_sensor_stamp_s = stamp_s;
   wheel.speed_mps = measured_mps;
   wheel.stamp_s = effective_stamp_s;
   wheel.present = true;
+
+  if (!pair_freeze_active_ && wheel.pair_frozen) {
+    const double frozen_speed =
+        &wheel == &front_ ? pair_freeze_front_mps_ : pair_freeze_rear_mps_;
+    if (std::abs(physical_raw_mps - frozen_speed) <= 0.04) {
+      wheel.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
+      return;
+    }
+    wheel.pair_frozen = false;
+    wheel.recent_motion_accel_mps2 = 0.0;
+  }
 
   // Two tachometers can keep publishing fresh headers with identical frozen
   // payloads. Pair agreement alone then provides no motion evidence. Require
   // a sustained exact flatline, appreciable model acceleration and a moving
   // vehicle; a steady cruise or standstill is intrinsically unobservable.
-  const double pair_flatline_start_s =
-      std::max(front_.unchanged_since_s, rear_.unchanged_since_s);
   const bool recent_motion_before_flatline =
       front_.recent_motion_accel_mps2 * model_acceleration_mps2_ > 0.0 &&
       rear_.recent_motion_accel_mps2 * model_acceleration_mps2_ > 0.0 &&
       std::abs(front_.recent_motion_accel_mps2) > 0.2 &&
       std::abs(rear_.recent_motion_accel_mps2) > 0.2;
-  const bool demand_changed_during_flatline =
-      std::isfinite(command_change_stamp_s_) &&
-      command_change_stamp_s_ > pair_flatline_start_s + 0.2 &&
-      effective_stamp_s - command_change_stamp_s_ > 0.5 &&
-      std::abs(notch_) >= 2;
+  // A command transition while both speeds remain constant is also compatible
+  // with healthy cruise on a grade. It cannot independently establish a fault.
   if (!pair_freeze_active_ && trusted(front_) && trusted(rear_) &&
       std::isfinite(front_.unchanged_since_s) &&
       std::isfinite(rear_.unchanged_since_s) &&
@@ -514,12 +533,16 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
           0.5 * config_.disagreement_gate_mps &&
       std::abs(model_acceleration_mps2_) >
           config_.pair_freeze_model_accel_threshold_mps2 &&
-      (recent_motion_before_flatline || demand_changed_during_flatline)) {
+      recent_motion_before_flatline) {
     pair_freeze_active_ = true;
     pair_freeze_front_mps_ = front_.raw_speed_mps;
     pair_freeze_rear_mps_ = rear_.raw_speed_mps;
     pair_freeze_start_s_ = effective_stamp_s;
-    pair_freeze_notch_ = notch_;
+    pair_freeze_command_unchanged_ = true;
+    front_.pair_frozen = true;
+    rear_.pair_frozen = true;
+    front_.freeze_recovery_since_s = std::numeric_limits<double>::quiet_NaN();
+    rear_.freeze_recovery_since_s = std::numeric_limits<double>::quiet_NaN();
     front_.jump_pending = true;
     rear_.jump_pending = true;
     invalidateWheelResidual();
@@ -537,46 +560,92 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
             ? std::max(0.0, effective_stamp_s -
                                 last_independent_wheel_stamp_s_)
             : 0.0;
-    freeze_recovery = front_changed && rear_changed &&
+    const bool coherent_pair =
+        front_.raw_sensor_stamp_s == front_.ordered_raw_stamp_s &&
+        rear_.raw_sensor_stamp_s == rear_.ordered_raw_stamp_s &&
+        effective_stamp_s - front_.ordered_raw_stamp_s <=
+            config_.wheel_pair_max_age_s &&
+        effective_stamp_s - rear_.ordered_raw_stamp_s <=
+            config_.wheel_pair_max_age_s &&
+        std::abs(front_.ordered_raw_stamp_s - rear_.ordered_raw_stamp_s) <=
+            config_.wheel_pair_max_age_s;
+    freeze_recovery = coherent_pair && front_changed && rear_changed &&
         std::abs(front_.speed_mps - rear_.speed_mps) <
             0.5 * config_.disagreement_gate_mps &&
         std::abs(pair_speed - predicted_mps) <=
             config_.innovation_gate_mps +
                 config_.process_accel_sigma_mps2 * independent_age_s;
     if (!freeze_recovery) {
-      front_.jump_pending = true;
-      rear_.jump_pending = true;
-      front_.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
-      rear_.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
-      return;
+      const bool current_changed =
+          &wheel == &front_ ? front_changed : rear_changed;
+      const bool companion_expired =
+          !other.present || !std::isfinite(other.ordered_raw_stamp_s) ||
+          effective_stamp_s - other.ordered_raw_stamp_s >
+              config_.wheel_pair_max_age_s;
+      const bool other_changed =
+          &wheel == &front_ ? rear_changed : front_changed;
+      if (stamp_s == wheel.ordered_raw_stamp_s) {
+        if (!current_changed) {
+          wheel.freeze_recovery_since_s = std::numeric_limits<double>::quiet_NaN();
+        } else if (!std::isfinite(wheel.freeze_recovery_since_s)) {
+          wheel.freeze_recovery_since_s = stamp_s;
+        }
+      }
+      // Give an ordinary paired return time to arrive in either callback
+      // order. A fresh but still frozen peer cannot extend this grace forever.
+      const bool lone_change_persisted =
+          !other_changed && std::isfinite(wheel.freeze_recovery_since_s) &&
+          stamp_s - wheel.freeze_recovery_since_s > config_.wheel_pair_max_age_s;
+      if (current_changed && (companion_expired || lone_change_persisted) &&
+          stamp_s == wheel.ordered_raw_stamp_s) {
+        // There is no current pair endpoint. Retire the pair hypothesis and
+        // use the ordinary single-channel innovation/jump gate below. Keep
+        // the absent/frozen peer quarantined and do not correct past distance.
+        pair_freeze_active_ = false;
+        wheel.pair_frozen = false;
+        wheel.recent_motion_accel_mps2 = 0.0;
+        wheel.slip_until_s = -std::numeric_limits<double>::infinity();
+      } else {
+        front_.jump_pending = true;
+        rear_.jump_pending = true;
+        front_.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
+        rear_.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
+        return;
+      }
     }
-    // With constant driver demand, the difference between the reacquired
-    // endpoint speed and the model endpoint is evidence of a roughly constant
-    // acceleration error over the frozen interval. Correct half of its
-    // integrated area, with an absolute bound, without revising past outputs.
-    // Changing demand invalidates that simple interpolation assumption.
-    if (notch_ == pair_freeze_notch_ &&
-        std::isfinite(pair_freeze_start_s_)) {
-      const double duration_s =
-          std::max(0.0, effective_stamp_s - pair_freeze_start_s_);
-      const double correction_m = clamp(
-          0.5 * duration_s * (pair_speed - predicted_mps),
-          -config_.pair_freeze_distance_correction_limit_m,
-          config_.pair_freeze_distance_correction_limit_m);
-      pair_freeze_distance_correction_total_m_ += correction_m;
-      pair_freeze_distance_correction_pending_m_ += correction_m;
-      distance_variance_ = std::min(
-          1.0e12, distance_variance_ + 0.25 * correction_m * correction_m);
-    }
-    pair_freeze_active_ = false;
-    front_.jump_pending = false;
-    rear_.jump_pending = false;
-    front_.slip_until_s = -std::numeric_limits<double>::infinity();
-    rear_.slip_until_s = -std::numeric_limits<double>::infinity();
-    if (std::abs(pair_speed - predicted_mps) >
-        config_.innovation_gate_mps) {
-      front_.jump_tentative = true;
-      rear_.jump_tentative = true;
+    if (freeze_recovery) {
+      // With constant driver demand, the difference between the reacquired
+      // endpoint speed and the model endpoint is evidence of a roughly constant
+      // acceleration error over the frozen interval. Correct half of its
+      // integrated area, with an absolute bound, without revising past outputs.
+      // Changing demand invalidates that simple interpolation assumption.
+      if (pair_freeze_command_unchanged_ &&
+          std::isfinite(pair_freeze_start_s_)) {
+        const double duration_s =
+            std::max(0.0, effective_stamp_s - pair_freeze_start_s_);
+        const double correction_m = clamp(
+            0.5 * duration_s * (pair_speed - predicted_mps),
+            -config_.pair_freeze_distance_correction_limit_m,
+            config_.pair_freeze_distance_correction_limit_m);
+        pair_freeze_distance_correction_total_m_ += correction_m;
+        pair_freeze_distance_correction_pending_m_ += correction_m;
+        distance_variance_ = std::min(
+            1.0e12, distance_variance_ + 0.25 * correction_m * correction_m);
+      }
+      pair_freeze_active_ = false;
+      front_.pair_frozen = false;
+      rear_.pair_frozen = false;
+      front_.recent_motion_accel_mps2 = 0.0;
+      rear_.recent_motion_accel_mps2 = 0.0;
+      front_.jump_pending = false;
+      rear_.jump_pending = false;
+      front_.slip_until_s = -std::numeric_limits<double>::infinity();
+      rear_.slip_until_s = -std::numeric_limits<double>::infinity();
+      if (std::abs(pair_speed - predicted_mps) >
+          config_.innovation_gate_mps) {
+        front_.jump_tentative = true;
+        rear_.jump_tentative = true;
+      }
     }
   }
 

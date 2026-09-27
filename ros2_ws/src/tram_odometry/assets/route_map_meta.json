@@ -108,9 +108,9 @@
     }
   },
   "source_split_manifest": "tools/split_manifest.json",
-  "on_vehicle_gnss_usage": "initial position fix only, never tracking after initialization",
+  "on_vehicle_gnss_usage": "RTK-preferred startup anchor; optional robust sparse GNSS position corrections after initialization (no GNSS speed fusion)",
   "limitations": [
-    "Default outbound map follows west berth B. Optional branch A is a separate CSV selected only by external route assignment; depot paths are not mapped.",
+    "Default outbound map follows west berth B. Optional branch A is a separate CSV selected at runtime from coherent GNSS evidence or explicit route assignment; terminal loops are reconstructed from train data; depot paths are not mapped.",
     "Judge output frame is fixed MGRS-CB numeric coordinates (UTM37N easting-300000, northing-6100000); transform master route to base_link using rigid 3D tangent and specified TF.",
     "GNSS master altitude is kept in internal ENU; GNSS vertical datum is not independently documented."
   ]
