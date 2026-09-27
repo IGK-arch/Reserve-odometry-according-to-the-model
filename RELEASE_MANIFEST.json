@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "3c0e9a15dcc12509824a9ff5a562f8b89009b01855a54a4e703380a46baefc40",
-      "size": 10760
+      "sha256": "30cddc5fcbccc6f2bca5d6630d0f66d992488af630bdb7f52ee37cd359b78fe1",
+      "size": 10909
     },
     {
       "path": "analysis/README.md",
@@ -213,8 +213,8 @@
     },
     {
       "path": "docs/CORE_MODEL.md",
-      "sha256": "c4323d6d68ba6a4cfbd150ed0c9cac4de7780bec31d87333e2b91c12fd913213",
-      "size": 34252
+      "sha256": "59a0d7b0b9679dfeeedc123ac57cf2e48e33ee13d7ebd2c7e6890289e9287d3d",
+      "size": 34623
     },
     {
       "path": "docs/DRIVE_CALIBRATION.md",
@@ -228,8 +228,8 @@
     },
     {
       "path": "docs/JURY_CHECK.md",
-      "sha256": "8f5f1124da6ddf2ce12f41bed62bb7eb2256472adb0de4c679b0329eaef178c3",
-      "size": 20553
+      "sha256": "e77d7516254ec2a676cf58789b5f4582dd38d7202a762760223761ab4c869908",
+      "size": 6751
     },
     {
       "path": "docs/MAP_METHOD.md",
@@ -317,6 +317,41 @@
       "size": 141882
     },
     {
+      "path": "docs/submission/LIMITATIONS.md",
+      "sha256": "50a4d7f2ad10f82f2568dc7efd3407175fd0b42a062d6a8cacbb761eea5a4e39",
+      "size": 5719
+    },
+    {
+      "path": "docs/submission/MODEL.md",
+      "sha256": "71da6877b4331639f14cb8b299ba1ac68c84128207470e28e115a63bf55de6af",
+      "size": 9428
+    },
+    {
+      "path": "docs/submission/PARAMETERS.md",
+      "sha256": "c22f9494aaa8e64fd97948342715cd7ec92e2de8a64756170186bdc46b921473",
+      "size": 11369
+    },
+    {
+      "path": "docs/submission/README.md",
+      "sha256": "610297359780a82e9550383b3d6da547360bc5d759e2948e0286bdc12c20334a",
+      "size": 2292
+    },
+    {
+      "path": "docs/submission/RESULTS.md",
+      "sha256": "0e9eeb623ec1c2136146aa83ea4e3f00616ed7845859cb6d759c91a4f14f5f46",
+      "size": 7246
+    },
+    {
+      "path": "docs/submission/reference_errors.json",
+      "sha256": "67582b4b59f906047b0fa144876a49dfd9747bfd59dd88c7228c9fc651b27649",
+      "size": 857
+    },
+    {
+      "path": "docs/submission/reference_errors.png",
+      "sha256": "088e62589556bc97a631d948548ada99a28d0b91612b221bf5b7639c0a965891",
+      "size": 176318
+    },
+    {
       "path": "docs/superpowers/plans/2026-09-27-odometry-round2.md",
       "sha256": "f735e45df35d3ac23dced60f30fd894ac12005f36d71814df54127399b142b77",
       "size": 2358
@@ -335,6 +370,11 @@
       "path": "docs/superpowers/plans/2026-09-27-odometry.md",
       "sha256": "3fc654d3c992628c86fbed49f8ed33e2964c3cd01c638079948a5034cee99e2b",
       "size": 2784
+    },
+    {
+      "path": "docs/superpowers/plans/2026-09-27-submission.md",
+      "sha256": "11901a534cfa251609d6fbf63b1afe0d22c9cee0e8ee5fe59ca97a4200c9af33",
+      "size": 1476
     },
     {
       "path": "docs/superpowers/specs/2026-09-27-odometry-design.md",
@@ -2082,6 +2122,46 @@
       "size": 4050
     },
     {
+      "path": "evaluation/results/submission/python_tests.log",
+      "sha256": "ab0048f2ffe02966d82b07fa91432f8f24085408c95c30a39cd6cacf41735529",
+      "size": 6838
+    },
+    {
+      "path": "evaluation/results/submission/review.md",
+      "sha256": "bd1da7f6396978d0200e89c8c29bb249eb942f5243206bc8b854ffaf4fe68edc",
+      "size": 2544
+    },
+    {
+      "path": "evaluation/results/submission/ros_build_check.log",
+      "sha256": "3a8c7c448393b696ecbd40b259870c083f97292ad6de957e91fbb919b27ec5c6",
+      "size": 3014
+    },
+    {
+      "path": "evaluation/results/submission/ros_smoke_launch.log",
+      "sha256": "e9c82a78bf7788bd75b91f7b8a81f7bc93557b7bc8322ba21f4fb4324c05c1a8",
+      "size": 348
+    },
+    {
+      "path": "evaluation/results/submission/ros_smoke_monitor.log",
+      "sha256": "672bc710c623ffc58edae742f4c1b1eb85b1cc62ae10e9ef34184a672eb33ade",
+      "size": 1641
+    },
+    {
+      "path": "evaluation/results/submission/ros_smoke_report.json",
+      "sha256": "93f5c6b1f54ea81b3bc4fef4646bd8d37e3fffd1d9d969ac8b1ebdd6fdb176aa",
+      "size": 1863
+    },
+    {
+      "path": "evaluation/results/submission/runner_help.log",
+      "sha256": "85515ea8eeef4ee9814e8ee7169799e3ee1e439dbb0c71864f8255f78eaf690c",
+      "size": 1213
+    },
+    {
+      "path": "evaluation/results/submission/verification.json",
+      "sha256": "8a3bb28bac45345c15229129b345e29035b4eae2774a6a6a8e1b7f93df236704",
+      "size": 664
+    },
+    {
       "path": "evaluation/results/train_original.pair_gain.json",
       "sha256": "c40f1915232daf5e8dfb696f73d32e37a3edad08d437bfae7fe1f9a34e3391d2",
       "size": 84361
@@ -2713,13 +2793,18 @@
     },
     {
       "path": "tools/make_release.py",
-      "sha256": "fa304f973122dea2256be09f6066c4c0bdc08f83fbfbf31761c9684cdc1894f6",
-      "size": 12925
+      "sha256": "77d84771af272f350a5fb54ca416bf54d5153c88b3cab16bf65ee1e23f0dcac3",
+      "size": 13284
     },
     {
       "path": "tools/make_split.py",
       "sha256": "36afa09cc7ba9acdfee7b08ee0fbd1013f6edad0e37a43719bed966720bcf88a",
       "size": 3158
+    },
+    {
+      "path": "tools/make_submission_plot.py",
+      "sha256": "b6b53564d8918302d883249353c934d998e13ca51909aa85c95887b1ba07c57d",
+      "size": 4192
     },
     {
       "path": "tools/map_builder.py",

@@ -1,0 +1,20 @@
+{
+  "method": "nearest reference <=50 ms; every valid match; no alignment or filtering",
+  "position_n": 28538,
+  "velocity_n": 28538,
+  "position_rmse_m": 1.5606605461308296,
+  "velocity_rmse_mps": 0.04876236952481599,
+  "candidate_sha256": "363d8728d22cea4ee623228f501705e3db0d42f7ec0256f00fe326eda13bfe8f",
+  "metrics_sha256": "d82323d528f878ca04c373674a00a5a5d6d486ac01ee69f438f2032f6b43263d",
+  "script_sha256": "b6b53564d8918302d883249353c934d998e13ca51909aa85c95887b1ba07c57d",
+  "plot_sha256": "088e62589556bc97a631d948548ada99a28d0b91612b221bf5b7639c0a965891",
+  "command": [
+    "tools/make_submission_plot.py",
+    "--bag",
+    "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
+    "--candidate",
+    "evaluation/runs/round4_final_ros_1x/candidate.csv",
+    "--metrics",
+    "evaluation/results/round4/ros_offline_metrics.json"
+  ]
+}

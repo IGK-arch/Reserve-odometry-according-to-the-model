@@ -1,0 +1,13 @@
+{
+  "scope": "Submission documentation and source package; production runtime unchanged",
+  "runtime_commit": "816406199bd86327b7bcb5e11822d1823c83fab6",
+  "frozen_runtime_files_verified": 19,
+  "ros_declared_parameters_documented": 68,
+  "local_document_links_verified": 23,
+  "ros_humble_build": "passed; ros_build_check.log",
+  "ros_cpp_tests_passed": 19,
+  "python_tests_passed": 40,
+  "anchored_30618_ros_contract": "passed; ros_smoke_report.json",
+  "plot": "all 28538 matched samples; numeric RMSE verified against frozen offline metrics; image visually inspected",
+  "review": "no critical or important findings; both minor findings resolved; review.md"
+}

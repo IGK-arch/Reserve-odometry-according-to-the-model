@@ -1,0 +1,26 @@
+usage: record_ros_outputs.py [-h] --bag BAG --outdir OUTDIR --config CONFIG
+                             [--vehicle-id VEHICLE_ID] [--rate RATE]
+                             [--timeout TIMEOUT]
+                             [--ready-timeout READY_TIMEOUT]
+                             [--drain-seconds DRAIN_SECONDS]
+                             [--artifact ARTIFACT]
+
+Run the real ROS node, installed official checker and result recorder. The
+shell entry point is tools/ros_reference_check.sh. Outputs include raw bags,
+checker/node/player/recorder logs, effective parameters, normalized candidate
+CSV, independent offline metrics, and run_summary.json. No reference relay is
+started. The checker package must already be installed in the ROS environment.
+
+options:
+  -h, --help            show this help message and exit
+  --bag BAG
+  --outdir OUTDIR       New or empty directory; existing results are never
+                        overwritten
+  --config CONFIG
+  --vehicle-id VEHICLE_ID
+  --rate RATE
+  --timeout TIMEOUT     Maximum wall seconds after playback resumes; timeout
+                        is a failed partial run
+  --ready-timeout READY_TIMEOUT
+  --drain-seconds DRAIN_SECONDS
+  --artifact ARTIFACT
