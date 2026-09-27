@@ -113,6 +113,17 @@ ros2 run tram_odometry odometry_node --ros-args \
   -p route_direction:=out -p use_sim_time:=true
 ```
 
+Те же параметры доступны через launch-файл, чтобы маршрутное задание могло
+выбрать ветку до начала движения:
+
+```bash
+ros2 launch tram_odometry tram_odometry.launch.py \
+  map_file:="$MAP_A" alternate_map_file:=none route_direction:=out
+```
+
+Значение `alternate_map_file:=none` отключает автоматическое переключение
+ветки; используйте его только когда назначение пути известно заранее.
+
 Положение стрелки невозможно надёжно вывести из контроллера и скоростей
 колёс. В текущем режиме основная B служит начальной гипотезой; `Navigation`
 может переключить её по окну разрешённых GNSS-fix, а не по эталону checker.
