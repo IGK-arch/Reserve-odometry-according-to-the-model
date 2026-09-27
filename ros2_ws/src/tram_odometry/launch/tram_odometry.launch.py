@@ -9,12 +9,13 @@ import os
 
 def _launch_node(context):
     overrides = {
-        'vehicle_id': ParameterValue(LaunchConfiguration('vehicle_id'), value_type=int),
-        'route_direction': LaunchConfiguration('route_direction'),
         'use_sim_time': ParameterValue(LaunchConfiguration('use_sim_time'), value_type=bool),
     }
-    # Empty launch arguments preserve map paths from a custom YAML config.
-    for name in ('map_file', 'alternate_map_file'):
+    vehicle_id = LaunchConfiguration('vehicle_id').perform(context)
+    if vehicle_id:
+        overrides['vehicle_id'] = ParameterValue(vehicle_id, value_type=int)
+    # Empty launch arguments preserve values from a custom YAML config.
+    for name in ('route_direction', 'map_file', 'alternate_map_file'):
         value = LaunchConfiguration(name).perform(context)
         if value:
             overrides[name] = value
@@ -32,8 +33,8 @@ def generate_launch_description():
         get_package_share_directory('tram_odometry'), 'config', 'default.yaml')
     return LaunchDescription([
         DeclareLaunchArgument('config', default_value=default_config),
-        DeclareLaunchArgument('vehicle_id', default_value='30618'),
-        DeclareLaunchArgument('route_direction', default_value='auto'),
+        DeclareLaunchArgument('vehicle_id', default_value=''),
+        DeclareLaunchArgument('route_direction', default_value=''),
         DeclareLaunchArgument('map_file', default_value=''),
         DeclareLaunchArgument('alternate_map_file', default_value=''),
         DeclareLaunchArgument('use_sim_time', default_value='true'),

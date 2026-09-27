@@ -22,7 +22,11 @@ ros2 launch tram_odometry tram_odometry.launch.py \
   config:=/absolute/path/to/custom.yaml vehicle_id:=30618 route_direction:=auto
 ```
 
-Значения читаются при запуске. После изменения перезапустите ноду. `vehicle_id`, `route_direction` и `use_sim_time` задаются аргументами запуска и перекрывают одноимённые значения YAML. По умолчанию `use_sim_time:=true`.
+Значения читаются при запуске. После изменения перезапустите ноду. Аргументы
+`vehicle_id` и `route_direction` перекрывают одноимённые значения YAML только
+когда указаны явно; без них используются значения из конфигурации. Аргумент
+`use_sim_time` по умолчанию равен `true` и перекрывает YAML для воспроизведения
+bag с `--clock`.
 
 ## Модель привода и различия трамваев
 
@@ -71,7 +75,7 @@ ros2 launch tram_odometry tram_odometry.launch.py \
 
 | ROS-параметр | Значение | Назначение |
 |---|---|---|
-| `route_direction` | `auto` | `auto`, `out`, `return`. Явно задаётся аргументом запуска |
+| `route_direction` | `auto` | `auto`, `out`, `return`. Можно задать в YAML или аргументом запуска |
 | `map_file` | `''` | Пусто — установленный `assets/route_map.csv` |
 | `alternate_map_file` | `''` | Пусто — `route_map_branch_a.csv`. Значение `none` отключает альтернативу |
 | `enable_stop_landmarks` | true | Коррекция по каталогу остановок. Применяется для 30618 при доступной карте и привязке, отключена для 30639 |
