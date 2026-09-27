@@ -519,8 +519,18 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
       rear_.recent_motion_accel_mps2 * model_acceleration_mps2_ > 0.0 &&
       std::abs(front_.recent_motion_accel_mps2) > 0.2 &&
       std::abs(rear_.recent_motion_accel_mps2) > 0.2;
-  // A command transition while both speeds remain constant is also compatible
-  // with healthy cruise on a grade. It cannot independently establish a fault.
+  // An exact paired plateau can also begin during cruise and persist after
+  // strong braking starts. Require a sustained braking command and a matching
+  // deceleration forecast before treating this as independent freeze evidence.
+  // Weaker notch changes remain ambiguous with ordinary steady motion.
+  const bool brake_plateau = notch_ <= -5 &&
+      std::isfinite(command_change_stamp_s_) &&
+      std::isfinite(front_.unchanged_since_s) &&
+      std::isfinite(rear_.unchanged_since_s) &&
+      command_change_stamp_s_ >= std::max(front_.unchanged_since_s,
+                                          rear_.unchanged_since_s) &&
+      effective_stamp_s - command_change_stamp_s_ > 0.8 &&
+      model_acceleration_mps2_ < -0.4;
   if (!pair_freeze_active_ && trusted(front_) && trusted(rear_) &&
       std::isfinite(front_.unchanged_since_s) &&
       std::isfinite(rear_.unchanged_since_s) &&
@@ -533,7 +543,7 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
           0.5 * config_.disagreement_gate_mps &&
       std::abs(model_acceleration_mps2_) >
           config_.pair_freeze_model_accel_threshold_mps2 &&
-      recent_motion_before_flatline) {
+      (recent_motion_before_flatline || brake_plateau)) {
     pair_freeze_active_ = true;
     pair_freeze_front_mps_ = front_.raw_speed_mps;
     pair_freeze_rear_mps_ = rear_.raw_speed_mps;

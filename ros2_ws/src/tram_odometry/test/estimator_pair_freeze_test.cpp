@@ -173,6 +173,52 @@ void recoveryRegressions(tram_odometry::EstimatorConfig config) {
               std::abs(plateau.state().distance_m - 60.0) < 0.2,
           "a command change alone cannot invalidate healthy constant-speed wheels");
 }
+
+void brakingAfterCruise(tram_odometry::EstimatorConfig config) {
+  using tram_odometry::Estimator;
+  Estimator frozen(config);
+  frozen.reset(0.0, 10.0);
+  wheels(frozen, 10.0, 0.0);
+  for (int i = 1; i <= 30; ++i) {
+    const double t = 0.1 * i;
+    frozen.submitDriverPosition(0, t);
+    wheels(frozen, 10.0, t);
+  }
+  require(!frozen.state().pair_freeze_active,
+          "exact cruise plateau alone is not a pair-freeze trigger");
+  for (int i = 31; i <= 50; ++i) {
+    const double t = 0.1 * i;
+    frozen.submitDriverPosition(-5, t);
+    wheels(frozen, 10.0, t);
+  }
+  require(frozen.state().pair_freeze_active && frozen.state().model_only,
+          "strong braking during an existing exact plateau flags paired freeze");
+  require(frozen.state().velocity_mps < 9.8,
+          "brake plateau freeze uses deceleration model instead of frozen wheels");
+
+  Estimator weak(config);
+  weak.reset(0.0, 10.0);
+  wheels(weak, 10.0, 0.0);
+  for (int i = 1; i <= 50; ++i) {
+    const double t = 0.1 * i;
+    weak.submitDriverPosition(i <= 30 ? 0 : -2, t);
+    wheels(weak, 10.0, t);
+  }
+  require(!weak.state().pair_freeze_active && !weak.state().model_only,
+          "weak brake on an exact plateau remains ambiguous and trusted");
+
+  Estimator staggered(config);
+  staggered.reset(0.0, 10.0);
+  wheels(staggered, 10.0, 0.0);
+  for (int i = 1; i <= 50; ++i) {
+    const double t = 0.1 * i;
+    staggered.submitDriverPosition(i <= 30 ? 0 : -5, t);
+    wheel(staggered, 10.0, t, true);
+    wheel(staggered, i < 32 ? 10.0 : 10.2, t, false);
+  }
+  require(!staggered.state().pair_freeze_active,
+          "both plateau starts must predate strong braking to flag a pair freeze");
+}
 }  // namespace
 
 int main() {
@@ -237,6 +283,7 @@ int main() {
   }
   for (int vehicle : {30618, 30639}) {
     recoveryRegressions(EstimatorConfig::forVehicle(vehicle));
+    brakingAfterCruise(EstimatorConfig::forVehicle(vehicle));
   }
   auto deployed = EstimatorConfig::forVehicle(30618);
   deployed.enable_drive_table = true;
@@ -246,6 +293,7 @@ int main() {
   require(Estimator(deployed).state().drive_table_active,
           "deployed 30618 regression must load the train-only drive table");
   recoveryRegressions(deployed);
+  brakingAfterCruise(deployed);
   if (failures) return EXIT_FAILURE;
   std::cout << "PASS: paired flatline detection and reacquisition\n";
   return EXIT_SUCCESS;
