@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "ab4557c6784f3c8940295cae9a43f75f3b5ad28b4a8305c5dc61b9ba9ef3007f",
-      "size": 12135
+      "sha256": "e9477afed375a08f0840f58f058f9fea1eebb6bed578a0c80bd613bdf5f2aa54",
+      "size": 11935
     },
     {
       "path": "analysis/README.md",
@@ -217,11 +217,6 @@
       "size": 8736
     },
     {
-      "path": "docs/COMPETITOR_REVIEW_2026-09-27.md",
-      "sha256": "f6b6170bf15d98d683eabd0e70a66814a602a1d9b8ed37a776e137b457e883b9",
-      "size": 26307
-    },
-    {
       "path": "docs/CORE_MODEL.md",
       "sha256": "f535ec2d7cea1fd89994c032f7a97de6306fff558932c6cdf05f49adc7d2c184",
       "size": 35121
@@ -273,8 +268,8 @@
     },
     {
       "path": "docs/RESULTS.md",
-      "sha256": "3c873e53a3fcb1149d4c400fbb1e6030168e4d40bfe7585d51bdc165dd6cbafe",
-      "size": 16374
+      "sha256": "7fa27d1a34c7696540bd2511e5ad8874302d033c1ae9c79d23d8f6d2755268b5",
+      "size": 16259
     },
     {
       "path": "docs/RESULTS_ROUND1.md",
@@ -2255,31 +2250,6 @@
       "path": "evaluation/results/submission/verification.json",
       "sha256": "c06249bbc0da82e0ba857cc2564d73006c7712ed92e8a384ed040c6a1619aa2d",
       "size": 1092
-    },
-    {
-      "path": "evaluation/results/team_review_20260927/cpp_tests.log",
-      "sha256": "0a70d2dc69a97f9ac742fdbe05d842bb0cd0bb91912fd1ee761a11e4b2567cc0",
-      "size": 2561
-    },
-    {
-      "path": "evaluation/results/team_review_20260927/public_stop_comparison.json",
-      "sha256": "1dfea059c2af7ac84f8b057855a7fdea6fa4b2435633e39512351aa32f3b347a",
-      "size": 143058
-    },
-    {
-      "path": "evaluation/results/team_review_20260927/python_tests.log",
-      "sha256": "2bc4212c3f02772cbe66c47e39c297e4f439d419c6c4fd1795ac6f721191797c",
-      "size": 144
-    },
-    {
-      "path": "evaluation/results/team_review_20260927/repositories.json",
-      "sha256": "06f124f6b1e6d67a995a342810c64de6bd4634a42201303b8976cc2554e11e55",
-      "size": 1395
-    },
-    {
-      "path": "evaluation/results/team_review_20260927/reproduce_public_stops.py",
-      "sha256": "66d5b8ce023f7f4c3610897c7354ad516190e612f671433cb50a90c69fef1c95",
-      "size": 3104
     },
     {
       "path": "evaluation/results/train_original.pair_gain.json",
