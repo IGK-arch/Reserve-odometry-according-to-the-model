@@ -1,0 +1,75 @@
+{
+  "30618_33bec73f": {
+    "all": {
+      "n": 23538,
+      "baseline_rmse_mps": 0.09510807864209157,
+      "core_rmse_mps": 0.049341985948132785
+    },
+    "slip_flagged": {
+      "n": 103,
+      "baseline_rmse_mps": 1.1492192057897364,
+      "core_rmse_mps": 0.5972349362609166
+    },
+    "slip_unflagged": {
+      "n": 23435,
+      "baseline_rmse_mps": 0.05727675422234553,
+      "core_rmse_mps": 0.029624873536943604
+    },
+    "moving_rear_zero_runs": 0,
+    "longest_moving_rear_zero_run": null,
+    "longest_run_window_scores": null
+  },
+  "30639_3b3d9eb8": {
+    "all": {
+      "n": 24306,
+      "baseline_rmse_mps": 0.21258048744510796,
+      "core_rmse_mps": 0.22483070993772955
+    },
+    "slip_flagged": {
+      "n": 28,
+      "baseline_rmse_mps": 0.5032995083827895,
+      "core_rmse_mps": 0.08461724647560244
+    },
+    "slip_unflagged": {
+      "n": 24278,
+      "baseline_rmse_mps": 0.21201518190943583,
+      "core_rmse_mps": 0.22494196746176387
+    },
+    "moving_rear_zero_runs": 1,
+    "longest_moving_rear_zero_run": {
+      "start_receive_ns": 1777967866939024454,
+      "last_zero_receive_ns": 1777967912239129480,
+      "first_nonzero_receive_ns": 1777967985739041733,
+      "observed_zero_span_s": 45.300105026,
+      "post_zero_silence_s": 73.499912253,
+      "time_to_nonzero_s": 118.800017279,
+      "zero_samples": 151,
+      "front_median_during_mps": 2.324724594751994,
+      "front_max_during_mps": 7.139070828755696,
+      "start_offset_s": 371.863333821,
+      "first_nonzero_offset_s": 490.6633511
+    },
+    "longest_run_window_scores": {
+      "before_5s": {
+        "n": 100,
+        "baseline_rmse_mps": 0.03111032430647073,
+        "core_rmse_mps": 0.023174999821497014
+      },
+      "rear_zero_or_absent": {
+        "n": 2376,
+        "baseline_rmse_mps": 0.10278353907680128,
+        "core_rmse_mps": 0.08167245224040319
+      },
+      "after_0_5s": {
+        "n": 100,
+        "baseline_rmse_mps": 0.12014935270464826,
+        "core_rmse_mps": 0.15515958558422951
+      },
+      "after_5_30s": {
+        "n": 500,
+        "baseline_rmse_mps": 0.13835903453297602,
+        "core_rmse_mps": 0.16197052122792716
+      }
+    }
+  }
+}

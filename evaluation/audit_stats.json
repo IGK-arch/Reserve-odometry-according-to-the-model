@@ -1,0 +1,825 @@
+{
+  "seed": 20260927,
+  "bag_bootstrap_draws": 20000,
+  "split": {
+    "catalog_bags": 122,
+    "sha_groups": 97,
+    "duplicate_bags": 25,
+    "session_counts": {
+      "30618/2026-08-26": 13,
+      "30618/2026-08-10": 57,
+      "30618/2026-07-27": 29,
+      "30618/2026-09-03": 4,
+      "30639/2026-08-26": 9,
+      "30639/2026-05-05": 10
+    },
+    "representative_counts": {
+      "train": 42,
+      "validation": 13,
+      "holdout": 42
+    },
+    "cross_split_input_sha_groups": 0,
+    "file_hashes_verified": true,
+    "errors": []
+  },
+  "deployed_artifacts": {
+    "validation_core_deployed.csv": {
+      "table_source": "validation_core_table_optional.csv",
+      "physics_source": "validation_core_rawfreeze_fix.csv",
+      "table_vehicle": "30618",
+      "different_from_final_bags": [
+        "30618_01f73500",
+        "30618_2050d396",
+        "30618_33bec73f",
+        "30618_3e9f4952",
+        "30618_437e855c",
+        "30618_67b89902",
+        "30618_a53d5f6f",
+        "30618_a869780d",
+        "30618_d4ba7005",
+        "30618_dd8d0741",
+        "30618_dd8e6395",
+        "30618_e9a34502"
+      ]
+    },
+    "validation_distance_deployed.csv": {
+      "table_source": "validation_distance_table_optional.csv",
+      "physics_source": "validation_distance_rawfreeze_fix.csv",
+      "table_vehicle": "30618",
+      "different_from_final_bags": [
+        "30618_01f73500",
+        "30618_2050d396",
+        "30618_33bec73f",
+        "30618_3e9f4952",
+        "30618_437e855c",
+        "30618_67b89902",
+        "30618_a53d5f6f",
+        "30618_a869780d",
+        "30618_d4ba7005",
+        "30618_dd8d0741",
+        "30618_dd8e6395",
+        "30618_e9a34502"
+      ]
+    },
+    "holdout_core_deployed.csv": {
+      "table_source": "holdout_core_table_optional.csv",
+      "physics_source": "holdout_core_rawfreeze_fix.csv",
+      "table_vehicle": "30618",
+      "different_from_final_bags": [
+        "30618_1cc230fa",
+        "30618_21dd3af3",
+        "30618_2366c74a",
+        "30618_2cb9ce37",
+        "30618_3b36e5cd",
+        "30618_40ffd323",
+        "30618_4d487b0d",
+        "30618_6cb3280a",
+        "30618_748832b9",
+        "30618_af7496f0",
+        "30618_bab2fe58",
+        "30639_3b3d9eb8"
+      ]
+    },
+    "holdout_distance_deployed.csv": {
+      "table_source": "holdout_distance_table_optional.csv",
+      "physics_source": "holdout_distance_rawfreeze_fix.csv",
+      "table_vehicle": "30618",
+      "different_from_final_bags": [
+        "30618_1cc230fa",
+        "30618_21dd3af3",
+        "30618_2366c74a",
+        "30618_2cb9ce37",
+        "30618_3b36e5cd",
+        "30618_40ffd323",
+        "30618_4d487b0d",
+        "30618_6cb3280a",
+        "30618_748832b9",
+        "30618_af7496f0",
+        "30618_bab2fe58",
+        "30639_3b3d9eb8"
+      ]
+    }
+  },
+  "sets": {
+    "validation": {
+      "input_issues": [],
+      "sessions": [
+        "30618/2026-08-26"
+      ],
+      "summaries": {
+        "all": {
+          "speed": {
+            "total_bags": 13,
+            "labeled_bags": 13,
+            "matched": 286515,
+            "core_outputs": 286877,
+            "matched_fraction_of_all_outputs": 0.9987381351589706,
+            "largest_bag_share_of_matches": 0.093551821021587,
+            "largest_three_bag_share_of_matches": 0.27347259305795507,
+            "pooled_baseline_rmse_mps": 0.06724529928756388,
+            "pooled_core_rmse_mps": 0.03451910429489803,
+            "pooled_delta_core_minus_baseline_mps": -0.03272619499266585,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.04019311906016851,
+              -0.026401562186667428
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              -0.033658901477688685,
+              -0.02916044096512812
+            ],
+            "median_baseline_bag_rmse_mps": 0.0599027260774477,
+            "median_core_bag_rmse_mps": 0.03216743572412264,
+            "median_paired_bag_delta_mps": -0.02754076255227826,
+            "bag_wins": 12,
+            "bag_losses": 1,
+            "two_sided_sign_p_bag_level": 0.00341796875
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 12,
+            "wins": 10,
+            "losses": 2,
+            "ties": 0,
+            "median_baseline": 0.23309947872043563,
+            "median_core": 0.18815671071530315,
+            "median_paired_delta": -0.031758228557312196,
+            "median_delta_bag_boot_ci": [
+              -0.04517463857973933,
+              -0.018413903320848655
+            ],
+            "two_sided_sign_p_bag_level": 0.03857421875
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 13,
+            "wins": 9,
+            "losses": 4,
+            "ties": 0,
+            "median_baseline": 3.6897622483501493,
+            "median_core": 2.9712936978363214,
+            "median_paired_delta": -0.40991498923121883,
+            "median_delta_bag_boot_ci": [
+              -0.9010339194546089,
+              0.2295754127261338
+            ],
+            "two_sided_sign_p_bag_level": 0.266845703125
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 13,
+            "wins": 8,
+            "losses": 5,
+            "ties": 0,
+            "median_baseline": 3.8222617840847284,
+            "median_core": 2.987829530637905,
+            "median_paired_delta": -0.4079809807644965,
+            "median_delta_bag_boot_ci": [
+              -0.8761618472935777,
+              0.2236267537828458
+            ],
+            "two_sided_sign_p_bag_level": 0.5810546875
+          }
+        },
+        "30618": {
+          "speed": {
+            "total_bags": 13,
+            "labeled_bags": 13,
+            "matched": 286515,
+            "core_outputs": 286877,
+            "matched_fraction_of_all_outputs": 0.9987381351589706,
+            "largest_bag_share_of_matches": 0.093551821021587,
+            "largest_three_bag_share_of_matches": 0.27347259305795507,
+            "pooled_baseline_rmse_mps": 0.06724529928756388,
+            "pooled_core_rmse_mps": 0.03451910429489803,
+            "pooled_delta_core_minus_baseline_mps": -0.03272619499266585,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.04019311906016851,
+              -0.026401562186667428
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              -0.033658901477688685,
+              -0.02916044096512812
+            ],
+            "median_baseline_bag_rmse_mps": 0.0599027260774477,
+            "median_core_bag_rmse_mps": 0.03216743572412264,
+            "median_paired_bag_delta_mps": -0.02754076255227826,
+            "bag_wins": 12,
+            "bag_losses": 1,
+            "two_sided_sign_p_bag_level": 0.00341796875
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 12,
+            "wins": 10,
+            "losses": 2,
+            "ties": 0,
+            "median_baseline": 0.23309947872043563,
+            "median_core": 0.18815671071530315,
+            "median_paired_delta": -0.031758228557312196,
+            "median_delta_bag_boot_ci": [
+              -0.04517463857973933,
+              -0.018413903320848655
+            ],
+            "two_sided_sign_p_bag_level": 0.03857421875
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 13,
+            "wins": 9,
+            "losses": 4,
+            "ties": 0,
+            "median_baseline": 3.6897622483501493,
+            "median_core": 2.9712936978363214,
+            "median_paired_delta": -0.40991498923121883,
+            "median_delta_bag_boot_ci": [
+              -0.9010339194546089,
+              0.2295754127261338
+            ],
+            "two_sided_sign_p_bag_level": 0.266845703125
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 13,
+            "wins": 8,
+            "losses": 5,
+            "ties": 0,
+            "median_baseline": 3.8222617840847284,
+            "median_core": 2.987829530637905,
+            "median_paired_delta": -0.4079809807644965,
+            "median_delta_bag_boot_ci": [
+              -0.8761618472935777,
+              0.2236267537828458
+            ],
+            "two_sided_sign_p_bag_level": 0.5810546875
+          }
+        },
+        "30639": {
+          "speed": null,
+          "distance_abs_end_drift_pct": null,
+          "position_master_3d_rmse_m": null,
+          "position_base_link_3d_rmse_m": null
+        },
+        "30618/2026-08-26": {
+          "speed": {
+            "total_bags": 13,
+            "labeled_bags": 13,
+            "matched": 286515,
+            "core_outputs": 286877,
+            "matched_fraction_of_all_outputs": 0.9987381351589706,
+            "largest_bag_share_of_matches": 0.093551821021587,
+            "largest_three_bag_share_of_matches": 0.27347259305795507,
+            "pooled_baseline_rmse_mps": 0.06724529928756388,
+            "pooled_core_rmse_mps": 0.03451910429489803,
+            "pooled_delta_core_minus_baseline_mps": -0.03272619499266585,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.04019311906016851,
+              -0.026401562186667428
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              -0.033658901477688685,
+              -0.02916044096512812
+            ],
+            "median_baseline_bag_rmse_mps": 0.0599027260774477,
+            "median_core_bag_rmse_mps": 0.03216743572412264,
+            "median_paired_bag_delta_mps": -0.02754076255227826,
+            "bag_wins": 12,
+            "bag_losses": 1,
+            "two_sided_sign_p_bag_level": 0.00341796875
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 12,
+            "wins": 10,
+            "losses": 2,
+            "ties": 0,
+            "median_baseline": 0.23309947872043563,
+            "median_core": 0.18815671071530315,
+            "median_paired_delta": -0.031758228557312196,
+            "median_delta_bag_boot_ci": [
+              -0.04517463857973933,
+              -0.018413903320848655
+            ],
+            "two_sided_sign_p_bag_level": 0.03857421875
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 13,
+            "wins": 9,
+            "losses": 4,
+            "ties": 0,
+            "median_baseline": 3.6897622483501493,
+            "median_core": 2.9712936978363214,
+            "median_paired_delta": -0.40991498923121883,
+            "median_delta_bag_boot_ci": [
+              -0.9010339194546089,
+              0.2295754127261338
+            ],
+            "two_sided_sign_p_bag_level": 0.266845703125
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 13,
+            "wins": 8,
+            "losses": 5,
+            "ties": 0,
+            "median_baseline": 3.8222617840847284,
+            "median_core": 2.987829530637905,
+            "median_paired_delta": -0.4079809807644965,
+            "median_delta_bag_boot_ci": [
+              -0.8761618472935777,
+              0.2236267537828458
+            ],
+            "two_sided_sign_p_bag_level": 0.5810546875
+          }
+        }
+      }
+    },
+    "holdout": {
+      "input_issues": [],
+      "sessions": [
+        "30618/2026-08-10",
+        "30639/2026-05-05"
+      ],
+      "summaries": {
+        "all": {
+          "speed": {
+            "total_bags": 42,
+            "labeled_bags": 23,
+            "matched": 431768,
+            "core_outputs": 833816,
+            "matched_fraction_of_all_outputs": 0.5178216776842852,
+            "largest_bag_share_of_matches": 0.06289257193678087,
+            "largest_three_bag_share_of_matches": 0.18620648125845363,
+            "pooled_baseline_rmse_mps": 0.1241375755344083,
+            "pooled_core_rmse_mps": 0.11924684406890942,
+            "pooled_delta_core_minus_baseline_mps": -0.004890731465498871,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.010325083562795843,
+              7.690079888576747e-05
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              -0.006978529502799716,
+              -0.004037610825680035
+            ],
+            "median_baseline_bag_rmse_mps": 0.07566415161525626,
+            "median_core_bag_rmse_mps": 0.08091184806905448,
+            "median_paired_bag_delta_mps": -0.003926421791232024,
+            "bag_wins": 13,
+            "bag_losses": 8,
+            "two_sided_sign_p_bag_level": 0.38331031799316406
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 21,
+            "wins": 7,
+            "losses": 14,
+            "ties": 0,
+            "median_baseline": 0.34011868172238957,
+            "median_core": 0.6636073296071495,
+            "median_paired_delta": 0.23351167028931802,
+            "median_delta_bag_boot_ci": [
+              -0.019089667286025847,
+              0.2855466878527906
+            ],
+            "two_sided_sign_p_bag_level": 0.18924713134765625
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 20,
+            "wins": 4,
+            "losses": 14,
+            "ties": 2,
+            "median_baseline": 18.27702685767252,
+            "median_core": 22.27321074505698,
+            "median_paired_delta": 0.8449284455263164,
+            "median_delta_bag_boot_ci": [
+              0.30288939902930245,
+              7.930333844342064
+            ],
+            "two_sided_sign_p_bag_level": 0.0308837890625
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 20,
+            "wins": 4,
+            "losses": 14,
+            "ties": 2,
+            "median_baseline": 18.282590742817096,
+            "median_core": 22.283874116344748,
+            "median_paired_delta": 0.8395705580370132,
+            "median_delta_bag_boot_ci": [
+              0.30263755038686924,
+              7.92928661851697
+            ],
+            "two_sided_sign_p_bag_level": 0.0308837890625
+          }
+        },
+        "30618": {
+          "speed": {
+            "total_bags": 32,
+            "labeled_bags": 13,
+            "matched": 209747,
+            "core_outputs": 594135,
+            "matched_fraction_of_all_outputs": 0.3530291937017681,
+            "largest_bag_share_of_matches": 0.12481704148331084,
+            "largest_three_bag_share_of_matches": 0.36595994221609845,
+            "pooled_baseline_rmse_mps": 0.13685968164828016,
+            "pooled_core_rmse_mps": 0.12407096852945104,
+            "pooled_delta_core_minus_baseline_mps": -0.01278871311882912,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.02109688333122827,
+              -0.009130673305070678
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              -0.01675481071725561,
+              -0.011854163879073454
+            ],
+            "median_baseline_bag_rmse_mps": 0.07098245214389645,
+            "median_core_bag_rmse_mps": 0.05634790363072018,
+            "median_paired_bag_delta_mps": -0.01949574141329708,
+            "bag_wins": 10,
+            "bag_losses": 1,
+            "two_sided_sign_p_bag_level": 0.01171875
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 11,
+            "wins": 7,
+            "losses": 4,
+            "ties": 0,
+            "median_baseline": 0.24167991428336993,
+            "median_core": 0.23327082588080772,
+            "median_paired_delta": -0.020996521672714485,
+            "median_delta_bag_boot_ci": [
+              -0.029069115865687223,
+              0.015697652217227354
+            ],
+            "two_sided_sign_p_bag_level": 0.548828125
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 11,
+            "wins": 4,
+            "losses": 5,
+            "ties": 2,
+            "median_baseline": 5.251097659130582,
+            "median_core": 4.278106283091012,
+            "median_paired_delta": 0.0,
+            "median_delta_bag_boot_ci": [
+              -0.9601508379662524,
+              0.8006722281225178
+            ],
+            "two_sided_sign_p_bag_level": 1.0
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 11,
+            "wins": 4,
+            "losses": 5,
+            "ties": 2,
+            "median_baseline": 5.289041506522331,
+            "median_core": 4.3176064484784105,
+            "median_paired_delta": 0.0,
+            "median_delta_bag_boot_ci": [
+              -0.9507924121123925,
+              0.6800964640827332
+            ],
+            "two_sided_sign_p_bag_level": 1.0
+          }
+        },
+        "30639": {
+          "speed": {
+            "total_bags": 10,
+            "labeled_bags": 10,
+            "matched": 222021,
+            "core_outputs": 239681,
+            "matched_fraction_of_all_outputs": 0.9263187319812585,
+            "largest_bag_share_of_matches": 0.1223082501204841,
+            "largest_three_bag_share_of_matches": 0.3536782556605006,
+            "pooled_baseline_rmse_mps": 0.11078477625850898,
+            "pooled_core_rmse_mps": 0.11450286201538756,
+            "pooled_delta_core_minus_baseline_mps": 0.0037180857568785836,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.0005636525977825134,
+              0.007184361815301441
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              0.0015408317409507516,
+              0.0042468266746757966
+            ],
+            "median_baseline_bag_rmse_mps": 0.08571698965326327,
+            "median_core_bag_rmse_mps": 0.08739997845219258,
+            "median_paired_bag_delta_mps": 0.000978604321883271,
+            "bag_wins": 3,
+            "bag_losses": 7,
+            "two_sided_sign_p_bag_level": 0.34375
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 10,
+            "wins": 0,
+            "losses": 10,
+            "ties": 0,
+            "median_baseline": 0.5892280356867905,
+            "median_core": 0.8761721911700988,
+            "median_paired_delta": 0.28186327713986886,
+            "median_delta_bag_boot_ci": [
+              0.25310663457804816,
+              0.3011867120998382
+            ],
+            "two_sided_sign_p_bag_level": 0.001953125
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 9,
+            "wins": 0,
+            "losses": 9,
+            "ties": 0,
+            "median_baseline": 34.28607979922322,
+            "median_core": 43.26655118535108,
+            "median_paired_delta": 8.513648797363565,
+            "median_delta_bag_boot_ci": [
+              7.026039132347734,
+              8.927503533922206
+            ],
+            "two_sided_sign_p_bag_level": 0.00390625
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 9,
+            "wins": 0,
+            "losses": 9,
+            "ties": 0,
+            "median_baseline": 34.27526216203933,
+            "median_core": 43.28044827210647,
+            "median_paired_delta": 8.518100737976894,
+            "median_delta_bag_boot_ci": [
+              7.035391186169193,
+              8.922181540147989
+            ],
+            "two_sided_sign_p_bag_level": 0.00390625
+          }
+        },
+        "30639/2026-05-05": {
+          "speed": {
+            "total_bags": 10,
+            "labeled_bags": 10,
+            "matched": 222021,
+            "core_outputs": 239681,
+            "matched_fraction_of_all_outputs": 0.9263187319812585,
+            "largest_bag_share_of_matches": 0.1223082501204841,
+            "largest_three_bag_share_of_matches": 0.3536782556605006,
+            "pooled_baseline_rmse_mps": 0.11078477625850898,
+            "pooled_core_rmse_mps": 0.11450286201538756,
+            "pooled_delta_core_minus_baseline_mps": 0.0037180857568785836,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.0005636525977825134,
+              0.007184361815301441
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              0.0015408317409507516,
+              0.0042468266746757966
+            ],
+            "median_baseline_bag_rmse_mps": 0.08571698965326327,
+            "median_core_bag_rmse_mps": 0.08739997845219258,
+            "median_paired_bag_delta_mps": 0.000978604321883271,
+            "bag_wins": 3,
+            "bag_losses": 7,
+            "two_sided_sign_p_bag_level": 0.34375
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 10,
+            "wins": 0,
+            "losses": 10,
+            "ties": 0,
+            "median_baseline": 0.5892280356867905,
+            "median_core": 0.8761721911700988,
+            "median_paired_delta": 0.28186327713986886,
+            "median_delta_bag_boot_ci": [
+              0.25310663457804816,
+              0.3011867120998382
+            ],
+            "two_sided_sign_p_bag_level": 0.001953125
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 9,
+            "wins": 0,
+            "losses": 9,
+            "ties": 0,
+            "median_baseline": 34.28607979922322,
+            "median_core": 43.26655118535108,
+            "median_paired_delta": 8.513648797363565,
+            "median_delta_bag_boot_ci": [
+              7.026039132347734,
+              8.927503533922206
+            ],
+            "two_sided_sign_p_bag_level": 0.00390625
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 9,
+            "wins": 0,
+            "losses": 9,
+            "ties": 0,
+            "median_baseline": 34.27526216203933,
+            "median_core": 43.28044827210647,
+            "median_paired_delta": 8.518100737976894,
+            "median_delta_bag_boot_ci": [
+              7.035391186169193,
+              8.922181540147989
+            ],
+            "two_sided_sign_p_bag_level": 0.00390625
+          }
+        },
+        "30618/2026-08-10": {
+          "speed": {
+            "total_bags": 32,
+            "labeled_bags": 13,
+            "matched": 209747,
+            "core_outputs": 594135,
+            "matched_fraction_of_all_outputs": 0.3530291937017681,
+            "largest_bag_share_of_matches": 0.12481704148331084,
+            "largest_three_bag_share_of_matches": 0.36595994221609845,
+            "pooled_baseline_rmse_mps": 0.13685968164828016,
+            "pooled_core_rmse_mps": 0.12407096852945104,
+            "pooled_delta_core_minus_baseline_mps": -0.01278871311882912,
+            "bag_boot_pooled_delta_95_ci_mps": [
+              -0.02109688333122827,
+              -0.009130673305070678
+            ],
+            "leave_one_bag_out_delta_range_mps": [
+              -0.01675481071725561,
+              -0.011854163879073454
+            ],
+            "median_baseline_bag_rmse_mps": 0.07098245214389645,
+            "median_core_bag_rmse_mps": 0.05634790363072018,
+            "median_paired_bag_delta_mps": -0.01949574141329708,
+            "bag_wins": 10,
+            "bag_losses": 1,
+            "two_sided_sign_p_bag_level": 0.01171875
+          },
+          "distance_abs_end_drift_pct": {
+            "bags": 11,
+            "wins": 7,
+            "losses": 4,
+            "ties": 0,
+            "median_baseline": 0.24167991428336993,
+            "median_core": 0.23327082588080772,
+            "median_paired_delta": -0.020996521672714485,
+            "median_delta_bag_boot_ci": [
+              -0.029069115865687223,
+              0.015697652217227354
+            ],
+            "two_sided_sign_p_bag_level": 0.548828125
+          },
+          "position_master_3d_rmse_m": {
+            "bags": 11,
+            "wins": 4,
+            "losses": 5,
+            "ties": 2,
+            "median_baseline": 5.251097659130582,
+            "median_core": 4.278106283091012,
+            "median_paired_delta": 0.0,
+            "median_delta_bag_boot_ci": [
+              -0.9601508379662524,
+              0.8006722281225178
+            ],
+            "two_sided_sign_p_bag_level": 1.0
+          },
+          "position_base_link_3d_rmse_m": {
+            "bags": 11,
+            "wins": 4,
+            "losses": 5,
+            "ties": 2,
+            "median_baseline": 5.289041506522331,
+            "median_core": 4.3176064484784105,
+            "median_paired_delta": 0.0,
+            "median_delta_bag_boot_ci": [
+              -0.9507924121123925,
+              0.6800964640827332
+            ],
+            "two_sided_sign_p_bag_level": 1.0
+          }
+        }
+      }
+    }
+  },
+  "interpretation": {
+    "independent_sessions_validation": 1,
+    "independent_sessions_holdout": 2,
+    "bag_bootstrap_limit": "Conditional on these recorded dates; bags within a date are correlated. No defensible session-level CI exists with one validation and two holdout sessions.",
+    "holdout_selection_limit": "Final mode choice used holdout feedback; holdout is no longer untouched for model selection.",
+    "time_order_limit": "The 30618 training set includes 2026-09-03, later than 2026-08-26 validation and 2026-08-10 holdout. This is a session split, not a prospective time-forward test.",
+    "command_clock_limit": "Overlapping command and wheel header-time branches occur in holdout. A trial future-header guard suppressed genuine outputs and was reverted; see evaluation/audit_command_timing.md. Current results do not establish robustness to an isolated corrupt future header.",
+    "reference_limit": "GNSS is an imperfect proxy and available only on a subset of outputs; no hidden jury fused reference is available."
+  },
+  "table_ablation_30618": {
+    "validation": {
+      "speed": {
+        "bags": 13,
+        "matched": 286515,
+        "physics_pooled_rmse_mps": 0.03591212657710567,
+        "table_pooled_rmse_mps": 0.03451910429489803,
+        "pooled_delta_mps": -0.00139302228220764,
+        "bag_boot_pooled_delta_95_ci_mps": [
+          -0.0021197733210334105,
+          -0.0008021466292311241
+        ],
+        "table_bag_wins": 12,
+        "median_paired_bag_delta_mps": -0.0007722091267241132
+      },
+      "absolute_end_drift_pct": {
+        "bags": 12,
+        "wins": 12,
+        "losses": 0,
+        "ties": 0,
+        "median_baseline": 0.22613069539310882,
+        "median_core": 0.18815671071530315,
+        "median_paired_delta": -0.03928170400368601,
+        "median_delta_bag_boot_ci": [
+          -0.04334426512251022,
+          -0.034020550946018344
+        ],
+        "two_sided_sign_p_bag_level": 0.00048828125
+      }
+    },
+    "holdout": {
+      "speed": {
+        "bags": 13,
+        "matched": 209747,
+        "physics_pooled_rmse_mps": 0.12507366144301943,
+        "table_pooled_rmse_mps": 0.12407096852945104,
+        "pooled_delta_mps": -0.001002692913568387,
+        "bag_boot_pooled_delta_95_ci_mps": [
+          -0.0019284774623596073,
+          -0.00048436494477208824
+        ],
+        "table_bag_wins": 9,
+        "median_paired_bag_delta_mps": -0.0006581672012780093
+      },
+      "absolute_end_drift_pct": {
+        "bags": 11,
+        "wins": 8,
+        "losses": 3,
+        "ties": 0,
+        "median_baseline": 0.29410898661298385,
+        "median_core": 0.23327082588080772,
+        "median_paired_delta": -0.04237335836425382,
+        "median_delta_bag_boot_ci": [
+          -0.06668889039922254,
+          0.014799743587115638
+        ],
+        "two_sided_sign_p_bag_level": 0.2265625
+      }
+    }
+  },
+  "speed_by_session": [
+    {
+      "split": "train",
+      "vehicle": "30618",
+      "session_date": "2026-07-27",
+      "labeled_bags": 29,
+      "matched": 648428,
+      "baseline_rmse_mps": 0.06938344186347521,
+      "core_rmse_mps": 0.05613727279427829,
+      "baseline_bias_mps": -0.00826801895626863,
+      "core_bias_mps": -0.00674976633191482
+    },
+    {
+      "split": "train",
+      "vehicle": "30618",
+      "session_date": "2026-09-03",
+      "labeled_bags": 4,
+      "matched": 107354,
+      "baseline_rmse_mps": 0.09710127004931683,
+      "core_rmse_mps": 0.08897325416049628,
+      "baseline_bias_mps": -0.04991373151392196,
+      "core_bias_mps": -0.048515514312695865
+    },
+    {
+      "split": "train",
+      "vehicle": "30639",
+      "session_date": "2026-08-26",
+      "labeled_bags": 9,
+      "matched": 183696,
+      "baseline_rmse_mps": 0.0704148846992564,
+      "core_rmse_mps": 0.05036042635901117,
+      "baseline_bias_mps": -0.021253163195202356,
+      "core_bias_mps": -0.010018820573331179
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "session_date": "2026-08-26",
+      "labeled_bags": 13,
+      "matched": 286515,
+      "baseline_rmse_mps": 0.06724529928756388,
+      "core_rmse_mps": 0.03451910429489803,
+      "baseline_bias_mps": -0.009629808095537956,
+      "core_bias_mps": -0.007947403291661702
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "session_date": "2026-08-10",
+      "labeled_bags": 13,
+      "matched": 209747,
+      "baseline_rmse_mps": 0.13685968164828016,
+      "core_rmse_mps": 0.12407096852945104,
+      "baseline_bias_mps": -0.008952187646290476,
+      "core_bias_mps": -0.008319637423961851
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "session_date": "2026-05-05",
+      "labeled_bags": 10,
+      "matched": 222021,
+      "baseline_rmse_mps": 0.11078477625850898,
+      "core_rmse_mps": 0.11450286201538756,
+      "baseline_bias_mps": 0.030740707943831824,
+      "core_bias_mps": 0.04204071741397659
+    }
+  ]
+}

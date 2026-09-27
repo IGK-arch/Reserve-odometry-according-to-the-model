@@ -1,0 +1,77 @@
+{
+  "method": "Per-bag least-squares wheel multiplier on dual-GNSS agreement, 2-16 m/s and non-slip filters from calibrate_wheels.py; median by vehicle/date. Diagnostic only.",
+  "sessions": [
+    {
+      "split": "holdout",
+      "vehicle": "30618",
+      "session_date": "2026-08-10",
+      "bags_with_gnss": 13,
+      "bags_with_scale": 11,
+      "median_mean_scale": 1.0010664485075764,
+      "min_mean_scale": 1.0004410026948012,
+      "max_mean_scale": 1.00380809326539,
+      "median_rover_master_p95_abs_mps": 0.052421359914785005,
+      "median_pair_coverage": 1.0
+    },
+    {
+      "split": "holdout",
+      "vehicle": "30639",
+      "session_date": "2026-05-05",
+      "bags_with_gnss": 10,
+      "bags_with_scale": 9,
+      "median_mean_scale": 0.9914512461700724,
+      "min_mean_scale": 0.9843013007663213,
+      "max_mean_scale": 0.9952540879748064,
+      "median_rover_master_p95_abs_mps": 0.05778130053116054,
+      "median_pair_coverage": 0.9998604633602187
+    },
+    {
+      "split": "train",
+      "vehicle": "30618",
+      "session_date": "2026-07-27",
+      "bags_with_gnss": 29,
+      "bags_with_scale": 26,
+      "median_mean_scale": 1.0001115976839667,
+      "min_mean_scale": 0.9997328048285945,
+      "max_mean_scale": 1.0012144128398028,
+      "median_rover_master_p95_abs_mps": 0.05059482086920327,
+      "median_pair_coverage": 0.9999230058515552
+    },
+    {
+      "split": "train",
+      "vehicle": "30618",
+      "session_date": "2026-09-03",
+      "bags_with_gnss": 4,
+      "bags_with_scale": 4,
+      "median_mean_scale": 1.0106308893826226,
+      "min_mean_scale": 1.0065139417187565,
+      "max_mean_scale": 1.01606190168928,
+      "median_rover_master_p95_abs_mps": 0.047339106067958006,
+      "median_pair_coverage": 0.9976403964462441
+    },
+    {
+      "split": "train",
+      "vehicle": "30639",
+      "session_date": "2026-08-26",
+      "bags_with_gnss": 9,
+      "bags_with_scale": 8,
+      "median_mean_scale": 1.0033825279812105,
+      "min_mean_scale": 1.0025561435204007,
+      "max_mean_scale": 1.003711016820129,
+      "median_rover_master_p95_abs_mps": 0.048084071342713884,
+      "median_pair_coverage": 0.980322960111218
+    },
+    {
+      "split": "validation",
+      "vehicle": "30618",
+      "session_date": "2026-08-26",
+      "bags_with_gnss": 13,
+      "bags_with_scale": 12,
+      "median_mean_scale": 1.0008186646951742,
+      "min_mean_scale": 1.000509698166646,
+      "max_mean_scale": 1.001400322887363,
+      "median_rover_master_p95_abs_mps": 0.0454274062333031,
+      "median_pair_coverage": 0.9978164105148232
+    }
+  ]
+}

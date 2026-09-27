@@ -121,9 +121,9 @@ Baseline сравнивается на одинаковых метках с ко
 Нужен распакованный `dataset/data` и Python 3.12. Для `position_proxy.py` и построения графиков дополнительно нужны NumPy, SciPy, pyproj и Matplotlib; это **офлайн-инструменты анализа**, пакет ROS от них не зависит. На Windows или Linux (замените команду `py -3.12` на `python3` при необходимости):
 
 ```bash
-python3 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_core_table.csv
-python3 evaluation/distance_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_distance_table.csv
-python3 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_position_table.csv
+python3 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_core_table.csv
+python3 evaluation/distance_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_distance_table.csv
+python3 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_position_table.csv
 ```
 
 `core_benchmark.py` собирает CLI из **того же** `estimator.cpp`, что и ROS-нода, но не вызывает навигационный слой. Параметр `--drive-table` повторяет режим скорости ROS для `30618`; для `30639` таблица по умолчанию отключена. В продольный replay поступают только контроллер и колёса; GNSS читается отдельно для прокси-метрик. `position_proxy.py` сохраняется как прежний startup-only Python-прокси и не оценивает текущие поправки/ветвление/высоту `Navigation`. Train/validation/holdout разделены в `tools/split_manifest.json` по полным сессиям и SHA-256 дубликатам.
@@ -168,6 +168,12 @@ Recorder и checker имеют независимые DDS-подписки; их
 
 Разделы 7–8 относятся к реализации до общего `Navigation`, периодических
 поправок и официального профиля высоты. Они не подтверждают новые ROS-метрики.
+
+Перед интерпретацией чисел см. [аудит разделения и обобщения](VALIDATION_AUDIT.md):
+validation содержит только одну дату `30618`, а отложенная майская дата
+`30639` показывает ухудшение дрейфа и положения. Таблицы `evaluation/*_deployed.csv` относятся к этому историческому аудиту
+исходной реализации; итоговые измерения общего Navigation приведены в
+[RESULTS.md](RESULTS.md) и [METRICS_COMPARISON.md](METRICS_COMPARISON.md).
 
 В Ubuntu 22.04/ROS 2 Humble на WSL оба пакета успешно собраны через `colcon`. Реальные bag-прогоны для `30618`, `30639` и без GNSS прошли; полный движущийся bag `30618_af7496f0` за 263 с выдал 5313 сообщений скорости и 5312 положения при средней частоте 20,2 Гц. Метки времени и кадры проверены. JSON-отчёты и логи находятся в [`evaluation/ros_smoke`](../evaluation/ros_smoke), команда автоматического воспроизведения — `bash tools/ros_smoke_wsl.sh anchored` либо `no-gnss`. Измерение `callback_to_position_publish_ms` охватывает начало callback → вызов публикации внутри ноды; полную задержку от датчика через DDS и поведение на многочасовом прогоне эти измерения не подтверждают.
 

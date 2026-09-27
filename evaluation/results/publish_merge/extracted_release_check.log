@@ -1,0 +1,105 @@
+-- The CXX compiler identification is AppleClang 21.0.0.21000334
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/odometry-publish-release-build-20260927
+[  2%] Building CXX object CMakeFiles/tram_navigation.dir/ros2_ws/src/tram_odometry/src/navigation.cpp.o
+[  5%] Building CXX object CMakeFiles/tram_navigation.dir/ros2_ws/src/tram_odometry/src/estimator.cpp.o
+[  8%] Linking CXX static library libtram_navigation.a
+[  8%] Built target tram_navigation
+[ 18%] Building CXX object CMakeFiles/navigation_replay.dir/evaluation/navigation_replay.cpp.o
+[ 18%] Building CXX object CMakeFiles/elevation_profile_test.dir/ros2_ws/src/tram_odometry/test/elevation_profile_test.cpp.o
+[ 18%] Building CXX object CMakeFiles/estimator_core_test.dir/ros2_ws/src/tram_odometry/test/estimator_core_test.cpp.o
+[ 18%] Building CXX object CMakeFiles/replay_cli.dir/evaluation/replay_cli.cpp.o
+[ 21%] Linking CXX executable replay_cli
+[ 21%] Built target replay_cli
+[ 24%] Building CXX object CMakeFiles/estimator_jump_rate_test.dir/ros2_ws/src/tram_odometry/test/estimator_jump_rate_test.cpp.o
+[ 27%] Linking CXX executable estimator_core_test
+[ 29%] Linking CXX executable elevation_profile_test
+[ 29%] Built target estimator_core_test
+[ 32%] Linking CXX executable navigation_replay
+[ 32%] Built target elevation_profile_test
+[ 35%] Building CXX object CMakeFiles/estimator_jump_recovery_test.dir/ros2_ws/src/tram_odometry/test/estimator_jump_recovery_test.cpp.o
+[ 37%] Building CXX object CMakeFiles/estimator_wheel_residual_test.dir/ros2_ws/src/tram_odometry/test/estimator_wheel_residual_test.cpp.o
+[ 37%] Built target navigation_replay
+[ 40%] Building CXX object CMakeFiles/geo_projection_test.dir/ros2_ws/src/tram_odometry/test/geo_projection_test.cpp.o
+[ 43%] Linking CXX executable estimator_jump_rate_test
+[ 43%] Built target estimator_jump_rate_test
+[ 45%] Building CXX object CMakeFiles/navigation_branch_test.dir/ros2_ws/src/tram_odometry/test/navigation_branch_test.cpp.o
+[ 51%] Linking CXX executable estimator_jump_recovery_test
+[ 51%] Linking CXX executable estimator_wheel_residual_test
+[ 54%] Linking CXX executable geo_projection_test
+[ 54%] Built target estimator_jump_recovery_test
+[ 54%] Built target estimator_wheel_residual_test
+[ 54%] Built target geo_projection_test
+[ 56%] Building CXX object CMakeFiles/navigation_gnss_robustness_test.dir/ros2_ws/src/tram_odometry/test/navigation_gnss_robustness_test.cpp.o
+[ 59%] Building CXX object CMakeFiles/navigation_startup_heading_test.dir/ros2_ws/src/tram_odometry/test/navigation_startup_heading_test.cpp.o
+[ 62%] Building CXX object CMakeFiles/navigation_test.dir/ros2_ws/src/tram_odometry/test/navigation_test.cpp.o
+[ 64%] Linking CXX executable navigation_test
+[ 64%] Built target navigation_test
+[ 67%] Building CXX object CMakeFiles/odometry_statistics_test.dir/ros2_ws/src/tram_odometry/test/odometry_statistics_test.cpp.o
+[ 70%] Linking CXX executable navigation_startup_heading_test
+[ 70%] Built target navigation_startup_heading_test
+[ 72%] Building CXX object CMakeFiles/route_body_heading_test.dir/ros2_ws/src/tram_odometry/test/route_body_heading_test.cpp.o
+[ 75%] Linking CXX executable navigation_gnss_robustness_test
+[ 75%] Built target navigation_gnss_robustness_test
+[ 78%] Building CXX object CMakeFiles/route_tf_test.dir/ros2_ws/src/tram_odometry/test/route_tf_test.cpp.o
+[ 81%] Linking CXX executable navigation_branch_test
+[ 81%] Built target navigation_branch_test
+[ 83%] Building CXX object CMakeFiles/startup_output_gate_test.dir/ros2_ws/src/tram_odometry/test/startup_output_gate_test.cpp.o
+[ 86%] Linking CXX executable odometry_statistics_test
+[ 86%] Built target odometry_statistics_test
+[ 89%] Building CXX object CMakeFiles/uncertainty_test.dir/ros2_ws/src/tram_odometry/test/uncertainty_test.cpp.o
+[ 91%] Linking CXX executable route_body_heading_test
+[ 94%] Linking CXX executable route_tf_test
+[ 94%] Built target route_body_heading_test
+[ 97%] Linking CXX executable startup_output_gate_test
+[ 97%] Built target route_tf_test
+[ 97%] Built target startup_output_gate_test
+[100%] Linking CXX executable uncertainty_test
+[100%] Built target uncertainty_test
+Internal ctest changing into directory: /tmp/odometry-publish-release-build-20260927
+Test project /tmp/odometry-publish-release-build-20260927
+      Start  1: elevation_profile_test
+ 1/15 Test  #1: elevation_profile_test ............   Passed    0.30 sec
+      Start  2: estimator_core_test
+ 2/15 Test  #2: estimator_core_test ...............   Passed    0.06 sec
+      Start  3: estimator_jump_rate_test
+ 3/15 Test  #3: estimator_jump_rate_test ..........   Passed    0.07 sec
+      Start  4: estimator_jump_recovery_test
+ 4/15 Test  #4: estimator_jump_recovery_test ......   Passed    0.07 sec
+      Start  5: estimator_wheel_residual_test
+ 5/15 Test  #5: estimator_wheel_residual_test .....   Passed    0.15 sec
+      Start  6: geo_projection_test
+ 6/15 Test  #6: geo_projection_test ...............   Passed    0.06 sec
+      Start  7: navigation_branch_test
+ 7/15 Test  #7: navigation_branch_test ............   Passed    0.08 sec
+      Start  8: navigation_gnss_robustness_test
+ 8/15 Test  #8: navigation_gnss_robustness_test ...   Passed    0.08 sec
+      Start  9: navigation_startup_heading_test
+ 9/15 Test  #9: navigation_startup_heading_test ...   Passed    0.14 sec
+      Start 10: navigation_test
+10/15 Test #10: navigation_test ...................   Passed    0.17 sec
+      Start 11: odometry_statistics_test
+11/15 Test #11: odometry_statistics_test ..........   Passed    0.09 sec
+      Start 12: route_body_heading_test
+12/15 Test #12: route_body_heading_test ...........   Passed    0.12 sec
+      Start 13: route_tf_test
+13/15 Test #13: route_tf_test .....................   Passed    0.08 sec
+      Start 14: startup_output_gate_test
+14/15 Test #14: startup_output_gate_test ..........   Passed    0.10 sec
+      Start 15: uncertainty_test
+15/15 Test #15: uncertainty_test ..................   Passed    0.16 sec
+
+100% tests passed, 0 tests failed out of 15
+
+Total Test time (real) =   1.75 sec
+.....................................
+----------------------------------------------------------------------
+Ran 37 tests in 0.322s
+
+OK

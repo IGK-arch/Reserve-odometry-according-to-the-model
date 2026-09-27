@@ -78,6 +78,8 @@ class Navigation {
  Estimate state() const { return estimator_.state(); }
  const EstimatorConfig& estimatorConfig() const { return estimator_.config(); }
  bool mapReady() const { return has_map_; }
+ // Read-only publication uncertainty origin; navigation owns anchor/reset state.
+ double anchorDistanceM() const { return has_gnss_anchor_ ? anchor_distance_m_ : 0.0; }
  private:
  struct Fix { double latitude,longitude,altitude; int status; double stamp_s; };
  struct Correction { double stamp_s, innovation; };

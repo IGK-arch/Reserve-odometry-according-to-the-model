@@ -36,6 +36,7 @@ tram_odometry:
     initial_z_m: 0.0
     output_rotation_rad: 0.0
     output_scale: 1.0
+    wheel_common_scale_sigma: 0.01  # train-only prior for shared wheel-scale drift (dimensionless)
     output_offset_x_m: 0.0
     output_offset_y_m: 0.0
     output_offset_z_m: 0.0

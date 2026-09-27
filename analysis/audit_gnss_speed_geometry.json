@@ -1,0 +1,431 @@
+{
+  "method": "Nearest 2-m train-map node for two-antenna-cleaned master GNSS; fit central 500-4000m route map_s vs integral of master GNSS speed; holdout diagnostics only.",
+  "cohorts": {
+    "30618_2026-07-27_train": {
+      "bags": 29,
+      "valid_bags": 25,
+      "median_bag_map_m_per_gnss_speed_integral_m": 0.9999664779664773,
+      "median_bag_central_xy_m": 0.520316466013602,
+      "runs": [
+        {
+          "bag": "30618_0652866c",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.7621901554828274,
+          "map_m_per_gnss_speed_integral_m": 0.9994620037714597,
+          "fit_residual_abs_p90_m": 1.2634368980277941,
+          "gnss_velocity_integral_full_m": 5635.93116604672
+        },
+        {
+          "bag": "30618_073f08d1",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.8157818651782189,
+          "map_m_per_gnss_speed_integral_m": 1.0005242538423054,
+          "fit_residual_abs_p90_m": 1.3442223131847186,
+          "gnss_velocity_integral_full_m": 5420.4745616550745
+        },
+        {
+          "bag": "30618_095a115b",
+          "direction": "out",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 1.7182437562150021,
+          "map_m_per_gnss_speed_integral_m": 0.9992751692751687,
+          "fit_residual_abs_p90_m": 2.477966477968039,
+          "gnss_velocity_integral_full_m": 5435.324417968348
+        },
+        {
+          "bag": "30618_0d865417",
+          "error": "Not enough GNSS in map source 30618_0d865417"
+        },
+        {
+          "bag": "30618_0e41eac3",
+          "direction": "out",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.6912783702210239,
+          "map_m_per_gnss_speed_integral_m": 0.9992773337773334,
+          "fit_residual_abs_p90_m": 1.0662193362200014,
+          "gnss_velocity_integral_full_m": 5336.511705494662
+        },
+        {
+          "bag": "30618_0f120b35",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.4900486883051873,
+          "map_m_per_gnss_speed_integral_m": 1.0000091575091572,
+          "fit_residual_abs_p90_m": 0.047557997558442366,
+          "gnss_velocity_integral_full_m": 5409.856746717556
+        },
+        {
+          "bag": "30618_1551d0a9",
+          "error": "Not enough GNSS in map source 30618_1551d0a9"
+        },
+        {
+          "bag": "30618_22c1c589",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.2378170247280203,
+          "map_m_per_gnss_speed_integral_m": 0.999894091263719,
+          "fit_residual_abs_p90_m": 0.21642002441926708,
+          "gnss_velocity_integral_full_m": 5419.545122526873
+        },
+        {
+          "bag": "30618_28538acf",
+          "direction": "out",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.38406114505599287,
+          "map_m_per_gnss_speed_integral_m": 0.9999162570770627,
+          "fit_residual_abs_p90_m": 0.23421714798132598,
+          "gnss_velocity_integral_full_m": 5460.864553269066
+        },
+        {
+          "bag": "30618_2dbce472",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.25175215894735653,
+          "map_m_per_gnss_speed_integral_m": 0.9995084088149994,
+          "fit_residual_abs_p90_m": 0.958070580167305,
+          "gnss_velocity_integral_full_m": 5430.178875129463
+        },
+        {
+          "bag": "30618_2f104a1d",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.856466405894199,
+          "map_m_per_gnss_speed_integral_m": 1.000331779331779,
+          "fit_residual_abs_p90_m": 1.2288888888894007,
+          "gnss_velocity_integral_full_m": 5409.318298091789
+        },
+        {
+          "bag": "30618_49fe4c54",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.3635383633059691,
+          "map_m_per_gnss_speed_integral_m": 0.9998089211799454,
+          "fit_residual_abs_p90_m": 1.4111025695501667,
+          "gnss_velocity_integral_full_m": 5524.130273779444
+        },
+        {
+          "bag": "30618_616ec56b",
+          "direction": "return",
+          "common_points": 352,
+          "central_nearest_xy_median_m": 0.5597524658756305,
+          "map_m_per_gnss_speed_integral_m": 0.9998905757694256,
+          "fit_residual_abs_p90_m": 19.622548845932307,
+          "gnss_velocity_integral_full_m": 5397.779493536769
+        },
+        {
+          "bag": "30618_68847170",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.12828302759076723,
+          "map_m_per_gnss_speed_integral_m": 0.9999999999999997,
+          "fit_residual_abs_p90_m": 1.3642420526593924e-12,
+          "gnss_velocity_integral_full_m": 5406.609631091323
+        },
+        {
+          "bag": "30618_68d1748a",
+          "error": "Large GNSS velocity gap in 30618_68d1748a"
+        },
+        {
+          "bag": "30618_76e1f9c7",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.517436437033538,
+          "map_m_per_gnss_speed_integral_m": 0.9999917153842657,
+          "fit_residual_abs_p90_m": 0.023159587307691257,
+          "gnss_velocity_integral_full_m": 5465.083537883167
+        },
+        {
+          "bag": "30618_7b4d83f4",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.8285644941105396,
+          "map_m_per_gnss_speed_integral_m": 1.0004556554556554,
+          "fit_residual_abs_p90_m": 1.3094738594741102,
+          "gnss_velocity_integral_full_m": 5417.005609271678
+        },
+        {
+          "bag": "30618_8158f0b0",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.292350347559396,
+          "map_m_per_gnss_speed_integral_m": 0.9999193089622893,
+          "fit_residual_abs_p90_m": 0.17792256263119272,
+          "gnss_velocity_integral_full_m": 5521.251087575302
+        },
+        {
+          "bag": "30618_87afe526",
+          "direction": "out",
+          "common_points": 324,
+          "central_nearest_xy_median_m": 0.5471409178492881,
+          "map_m_per_gnss_speed_integral_m": 0.9998371278017298,
+          "fit_residual_abs_p90_m": 0.3471401558131106,
+          "gnss_velocity_integral_full_m": 5441.229713818136
+        },
+        {
+          "bag": "30618_9c09b081",
+          "direction": "out",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.3350876664294471,
+          "map_m_per_gnss_speed_integral_m": 0.9999664779664773,
+          "fit_residual_abs_p90_m": 0.07072853073077567,
+          "gnss_velocity_integral_full_m": 5479.109103621654
+        },
+        {
+          "bag": "30618_ab5921a4",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.5286774754545573,
+          "map_m_per_gnss_speed_integral_m": 0.9999881563992631,
+          "fit_residual_abs_p90_m": 2.3218092181739167,
+          "gnss_velocity_integral_full_m": 5462.2032052468
+        },
+        {
+          "bag": "30618_b15eafc3",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.4916106922788456,
+          "map_m_per_gnss_speed_integral_m": 1.0000077700077696,
+          "fit_residual_abs_p90_m": 0.016653716654218442,
+          "gnss_velocity_integral_full_m": 5408.087327257313
+        },
+        {
+          "bag": "30618_b8044aa0",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.8687379890462003,
+          "map_m_per_gnss_speed_integral_m": 1.0001835941835937,
+          "fit_residual_abs_p90_m": 1.2258245458228885,
+          "gnss_velocity_integral_full_m": 5408.649998336611
+        },
+        {
+          "bag": "30618_b83d854d",
+          "direction": "out",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.705759816139853,
+          "map_m_per_gnss_speed_integral_m": 0.9999276279276275,
+          "fit_residual_abs_p90_m": 0.24042772043003424,
+          "gnss_velocity_integral_full_m": 5424.247841554983
+        },
+        {
+          "bag": "30618_b95ca60a",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.520316466013602,
+          "map_m_per_gnss_speed_integral_m": 0.9998953823953821,
+          "fit_residual_abs_p90_m": 0.45030802530936853,
+          "gnss_velocity_integral_full_m": 5407.395402060941
+        },
+        {
+          "bag": "30618_bc5e53c2",
+          "error": "Not enough GNSS in map source 30618_bc5e53c2"
+        },
+        {
+          "bag": "30618_e2dcf65f",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.19889010128997103,
+          "map_m_per_gnss_speed_integral_m": 1.0,
+          "fit_residual_abs_p90_m": 0.0,
+          "gnss_velocity_integral_full_m": 5327.302536872721
+        },
+        {
+          "bag": "30618_e3d94878",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.3519306739322734,
+          "map_m_per_gnss_speed_integral_m": 1.0000000000000004,
+          "fit_residual_abs_p90_m": 2.7284841053187847e-12,
+          "gnss_velocity_integral_full_m": 5412.862812587155
+        },
+        {
+          "bag": "30618_f19a4ac3",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.956755330161282,
+          "map_m_per_gnss_speed_integral_m": 1.000046065046065,
+          "fit_residual_abs_p90_m": 1.724122174122158,
+          "gnss_velocity_integral_full_m": 5415.998827332616
+        }
+      ]
+    },
+    "30618_2026-09-03_train": {
+      "bags": 4,
+      "valid_bags": 3,
+      "median_bag_map_m_per_gnss_speed_integral_m": 0.9998867689719272,
+      "median_bag_central_xy_m": 0.8447223021149033,
+      "runs": [
+        {
+          "bag": "30618_0686195f",
+          "direction": "out",
+          "common_points": 348,
+          "central_nearest_xy_median_m": 0.939125918398946,
+          "map_m_per_gnss_speed_integral_m": 0.9998515081984546,
+          "fit_residual_abs_p90_m": 1.6045115844875455,
+          "gnss_velocity_integral_full_m": 5201.861837367108
+        },
+        {
+          "bag": "30618_27e994fc",
+          "error": "Large GNSS velocity gap in 30618_27e994fc"
+        },
+        {
+          "bag": "30618_88548b02",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.793047356214107,
+          "map_m_per_gnss_speed_integral_m": 1.000217835014397,
+          "fit_residual_abs_p90_m": 1.456302584393393,
+          "gnss_velocity_integral_full_m": 5371.66158075343
+        },
+        {
+          "bag": "30618_defd0170",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.8447223021149033,
+          "map_m_per_gnss_speed_integral_m": 0.9998867689719272,
+          "fit_residual_abs_p90_m": 1.5997272515375927,
+          "gnss_velocity_integral_full_m": 5208.276517639634
+        }
+      ]
+    },
+    "30639_2026-08-26_train": {
+      "bags": 9,
+      "valid_bags": 4,
+      "median_bag_map_m_per_gnss_speed_integral_m": 1.0003877396083702,
+      "median_bag_central_xy_m": 0.5854754405584937,
+      "runs": [
+        {
+          "bag": "30639_0ab96c59",
+          "error": "Not enough GNSS in map source 30639_0ab96c59"
+        },
+        {
+          "bag": "30639_0be558e2",
+          "error": "Large GNSS velocity gap in 30639_0be558e2"
+        },
+        {
+          "bag": "30639_2b4a6347",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.6384011890313119,
+          "map_m_per_gnss_speed_integral_m": 1.000255479636569,
+          "fit_residual_abs_p90_m": 1.4832109323357145,
+          "gnss_velocity_integral_full_m": 5408.166667003569
+        },
+        {
+          "bag": "30639_4285f2bc",
+          "error": "Large GNSS velocity gap in 30639_4285f2bc"
+        },
+        {
+          "bag": "30639_50956d6e",
+          "error": "Large GNSS velocity gap in 30639_50956d6e"
+        },
+        {
+          "bag": "30639_584b6e32",
+          "error": "Large GNSS velocity gap in 30639_584b6e32"
+        },
+        {
+          "bag": "30639_927002c2",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.4138128234350696,
+          "map_m_per_gnss_speed_integral_m": 1.0000000000000002,
+          "fit_residual_abs_p90_m": 9.094947017729282e-13,
+          "gnss_velocity_integral_full_m": 5387.623603787494
+        },
+        {
+          "bag": "30639_9f0b519f",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.7787710192036312,
+          "map_m_per_gnss_speed_integral_m": 1.0005199995801715,
+          "fit_residual_abs_p90_m": 1.3221485143315932,
+          "gnss_velocity_integral_full_m": 5388.766621882262
+        },
+        {
+          "bag": "30639_d927f360",
+          "direction": "return",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 0.5325496920856754,
+          "map_m_per_gnss_speed_integral_m": 1.0008215483974798,
+          "fit_residual_abs_p90_m": 0.863597916251365,
+          "gnss_velocity_integral_full_m": 5401.920973489101
+        }
+      ]
+    },
+    "30639_2026-05-05_holdout": {
+      "bags": 10,
+      "valid_bags": 5,
+      "median_bag_map_m_per_gnss_speed_integral_m": 0.999985958485958,
+      "median_bag_central_xy_m": 1.1465592021309883,
+      "runs": [
+        {
+          "bag": "30639_253671cc",
+          "direction": "out",
+          "common_points": 350,
+          "central_nearest_xy_median_m": 1.8288972423034426,
+          "map_m_per_gnss_speed_integral_m": 1.0005009393662692,
+          "fit_residual_abs_p90_m": 4.41671723501081,
+          "gnss_velocity_integral_full_m": 5242.393288404967
+        },
+        {
+          "bag": "30639_3b3d9eb8",
+          "direction": "out",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 1.1465592021309883,
+          "map_m_per_gnss_speed_integral_m": 0.999985958485958,
+          "fit_residual_abs_p90_m": 1.4544546194565555,
+          "gnss_velocity_integral_full_m": 5439.524014553916
+        },
+        {
+          "bag": "30639_44226bde",
+          "direction": "return",
+          "common_points": 353,
+          "central_nearest_xy_median_m": 5.406902664647195,
+          "map_m_per_gnss_speed_integral_m": 0.9943107677099066,
+          "fit_residual_abs_p90_m": 13.572424310777842,
+          "gnss_velocity_integral_full_m": 5409.5539935433735
+        },
+        {
+          "bag": "30639_92226df0",
+          "error": "Large GNSS velocity gap in 30639_92226df0"
+        },
+        {
+          "bag": "30639_9c362687",
+          "error": "<100 matched central-route positions",
+          "common_points": 74
+        },
+        {
+          "bag": "30639_c31df386",
+          "direction": "return",
+          "common_points": 351,
+          "central_nearest_xy_median_m": 0.8370851567165773,
+          "map_m_per_gnss_speed_integral_m": 0.999188367188367,
+          "fit_residual_abs_p90_m": 0.9421926221925787,
+          "gnss_velocity_integral_full_m": 5429.71566384803
+        },
+        {
+          "bag": "30639_d3c43d69",
+          "error": "Large GNSS velocity gap in 30639_d3c43d69"
+        },
+        {
+          "bag": "30639_d601d28f",
+          "error": "Large GNSS velocity gap in 30639_d601d28f"
+        },
+        {
+          "bag": "30639_dce52be4",
+          "direction": "out",
+          "common_points": 330,
+          "central_nearest_xy_median_m": 0.8738712390682879,
+          "map_m_per_gnss_speed_integral_m": 1.0006458556427418,
+          "fit_residual_abs_p90_m": 1.2504112130746308,
+          "gnss_velocity_integral_full_m": 5173.19125074403
+        },
+        {
+          "bag": "30639_e4379d7f",
+          "error": "Not enough GNSS in map source 30639_e4379d7f"
+        }
+      ]
+    }
+  }
+}

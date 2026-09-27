@@ -209,3 +209,17 @@ fusion is unchanged. Invalid or suspect wheels clear this residual and its
 projection cache. A synchronized GNSS pair is checked against the physical
 12.436 m antenna separation before late correction; a lone bias or common shift
 can remain undetectable. See the measured tradeoffs in `docs/ROUND2_IMPROVEMENTS.md`.
+
+## Published covariance and historical audit
+
+`wheel_common_scale_sigma=0.01` adds a distance-proportional variance floor
+to the published along-track covariance from the current startup anchor.
+It does not change the mean velocity or position. The configured `output_scale`
+applies to the published linear velocity as well as position, and its square
+applies to their variances. Angular variances remain unscaled.
+
+The [historical generalization audit](../../../docs/VALIDATION_AUDIT.md)
+predates the shared Navigation implementation and both improvement rounds.
+See [publication verification](../../../docs/PUBLISH_VERIFICATION.md) for the
+merged implementation and [metric tables](../../../docs/METRICS_COMPARISON.md)
+for the version associated with each measurement.

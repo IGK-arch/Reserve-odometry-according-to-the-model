@@ -1,0 +1,43 @@
+{
+  "split": "holdout",
+  "vehicle": "30639",
+  "deployed_mode": "physics only",
+  "summary": [
+    {
+      "stage": "model_only",
+      "bags": 10,
+      "matched": 153,
+      "physics_rmse_mps": 0.055498259343813444,
+      "table_rmse_mps": 0.05216016891797314,
+      "table_bag_wins": 2,
+      "table_used_fraction": 0.0196078431372549
+    },
+    {
+      "stage": "normal",
+      "bags": 10,
+      "matched": 221868,
+      "physics_rmse_mps": 0.11453306367643565,
+      "table_rmse_mps": 0.1155052749774445,
+      "table_bag_wins": 3,
+      "table_used_fraction": 0.4223231831539474
+    },
+    {
+      "stage": "onset_0to1s",
+      "bags": 9,
+      "matched": 142,
+      "physics_rmse_mps": 0.05433391082454704,
+      "table_rmse_mps": 0.050645448949311445,
+      "table_bag_wins": 2,
+      "table_used_fraction": 0.02112676056338028
+    },
+    {
+      "stage": "onset_1to3s",
+      "bags": 4,
+      "matched": 11,
+      "physics_rmse_mps": 0.06878160430601406,
+      "table_rmse_mps": 0.06878160430601406,
+      "table_bag_wins": 0,
+      "table_used_fraction": 0.0
+    }
+  ]
+}

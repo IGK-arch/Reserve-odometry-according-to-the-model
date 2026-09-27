@@ -49,8 +49,8 @@ ros2 bag play /path/to/30618_2050d396 --clock
 `tools/split_manifest.json` делит исходные уникальные bag **целыми сессиями**: 42 train, 13 validation, 42 holdout. Дубликаты SQLite по SHA-256 остаются в одном наборе. Чистые участки GNSS train использованы для масштабов колёс, таблицы привода и карты. `replay_cli` проверяет только продольное ядро; `navigation_replay` использует тот же `Navigation`, что ROS-нода, включая разрешённые GNSS-fix. Оба обрабатывают входы в порядке получения. Эталонная объединённая локализация не передаётся ни одному replay.
 
 ```powershell
-py -3.12 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_core_table.csv
-py -3.12 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --out evaluation/validation_position_table.csv
+py -3.12 evaluation/core_benchmark.py --build --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_core_table.csv
+py -3.12 evaluation/position_proxy.py --split validation --drive-table ros2_ws/src/tram_odometry/assets/drive_accel_table.csv --table-vehicle 30618 --out evaluation/validation_position_table.csv
 ```
 
 Эти команды дают **исторический GNSS-прокси** для исходного набора; `position_proxy.py` не воспроизводит новые периодические поправки общего ядра. Для предоставленного отдельно bag с `/localization/kinematic_state` используйте `evaluation/reference_benchmark.py`, а для официального ROS-сопоставления — `tools/ros_reference_check.sh`. Их протоколы и полный replay описаны в [`docs/JURY_CHECK.md`](docs/JURY_CHECK.md). Итоговые измерения и ограничения фиксируются в [`docs/RESULTS.md`](docs/RESULTS.md); эксперименты с отказами, прогнозом и геометрией — в [`docs/ROUND2_IMPROVEMENTS.md`](docs/ROUND2_IMPROVEMENTS.md).
@@ -65,6 +65,10 @@ python3 -m unittest discover -s evaluation/tests -v
 ```
 
 Она собирает `build/replay_cli` и `build/navigation_replay`. C++-тесты используют поставляемые карты и не требуют bag; тесты evaluator не требуют ROS. Полный replay требует соответствующий датасет.
+
+Полная таблица изменений метрик: [METRICS_COMPARISON.md](docs/METRICS_COMPARISON.md).
+Исторический аудит исходной версии сокомандника: [VALIDATION_AUDIT.md](docs/VALIDATION_AUDIT.md).
+Измерения в этом аудите относятся к версии до двух раундов улучшений.
 
 ## Текущий статус среды
 

@@ -1,0 +1,2 @@
+bag,baseline_outputs,core_outputs,matched,baseline_rmse_mps,core_rmse_mps,baseline_mae_mps,core_mae_mps,baseline_bias_mps,core_bias_mps,core_slip_outputs,core_model_only_outputs
+30618_082f1d65,461,405,403,0.029056091630657935,0.030676008227949986,0.02535662088503311,0.026037400238389706,-0.025355034512979546,-0.026037400238389706,0,0

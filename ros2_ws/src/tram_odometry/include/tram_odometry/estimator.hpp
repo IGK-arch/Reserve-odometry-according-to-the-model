@@ -86,8 +86,9 @@ struct Estimate {
 };
 
 // Single-threaded, event-time estimator. Supply messages in receipt order with
-// their header timestamps. Slightly late messages are projected to current
-// time; larger backward timestamp jumps are ignored. Each submit method
+// their header timestamps. Slightly late wheel messages are projected to
+// current time; older controller commands cannot replace newer commands.
+// Larger backward timestamp jumps are ignored. Each accepted submit method
 // advances before applying its input.
 class Estimator {
  public:
@@ -161,6 +162,8 @@ class Estimator {
   bool drive_table_loaded_ = false;
   bool drive_table_used_ = false;
   double last_command_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+  double last_command_header_stamp_s_ =
+      std::numeric_limits<double>::quiet_NaN();
   double command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   double last_accepted_wheel_stamp_s_ =
       std::numeric_limits<double>::quiet_NaN();

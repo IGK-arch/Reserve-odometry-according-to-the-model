@@ -65,6 +65,8 @@ def main():
     parser.add_argument("--exe", type=Path, default=DEFAULT_EXE)
     parser.add_argument("--drive-table", type=Path,
                         help="Experimental train-only acceleration CSV; default off")
+    parser.add_argument("--table-vehicle", choices=("30618", "30639", "all"),
+                        default="all", help="Vehicle receiving --drive-table; use 30618 for deployed mode")
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
     bag_ids = list(args.bags)
@@ -76,7 +78,8 @@ def main():
         parser.error("provide bag IDs or --split")
     rows = []
     for bag in bag_ids:
-        row = score_bag(bag, args.exe.resolve(), args.drive_table)
+        table = args.drive_table if args.table_vehicle == "all" or bag.startswith(args.table_vehicle + "_") else None
+        row = score_bag(bag, args.exe.resolve(), table)
         if row:
             rows.append(row)
             print(

@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-27",
+  "parents": {
+    "measured_round2": "e248a96",
+    "teammate_audit": "a9ad10c0cca719588ab83d7bb2c61efd53b54ee3"
+  },
+  "changes": [
+    "Preserve shared Navigation mean/correction/geometry code",
+    "Reject duplicate/older command headers; clear guard on run reset",
+    "Distance-proportional common wheel scale covariance and diagnostics",
+    "Apply output_scale to Odometry linear twist and squared scale to linear covariances; keep angular variances",
+    "Keep teammate historical audit and identify measurement versions"
+  ],
+  "checks": {
+    "portable_release_ctest": {
+      "passed": 15,
+      "failed": 0,
+      "build": "/private/tmp/odometry-publish-merged-20260927"
+    },
+    "python_unittest": {
+      "passed": 37,
+      "failed": 0,
+      "command": "python3 -m unittest discover -s evaluation/tests -v"
+    },
+    "ros_humble_colcon": {
+      "packages_built": 2,
+      "tests_passed": 15,
+      "failed": 0,
+      "platform": "Ubuntu 22.04 arm64 Docker ROS 2 Humble"
+    },
+    "mean_parity": {
+      "identical": true,
+      "unique_bags": 97,
+      "input_rows": 3999054,
+      "output_rows": 2061664,
+      "public_profiles": 4,
+      "public_output_rows_each": 26896,
+      "comparison": "Byte-identical entire deterministic CSV outputs; includes timestamps, speed, distance, flags; full public Navigation also positions and frames"
+    },
+    "ros_contract": {
+      "no_gnss_30618": true,
+      "anchored_30639": true,
+      "limits": "2 CPU / 512 MiB",
+      "timeout_s_each": 25
+    },
+    "extracted_source_archive": {
+      "portable_ctest_passed": 15,
+      "python_unittest_passed": 37,
+      "runtime_source_hashes_match": true,
+      "note": "Rebuilt from extracted source archive; subsequent package edits are documentation/verification artifacts only."
+    }
+  },
+  "limitations": [
+    "Full 22-minute ROS ATS/resource run was not repeated after merge. Historical measured results remain attributed to pre-merge e248a96; deterministic output parity is a separate check.",
+    "97 recordings are previously inspected data, not a new independent holdout.",
+    "Short ROS smoke checks do not establish long-run resource measurements or hidden-test accuracy."
+  ],
+  "runtime_sha256": {
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "294cdfd194c8b25c3b3df17890d931700c8d30e999bff8ef2d15a02591fca6e8",
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+    "ros2_ws/src/tram_odometry/src/odometry_node.cpp": "352549e3af6e65d66661797dd66787d7a20c7e1f256579cbea68f68644826861",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp": "93d263325fc13892549dd3104d2d51e6da3e77495d4e5846acfba88a8bf961e1",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "5571c4f8ee4d785fad2f2082640c089662004f444eee27ba9c89778f2f283906",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "bc1d7361000610360be2456f3a817067abe549c4806d6afe0567c8cf5be193e6",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/startup_output_gate.hpp": "0fb79ef4cd297d125cbcae6a83a40671d97d646ad12e57ab2400dccbd2d02276",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/uncertainty.hpp": "1d231a74e907605a52580aab38bd629df5905c374523c6befba49cad986bf426"
+  },
+  "ros_binary_sha256": "db5c5fc6433eac9b5aac33ff4b58777c8a665382cdfc4cf53d5d1a6a4d05af12"
+}

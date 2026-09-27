@@ -77,6 +77,7 @@ void Estimator::reset(double stamp_s, double velocity_mps, double distance_m) {
   adaptive_bias_mps2_ = 0.0;
   drive_table_used_ = false;
   last_command_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+  last_command_header_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   last_accepted_wheel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   last_independent_wheel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
@@ -91,7 +92,9 @@ bool Estimator::validStamp(double stamp_s) const {
 }
 
 void Estimator::submitDriverPosition(int notch, double stamp_s) {
-  if (!validStamp(stamp_s) || notch < -15 || notch > 15) {
+  if (!validStamp(stamp_s) || notch < -15 || notch > 15 ||
+      (std::isfinite(last_command_header_stamp_s_) &&
+       stamp_s <= last_command_header_stamp_s_)) {
     return;
   }
   advance(stamp_s);
@@ -101,6 +104,7 @@ void Estimator::submitDriverPosition(int notch, double stamp_s) {
   }
   notch_ = notch;
   last_command_stamp_s_ = effective_stamp_s;
+  last_command_header_stamp_s_ = stamp_s;
 }
 
 void Estimator::submitFrontWheel(double raw_kmh, double stamp_s) {
