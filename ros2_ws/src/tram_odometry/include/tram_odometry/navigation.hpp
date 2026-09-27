@@ -9,6 +9,11 @@ namespace tram_odometry {
 struct NavigationConfig {
 std::string map_file;
 std::string alternate_map_file;
+std::string stop_landmarks_file;
+bool enable_stop_landmarks = false;
+double stop_landmark_gain = 0.8;
+double stop_landmark_gate_m = 12.0;
+double stop_landmark_max_step_m = 10.0;
 std::string elevation_file;
 std::string output_frame_id = "mgrs_37UCB";
 std::string relative_frame_id = "odom";
@@ -67,6 +72,7 @@ struct NavigationOutput {
  size_t gnss_corrections = 0;
  size_t gnss_rejected = 0;
  size_t branch_switches = 0;
+ size_t stop_corrections = 0;
 };
 class Navigation {
  public:
@@ -85,11 +91,14 @@ class Navigation {
  struct Correction { double stamp_s, innovation; };
  struct PairFix { Point3 p; double stamp_s=0; bool valid=false; };
  struct FixMotion { Point3 p; double distance=0, start=0, last=0; bool valid=false; };
+ struct StopLandmark { std::string direction; double s=0; bool used=false; };
+ struct WheelStopSample { double speed_mps=0, stamp_s=-INFINITY; };
  void prepareInput(double stamp_s);
  void collectStartupGnss(const Fix* message, bool rover);
  void tryStartupAnchor(double stamp_s);
  void finalizeStartupAnchor(bool rover, bool rtk);
  void correctGnss(const Fix& message, bool rover);
+ void updateStopLandmark(char type, double value, const Estimate& state);
  PoseResult poseFromDistance(double distance_m) const;
  NavigationConfig config_;
  NavigationOutput output_;
@@ -103,6 +112,14 @@ class Navigation {
  std::array<PairFix,2> pair_fixes_;
  std::deque<Correction> branch_evidence_;
  size_t corrections_ = 0, rejected_ = 0, branch_switches_ = 0;
+ std::vector<StopLandmark> stop_landmarks_;
+ std::array<WheelStopSample,2> stop_wheels_;
+ double stop_begin_s_ = NAN;
+ double stop_approach_peak_mps_ = 0.0;
+ double stop_approach_speed_mps_ = 0.0;
+ double last_stop_landmark_distance_m_ = -INFINITY;
+ size_t stop_corrections_ = 0;
+ bool stop_landmark_applied_ = false;
   Estimator estimator_;
   EnuProjection projection_;
   RouteMap map_;

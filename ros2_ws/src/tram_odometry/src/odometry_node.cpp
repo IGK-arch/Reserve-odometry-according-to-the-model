@@ -102,6 +102,11 @@ NavigationConfig makeNavigationConfig(rclcpp::Node & node) {
   NavigationConfig c;
   c.map_file = node.declare_parameter<std::string>("map_file", c.map_file);
   c.alternate_map_file = node.declare_parameter<std::string>("alternate_map_file", c.alternate_map_file);
+  c.stop_landmarks_file = node.declare_parameter<std::string>("stop_landmarks_file", c.stop_landmarks_file);
+  c.enable_stop_landmarks = node.declare_parameter<bool>("enable_stop_landmarks", true);
+  c.stop_landmark_gain = node.declare_parameter<double>("stop_landmark_gain", c.stop_landmark_gain);
+  c.stop_landmark_gate_m = node.declare_parameter<double>("stop_landmark_gate_m", c.stop_landmark_gate_m);
+  c.stop_landmark_max_step_m = node.declare_parameter<double>("stop_landmark_max_step_m", c.stop_landmark_max_step_m);
   c.elevation_file = node.declare_parameter<std::string>("elevation_file", c.elevation_file);
   c.output_frame_id = node.declare_parameter<std::string>("output_frame_id", c.output_frame_id);
   c.relative_frame_id = node.declare_parameter<std::string>("relative_frame_id", c.relative_frame_id);
@@ -144,6 +149,7 @@ NavigationConfig makeNavigationConfig(rclcpp::Node & node) {
   c.gnss_correction_max_step_m = node.declare_parameter<double>("gnss_correction_max_step_m", c.gnss_correction_max_step_m);
   const auto assets=ament_index_cpp::get_package_share_directory("tram_odometry")+"/assets/";
   if (c.map_file.empty()) c.map_file=assets+"route_map.csv";
+  if (c.stop_landmarks_file.empty()) c.stop_landmarks_file=assets+"stops.csv";
   if (c.alternate_map_file.empty()) c.alternate_map_file=assets+"route_map_branch_a.csv";
   if (c.elevation_file.empty()) c.elevation_file=assets+"official_elevation.csv";
   // An explicit "none" disables these optional data sources for ablations.
@@ -334,6 +340,7 @@ class OdometryNode final : public rclcpp::Node {
     addDiagnosticValue(status, "gnss_corrections", std::to_string(result.gnss_corrections));
     addDiagnosticValue(status, "gnss_rejected", std::to_string(result.gnss_rejected));
     addDiagnosticValue(status, "branch_switches", std::to_string(result.branch_switches));
+    addDiagnosticValue(status, "stop_corrections", std::to_string(result.stop_corrections));
     addDiagnosticValue(status, "front_weight", std::to_string(state.front_weight));
     addDiagnosticValue(status, "rear_weight", std::to_string(state.rear_weight));
     addDiagnosticValue(status, "model_acceleration_mps2",

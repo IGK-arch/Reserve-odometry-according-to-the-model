@@ -1,9 +1,9 @@
 """Experimental train-only stop landmarks for along-track drift correction.
 
-This is deliberately an offline *evaluation* module, not wired into the ROS
-node. Runtime detection reads only wheel speeds, controller positions and the
-production estimator output. GNSS is decoded only for train landmark building
-and for validation/holdout scoring after causal replay.
+This module builds the train-only catalog and performs offline evaluation. The
+ROS node implements its own causal stop detector in C++. Runtime detection
+reads only wheel speeds, controller positions and the estimator output. GNSS
+is decoded here only for train landmark building and held-out scoring.
 """
 
 from __future__ import annotations

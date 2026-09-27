@@ -1,0 +1,8 @@
+{
+  "selected_before_validation": "table_histgb_0.25",
+  "selection_basis": "Only 30618 train dates 2026-07-27 and 2026-09-03; whole-date cross-validation. Fixed HistGradientBoostingRegressor preset blended 25% with existing train-only empirical table; both train folds improved weighted median-acceleration RMSE versus table alone.",
+  "candidate_table_sha256": "a899e7d2b883564d8c0f00e631747f70ddc50329ba8e3f4e5971c6fbb899aad7",
+  "baseline_table_sha256": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+  "runtime": "Same C++ estimator and supported table cells; no Python or sklearn at runtime; only CSV acceleration values changed.",
+  "validation_and_holdout_used_for_selection": false
+}

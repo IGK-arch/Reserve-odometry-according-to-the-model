@@ -7,7 +7,7 @@
 | Поле | Что приложить |
 |---|---|
 | ROS 2-пакеты и исходники | Репозиторий команды; `ros2_ws/src/tram_odometry`, `ros2_ws/src/tram_vehicle_msgs`; либо проверенный `release/tram_odometry_source.zip` |
-| Описание алгоритма | [CORE_MODEL.md](CORE_MODEL.md): модель тяги/торможения, адаптация, колёса, GNSS-привязка и отказы |
+| Описание алгоритма | [CORE_MODEL.md](CORE_MODEL.md): модель тяги/торможения, адаптация, колёса, GNSS-привязка и отказы; [коррекция по остановкам](STOP_LANDMARKS_2026-09-27.md) |
 | Картографическая часть | [MAP_METHOD.md](MAP_METHOD.md), обе train-карты, официальный профиль высоты и JSON происхождения |
 | Инструкция запуска | [JURY_CHECK.md](JURY_CHECK.md), конфигурация по умолчанию 30618, [Docker-проверка](../tools/docker/README.md) |
 | Метрики и быстродействие | [RESULTS.md](RESULTS.md), `evaluation/results/**/*.json`, график `reference_comparison.png`; разделять GNSS-прокси, офлайн-эталон и официальный ROSchecker |

@@ -20,6 +20,7 @@ int main(int argc,char **argv) {
       else if(key=="--vehicle") vehicle=std::stoi(value);
       else if(key=="--map") config.map_file=value;
       else if(key=="--alternate-map") config.alternate_map_file=value;
+      else if(key=="--stops") {config.stop_landmarks_file=value; config.enable_stop_landmarks=true;}
       else if(key=="--elevation") config.elevation_file=value;
       else if(key=="--drive-table") table_path=value;
       else if(key=="--table") table=std::stoi(value)!=0;
@@ -40,7 +41,7 @@ int main(int argc,char **argv) {
     tram_odometry::Navigation navigation(ec,config);
     std::ifstream in(input); std::ofstream out(output);
     if(!in || !out) throw std::runtime_error("Cannot open input/output CSV");
-    out << "stamp_ns,receive_ns,velocity_mps,distance_m,position_valid,x,y,z,front_slip,rear_slip,model_only,gnss_corrections,gnss_rejected,branch_switches,branch,clamped,frame_id,mapped,anchored\n" << std::setprecision(17);
+    out << "stamp_ns,receive_ns,velocity_mps,distance_m,position_valid,x,y,z,front_slip,rear_slip,model_only,gnss_corrections,gnss_rejected,branch_switches,branch,clamped,frame_id,mapped,anchored,stop_corrections\n" << std::setprecision(17);
     std::string line; size_t number=0;
     while(std::getline(in,line)) {
       ++number; if(line.empty()) continue;
@@ -62,7 +63,7 @@ int main(int argc,char **argv) {
             << r.position_valid << ',' << r.position.x << ',' << r.position.y << ',' << r.position.z << ','
             << e.front_slip << ',' << e.rear_slip << ',' << e.model_only << ',' << r.gnss_corrections << ','
             << r.gnss_rejected << ',' << r.branch_switches << ',' << r.branch << ',' << r.clamped << ','
-            << r.frame_id << ',' << r.mapped << ',' << r.anchored << '\n';
+            << r.frame_id << ',' << r.mapped << ',' << r.anchored << ',' << r.stop_corrections << '\n';
       } else throw std::invalid_argument("Forbidden/unknown input channel: "+f[2]);
     }
     if(!out) throw std::runtime_error("Output write failed");

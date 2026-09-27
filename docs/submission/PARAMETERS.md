@@ -74,6 +74,11 @@ ros2 launch tram_odometry tram_odometry.launch.py \
 | `route_direction` | `auto` | `auto`, `out`, `return`. Явно задаётся аргументом запуска |
 | `map_file` | `''` | Пусто — установленный `assets/route_map.csv` |
 | `alternate_map_file` | `''` | Пусто — `route_map_branch_a.csv`. Значение `none` отключает альтернативу |
+| `enable_stop_landmarks` | true | Коррекция по каталогу остановок. Применяется для 30618 при доступной карте и привязке, отключена для 30639 |
+| `stop_landmarks_file` | `''` | Пусто — установленный `assets/stops.csv` |
+| `stop_landmark_gain` | 0.8 | Доля поправки продольной координаты |
+| `stop_landmark_gate_m` | 12.0 | Максимальное расстояние до маркера, м |
+| `stop_landmark_max_step_m` | 10.0 | Максимальная величина одной поправки, м |
 | `elevation_file` | `''` | Пусто — `official_elevation.csv`. Значение `none` оставляет высоту карты |
 | `use_startup_gnss` | true | Разрешает подписки на GNSS. Значение false отключает и стартовую, и поздние поправки |
 | `use_rover_fallback` | true | Разрешает подписку на вторую антенну (`rover`) и запасную стартовую привязку по ней |

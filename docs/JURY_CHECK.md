@@ -1,6 +1,6 @@
 # Инструкция для жюри
 
-Ubuntu 22.04, ROS 2 Humble, C++17, `colcon`. Команды выполняются из корня репозитория или распакованного решения. Параметры — поставляемый `default.yaml`.
+Ubuntu 22.04, ROS 2 Humble, C++17, `colcon`. Команды выполняются из корня репозитория или распакованного решения. Параметры — поставляемый `default.yaml`. Открытый официальный checker в [RESULTS.md](RESULTS.md) относится к коду `8164061`; новая коррекция по остановкам измерена отдельным [validation A/B](STOP_LANDMARKS_2026-09-27.md).
 
 ## 1. Сборка
 
@@ -43,7 +43,7 @@ ros2 bag play /absolute/path/to/bag --clock --rate 1
 |---|---|---|
 | `/result/velocity` | `tram_vehicle_msgs/msg/VelocitySensor` | `velocity` в м/с. Точный `header.stamp` вызвавшего публикацию входа |
 | `/result/position` | `nav_msgs/msg/Odometry` | Положение `base_link`: `pose.pose.position.x/y/z` в метрах. Скорость в `twist.twist.linear.x` |
-| `/result/diagnostics` | `diagnostic_msgs/msg/DiagnosticArray` | Состояние колёс, привязка, ускорение, задержка и частота |
+| `/result/diagnostics` | `diagnostic_msgs/msg/DiagnosticArray` | Состояние колёс, привязка, число коррекций `stop_corrections`, ускорение, задержка и частота |
 
 **Терминал C:**
 

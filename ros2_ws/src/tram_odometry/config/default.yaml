@@ -8,6 +8,11 @@ tram_odometry:
     route_direction: auto  # out, return or auto; auto needs a valid startup GNSS fix
     map_file: ''           # empty: installed assets/route_map.csv
     alternate_map_file: '' # empty: installed branch A; 'none' disables branch selection
+    stop_landmarks_file: '' # empty: installed train-only assets/stops.csv
+    enable_stop_landmarks: true # active for 30618; disabled internally for 30639
+    stop_landmark_gain: 0.8
+    stop_landmark_gate_m: 12.0
+    stop_landmark_max_step_m: 10.0
     elevation_file: ''     # official base_link height; 'none' keeps train map height
     enable_gnss_corrections: true
     gnss_correction_max_age_s: 0.5

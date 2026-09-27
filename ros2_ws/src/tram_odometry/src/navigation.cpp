@@ -1,5 +1,7 @@
 #include "tram_odometry/navigation.hpp"
 #include "tram_odometry/startup_output_gate.hpp"
+#include <fstream>
+#include <sstream>
 #include <stdexcept>
 #include <utility>
 namespace tram_odometry {
@@ -47,6 +49,28 @@ Navigation::Navigation(EstimatorConfig ec, NavigationConfig c)
     throw std::invalid_argument("body_heading_lookahead_m must be finite and within [0,20]");
   has_map_ = map_.load(c.map_file);
   has_alternate_ = !c.alternate_map_file.empty() && alternate_map_.load(c.alternate_map_file);
+  if (c.enable_stop_landmarks && estimator_.config().vehicle_id == 30618 && has_map_) {
+    if (c.stop_landmarks_file.empty())
+      throw std::invalid_argument("Stop landmarks require a catalog file");
+    std::ifstream input(c.stop_landmarks_file);
+    if (!input) throw std::invalid_argument("Cannot load stop landmarks: " + c.stop_landmarks_file);
+    std::string line;
+    std::getline(input, line); // direction,s,... header
+    if (line.rfind("direction,s,", 0) != 0)
+      throw std::invalid_argument("Invalid stop landmark header");
+    while (std::getline(input, line)) {
+      if (line.empty()) continue;
+      std::stringstream row(line);
+      std::string direction, coordinate;
+      if (!std::getline(row, direction, ',') || !std::getline(row, coordinate, ','))
+        throw std::invalid_argument("Malformed stop landmark row");
+      const double s = std::stod(coordinate);
+      if ((direction != "out" && direction != "return") || !std::isfinite(s) || s < 0)
+        throw std::invalid_argument("Invalid stop landmark coordinate");
+      stop_landmarks_.push_back({direction, s, false});
+    }
+    if (stop_landmarks_.empty()) throw std::invalid_argument("Empty stop landmark catalog");
+  }
   if (!c.elevation_file.empty() && !elevation_.load(c.elevation_file))
     throw std::invalid_argument("Cannot load elevation_file: " + c.elevation_file);
   for (const double value : {c.gnss_correction_max_age_s,c.gnss_correction_gate_m,
@@ -56,6 +80,11 @@ Navigation::Navigation(EstimatorConfig ec, NavigationConfig c)
       c.gnss_correction_lateral_gate_m <= 0 || c.gnss_correction_gain <= 0 ||
       c.gnss_correction_gain > 1 || c.gnss_correction_max_step_m <= 0)
     throw std::invalid_argument("Invalid GNSS correction gates or gain");
+  if (!std::isfinite(c.stop_landmark_gain) || c.stop_landmark_gain <= 0 ||
+      c.stop_landmark_gain > 1 || !std::isfinite(c.stop_landmark_gate_m) ||
+      c.stop_landmark_gate_m <= 0 || !std::isfinite(c.stop_landmark_max_step_m) ||
+      c.stop_landmark_max_step_m <= 0)
+    throw std::invalid_argument("Invalid stop landmark gates or gain");
 }
 
 bool Navigation::submitVehicle(char type, double value, double stamp_s) {
@@ -69,6 +98,7 @@ bool Navigation::submitVehicle(char type, double value, double stamp_s) {
   const auto state=estimator_.state();
   if(!state.initialized || !std::isfinite(state.stamp_s) ||
      state.stamp_s<=last_published_stamp_s_+1e-7 || std::abs(state.stamp_s-stamp_s)>1e-5) return false;
+  updateStopLandmark(type, value, state);
   last_published_stamp_s_=state.stamp_s;
   output_.estimate=state;
   output_.position_valid=!shouldHoldPositionForStartup(use_startup_gnss_,has_gnss_anchor_,
@@ -81,6 +111,7 @@ bool Navigation::submitVehicle(char type, double value, double stamp_s) {
   output_.heading_source=heading_source_;
   output_.gnss_corrections=corrections_; output_.gnss_rejected=rejected_;
   output_.branch_switches=branch_switches_;
+  output_.stop_corrections=stop_corrections_;
   output_.branch=alternate_active_?"alternate":"primary";
   return true;
 }
@@ -129,6 +160,13 @@ void Navigation::prepareInput(double stamp_s) {
       pair_fixes_={};
       branch_evidence_.clear();
       corrections_=rejected_=branch_switches_=0;
+      stop_wheels_ = {};
+      stop_begin_s_ = NAN;
+      stop_approach_peak_mps_ = stop_approach_speed_mps_ = 0.0;
+      last_stop_landmark_distance_m_ = -INFINITY;
+      stop_corrections_ = 0;
+      stop_landmark_applied_ = false;
+      for (auto & landmark : stop_landmarks_) landmark.used = false;
       if (alternate_active_) std::swap(map_,alternate_map_);
       alternate_active_=false;
     }
@@ -270,6 +308,61 @@ void Navigation::correctGnss(const Fix & fix, bool rover) {
     -config_.gnss_correction_max_step_m,config_.gnss_correction_max_step_m);
   start_s_m_+=correction;
   ++corrections_;
+}
+
+void Navigation::updateStopLandmark(char type, double value, const Estimate& state) {
+  if (!config_.enable_stop_landmarks || !has_map_ || estimator_.config().vehicle_id != 30618 ||
+      (!has_gnss_anchor_ && !use_map_without_gnss_) || alternate_active_) return;
+  if (type == 'F' || type == 'R') {
+    const size_t index = type == 'F' ? 0 : 1;
+    const double scale = estimator_.config().wheel_scale *
+      (index == 0 ? estimator_.config().front_scale : estimator_.config().rear_scale);
+    const double speed = value * scale;
+    if (std::isfinite(speed) && speed >= 0 && speed <= estimator_.config().max_speed_mps &&
+        state.stamp_s >= stop_wheels_[index].stamp_s)
+      stop_wheels_[index] = {speed, state.stamp_s};
+  }
+  const bool front_fresh = state.stamp_s - stop_wheels_[0].stamp_s <= 0.35;
+  const bool rear_fresh = state.stamp_s - stop_wheels_[1].stamp_s <= 0.35;
+  const bool stationary = (front_fresh || rear_fresh) &&
+      (!front_fresh || stop_wheels_[0].speed_mps <= 0.11) &&
+      (!rear_fresh || stop_wheels_[1].speed_mps <= 0.11) &&
+      state.velocity_mps <= 0.2 && state.notch <= 0;
+  if (!stationary) {
+    stop_begin_s_ = NAN;
+    stop_landmark_applied_ = false;
+    stop_approach_peak_mps_ = std::max(stop_approach_peak_mps_, state.velocity_mps);
+    return;
+  }
+  if (!std::isfinite(stop_begin_s_)) {
+    stop_begin_s_ = state.stamp_s;
+    stop_approach_speed_mps_ = stop_approach_peak_mps_;
+    stop_approach_peak_mps_ = 0.0;
+  }
+  if (stop_landmark_applied_ || state.stamp_s - stop_begin_s_ < 8.0) return;
+  stop_landmark_applied_ = true;
+  if (stop_approach_speed_mps_ < 2.0 || state.stamp_s - run_start_s_ < 60.0 ||
+      state.distance_m - anchor_distance_m_ < 100.0 ||
+      state.distance_m - last_stop_landmark_distance_m_ < 30.0) return;
+  const double predicted = start_s_m_ + state.distance_m;
+  size_t best = stop_landmarks_.size();
+  double best_error = INFINITY, second_error = INFINITY;
+  for (size_t i = 0; i < stop_landmarks_.size(); ++i) {
+    const auto & landmark = stop_landmarks_[i];
+    if (landmark.direction != selected_direction_ || landmark.used) continue;
+    const double error = std::abs(landmark.s - predicted);
+    if (error < best_error) { second_error = best_error; best_error = error; best = i; }
+    else if (error < second_error) second_error = error;
+  }
+  if (best == stop_landmarks_.size() || best_error > config_.stop_landmark_gate_m ||
+      second_error - best_error < 6.0) return;
+  const double correction = config_.stop_landmark_gain *
+      (stop_landmarks_[best].s - predicted);
+  if (std::abs(correction) > config_.stop_landmark_max_step_m) return;
+  start_s_m_ += correction;
+  stop_landmarks_[best].used = true;
+  last_stop_landmark_distance_m_ = state.distance_m;
+  ++stop_corrections_;
 }
 
 void Navigation::finalizeStartupAnchor(bool rover, bool rtk) {
