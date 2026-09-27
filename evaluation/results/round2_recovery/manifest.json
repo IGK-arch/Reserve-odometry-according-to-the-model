@@ -1,0 +1,22 @@
+{
+  "status": "Intermediate recovery-only evidence; final integrated results are separate.",
+  "files": {
+    "odometry-recovery-faults.json": "fb8f78beb10a66e7bfce39f46c8f2e2f07d15eb752b39785f3225887d3faf9ab",
+    "odometry-recovery-v2-faults.json": "5f326908451f48172e0dd30ca8287f16f36134c2dc8dd526a60fe9dfeced0082",
+    "odometry-recovery-v3-faults.json": "4b6877c016b3ade1acf710628c790f5f9d8610b16452001d4b12005cad164b79",
+    "odometry-recovery-v3-faults-30639.json": "6a2d9ce4f706fec8bcbf3b77598ed56381e5204e781af7cc6653462cbb61c3e2",
+    "odometry-recovery-v3-train-table.csv": "76bf81f7a960d9e398a407fdac10f62c7a4997a79246df39769c5db5f597f891",
+    "odometry-recovery-v3-train-physics.csv": "9d681325837269a25cb7274d103156eeb5c0a85ce9370e8fa97d594ed2cb9ccb",
+    "odometry-recovery-v3-validation-table.csv": "26b8771a98f8a88c8bc8f86351bf17bc40360be5bdae377a97f2ac86d2eef622",
+    "odometry-fault-baseline-self.json": "b57b7b48c5c5cfd61233a13454431e927dda6f86b85fd93679439b7380ca97c9"
+  },
+  "ros2_ws/src/tram_odometry/src/estimator.cpp": {
+    "before_sha256": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f",
+    "after_sha256": "0a1acb5cb44177559d134beb41285a4ff611507c2c0be97f3a5ee80497d1b7b7"
+  },
+  "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": {
+    "before_sha256": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26",
+    "after_sha256": "7221e4ef2e1a3c785796c891a13f64d132e60201618ed3cb3ef19bf14a4d11fd"
+  },
+  "patch_sha256": "c153f789b83027db92388e5319d2774dcca9b51a9d5117c2c8e68e997b73f0a4"
+}

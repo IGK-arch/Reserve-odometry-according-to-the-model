@@ -1,0 +1,94 @@
+[
+  {
+    "vehicle": "30618",
+    "date": "2026-08-10",
+    "variant": "baseline",
+    "bags": 13,
+    "n": 209747,
+    "nominal_rmse_mps": 0.12182162516423083,
+    "blackout1": {
+      "windows": 211,
+      "speed_rmse_mps": 0.1788326808403485,
+      "distance_rmse_m": 0.09878627314440103
+    },
+    "blackout3": {
+      "windows": 211,
+      "speed_rmse_mps": 0.493162311760244,
+      "distance_rmse_m": 0.7306714896898048
+    },
+    "blackout5": {
+      "windows": 211,
+      "speed_rmse_mps": 0.6544019281173701,
+      "distance_rmse_m": 1.8423740589208284
+    }
+  },
+  {
+    "vehicle": "30618",
+    "date": "2026-08-10",
+    "variant": "candidate",
+    "bags": 13,
+    "n": 209747,
+    "nominal_rmse_mps": 0.12203288680645616,
+    "blackout1": {
+      "windows": 211,
+      "speed_rmse_mps": 0.14665701572815754,
+      "distance_rmse_m": 0.08342407227932311
+    },
+    "blackout3": {
+      "windows": 211,
+      "speed_rmse_mps": 0.46528365982499115,
+      "distance_rmse_m": 0.6494926629883075
+    },
+    "blackout5": {
+      "windows": 211,
+      "speed_rmse_mps": 0.6405331118673073,
+      "distance_rmse_m": 1.72752691199005
+    }
+  },
+  {
+    "vehicle": "30639",
+    "date": "2026-05-05",
+    "variant": "baseline",
+    "bags": 10,
+    "n": 222021,
+    "nominal_rmse_mps": 0.11421285056490271,
+    "blackout1": {
+      "windows": 231,
+      "speed_rmse_mps": 0.23068260505205512,
+      "distance_rmse_m": 0.14082746599755058
+    },
+    "blackout3": {
+      "windows": 231,
+      "speed_rmse_mps": 0.5701779471405113,
+      "distance_rmse_m": 0.9243060253599023
+    },
+    "blackout5": {
+      "windows": 231,
+      "speed_rmse_mps": 0.8307325810139377,
+      "distance_rmse_m": 2.302120755189892
+    }
+  },
+  {
+    "vehicle": "30639",
+    "date": "2026-05-05",
+    "variant": "candidate",
+    "bags": 10,
+    "n": 222021,
+    "nominal_rmse_mps": 0.11421035858421746,
+    "blackout1": {
+      "windows": 231,
+      "speed_rmse_mps": 0.19220497111205936,
+      "distance_rmse_m": 0.12473108653209981
+    },
+    "blackout3": {
+      "windows": 231,
+      "speed_rmse_mps": 0.5253632077002137,
+      "distance_rmse_m": 0.813126720104117
+    },
+    "blackout5": {
+      "windows": 231,
+      "speed_rmse_mps": 0.7913262904109384,
+      "distance_rmse_m": 2.1061249266397417
+    }
+  }
+]

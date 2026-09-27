@@ -1,0 +1,3 @@
+# Offline stress analysis and its tests; the ROS estimator does not need these.
+numpy>=1.21
+scipy>=1.8

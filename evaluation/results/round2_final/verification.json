@@ -1,0 +1,104 @@
+{
+  "cpp_portable": {
+    "status": "passed",
+    "executables": 13,
+    "build_directory": "/private/tmp/odometry-round2-final-build",
+    "command": "cmake -S . -B /private/tmp/odometry-round2-final-build -DCMAKE_BUILD_TYPE=Release && cmake --build /private/tmp/odometry-round2-final-build -j2 && ctest --test-dir /private/tmp/odometry-round2-final-build --output-on-failure"
+  },
+  "cpp_sanitizers": {
+    "status": "passed",
+    "executables": 13,
+    "sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "build_directory": "/private/tmp/odometry-round2-asan",
+    "last_test_strengthening": {
+      "test": "navigation_startup_heading_test",
+      "status": "passed after final added assertion"
+    }
+  },
+  "python": {
+    "status": "passed",
+    "tests": 37,
+    "command": "python3 -m unittest discover -s evaluation/tests -v"
+  },
+  "ros_humble": {
+    "status": "passed",
+    "packages": 2,
+    "test_executables": 13,
+    "environment": "Ubuntu22.04 ROS2Humble arm64 Docker",
+    "command": "colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release && colcon test && colcon test-result --verbose"
+  },
+  "independent_review": {
+    "status": "no remaining blocker identified",
+    "closed_findings": [
+      "40ms onset and 10-100Hz raw discontinuity detection",
+      "ordered sensor timestamp histories under same-filter-time delivery bursts",
+      "cached propagation reset after residual invalidation",
+      "startup heading rotates same rigid lever arm used for position"
+    ],
+    "documentation": "metric claims, tentative semantics, geometry, baseline patch checked; all concrete findings addressed"
+  },
+  "source_sha256": {
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "c22fa3a0e881c424dfb170fc78ebc7d627c3f5d9abcd3eb4c29f711b08bfbd2c",
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+    "ros2_ws/src/tram_odometry/src/odometry_node.cpp": "1e9ed93463b5e3c78c1ccc249d91a96d9509f5e4595d90c1754c47c77ee55495",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp": "93d263325fc13892549dd3104d2d51e6da3e77495d4e5846acfba88a8bf961e1",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "d701f247c71df5643eac54b16cc60fd35380723480ccd6937a89607d960007d5",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "e0dfeeb08beb357bf34f652073ec64ee74266b8a5cba3471f39fee20de8ffbf3",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/startup_output_gate.hpp": "0fb79ef4cd297d125cbcae6a83a40671d97d646ad12e57ab2400dccbd2d02276",
+    "ros2_ws/src/tram_odometry/test/elevation_profile_test.cpp": "ad7a07c8a2f5d660db92870947ad27acb30cc2002260db4223e7e7927aba1acd",
+    "ros2_ws/src/tram_odometry/test/estimator_core_test.cpp": "e6f22628e4013eb9a97781b884abfc881ddfc5167587681c898b1a609038e7d8",
+    "ros2_ws/src/tram_odometry/test/estimator_jump_rate_test.cpp": "562d6cdcce1acbc19c90a89c96bd8ab9c32b45c0ecd0d8c02e56f0566342e84b",
+    "ros2_ws/src/tram_odometry/test/estimator_jump_recovery_test.cpp": "8f4277fd6c589fc5bbcfaf7bc35381572118b51f562a78a4704a3fa096b23744",
+    "ros2_ws/src/tram_odometry/test/estimator_wheel_residual_test.cpp": "e55e22b250919dc5b54220ecd8a3426a462ecf7abaf78b051c29a41ad2c5ec8b",
+    "ros2_ws/src/tram_odometry/test/geo_projection_test.cpp": "5e6b10159385b910d70302c54bc573453f3816c6cc94ff28bafa3669feae11d4",
+    "ros2_ws/src/tram_odometry/test/navigation_branch_test.cpp": "38e814dfc4d15199ba18cff11bb777f50d84b88bba9277af4d5c50d670afc655",
+    "ros2_ws/src/tram_odometry/test/navigation_gnss_robustness_test.cpp": "d56e4e4964974138a20d1fa177b1350c4da9a5ed9899f29fac6df4c30850658c",
+    "ros2_ws/src/tram_odometry/test/navigation_startup_heading_test.cpp": "47ab0d17cf03996645fd496a5ee42020f50f624c1018684535d13c84415c99d0",
+    "ros2_ws/src/tram_odometry/test/navigation_test.cpp": "18b5fa57d0120d7f40e2fa1a6609cf24f5adca50ef05354c623ca755e1c6728e",
+    "ros2_ws/src/tram_odometry/test/route_body_heading_test.cpp": "904edc654f5177e34596fab3a3f641a3cad050bf6a93565896bb3f38bfbb4bf7",
+    "ros2_ws/src/tram_odometry/test/route_tf_test.cpp": "a587fa6083514c0ac6ab63d8b0ec43748b6a8e124014803271728c943d72f45a",
+    "ros2_ws/src/tram_odometry/test/startup_output_gate_test.cpp": "7eec619e37adf1b5dc221f348a11563a9a45845911ab4a682b8443e2e22bd13d",
+    "ros2_ws/src/tram_odometry/config/default.yaml": "dd4a6375bd3a08ba9ad9829bcf795caef24d1bb87195e5a4657e7bbf1b0156f3",
+    "evaluation/navigation_replay.cpp": "3287da40f078263a0bf06f56ba16b5b5fc5384cb8c1dbf51a62fa548adf709d3"
+  },
+  "syntax": {
+    "status": "passed",
+    "checks": [
+      "Python compile of new/changed analysis/release scripts",
+      "bash -n tools/ros_reference_check.sh",
+      "git diff --check"
+    ]
+  },
+  "full_ros_1x": {
+    "status": "completed",
+    "report": "ros_run_summary.json",
+    "cpus_limit": 2,
+    "memory_limit_mib": 512,
+    "reference_messages_recorded": 65579,
+    "runtime_source_hashes_match": true
+  },
+  "limitations": [
+    "One public diagnostic bag, not independent hidden evaluation.",
+    "No multi-hour soak or x86_64 performance claim."
+  ],
+  "main_workspace_ros_build": {
+    "status": "passed",
+    "packages": 2,
+    "test_executables": 13,
+    "command": "colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release && colcon test && colcon test-result --verbose",
+    "executable_sha256": "7d014678e7ddd3a37d917925cfd55b9ef9cda01ece38bb6a13f728a9381ada11",
+    "matches_tested_executable": true
+  },
+  "source_archive_rebuild": {
+    "status": "passed",
+    "cpp_executables": 13,
+    "python_tests": 37,
+    "extracted_directory": "/private/tmp/odometry-round2-release-hv3mja1i",
+    "note": "Archive extracted to a fresh directory and built without dataset/context; final archive refresh changes verification metadata only."
+  }
+}

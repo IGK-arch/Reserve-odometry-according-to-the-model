@@ -1,0 +1,69 @@
+{
+  "mode": "anchored",
+  "vehicle_id": 30639,
+  "topic_types": {
+    "/result/velocity": [
+      "tram_vehicle_msgs/msg/VelocitySensor"
+    ],
+    "/result/position": [
+      "nav_msgs/msg/Odometry"
+    ],
+    "/result/diagnostics": [
+      "diagnostic_msgs/msg/DiagnosticArray"
+    ]
+  },
+  "input_unique_stamps": 538,
+  "velocity_count": 458,
+  "position_count": 455,
+  "velocity_rate_wall_hz": 26.533565825229005,
+  "position_rate_wall_hz": 26.57736222898782,
+  "velocity_rate_header_hz": 23.576354891649352,
+  "position_rate_header_hz": 26.584162772933336,
+  "velocity_input_stamp_matches": 457,
+  "position_velocity_stamp_matches": 455,
+  "velocity_frames": {
+    "base_link": 458
+  },
+  "position_frames": {
+    "mgrs_37UCB": 455
+  },
+  "first_position_stamp_ns": 1787733215095046328,
+  "first_position_xyz": [
+    103633.40226088685,
+    86057.55176940389,
+    165.30589566286653
+  ],
+  "position_xyz_min": [
+    103614.98718797136,
+    86057.55176931825,
+    165.17178328242153
+  ],
+  "position_xyz_max": [
+    103633.84904169757,
+    86084.98766368437,
+    165.30589566379786
+  ],
+  "anchor_sources": {
+    "rover_fallback": 455
+  },
+  "position_modes": {
+    "pending_anchor": 3,
+    "route_map": 455
+  },
+  "invalid_stamps": {},
+  "invalid_numeric": {},
+  "callback_to_publish_ms_p50": 0.093292,
+  "callback_to_publish_ms_p95": 0.173291,
+  "callback_to_publish_ms_p99": 0.387875,
+  "callback_to_publish_ms_max": 4.409,
+  "reported_rate_hz_p50": 27.274186,
+  "node_resource_pids": [
+    40
+  ],
+  "node_resource_samples": 76,
+  "node_peak_rss_mb": 22.36328125,
+  "node_cpu_one_core_mean_pct": 1.8050509675533422,
+  "node_cpu_one_core_p95_pct": 6.691420282090093,
+  "failures": [],
+  "passed": true
+}

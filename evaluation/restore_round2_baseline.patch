@@ -1,0 +1,712 @@
+--- a/ros2_ws/src/tram_odometry/src/estimator.cpp
++++ b/ros2_ws/src/tram_odometry/src/estimator.cpp
+@@ -69,8 +69,6 @@
+   distance_m_ = distance_m;
+   acceleration_mps2_ = 0.0;
+   model_acceleration_mps2_ = 0.0;
+-  propagation_acceleration_mps2_ = 0.0;
+-  invalidateWheelResidual();
+   velocity_variance_ = 0.01;
+   distance_variance_ = 0.0;
+   drive_state_ = 0.0;
+@@ -79,7 +77,6 @@
+   last_command_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   last_accepted_wheel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+-  last_independent_wheel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   notch_ = 0;
+   initialized_ = true;
+ }
+@@ -259,14 +256,6 @@
+   return false;
+ }
+ 
+-void Estimator::invalidateWheelResidual() {
+-  propagation_acceleration_mps2_ = model_acceleration_mps2_;
+-  wheel_accel_residual_mps2_ = 0.0;
+-  wheel_residual_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+-  front_.last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
+-  rear_.last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
+-}
+-
+ void Estimator::predict(double dt_s) {
+   if (dt_s <= 0.0) {
+     return;
+@@ -308,25 +297,8 @@
+       }
+     }
+   }
+-  // Healthy prediction remains the physical/table model. Only a paired
+-  // dropout uses recent independent wheel evidence, fading on the existing
+-  // sensor-staleness time scale. Preserve the original model acceleration for
+-  // slow adaptation; correcting that residual with itself would suppress it.
+-  propagation_acceleration_mps2_ = model_acceleration_mps2_;
+-  if (!fresh(front_) && !fresh(rear_) &&
+-      !front_.jump_pending && !rear_.jump_pending &&
+-      !front_.jump_tentative && !rear_.jump_tentative &&
+-      stamp_s_ >= front_.slip_until_s && stamp_s_ >= rear_.slip_until_s &&
+-      std::isfinite(wheel_residual_stamp_s_)) {
+-    const double age_s = std::max(0.0, stamp_s_ - wheel_residual_stamp_s_);
+-    const double weight = std::exp(
+-        -std::max(0.0, age_s - config_.wheel_stale_s) / config_.wheel_stale_s);
+-    propagation_acceleration_mps2_ = clamp(
+-        model_acceleration_mps2_ + weight * wheel_accel_residual_mps2_,
+-        -4.0, 3.0);
+-  }
+   velocity_mps_ =
+-      clamp(before + propagation_acceleration_mps2_ * dt_s, 0.0,
++      clamp(before + model_acceleration_mps2_ * dt_s, 0.0,
+             config_.max_speed_mps);
+   distance_m_ += 0.5 * (before + velocity_mps_) * dt_s;
+   acceleration_mps2_ =
+@@ -388,8 +360,7 @@
+ }
+ 
+ bool Estimator::trusted(const WheelState& wheel) const {
+-  return fresh(wheel) && !wheel.jump_pending &&
+-         stamp_s_ >= wheel.slip_until_s;
++  return fresh(wheel) && stamp_s_ >= wheel.slip_until_s;
+ }
+ 
+ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
+@@ -414,25 +385,17 @@
+       raw_kmh * config_.wheel_scale * sensor_scale;
+   if (!std::isfinite(physical_raw_mps) || physical_raw_mps < -0.5 ||
+       physical_raw_mps > config_.max_speed_mps + 5.0) {
+-    invalidateWheelResidual();
+     wheel.present = false;
+     wheel.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
+     return;
+   }
+   const double converted =
+-      physical_raw_mps + propagation_acceleration_mps2_ * late_by_s;
++      physical_raw_mps + model_acceleration_mps2_ * late_by_s;
+   const double measured_mps = clamp(converted, 0.0, config_.max_speed_mps);
+   const double predicted_mps = velocity_mps_;
+   const double old_good_mps = wheel.last_good_speed_mps;
+   const double old_good_stamp_s = wheel.last_good_stamp_s;
+   const bool had_good = std::isfinite(old_good_stamp_s);
+-  const double previous_raw_mps = wheel.ordered_raw_speed_mps;
+-  const double previous_dt_s = stamp_s - wheel.ordered_raw_stamp_s;
+-  const bool had_previous = std::isfinite(wheel.ordered_raw_stamp_s);
+-  if (!had_previous || stamp_s > wheel.ordered_raw_stamp_s) {
+-    wheel.ordered_raw_speed_mps = physical_raw_mps;
+-    wheel.ordered_raw_stamp_s = stamp_s;
+-  }
+   const bool same_as_previous =
+       wheel.present && std::isfinite(wheel.stamp_s) &&
+       effective_stamp_s - wheel.stamp_s <= 0.5 &&
+@@ -451,7 +414,6 @@
+     wheel.last_good_speed_mps = measured_mps;
+     wheel.last_good_stamp_s = effective_stamp_s;
+     last_accepted_wheel_stamp_s_ = effective_stamp_s;
+-    last_independent_wheel_stamp_s_ = effective_stamp_s;
+     initialized_ = true;
+     return;
+   }
+@@ -460,11 +422,10 @@
+       other.present && std::isfinite(other.stamp_s) &&
+       effective_stamp_s - other.stamp_s <= config_.wheel_pair_max_age_s;
+   const bool other_available =
+-      other_recent && !other.jump_pending &&
+-      effective_stamp_s >= other.slip_until_s;
++      other_recent && effective_stamp_s >= other.slip_until_s;
+   const double other_projected_mps =
+       other.speed_mps +
+-      propagation_acceleration_mps2_ *
++      model_acceleration_mps2_ *
+           (other_recent ?
+                std::max(0.0, effective_stamp_s - other.stamp_s) : 0.0);
+   const double pair_difference =
+@@ -478,8 +439,6 @@
+        effective_stamp_s < other.slip_until_s);
+   bool current_bad = false;
+   bool other_bad = false;
+-  bool implausible_jump = false;
+-  bool discontinuous_jump = false;
+ 
+   // A rapid sensor-only acceleration is the strongest single-channel slip
+   // cue. Ignore very short intervals, where quantization magnifies dv/dt.
+@@ -490,25 +449,7 @@
+         std::abs((measured_mps - old_good_mps) / good_dt_s) >
+             config_.implausible_wheel_accel_mps2) {
+       current_bad = true;
+-      implausible_jump = true;
+-    }
+-  }
+-
+-  // A strong raw discontinuity is meaningful even when high-rate samples are
+-  // too close for a reliable derivative. The fixed innovation budget protects
+-  // quantization/noise; the dt term preserves the physical acceleration bound.
+-  // A step back near the last accepted value is recovery, not fresh fault
+-  // evidence. Use adjacent raw samples so a modest sustained slope does not
+-  // accumulate into an invented discontinuity after several rejected samples.
+-  if (had_good && had_previous && previous_dt_s > 1.0e-6 &&
+-      previous_dt_s <= 0.5 &&
+-      std::abs(measured_mps - old_good_mps) > config_.innovation_gate_mps &&
+-      std::abs(physical_raw_mps - previous_raw_mps) >
+-          config_.innovation_gate_mps +
+-              config_.implausible_wheel_accel_mps2 * previous_dt_s) {
+-    discontinuous_jump = true;
+-    implausible_jump = true;
+-    current_bad = true;
++    }
+   }
+ 
+   if (other_available &&
+@@ -544,46 +485,10 @@
+     }
+   }
+ 
+-  // Keep the independent evidence of a physically impossible jump after the
+-  // short derivative window expires. Two rejected sensors agreeing with each
+-  // other cannot erase that evidence. The prediction still contains only the
+-  // model and accepted measurements; rejected wheels never train adaptation.
+-  if (discontinuous_jump) {
+-    wheel.jump_pending = true;
+-  }
+-  const double independent_age_s =
+-      std::isfinite(last_independent_wheel_stamp_s_)
+-          ? std::max(0.0, effective_stamp_s - last_independent_wheel_stamp_s_)
+-          : 0.0;
+-  if (wheel.jump_pending) {
+-    // Treat uncertain model acceleration as correlated over the whole gap:
+-    // sigma_a [m/s^2] * time [s] is a speed uncertainty, independent of callback
+-    // frequency. A trusted peer continually renews this independent evidence.
+-    // Without any accepted wheel, the envelope grows: indefinitely separating
+-    // a persistent common fault from a corrected pair is unobservable here.
+-    const double recovery_gate_mps = config_.innovation_gate_mps +
+-        config_.process_accel_sigma_mps2 * independent_age_s;
+-    if (!implausible_jump &&
+-        std::abs(measured_mps - predicted_mps) <= recovery_gate_mps) {
+-      if (std::abs(measured_mps - predicted_mps) >
+-          config_.innovation_gate_mps) {
+-        // This pair is accepted only because the model has become uncertain.
+-        // Do not promote its shared value to fresh independent evidence; doing
+-        // so would quarantine the inverse jump when correct readings return.
+-        wheel.jump_tentative = true;
+-        if (pair_consistent && other.jump_pending) {
+-          other.jump_tentative = true;
+-        }
+-      }
+-      wheel.jump_pending = false;
+-    } else {
+-      current_bad = true;
+-    }
+-  }
+-
+-  // Mutual agreement can rescue ordinary pair-disagreement quarantine, but
+-  // an independently rejected jump first has to pass the recovery envelope.
+-  if (pair_recovery && !current_bad && !other.jump_pending) {
++  // If both measured bogies reconverge, their mutual agreement can rescue a
++  // model-only filter whose prediction has drifted far from the real tram.
++  // A current physically implausible jump still remains suspect.
++  if (pair_recovery && !current_bad) {
+     wheel.slip_until_s = -std::numeric_limits<double>::infinity();
+     other.slip_until_s = -std::numeric_limits<double>::infinity();
+   }
+@@ -593,12 +498,6 @@
+         std::abs(measured_mps - predicted_mps) < 0.20)) {
+     current_bad = true;
+   }
+-  if (current_bad || other_bad || wheel.jump_pending || other.jump_pending ||
+-      wheel.jump_tentative || other.jump_tentative) {
+-    // Never carry a derivative across a detected fault or let uncertainty-only
+-    // pair agreement become independent acceleration evidence.
+-    invalidateWheelResidual();
+-  }
+   if (current_bad) {
+     wheel.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
+     return;
+@@ -607,18 +506,6 @@
+     other.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
+   }
+   wheel.slip_until_s = -std::numeric_limits<double>::infinity();
+-  if (wheel.jump_tentative) {
+-    const bool independent_peer = pair_consistent && trusted(other) &&
+-                                  !other.jump_tentative;
+-    // Once uncertainty spans the entire admissible speed range, the old
+-    // hypothesis no longer constrains any valid measurement and can be retired.
+-    const bool old_evidence_exhausted =
+-        config_.process_accel_sigma_mps2 * independent_age_s >=
+-        config_.max_speed_mps;
+-    if (independent_peer || old_evidence_exhausted) {
+-      wheel.jump_tentative = false;
+-    }
+-  }
+ 
+   // Trust wheel measurements strongly on nominal sections; cap a large
+   // correction when the model is uncertain and no second sensor agrees.
+@@ -652,9 +539,6 @@
+     distance_m_ += 0.5 * (velocity_mps_ - before_update) * interval_s;
+   }
+   last_accepted_wheel_stamp_s_ = effective_stamp_s;
+-  if (!wheel.jump_tentative) {
+-    last_independent_wheel_stamp_s_ = effective_stamp_s;
+-  }
+   velocity_variance_ =
+       std::max(1.0e-5, (1.0 - kalman_gain) * velocity_variance_);
+   if (had_good) {
+@@ -672,42 +556,10 @@
+     acceleration_mps2_ = model_acceleration_mps2_;
+   }
+ 
+-  const bool independent_pair =
+-      pair_consistent && trusted(other) &&
+-      !wheel.jump_pending && !other.jump_pending &&
+-      !wheel.jump_tentative && !other.jump_tentative;
+-  if (independent_pair && std::isfinite(wheel.last_good_sensor_stamp_s)) {
+-    // Differentiate raw SI speed at sensor time, before late-message model
+-    // projection. Each of two wheel streams contributes half the update rate.
+-    const double raw_dt_s = stamp_s - wheel.last_good_sensor_stamp_s;
+-    if (raw_dt_s >= 0.045 && raw_dt_s <= 0.3) {
+-      const double observed_accel =
+-          (physical_raw_mps - wheel.last_good_raw_mps) / raw_dt_s;
+-      const double residual = observed_accel - model_acceleration_mps2_;
+-      if (std::abs(residual) <= 2.0) {
+-        const double alpha =
+-            1.0 - std::exp(-0.5 * raw_dt_s / config_.wheel_stale_s);
+-        wheel_accel_residual_mps2_ = std::isfinite(wheel_residual_stamp_s_)
+-            ? wheel_accel_residual_mps2_ +
+-                  alpha * (residual - wheel_accel_residual_mps2_)
+-            : residual;
+-        wheel_residual_stamp_s_ = effective_stamp_s;
+-      }
+-    }
+-  }
+-  if (!wheel.jump_pending && !other.jump_pending &&
+-      !wheel.jump_tentative && !other.jump_tentative && !other_bad &&
+-      (!std::isfinite(wheel.last_good_sensor_stamp_s) ||
+-       stamp_s > wheel.last_good_sensor_stamp_s)) {
+-    wheel.last_good_raw_mps = physical_raw_mps;
+-    wheel.last_good_sensor_stamp_s = stamp_s;
+-  }
+-
+   wheel.last_good_speed_mps = measured_mps;
+   wheel.last_good_stamp_s = effective_stamp_s;
+ 
+   if (config_.enable_adaptation && had_good && trusted(other) &&
+-      !wheel.jump_tentative && !other.jump_tentative &&
+       std::abs(measured_mps - other_projected_mps) < 0.12 &&
+       std::isfinite(command_change_stamp_s_) &&
+       effective_stamp_s - command_change_stamp_s_ > 0.7 &&
+@@ -765,11 +617,9 @@
+   output.velocity_variance = velocity_variance_;
+   output.distance_variance = distance_variance_;
+   output.front_slip = std::isfinite(stamp_s_) &&
+-                      (front_.jump_pending || stamp_s_ < front_.slip_until_s);
++                      stamp_s_ < front_.slip_until_s;
+   output.rear_slip = std::isfinite(stamp_s_) &&
+-                     (rear_.jump_pending || stamp_s_ < rear_.slip_until_s);
+-  output.front_tentative = front_.jump_tentative;
+-  output.rear_tentative = rear_.jump_tentative;
++                     stamp_s_ < rear_.slip_until_s;
+   output.front_stale = !fresh(front_);
+   output.rear_stale = !fresh(rear_);
+   output.front_weight = trusted(front_) ? 1.0 : 0.0;
+--- a/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp
++++ b/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp
+@@ -71,10 +71,6 @@
+   double rear_weight = 0.0;
+   bool front_slip = false;
+   bool rear_slip = false;
+-  // Accepted through model uncertainty, still unsuitable as independent
+-  // evidence or as a source for learning the acceleration model.
+-  bool front_tentative = false;
+-  bool rear_tentative = false;
+   bool front_stale = true;
+   bool rear_stale = true;
+   bool model_only = true;
+@@ -105,21 +101,12 @@
+  private:
+   struct WheelState {
+     double raw_speed_mps = 0.0;
+-    // Monotonic raw sensor history is distinct from callback-effective time.
+-    double ordered_raw_speed_mps = 0.0;
+-    double ordered_raw_stamp_s = std::numeric_limits<double>::quiet_NaN();
+-    double last_good_raw_mps = 0.0;
+-    double last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
+     double speed_mps = 0.0;
+     double stamp_s = std::numeric_limits<double>::quiet_NaN();
+     double last_good_speed_mps = 0.0;
+     double last_good_stamp_s = std::numeric_limits<double>::quiet_NaN();
+     double unchanged_since_s = std::numeric_limits<double>::quiet_NaN();
+     double slip_until_s = -std::numeric_limits<double>::infinity();
+-    // An impossible jump is independent evidence, unlike pair disagreement.
+-    // Retain it until an independent prediction can support the measurement.
+-    bool jump_pending = false;
+-    bool jump_tentative = false;
+     bool present = false;
+   };
+   struct DriveCell {
+@@ -132,7 +119,6 @@
+   void submitWheel(WheelState& wheel, WheelState& other, double raw_kmh,
+                    double sensor_scale, double stamp_s);
+   void predict(double dt_s);
+-  void invalidateWheelResidual();
+   double modelAcceleration(double speed_mps, double drive_state) const;
+   bool loadDriveTable(const std::string& path);
+   bool tableAcceleration(int notch, double speed_mps, double& acceleration,
+@@ -150,9 +136,6 @@
+   double distance_m_ = 0.0;
+   double acceleration_mps2_ = 0.0;
+   double model_acceleration_mps2_ = 0.0;
+-  double propagation_acceleration_mps2_ = 0.0;
+-  double wheel_accel_residual_mps2_ = 0.0;
+-  double wheel_residual_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   double velocity_variance_ = 1.0;
+   double distance_variance_ = 0.0;
+   double drive_state_ = 0.0;
+@@ -164,8 +147,6 @@
+   double command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   double last_accepted_wheel_stamp_s_ =
+       std::numeric_limits<double>::quiet_NaN();
+-  double last_independent_wheel_stamp_s_ =
+-      std::numeric_limits<double>::quiet_NaN();
+   int notch_ = 0;
+   bool initialized_ = false;
+ };
+--- a/ros2_ws/src/tram_odometry/src/navigation.cpp
++++ b/ros2_ws/src/tram_odometry/src/navigation.cpp
+@@ -42,9 +42,6 @@
+     throw std::invalid_argument("use_map_without_gnss requires direction");
+   if (!std::isfinite(c.output_scale) || c.output_scale <= 0)
+     throw std::invalid_argument("output_scale must be positive");
+-  if (!std::isfinite(c.body_heading_lookahead_m) || c.body_heading_lookahead_m < 0 ||
+-      c.body_heading_lookahead_m > 20)
+-    throw std::invalid_argument("body_heading_lookahead_m must be finite and within [0,20]");
+   has_map_ = map_.load(c.map_file);
+   has_alternate_ = !c.alternate_map_file.empty() && alternate_map_.load(c.alternate_map_file);
+   if (!c.elevation_file.empty() && !elevation_.load(c.elevation_file))
+@@ -122,7 +119,6 @@
+       last_fix_stamp_.fill(-std::numeric_limits<double>::infinity());
+       for (auto & window : correction_windows_) window.clear();
+       fix_motion_={};
+-      pair_fixes_={};
+       branch_evidence_.clear();
+       corrections_=rejected_=branch_switches_=0;
+       if (alternate_active_) std::swap(map_,alternate_map_);
+@@ -185,25 +181,7 @@
+   const double distance=state.distance_m-state.velocity_mps*age;
+   const double prior=start_s_m_+distance;
+   const auto query=projection_.project(fix.latitude,fix.longitude,fix.altitude);
+-  // Check the independent rigid antenna geometry before either route correction
+-  // or branch evidence. A coherent bias can pass a single-antenna history gate.
+-  const size_t sensor=rover?1:0;
+-  pair_fixes_[sensor]={query,fix.stamp_s,true};
+-  const auto & other=pair_fixes_[1-sensor];
+-  const double pair_age=std::abs(fix.stamp_s-other.stamp_s);
+-  if (other.valid && pair_age <= 0.2) {
+-    const auto delta=query-other.p;
+-    const double separation=std::sqrt(delta.x*delta.x+delta.y*delta.y+delta.z*delta.z);
+-    // The maximum allowed vehicle speed bounds unobserved travel between the
+-    // antenna timestamps without assuming that the current wheel speed is right.
+-    // Keep a loose 3 m allowance because these fixes may have no covariance.
+-    const double tolerance=3.0+estimator_.config().max_speed_mps*pair_age;
+-    if (std::abs(separation-std::abs(rover_to_master_s_m_)) > tolerance) {
+-      for (auto & pending : correction_windows_) pending.clear();
+-      branch_evidence_.clear(); ++rejected_; return;
+-    }
+-  }
+-  auto & motion=fix_motion_[sensor];
++  auto & motion=fix_motion_[rover?1:0];
+   if (!motion.valid || fix.stamp_s-motion.last > 1 ||
+       std::hypot(query.x-motion.p.x,query.y-motion.p.y) > 0.05)
+     motion={query,distance,fix.stamp_s,fix.stamp_s,true};
+@@ -211,17 +189,16 @@
+   // A repeated position payload with fresh stamps cannot cancel motion measured
+   // by two healthy wheels. Stationary fixes remain useful for position correction.
+   if (fix.stamp_s-motion.start >= 0.2 && std::abs(distance-motion.distance) > 0.5 &&
+-      !state.front_stale && !state.rear_stale && !state.front_slip && !state.rear_slip &&
+-      !state.front_tentative && !state.rear_tentative) {
++      !state.front_stale && !state.rear_stale && !state.front_slip && !state.rear_slip) {
+     correction_windows_[rover?1:0].clear(); branch_evidence_.clear(); ++rejected_; return;
+   }
+   const double offset=rover ? -rover_to_master_s_m_ : 0;
+-  auto match=map_.nearestAntenna(query,selected_direction_,offset,prior,config_.gnss_correction_gate_m,config_.body_heading_lookahead_m);
++  auto match=map_.nearestAntenna(query,selected_direction_,offset,prior,config_.gnss_correction_gate_m);
+   // Evaluate the alternative BEFORE the current branch's lateral gate.
+   // In a real fork the correct observation is necessarily far from the old branch.
+   if (has_alternate_ && selected_direction_=="out") {
+     const auto alternative=alternate_map_.nearestAntenna(query,selected_direction_,offset,
+-                                                        prior,config_.gnss_correction_gate_m,config_.body_heading_lookahead_m);
++                                                        prior,config_.gnss_correction_gate_m);
+     if (!alternative.direction.empty() && alternative.distance_m < 3 &&
+         std::abs(alternative.s-prior) < config_.gnss_correction_gate_m-0.01 &&
+         match.distance_m > 8 && match.distance_m-alternative.distance_m > 5) {
+@@ -322,9 +299,9 @@
+           const RouteMatch out = map_.nearest(gnss_enu, "out");
+           const RouteMatch back = map_.nearest(gnss_enu, "return");
+           const double out_alignment = out.direction.empty() ? -2.0 :
+-            std::cos(map_.bodyYaw("out", out.s, config_.body_heading_lookahead_m) - paired_heading_rad);
++            std::cos(map_.sample("out", out.s).yaw - paired_heading_rad);
+           const double back_alignment = back.direction.empty() ? -2.0 :
+-            std::cos(map_.bodyYaw("return", back.s, config_.body_heading_lookahead_m) - paired_heading_rad);
++            std::cos(map_.sample("return", back.s).yaw - paired_heading_rad);
+           match_direction = out_alignment >= back_alignment ? "out" : "return";
+         } else {
+         }
+@@ -332,7 +309,7 @@
+       RouteMatch match = map_.nearest(gnss_enu, match_direction);
+       if (rover && !match.direction.empty()) {
+         match=map_.nearestAntenna(gnss_enu,match.direction,-rover_to_master_s_m_,
+-          match.s+rover_to_master_s_m_,map_match_max_distance_m_+std::abs(rover_to_master_s_m_),config_.body_heading_lookahead_m);
++          match.s+rover_to_master_s_m_,map_match_max_distance_m_+std::abs(rover_to_master_s_m_));
+       }
+       if (match.direction.empty() || match.distance_m > map_match_max_distance_m_) {
+         if (rover) rover_startup_fixes_.clear();
+@@ -343,15 +320,15 @@
+       start_s_m_ = match.s - initial_distance_m;
+       anchor_distance_m_ = initial_distance_m;
+       anchor_residual_ = gnss_enu - map_.antennaPosition(selected_direction_, match.s,
+-        rover ? -rover_to_master_s_m_ : 0,config_.body_heading_lookahead_m);
+-      const double route_yaw = map_.bodyYaw(selected_direction_, match.s, config_.body_heading_lookahead_m);
++        rover ? -rover_to_master_s_m_ : 0);
++      const double route_yaw = map_.sample(selected_direction_, match.s).yaw;
+       if (paired_heading_valid) {
+         anchor_heading_delta_rad_ = std::atan2(
+           std::sin(paired_heading_rad - route_yaw),
+           std::cos(paired_heading_rad - route_yaw));
+       } else {
+         relative_heading_rad_ = route_yaw;
+-        heading_source_ = "route_body_heading";
++        heading_source_ = "route_tangent";
+       }
+     } else {
+       const double shift_m = initial_distance_m - (rover ? rover_to_master_s_m_ : 0.0);
+@@ -370,25 +347,27 @@
+         map_.has(selected_direction_)) {
+       const double master_s_m = start_s_m_ + distance_m;
+       const auto route_pose = map_.sample(selected_direction_, master_s_m);
+-      const Point3 tangent = map_.bodyDirection(selected_direction_, master_s_m,
+-                                                  config_.body_heading_lookahead_m);
+-      double anchor_weight = 0.0;
++      const auto before = map_.sample(selected_direction_, master_s_m - 1.0);
++      const auto after = map_.sample(selected_direction_, master_s_m + 1.0);
++      Point3 tangent = after.p - before.p;
++      const double tangent_length = std::sqrt(
++        tangent.x * tangent.x + tangent.y * tangent.y + tangent.z * tangent.z);
++      if (tangent_length > 1e-8) {
++        tangent = tangent * (1.0 / tangent_length);
++      } else {
++        tangent = {std::cos(route_pose.yaw), std::sin(route_pose.yaw), 0.0};
++      }
++      // Organiser TF is a rigid body offset from master antenna to front
++      // bogie base_link, not a 9.873 m advance along the curved map.
++      pose = {route_pose.p + tangent * route_longitudinal_offset_m_,
++              std::atan2(tangent.y, tangent.x), route_pose.clamped, true};
+       if (has_gnss_anchor_ && anchor_residual_decay_m_ > 0.0) {
+         const double progressed_m = std::max(0.0, distance_m - anchor_distance_m_);
+-        anchor_weight = std::exp(-progressed_m / anchor_residual_decay_m_);
+-      }
+-      // The startup pair corrects body yaw, so it must rotate the same rigid
+-      // antenna-to-base lever arm. Rotate around Z to preserve the map grade.
+-      const double heading_delta = anchor_heading_delta_rad_ * anchor_weight;
+-      const double ch = std::cos(heading_delta), sh = std::sin(heading_delta);
+-      const Point3 body{ch * tangent.x - sh * tangent.y,
+-                        sh * tangent.x + ch * tangent.y, tangent.z};
+-      // GNSS anchors remain master-antenna route coordinates. Apply the body
+-      // extrinsic once, then the independent decaying master-position residual.
+-      pose = {route_pose.p + body * route_longitudinal_offset_m_ +
+-                Point3{anchor_residual_.x * anchor_weight,
+-                       anchor_residual_.y * anchor_weight, 0.0},
+-              std::atan2(tangent.y, tangent.x) + heading_delta, route_pose.clamped, true};
++        const double weight = std::exp(-progressed_m / anchor_residual_decay_m_);
++        pose.p = pose.p + Point3{anchor_residual_.x * weight,
++                                 anchor_residual_.y * weight, 0.0};
++        pose.yaw += anchor_heading_delta_rad_ * weight;
++      }
+     } else {
+       const double longitudinal_m = distance_m +
+         (has_gnss_anchor_ ? route_longitudinal_offset_m_ : 0.0);
+--- a/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp
++++ b/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp
+@@ -28,8 +28,6 @@
+ double auto_return_terminal_max_x_m = -4400;
+ double anchor_residual_decay_m = 100;
+ double route_longitudinal_offset_m = 9.873;
+-// Master-to-bogie-midpoint distance: 9.873 - 7.55/2, from organizer geometry.
+-double body_heading_lookahead_m = 6.098;
+ double antenna_to_base_z_m = -3;
+ double relative_heading_rad = 0;
+ double initial_x_m = 0;
+@@ -81,7 +79,6 @@
+  private:
+  struct Fix { double latitude,longitude,altitude; int status; double stamp_s; };
+  struct Correction { double stamp_s, innovation; };
+- struct PairFix { Point3 p; double stamp_s=0; bool valid=false; };
+  struct FixMotion { Point3 p; double distance=0, start=0, last=0; bool valid=false; };
+  void prepareInput(double stamp_s);
+  void collectStartupGnss(const Fix* message, bool rover);
+@@ -97,7 +94,6 @@
+  std::array<double,2> last_fix_stamp_{{-INFINITY,-INFINITY}};
+  std::array<std::deque<Correction>,2> correction_windows_;
+  std::array<FixMotion,2> fix_motion_;
+- std::array<PairFix,2> pair_fixes_;
+  std::deque<Correction> branch_evidence_;
+  size_t corrections_ = 0, rejected_ = 0, branch_switches_ = 0;
+   Estimator estimator_;
+--- a/ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp
++++ b/ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp
+@@ -134,39 +134,19 @@
+     return best;
+   }
+ 
+-  // The map traces the rear master antenna. On a turn its trajectory tangent
+-  // differs from the body heading. Sampling near the bogie midpoint gives a
+-  // quasi-steady rigid-body approximation; straight tracks are unchanged.
+-  Point3 bodyDirection(const std::string & direction, double s,
+-                       double heading_lookahead_m = 0.0) const {
+-    const auto & route = points(direction);
+-    if (route.size() < 2) return {1, 0, 0};
+-    const double center = std::clamp(s + heading_lookahead_m,
+-                                     route.front().s, route.back().s);
+-    const auto pose = sample(direction, center);
+-    const Point3 delta = sample(direction, center + 1).p -
+-                         sample(direction, center - 1).p;
+-    const double length = std::sqrt(delta.x*delta.x + delta.y*delta.y + delta.z*delta.z);
+-    return length > 1e-8 ? delta * (1/length) :
+-                          Point3{std::cos(pose.yaw), std::sin(pose.yaw), 0};
+-  }
+-
+-  double bodyYaw(const std::string & direction, double s,
+-                 double heading_lookahead_m = 0.0) const {
+-    const auto body = bodyDirection(direction, s, heading_lookahead_m);
+-    return std::atan2(body.y, body.x);
+-  }
+-
+   // Match an antenna rigidly displaced along the local body approximation.
+   // The returned s always belongs to the MASTER route, including for rover.
+   RouteMatch nearestAntenna(const Point3 & query, const std::string & direction,
+-                            double offset, double prior_s, double radius,
+-                            double heading_lookahead_m = 0.0) const {
++                            double offset, double prior_s, double radius) const {
+     RouteMatch best;
+     const auto & route = points(direction);
+     if (route.size() < 2 || !std::isfinite(prior_s) || radius <= 0) return best;
+     auto antenna = [&](const RoutePoint & point) {
+-      return antennaPosition(direction, point.s, offset, heading_lookahead_m);
++      const auto pose = sample(direction, point.s);
++      Point3 delta = sample(direction, point.s + 1).p - sample(direction, point.s - 1).p;
++      const double length = std::sqrt(delta.x*delta.x + delta.y*delta.y + delta.z*delta.z);
++      delta = length > 1e-8 ? delta * (1/length) : Point3{std::cos(pose.yaw),std::sin(pose.yaw),0};
++      return point.p + delta * offset;
+     };
+     for (size_t i=0; i+1<route.size(); ++i) {
+       if (route[i+1].s < prior_s-radius || route[i].s > prior_s+radius) continue;
+@@ -183,9 +163,12 @@
+     return best;
+   }
+ 
+-  Point3 antennaPosition(const std::string & direction, double s, double offset,
+-                         double heading_lookahead_m = 0.0) const {
+-    return sample(direction, s).p + bodyDirection(direction, s, heading_lookahead_m)*offset;
++  Point3 antennaPosition(const std::string & direction, double s, double offset) const {
++    const auto pose=sample(direction,s);
++    Point3 delta=sample(direction,s+1).p-sample(direction,s-1).p;
++    const double length=std::sqrt(delta.x*delta.x+delta.y*delta.y+delta.z*delta.z);
++    delta=length>1e-8 ? delta*(1/length) : Point3{std::cos(pose.yaw),std::sin(pose.yaw),0};
++    return pose.p+delta*offset;
+   }
+ 
+  private:
+--- a/ros2_ws/src/tram_odometry/src/odometry_node.cpp
++++ b/ros2_ws/src/tram_odometry/src/odometry_node.cpp
+@@ -110,7 +110,6 @@
+   c.auto_return_terminal_max_x_m = node.declare_parameter<double>("auto_return_terminal_max_x_m", c.auto_return_terminal_max_x_m);
+   c.anchor_residual_decay_m = node.declare_parameter<double>("anchor_residual_decay_m", c.anchor_residual_decay_m);
+   c.route_longitudinal_offset_m = node.declare_parameter<double>("route_longitudinal_offset_m", c.route_longitudinal_offset_m);
+-  c.body_heading_lookahead_m = node.declare_parameter<double>("body_heading_lookahead_m", c.body_heading_lookahead_m);
+   c.antenna_to_base_z_m = node.declare_parameter<double>("antenna_to_base_z_m", c.antenna_to_base_z_m);
+   c.relative_heading_rad = node.declare_parameter<double>("relative_heading_rad", c.relative_heading_rad);
+   c.initial_x_m = node.declare_parameter<double>("initial_x_m", c.initial_x_m);
+@@ -303,8 +302,7 @@
+     status.hardware_id = std::to_string(navigation_.estimatorConfig().vehicle_id);
+     const bool relative_only = !result.anchored && !pose.mapped;
+     const bool suspicious = state.front_slip || state.rear_slip || state.front_stale ||
+-                            state.rear_stale || state.front_tentative || state.rear_tentative ||
+-                            state.model_only || pose.clamped ||
++                            state.rear_stale || state.model_only || pose.clamped ||
+                             relative_only;
+     status.level = suspicious ? diagnostic_msgs::msg::DiagnosticStatus::WARN :
+                                 diagnostic_msgs::msg::DiagnosticStatus::OK;
+@@ -314,8 +312,6 @@
+                      suspicious ? "wheel anomaly" : "normal";
+     addDiagnosticValue(status, "front_slip", state.front_slip ? "true" : "false");
+     addDiagnosticValue(status, "rear_slip", state.rear_slip ? "true" : "false");
+-    addDiagnosticValue(status, "front_tentative", state.front_tentative ? "true" : "false");
+-    addDiagnosticValue(status, "rear_tentative", state.rear_tentative ? "true" : "false");
+     addDiagnosticValue(status, "front_stale", state.front_stale ? "true" : "false");
+     addDiagnosticValue(status, "rear_stale", state.rear_stale ? "true" : "false");
+     addDiagnosticValue(status, "model_only", state.model_only ? "true" : "false");
+--- a/ros2_ws/src/tram_odometry/config/default.yaml
++++ b/ros2_ws/src/tram_odometry/config/default.yaml
+@@ -28,7 +28,6 @@
+     auto_return_terminal_max_x_m: -4400.0
+     anchor_residual_decay_m: 100.0
+     route_longitudinal_offset_m: 9.873  # rigid master→base_link offset along 3D body tangent
+-    body_heading_lookahead_m: 6.098   # master→bogie midpoint: 9.873 - 7.55/2 m
+     antenna_to_base_z_m: -3.0         # both GNSS antennae z=+3 in base_link
+     relative_heading_rad: 0.0
+     initial_x_m: 0.0
+--- a/evaluation/navigation_replay.cpp
++++ b/evaluation/navigation_replay.cpp
+@@ -24,7 +24,6 @@
+       else if(key=="--drive-table") table_path=value;
+       else if(key=="--table") table=std::stoi(value)!=0;
+       else if(key=="--direction") config.route_direction=value;
+-      else if(key=="--body-heading-lookahead") config.body_heading_lookahead_m=std::stod(value);
+       else if(key=="--gnss-mode") {
+         if(value!="off" && value!="startup" && value!="corrections") throw std::invalid_argument("Invalid GNSS mode");
+         config.use_startup_gnss=value!="off";
+@@ -40,7 +39,7 @@
+     tram_odometry::Navigation navigation(ec,config);
+     std::ifstream in(input); std::ofstream out(output);
+     if(!in || !out) throw std::runtime_error("Cannot open input/output CSV");
+-    out << "stamp_ns,receive_ns,velocity_mps,distance_m,position_valid,x,y,z,front_slip,rear_slip,model_only,gnss_corrections,gnss_rejected,branch_switches,branch,clamped,frame_id,mapped,anchored\n" << std::setprecision(17);
++    out << "stamp_ns,receive_ns,velocity_mps,distance_m,position_valid,x,y,z,front_slip,rear_slip,model_only,gnss_corrections,gnss_rejected,branch_switches,branch,clamped\n" << std::setprecision(17);
+     std::string line; size_t number=0;
+     while(std::getline(in,line)) {
+       ++number; if(line.empty()) continue;
+@@ -61,8 +60,7 @@
+         out << stamp << ',' << receive << ',' << e.velocity_mps << ',' << e.distance_m << ','
+             << r.position_valid << ',' << r.position.x << ',' << r.position.y << ',' << r.position.z << ','
+             << e.front_slip << ',' << e.rear_slip << ',' << e.model_only << ',' << r.gnss_corrections << ','
+-            << r.gnss_rejected << ',' << r.branch_switches << ',' << r.branch << ',' << r.clamped << ','
+-            << r.frame_id << ',' << r.mapped << ',' << r.anchored << '\n';
++            << r.gnss_rejected << ',' << r.branch_switches << ',' << r.branch << ',' << r.clamped << '\n';
+       } else throw std::invalid_argument("Forbidden/unknown input channel: "+f[2]);
+     }
+     if(!out) throw std::runtime_error("Output write failed");
+--- a/tools/route_map_io.py
++++ b/tools/route_map_io.py
+@@ -157,23 +157,20 @@
+ 
+     def master_to_base_enu(self, direction: str, s: float,
+                            forward_m: float = 9.873,
+-                           antenna_height_m: float = 3.0,
+-                           body_heading_lookahead_m: float = 6.098) -> tuple[float, float, float]:
++                           antenna_height_m: float = 3.0) -> tuple[float, float, float]:
+         """Apply organiser TF master=(x=-9.873,z=3) relative to base_link.
+ 
+-        Match the C++ quasi-steady body heading: sample the master trajectory
+-        tangent near the bogie midpoint, 9.873 - 7.55/2 = 6.098 m ahead.
+-        Keep the antenna position at s, then apply the rigid TF. Passing zero
+-        reproduces the earlier local-tangent approximation for ablation.
++        The online C++ node uses a rigid body transform along the local 3D
++        tangent at ``s``. This differs from advancing 9.873 m along the rail
++        on curves. Train GNSS pairs verify the forward sign both ways.
+         """
+         # An odometry overrun is clamped by both the C++ map reader and this
+         # helper. Clamp *before* finding the tangent so s±1 still spans the
+         # final/initial segment rather than becoming two identical endpoints.
+         s_clamped = min(max(0.0, s), self.abscissae[direction][-1])
+         p = self.sample(direction, s_clamped)
+-        heading_s = min(max(0.0, s + body_heading_lookahead_m), self.abscissae[direction][-1])
+-        before = self.sample(direction, heading_s - 1.0)
+-        after = self.sample(direction, heading_s + 1.0)
++        before = self.sample(direction, s_clamped - 1.0)
++        after = self.sample(direction, s_clamped + 1.0)
+         tangent = tuple(after[i] - before[i] for i in range(3))
+         norm = math.sqrt(sum(value * value for value in tangent))
+         if norm < 1e-8:

@@ -1,0 +1,47 @@
+{
+  "bag": "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
+  "protocol": "post-freeze diagnostic; original timestamps, nearest fused signed-x reference within 50ms; common mask; no parameter choice",
+  "outputs": {
+    "wheel_mean": 26249,
+    "baseline": 26190,
+    "candidate": 26190
+  },
+  "common_outputs": 26190,
+  "mask_sha256": "25304abdc6db0e5fb4406539fdbd041c29484ac9491c1e163368b93a6efcd2bf",
+  "metrics": {
+    "fused": {
+      "wheel_mean": {
+        "n": 26188,
+        "rmse_mps": 0.026839120156152304,
+        "bias_mps": 0.0029156227943652564
+      },
+      "baseline": {
+        "n": 26188,
+        "rmse_mps": 0.04773500544688881,
+        "bias_mps": 0.0021879170150851533
+      },
+      "candidate": {
+        "n": 26188,
+        "rmse_mps": 0.04773500544688881,
+        "bias_mps": 0.0021879170150851533
+      }
+    },
+    "gnss": {
+      "wheel_mean": {
+        "n": 1045,
+        "rmse_mps": 0.050804441153702286,
+        "bias_mps": -0.010660070922890598
+      },
+      "baseline": {
+        "n": 1045,
+        "rmse_mps": 0.03710755356567031,
+        "bias_mps": -0.019043089348735186
+      },
+      "candidate": {
+        "n": 1045,
+        "rmse_mps": 0.03710755356567031,
+        "bias_mps": -0.019043089348735186
+      }
+    }
+  }
+}

@@ -69,6 +69,8 @@ void Estimator::reset(double stamp_s, double velocity_mps, double distance_m) {
   distance_m_ = distance_m;
   acceleration_mps2_ = 0.0;
   model_acceleration_mps2_ = 0.0;
+  propagation_acceleration_mps2_ = 0.0;
+  invalidateWheelResidual();
   velocity_variance_ = 0.01;
   distance_variance_ = 0.0;
   drive_state_ = 0.0;
@@ -77,6 +79,7 @@ void Estimator::reset(double stamp_s, double velocity_mps, double distance_m) {
   last_command_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   last_accepted_wheel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+  last_independent_wheel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   notch_ = 0;
   initialized_ = true;
 }
@@ -256,6 +259,14 @@ bool Estimator::tableAcceleration(int notch, double speed_mps,
   return false;
 }
 
+void Estimator::invalidateWheelResidual() {
+  propagation_acceleration_mps2_ = model_acceleration_mps2_;
+  wheel_accel_residual_mps2_ = 0.0;
+  wheel_residual_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+  front_.last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
+  rear_.last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
+}
+
 void Estimator::predict(double dt_s) {
   if (dt_s <= 0.0) {
     return;
@@ -297,8 +308,25 @@ void Estimator::predict(double dt_s) {
       }
     }
   }
+  // Healthy prediction remains the physical/table model. Only a paired
+  // dropout uses recent independent wheel evidence, fading on the existing
+  // sensor-staleness time scale. Preserve the original model acceleration for
+  // slow adaptation; correcting that residual with itself would suppress it.
+  propagation_acceleration_mps2_ = model_acceleration_mps2_;
+  if (!fresh(front_) && !fresh(rear_) &&
+      !front_.jump_pending && !rear_.jump_pending &&
+      !front_.jump_tentative && !rear_.jump_tentative &&
+      stamp_s_ >= front_.slip_until_s && stamp_s_ >= rear_.slip_until_s &&
+      std::isfinite(wheel_residual_stamp_s_)) {
+    const double age_s = std::max(0.0, stamp_s_ - wheel_residual_stamp_s_);
+    const double weight = std::exp(
+        -std::max(0.0, age_s - config_.wheel_stale_s) / config_.wheel_stale_s);
+    propagation_acceleration_mps2_ = clamp(
+        model_acceleration_mps2_ + weight * wheel_accel_residual_mps2_,
+        -4.0, 3.0);
+  }
   velocity_mps_ =
-      clamp(before + model_acceleration_mps2_ * dt_s, 0.0,
+      clamp(before + propagation_acceleration_mps2_ * dt_s, 0.0,
             config_.max_speed_mps);
   distance_m_ += 0.5 * (before + velocity_mps_) * dt_s;
   acceleration_mps2_ =
@@ -360,7 +388,8 @@ bool Estimator::fresh(const WheelState& wheel) const {
 }
 
 bool Estimator::trusted(const WheelState& wheel) const {
-  return fresh(wheel) && stamp_s_ >= wheel.slip_until_s;
+  return fresh(wheel) && !wheel.jump_pending &&
+         stamp_s_ >= wheel.slip_until_s;
 }
 
 void Estimator::submitWheel(WheelState& wheel, WheelState& other,
@@ -385,17 +414,25 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
       raw_kmh * config_.wheel_scale * sensor_scale;
   if (!std::isfinite(physical_raw_mps) || physical_raw_mps < -0.5 ||
       physical_raw_mps > config_.max_speed_mps + 5.0) {
+    invalidateWheelResidual();
     wheel.present = false;
     wheel.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
     return;
   }
   const double converted =
-      physical_raw_mps + model_acceleration_mps2_ * late_by_s;
+      physical_raw_mps + propagation_acceleration_mps2_ * late_by_s;
   const double measured_mps = clamp(converted, 0.0, config_.max_speed_mps);
   const double predicted_mps = velocity_mps_;
   const double old_good_mps = wheel.last_good_speed_mps;
   const double old_good_stamp_s = wheel.last_good_stamp_s;
   const bool had_good = std::isfinite(old_good_stamp_s);
+  const double previous_raw_mps = wheel.ordered_raw_speed_mps;
+  const double previous_dt_s = stamp_s - wheel.ordered_raw_stamp_s;
+  const bool had_previous = std::isfinite(wheel.ordered_raw_stamp_s);
+  if (!had_previous || stamp_s > wheel.ordered_raw_stamp_s) {
+    wheel.ordered_raw_speed_mps = physical_raw_mps;
+    wheel.ordered_raw_stamp_s = stamp_s;
+  }
   const bool same_as_previous =
       wheel.present && std::isfinite(wheel.stamp_s) &&
       effective_stamp_s - wheel.stamp_s <= 0.5 &&
@@ -414,6 +451,7 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
     wheel.last_good_speed_mps = measured_mps;
     wheel.last_good_stamp_s = effective_stamp_s;
     last_accepted_wheel_stamp_s_ = effective_stamp_s;
+    last_independent_wheel_stamp_s_ = effective_stamp_s;
     initialized_ = true;
     return;
   }
@@ -422,10 +460,11 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
       other.present && std::isfinite(other.stamp_s) &&
       effective_stamp_s - other.stamp_s <= config_.wheel_pair_max_age_s;
   const bool other_available =
-      other_recent && effective_stamp_s >= other.slip_until_s;
+      other_recent && !other.jump_pending &&
+      effective_stamp_s >= other.slip_until_s;
   const double other_projected_mps =
       other.speed_mps +
-      model_acceleration_mps2_ *
+      propagation_acceleration_mps2_ *
           (other_recent ?
                std::max(0.0, effective_stamp_s - other.stamp_s) : 0.0);
   const double pair_difference =
@@ -439,6 +478,8 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
        effective_stamp_s < other.slip_until_s);
   bool current_bad = false;
   bool other_bad = false;
+  bool implausible_jump = false;
+  bool discontinuous_jump = false;
 
   // A rapid sensor-only acceleration is the strongest single-channel slip
   // cue. Ignore very short intervals, where quantization magnifies dv/dt.
@@ -449,7 +490,25 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
         std::abs((measured_mps - old_good_mps) / good_dt_s) >
             config_.implausible_wheel_accel_mps2) {
       current_bad = true;
+      implausible_jump = true;
     }
+  }
+
+  // A strong raw discontinuity is meaningful even when high-rate samples are
+  // too close for a reliable derivative. The fixed innovation budget protects
+  // quantization/noise; the dt term preserves the physical acceleration bound.
+  // A step back near the last accepted value is recovery, not fresh fault
+  // evidence. Use adjacent raw samples so a modest sustained slope does not
+  // accumulate into an invented discontinuity after several rejected samples.
+  if (had_good && had_previous && previous_dt_s > 1.0e-6 &&
+      previous_dt_s <= 0.5 &&
+      std::abs(measured_mps - old_good_mps) > config_.innovation_gate_mps &&
+      std::abs(physical_raw_mps - previous_raw_mps) >
+          config_.innovation_gate_mps +
+              config_.implausible_wheel_accel_mps2 * previous_dt_s) {
+    discontinuous_jump = true;
+    implausible_jump = true;
+    current_bad = true;
   }
 
   if (other_available &&
@@ -485,10 +544,46 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
     }
   }
 
-  // If both measured bogies reconverge, their mutual agreement can rescue a
-  // model-only filter whose prediction has drifted far from the real tram.
-  // A current physically implausible jump still remains suspect.
-  if (pair_recovery && !current_bad) {
+  // Keep the independent evidence of a physically impossible jump after the
+  // short derivative window expires. Two rejected sensors agreeing with each
+  // other cannot erase that evidence. The prediction still contains only the
+  // model and accepted measurements; rejected wheels never train adaptation.
+  if (discontinuous_jump) {
+    wheel.jump_pending = true;
+  }
+  const double independent_age_s =
+      std::isfinite(last_independent_wheel_stamp_s_)
+          ? std::max(0.0, effective_stamp_s - last_independent_wheel_stamp_s_)
+          : 0.0;
+  if (wheel.jump_pending) {
+    // Treat uncertain model acceleration as correlated over the whole gap:
+    // sigma_a [m/s^2] * time [s] is a speed uncertainty, independent of callback
+    // frequency. A trusted peer continually renews this independent evidence.
+    // Without any accepted wheel, the envelope grows: indefinitely separating
+    // a persistent common fault from a corrected pair is unobservable here.
+    const double recovery_gate_mps = config_.innovation_gate_mps +
+        config_.process_accel_sigma_mps2 * independent_age_s;
+    if (!implausible_jump &&
+        std::abs(measured_mps - predicted_mps) <= recovery_gate_mps) {
+      if (std::abs(measured_mps - predicted_mps) >
+          config_.innovation_gate_mps) {
+        // This pair is accepted only because the model has become uncertain.
+        // Do not promote its shared value to fresh independent evidence; doing
+        // so would quarantine the inverse jump when correct readings return.
+        wheel.jump_tentative = true;
+        if (pair_consistent && other.jump_pending) {
+          other.jump_tentative = true;
+        }
+      }
+      wheel.jump_pending = false;
+    } else {
+      current_bad = true;
+    }
+  }
+
+  // Mutual agreement can rescue ordinary pair-disagreement quarantine, but
+  // an independently rejected jump first has to pass the recovery envelope.
+  if (pair_recovery && !current_bad && !other.jump_pending) {
     wheel.slip_until_s = -std::numeric_limits<double>::infinity();
     other.slip_until_s = -std::numeric_limits<double>::infinity();
   }
@@ -498,6 +593,12 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
         std::abs(measured_mps - predicted_mps) < 0.20)) {
     current_bad = true;
   }
+  if (current_bad || other_bad || wheel.jump_pending || other.jump_pending ||
+      wheel.jump_tentative || other.jump_tentative) {
+    // Never carry a derivative across a detected fault or let uncertainty-only
+    // pair agreement become independent acceleration evidence.
+    invalidateWheelResidual();
+  }
   if (current_bad) {
     wheel.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
     return;
@@ -506,6 +607,18 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
     other.slip_until_s = effective_stamp_s + config_.outlier_hold_s;
   }
   wheel.slip_until_s = -std::numeric_limits<double>::infinity();
+  if (wheel.jump_tentative) {
+    const bool independent_peer = pair_consistent && trusted(other) &&
+                                  !other.jump_tentative;
+    // Once uncertainty spans the entire admissible speed range, the old
+    // hypothesis no longer constrains any valid measurement and can be retired.
+    const bool old_evidence_exhausted =
+        config_.process_accel_sigma_mps2 * independent_age_s >=
+        config_.max_speed_mps;
+    if (independent_peer || old_evidence_exhausted) {
+      wheel.jump_tentative = false;
+    }
+  }
 
   // Trust wheel measurements strongly on nominal sections; cap a large
   // correction when the model is uncertain and no second sensor agrees.
@@ -519,7 +632,9 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
   const double r = std::pow(config_.wheel_sigma_mps *
                                 (other_available ? 1.0 : 1.3),
                             2.0);
-  const double kalman_gain = pair_recovery
+  // An accepted wheel agreeing with its recent partner should retain little
+  // model bias. Isolated measurements keep variance weighting.
+  const double kalman_gain = (pair_recovery || pair_consistent)
                                  ? 0.90
                                  : clamp(velocity_variance_ /
                                              (velocity_variance_ + r),
@@ -537,6 +652,9 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
     distance_m_ += 0.5 * (velocity_mps_ - before_update) * interval_s;
   }
   last_accepted_wheel_stamp_s_ = effective_stamp_s;
+  if (!wheel.jump_tentative) {
+    last_independent_wheel_stamp_s_ = effective_stamp_s;
+  }
   velocity_variance_ =
       std::max(1.0e-5, (1.0 - kalman_gain) * velocity_variance_);
   if (had_good) {
@@ -554,10 +672,42 @@ void Estimator::submitWheel(WheelState& wheel, WheelState& other,
     acceleration_mps2_ = model_acceleration_mps2_;
   }
 
+  const bool independent_pair =
+      pair_consistent && trusted(other) &&
+      !wheel.jump_pending && !other.jump_pending &&
+      !wheel.jump_tentative && !other.jump_tentative;
+  if (independent_pair && std::isfinite(wheel.last_good_sensor_stamp_s)) {
+    // Differentiate raw SI speed at sensor time, before late-message model
+    // projection. Each of two wheel streams contributes half the update rate.
+    const double raw_dt_s = stamp_s - wheel.last_good_sensor_stamp_s;
+    if (raw_dt_s >= 0.045 && raw_dt_s <= 0.3) {
+      const double observed_accel =
+          (physical_raw_mps - wheel.last_good_raw_mps) / raw_dt_s;
+      const double residual = observed_accel - model_acceleration_mps2_;
+      if (std::abs(residual) <= 2.0) {
+        const double alpha =
+            1.0 - std::exp(-0.5 * raw_dt_s / config_.wheel_stale_s);
+        wheel_accel_residual_mps2_ = std::isfinite(wheel_residual_stamp_s_)
+            ? wheel_accel_residual_mps2_ +
+                  alpha * (residual - wheel_accel_residual_mps2_)
+            : residual;
+        wheel_residual_stamp_s_ = effective_stamp_s;
+      }
+    }
+  }
+  if (!wheel.jump_pending && !other.jump_pending &&
+      !wheel.jump_tentative && !other.jump_tentative && !other_bad &&
+      (!std::isfinite(wheel.last_good_sensor_stamp_s) ||
+       stamp_s > wheel.last_good_sensor_stamp_s)) {
+    wheel.last_good_raw_mps = physical_raw_mps;
+    wheel.last_good_sensor_stamp_s = stamp_s;
+  }
+
   wheel.last_good_speed_mps = measured_mps;
   wheel.last_good_stamp_s = effective_stamp_s;
 
   if (config_.enable_adaptation && had_good && trusted(other) &&
+      !wheel.jump_tentative && !other.jump_tentative &&
       std::abs(measured_mps - other_projected_mps) < 0.12 &&
       std::isfinite(command_change_stamp_s_) &&
       effective_stamp_s - command_change_stamp_s_ > 0.7 &&
@@ -615,9 +765,11 @@ Estimate Estimator::state() const {
   output.velocity_variance = velocity_variance_;
   output.distance_variance = distance_variance_;
   output.front_slip = std::isfinite(stamp_s_) &&
-                      stamp_s_ < front_.slip_until_s;
+                      (front_.jump_pending || stamp_s_ < front_.slip_until_s);
   output.rear_slip = std::isfinite(stamp_s_) &&
-                     stamp_s_ < rear_.slip_until_s;
+                     (rear_.jump_pending || stamp_s_ < rear_.slip_until_s);
+  output.front_tentative = front_.jump_tentative;
+  output.rear_tentative = rear_.jump_tentative;
   output.front_stale = !fresh(front_);
   output.rear_stale = !fresh(rear_);
   output.front_weight = trusted(front_) ? 1.0 : 0.0;

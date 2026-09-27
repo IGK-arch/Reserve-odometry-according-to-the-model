@@ -1,0 +1,21 @@
+--- a/evaluation/navigation_replay.cpp
++++ b/evaluation/navigation_replay.cpp
+@@ -39,7 +39,7 @@
+     tram_odometry::Navigation navigation(ec,config);
+     std::ifstream in(input); std::ofstream out(output);
+     if(!in || !out) throw std::runtime_error("Cannot open input/output CSV");
+-    out << "stamp_ns,receive_ns,velocity_mps,distance_m,position_valid,x,y,z,front_slip,rear_slip,model_only,gnss_corrections,gnss_rejected,branch_switches,branch,clamped\n" << std::setprecision(17);
++    out << "stamp_ns,receive_ns,velocity_mps,distance_m,position_valid,x,y,z,front_slip,rear_slip,model_only,gnss_corrections,gnss_rejected,branch_switches,branch,clamped,frame_id,mapped,anchored\n" << std::setprecision(17);
+     std::string line; size_t number=0;
+     while(std::getline(in,line)) {
+       ++number; if(line.empty()) continue;
+@@ -60,7 +60,8 @@
+         out << stamp << ',' << receive << ',' << e.velocity_mps << ',' << e.distance_m << ','
+             << r.position_valid << ',' << r.position.x << ',' << r.position.y << ',' << r.position.z << ','
+             << e.front_slip << ',' << e.rear_slip << ',' << e.model_only << ',' << r.gnss_corrections << ','
+-            << r.gnss_rejected << ',' << r.branch_switches << ',' << r.branch << ',' << r.clamped << '\n';
++            << r.gnss_rejected << ',' << r.branch_switches << ',' << r.branch << ',' << r.clamped << ','
++            << r.frame_id << ',' << r.mapped << ',' << r.anchored << '\n';
+       } else throw std::invalid_argument("Forbidden/unknown input channel: "+f[2]);
+     }
+     if(!out) throw std::runtime_error("Output write failed");

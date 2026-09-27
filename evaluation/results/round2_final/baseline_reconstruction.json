@@ -1,0 +1,63 @@
+{
+  "direction": "Apply to a COPY of final source, not current checkout; reconstructs round-1 runtime and CLI. Build only replay_cli and navigation_replay targets, since new regression tests intentionally require the new code.",
+  "patch": "evaluation/restore_round2_baseline.patch",
+  "patch_sha256": "39204deab24ac3758da6b33ca5b2aa0daac61fd5c3ac02396c15923ff1d4ecb8",
+  "source": {
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": {
+      "current_sha256": "c22fa3a0e881c424dfb170fc78ebc7d627c3f5d9abcd3eb4c29f711b08bfbd2c",
+      "baseline_sha256": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f"
+    },
+    "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": {
+      "current_sha256": "d701f247c71df5643eac54b16cc60fd35380723480ccd6937a89607d960007d5",
+      "baseline_sha256": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26"
+    },
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": {
+      "current_sha256": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+      "baseline_sha256": "7af67e7ce37576c8512dca1584c6ecaac0f1119e1d55909d1bc89a5d48601d74"
+    },
+    "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": {
+      "current_sha256": "e0dfeeb08beb357bf34f652073ec64ee74266b8a5cba3471f39fee20de8ffbf3",
+      "baseline_sha256": "6aba4a164441b3c0fbd4f244e4acba424d33bacb9b5fe4fb8e0583672fd21af5"
+    },
+    "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": {
+      "current_sha256": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+      "baseline_sha256": "09044aca84c32c3e48251b66e87edf30887e6dbcfa496f111aa118c86d2ea72f"
+    },
+    "ros2_ws/src/tram_odometry/src/odometry_node.cpp": {
+      "current_sha256": "1e9ed93463b5e3c78c1ccc249d91a96d9509f5e4595d90c1754c47c77ee55495",
+      "baseline_sha256": "68a6537e18296f52750e707202990aaa379093f05c808bc565bb96d012b3145a"
+    },
+    "ros2_ws/src/tram_odometry/config/default.yaml": {
+      "current_sha256": "dd4a6375bd3a08ba9ad9829bcf795caef24d1bb87195e5a4657e7bbf1b0156f3",
+      "baseline_sha256": "6002b33f2fbef10979745c4d30edb7737595e9beecde4d9b3071825a69b43737"
+    },
+    "evaluation/navigation_replay.cpp": {
+      "current_sha256": "3287da40f078263a0bf06f56ba16b5b5fc5384cb8c1dbf51a62fa548adf709d3",
+      "baseline_sha256": "fa5d8a9ffa8ddb9ab82bce0d10ca67d7f9bb1301db8f54877de3237361733ac7"
+    },
+    "tools/route_map_io.py": {
+      "current_sha256": "fcabd459bc74c2e32412e6d41a78c355ff6c16d888213dd1793a5efd2912bc57",
+      "baseline_sha256": "56b6371bb66fe02e70b78bb92cd3cdc9f2b9538ca85fe09f1e978123f343887d"
+    }
+  },
+  "preserved_round1_archive": "evaluation/runs/round2_baseline/tram_odometry_source.zip",
+  "round1_archive_sha256": "ebb3ed938edade8934837457fe5c9cf323b47b82bcdef174dc8aeaebfe7ab2a8",
+  "independent_verification": {
+    "restored_all_9_sources_byte_identical": true,
+    "build_targets": [
+      "replay_cli",
+      "navigation_replay"
+    ],
+    "build_status": "passed",
+    "diagnostic_patch": "evaluation/navigation_replay_baseline_diagnostics.patch",
+    "diagnostic_patch_sha256": "d16160f394ca93cd11e1906a19d6fb0dd531a3034376f8f81633945d973970c5",
+    "original_output_fields_unchanged": true,
+    "real_bag_output_rows": 1019,
+    "added_columns": [
+      "frame_id",
+      "mapped",
+      "anchored"
+    ],
+    "verification_directory": "/private/tmp/odometry-review-baseline-restore-v2"
+  }
+}

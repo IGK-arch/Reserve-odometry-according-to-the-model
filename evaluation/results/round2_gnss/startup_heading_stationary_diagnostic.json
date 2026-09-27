@@ -1,0 +1,18 @@
+{
+  "n": 493,
+  "scoring_status": "scored",
+  "publication_count": 495,
+  "proxy_matched_count": 494,
+  "absolute_frame_output_count": 493,
+  "relative_frame_output_count": 2,
+  "matched_relative_frame_count": 1,
+  "unscored_proxy_matched_count": 1,
+  "absolute_position_coverage": 0.9979757085020243,
+  "rmse_3d_m": 0.11381449547547239,
+  "end_proxy_error_m": 0.2205015743822048,
+  "clamped_outputs": 0,
+  "corrections": 437,
+  "rejected": 10,
+  "branch_switches": 0,
+  "last_branch": "primary"
+}

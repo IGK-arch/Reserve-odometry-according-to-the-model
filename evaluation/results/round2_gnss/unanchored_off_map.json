@@ -1,0 +1,155 @@
+{
+  "30618_0d865417": {
+    "count": 286,
+    "first_5": [
+      {
+        "sensor": "RF",
+        "elapsed": 0.741194051,
+        "age_to_latest_vehicle_s": -0.741194051,
+        "map_distance_m": 534.1184525302301,
+        "nearest_direction": "return",
+        "fresh": false
+      },
+      {
+        "sensor": "MF",
+        "elapsed": 1.0411940510000002,
+        "age_to_latest_vehicle_s": 0.056490458,
+        "map_distance_m": 545.2991236180666,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "RF",
+        "elapsed": 0.841194051,
+        "age_to_latest_vehicle_s": 0.25649045800000003,
+        "map_distance_m": 534.1134593766214,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "MF",
+        "elapsed": 1.141194051,
+        "age_to_latest_vehicle_s": 0.160437296,
+        "map_distance_m": 545.2992702501418,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "RF",
+        "elapsed": 0.9411940510000001,
+        "age_to_latest_vehicle_s": 0.360437296,
+        "map_distance_m": 534.1056281753034,
+        "nearest_direction": "return",
+        "fresh": true
+      }
+    ],
+    "first_fresh": [
+      {
+        "sensor": "MF",
+        "elapsed": 1.0411940510000002,
+        "age_to_latest_vehicle_s": 0.056490458,
+        "map_distance_m": 545.2991236180666,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "RF",
+        "elapsed": 0.841194051,
+        "age_to_latest_vehicle_s": 0.25649045800000003,
+        "map_distance_m": 534.1134593766214,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "MF",
+        "elapsed": 1.141194051,
+        "age_to_latest_vehicle_s": 0.160437296,
+        "map_distance_m": 545.2992702501418,
+        "nearest_direction": "return",
+        "fresh": true
+      }
+    ],
+    "fresh_before_5s": 65,
+    "fresh_before_5s_min_map_distance_m": 534.1048457816931,
+    "all_fresh_min_map_distance_m": 532.1173609872982,
+    "fresh_within_map_gate": 0,
+    "first_usable": []
+  },
+  "30618_bc5e53c2": {
+    "count": 582,
+    "first_5": [
+      {
+        "sensor": "RF",
+        "elapsed": 0.950771871,
+        "age_to_latest_vehicle_s": -0.950771871,
+        "map_distance_m": 530.1706003256162,
+        "nearest_direction": "return",
+        "fresh": false
+      },
+      {
+        "sensor": "MF",
+        "elapsed": 1.250771871,
+        "age_to_latest_vehicle_s": 0.016226895,
+        "map_distance_m": 518.8152028852238,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "RF",
+        "elapsed": 1.050771871,
+        "age_to_latest_vehicle_s": 0.216226895,
+        "map_distance_m": 530.1701640127485,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "MF",
+        "elapsed": 1.350771871,
+        "age_to_latest_vehicle_s": -0.033771155000000004,
+        "map_distance_m": 518.8151304114871,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "RF",
+        "elapsed": 1.1507718710000001,
+        "age_to_latest_vehicle_s": 0.16622884500000001,
+        "map_distance_m": 530.1621422733112,
+        "nearest_direction": "return",
+        "fresh": true
+      }
+    ],
+    "first_fresh": [
+      {
+        "sensor": "MF",
+        "elapsed": 1.250771871,
+        "age_to_latest_vehicle_s": 0.016226895,
+        "map_distance_m": 518.8152028852238,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "RF",
+        "elapsed": 1.050771871,
+        "age_to_latest_vehicle_s": 0.216226895,
+        "map_distance_m": 530.1701640127485,
+        "nearest_direction": "return",
+        "fresh": true
+      },
+      {
+        "sensor": "MF",
+        "elapsed": 1.350771871,
+        "age_to_latest_vehicle_s": -0.033771155000000004,
+        "map_distance_m": 518.8151304114871,
+        "nearest_direction": "return",
+        "fresh": true
+      }
+    ],
+    "fresh_before_5s": 78,
+    "fresh_before_5s_min_map_distance_m": 518.8130539259191,
+    "all_fresh_min_map_distance_m": 518.8116428750296,
+    "fresh_within_map_gate": 0,
+    "first_usable": []
+  },
+  "diagnostic_method": "Raw permitted inputs; coordinates projected with the frozen ENU adapter; nearest XY distance to both route directions. Freshness is screened against latest received vehicle header. No fix in either recording comes within the 50 m map gate, regardless of startup timing."
+}

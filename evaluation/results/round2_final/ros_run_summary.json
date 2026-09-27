@@ -1,0 +1,268 @@
+{
+  "status": "completed",
+  "playback_completed": true,
+  "commands": {
+    "node": [
+      "ros2",
+      "launch",
+      "tram_odometry",
+      "tram_odometry.launch.py",
+      "config:=/workspace/ros2_ws/src/tram_odometry/config/default.yaml",
+      "vehicle_id:=30618",
+      "use_sim_time:=true"
+    ],
+    "checker": [
+      "/usr/bin/python3",
+      "-m",
+      "hackathon_solution_checker.metrics",
+      "--ros-args",
+      "-p",
+      "report_period_sec:=5.0"
+    ],
+    "recorder": [
+      "ros2",
+      "bag",
+      "record",
+      "-s",
+      "sqlite3",
+      "-o",
+      "/workspace/evaluation/runs/ros_round2_1x/result_bag",
+      "/result/velocity",
+      "/result/position",
+      "/result/diagnostics",
+      "/localization/kinematic_state",
+      "/clock"
+    ],
+    "player": [
+      "ros2",
+      "bag",
+      "play",
+      "/data/reference",
+      "--clock",
+      "--rate",
+      "1.0",
+      "--start-paused",
+      "--disable-keyboard-controls",
+      "--topics",
+      "/vehicle/driver_position_cmd",
+      "/vehicle/front_bogie_velocity",
+      "/vehicle/rear_bogie_velocity",
+      "/sensing/gnss/master/fix",
+      "/sensing/gnss/rover/fix",
+      "/sensing/gnss/master/vel",
+      "/sensing/gnss/rover/vel",
+      "/localization/kinematic_state"
+    ]
+  },
+  "processes": {
+    "player": {
+      "returncode": 0,
+      "signals": []
+    },
+    "node": {
+      "returncode": 0,
+      "signals": [
+        "SIGINT"
+      ]
+    },
+    "recorder": {
+      "returncode": 0,
+      "signals": [
+        "SIGINT"
+      ]
+    },
+    "checker": {
+      "returncode": 0,
+      "signals": [
+        "SIGINT"
+      ]
+    }
+  },
+  "domain_id": "91",
+  "rate": 1.0,
+  "vehicle_id": 30618,
+  "offline_matching_is_official_ats": false,
+  "provenance": {
+    "git_commit": null,
+    "git_dirty": false,
+    "bag": "/data/reference",
+    "bag_files_sha256": {
+      "30618_88aea4d9_0.db3": "48f846d134d0584b38f9ca06b7ba812a16aeeecc896594313e3fa9acd27e10c3",
+      "metadata.yaml": "b3b26262659d247aad1eceb3fbe1bc987e834df783f465cd5be8ca928f49534f"
+    },
+    "artifacts_sha256": {
+      "/workspace/evaluation/record_ros_outputs.py": "f43e20ab14e0ee91e3f0987b8da5ad08c8e860b9f599a5f7997aa46b5e8ed009",
+      "/workspace/evaluation/ros_runtime_metrics.py": "cc7b0ed4ec8983257699b0f13d4f0d9f1e1fd9af87347a555a8862eece8a1803",
+      "/workspace/evaluation/runs/checker_ws/install/hackathon_solution_checker/lib/python3.10/site-packages/hackathon_solution_checker/metrics.py": "3f6e46923ad431d7ae4f811ff144cbca00c572a1631277dcaa3659cdf8e7a058",
+      "/workspace/ros2_ws/install/tram_odometry/lib/tram_odometry/odometry_node": "7d014678e7ddd3a37d917925cfd55b9ef9cda01ece38bb6a13f728a9381ada11",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/drive_accel_table.csv": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/official_elevation.csv": "86ec3d223f1b76de6bc8ffc4f5b1a8eb87a457b570de00d97f996d859b53e686",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/official_elevation_meta.json": "23093a2c45f8bf34eeaddd19be92339a590ef118a54f13c4254b5a8a24659906",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/route_map.csv": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/route_map_branch_a.csv": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/route_map_branch_a_meta.json": "2a8f9a27730ab958a3e451a81ed6fec8cee65f10a68c3b3244f78e18f71215f2",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/route_map_meta.json": "0cb9f08e706def5c6c842a0fc253afccb42e606aa340b5c636f12cc6d8cfe82f",
+      "/workspace/ros2_ws/install/tram_odometry/share/tram_odometry/assets/stops.csv": "e235428d9203c4e7406503a75da254fce4e8d94faceb3f8ec9273c930ccca5df",
+      "/workspace/ros2_ws/src/tram_odometry/config/default.yaml": "dd4a6375bd3a08ba9ad9829bcf795caef24d1bb87195e5a4657e7bbf1b0156f3",
+      "/workspace/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "d701f247c71df5643eac54b16cc60fd35380723480ccd6937a89607d960007d5",
+      "/workspace/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "e0dfeeb08beb357bf34f652073ec64ee74266b8a5cba3471f39fee20de8ffbf3",
+      "/workspace/ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+      "/workspace/ros2_ws/src/tram_odometry/src/estimator.cpp": "c22fa3a0e881c424dfb170fc78ebc7d627c3f5d9abcd3eb4c29f711b08bfbd2c",
+      "/workspace/ros2_ws/src/tram_odometry/src/navigation.cpp": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+      "/workspace/ros2_ws/src/tram_odometry/src/odometry_node.cpp": "1e9ed93463b5e3c78c1ccc249d91a96d9509f5e4595d90c1754c47c77ee55495",
+      "/workspace/tools/ros_reference_check.sh": "5ff2615a0f8d4153d8a02c1a2df9408baf0391af108fd732c397dbe3bc8b4a4f"
+    },
+    "config_path": "/workspace/ros2_ws/src/tram_odometry/config/default.yaml",
+    "config_text": "tram_odometry:\n  ros__parameters:\n    vehicle_id: 30618\n    output_frame_id: mgrs_37UCB\n    relative_frame_id: odom\n    output_projection: mgrs37ucb  # x=UTM37 easting-300000, y=northing-6100000\n    child_frame_id: base_link\n    route_direction: auto  # out, return or auto; auto needs a valid startup GNSS fix\n    map_file: ''           # empty: installed assets/route_map.csv\n    alternate_map_file: '' # empty: installed branch A; 'none' disables branch selection\n    elevation_file: ''     # official base_link height; 'none' keeps train map height\n    enable_gnss_corrections: true\n    gnss_correction_max_age_s: 0.5\n    gnss_correction_gate_m: 40.0\n    gnss_correction_lateral_gate_m: 8.0\n    gnss_correction_gain: 0.5\n    gnss_correction_max_step_m: 3.0\n    start_s_m: 0.0        # used if GNSS initialization is unavailable\n    use_startup_gnss: true\n    use_map_without_gnss: false  # true only with configured direction/start_s_m\n    use_rover_fallback: true\n    startup_gnss_window_s: 5.0\n    startup_min_fixes: 3\n    rover_fallback_delay_s: 1.5\n    rover_to_master_s_m: -12.436  # official rover-master longitudinal offset\n    map_match_max_distance_m: 50.0\n    auto_out_terminal_min_x_m: -200.0\n    auto_return_terminal_max_x_m: -4400.0\n    anchor_residual_decay_m: 100.0\n    route_longitudinal_offset_m: 9.873  # rigid master\u2192base_link offset along 3D body tangent\n    body_heading_lookahead_m: 6.098   # master\u2192bogie midpoint: 9.873 - 7.55/2 m\n    antenna_to_base_z_m: -3.0         # both GNSS antennae z=+3 in base_link\n    relative_heading_rad: 0.0\n    initial_x_m: 0.0\n    initial_y_m: 0.0\n    initial_z_m: 0.0\n    output_rotation_rad: 0.0\n    output_scale: 1.0\n    output_offset_x_m: 0.0\n    output_offset_y_m: 0.0\n    output_offset_z_m: 0.0\n    # Must match the WGS84 ECEF->ENU datum used to build assets/route_map.csv.\n    map_datum_lat_deg: 55.810367065\n    map_datum_lon_deg: 37.462266845\n    map_datum_alt_m: 168.3794\n    reset_on_large_time_jump_s: 60.0\n    # The model and robust fusion defaults come from EstimatorConfig::forVehicle(id).\n    # Optional ROS overrides: front_scale, rear_scale, mass_kg, effective_wheel_radius_m,\n    # motor_torque_max_nm, traction_power_limit_w, brake_force_max_n,\n    # rolling_resistance_accel_mps2, quadratic_drag_accel_per_mps2,\n    # grade_accel_mps2, wheel_stale_s, max_out_of_order_s, disagreement_gate_mps,\n    # innovation_gate_mps, implausible_wheel_accel_mps2, wheel_sigma_mps,\n    # process_accel_sigma_mps2, enable_adaptation.\n    # Train-only drive table is enabled by the node for vehicle_id=30618 and\n    # disabled for 30639; do not set a fixed boolean here, as it would override\n    # the vehicle-specific default. To override: enable_drive_table: false/true.\n    # Empty drive_table_path uses installed assets/drive_accel_table.csv.\n    # A missing or invalid file logs a startup warning and keeps physics-only\n    # prediction; check /result/diagnostics drive_table_active/used.\n",
+    "command": [
+      "/workspace/evaluation/record_ros_outputs.py",
+      "--bag",
+      "/data/reference",
+      "--outdir",
+      "evaluation/runs/ros_round2_1x",
+      "--config",
+      "ros2_ws/src/tram_odometry/config/default.yaml",
+      "--rate",
+      "1",
+      "--timeout",
+      "1800",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/src/estimator.cpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/src/navigation.cpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/src/odometry_node.cpp"
+    ],
+    "effective_parameters": {
+      "/workspace/evaluation/runs/ros_round2_1x/effective_parameters.yaml": "59531ca1db66d098590fe202c2d27a635bc16cf069d67a49f631014adc377f28"
+    }
+  },
+  "readiness": {
+    "elapsed_s": 2.061747709987685,
+    "subscribers": {
+      "/result/velocity": 3,
+      "/result/position": 3,
+      "/result/diagnostics": 1,
+      "/localization/kinematic_state": 3,
+      "/vehicle/driver_position_cmd": 2,
+      "/vehicle/front_bogie_velocity": 2,
+      "/vehicle/rear_bogie_velocity": 2
+    },
+    "estimator_subscriptions": {
+      "/clock": [
+        "rosgraph_msgs/msg/Clock"
+      ],
+      "/parameter_events": [
+        "rcl_interfaces/msg/ParameterEvent"
+      ],
+      "/sensing/gnss/master/fix": [
+        "sensor_msgs/msg/NavSatFix"
+      ],
+      "/sensing/gnss/rover/fix": [
+        "sensor_msgs/msg/NavSatFix"
+      ],
+      "/vehicle/driver_position_cmd": [
+        "tram_vehicle_msgs/msg/DriverControllerCommand"
+      ],
+      "/vehicle/front_bogie_velocity": [
+        "tram_vehicle_msgs/msg/VelocitySensor"
+      ],
+      "/vehicle/rear_bogie_velocity": [
+        "tram_vehicle_msgs/msg/VelocitySensor"
+      ]
+    }
+  },
+  "playback_wall_s": 1309.7878882219957,
+  "runtime": {
+    "resources": {
+      "samples": 2544,
+      "pids": [
+        112
+      ],
+      "memoryPeakKB": 25124,
+      "rssSamplePeakKB": 25124,
+      "cpuPercentOneCoreMean": 2.752428134904947,
+      "cpuPercentOneCoreP95": 5.4857594647632215,
+      "cpuPercentOneCoreMax": 7.986159984883918,
+      "cpuMeasuredSeconds": 36.160000000000004,
+      "sampledWallSeconds": 1313.7491054330021,
+      "scope": "odometry_node process only; 100% CPU equals one logical core; memory uses /proc VmHWM KiB"
+    },
+    "latency": {
+      "method": "supervisor monotonic receive(C/F/R exact header stamp) to receive(result)",
+      "duplicate_input_stamps": "latest prior supervisor receive callback",
+      "limitations": "Independent DDS subscriptions and supervisor scheduling affect this observation; reordered callbacks are excluded.",
+      "velocity": {
+        "outputs": 28543,
+        "matched": 28543,
+        "unmatched": 0,
+        "reordered": 0,
+        "coverage": 1.0,
+        "p50_ms": 1.219625,
+        "p95_ms": 4.1099003,
+        "max_ms": 28.866459
+      },
+      "position": {
+        "outputs": 28537,
+        "matched": 28537,
+        "unmatched": 0,
+        "reordered": 0,
+        "coverage": 1.0,
+        "p50_ms": 1.805792,
+        "p95_ms": 4.584191199999998,
+        "max_ms": 29.177125
+      }
+    },
+    "sampling_interval_s": 0.5,
+    "sampling_errors": {}
+  },
+  "interrupted_by": [],
+  "wall_s": 1316.3541470179916,
+  "official_checker": {
+    "velocity": {
+      "rmse": 0.051973,
+      "max": 0.336845,
+      "n": 28531
+    },
+    "position": {
+      "x": {
+        "rmse": 0.882231,
+        "max": 8.964106,
+        "n": 28531
+      },
+      "y": {
+        "rmse": 1.260531,
+        "max": 6.888667,
+        "n": 28531
+      },
+      "z": {
+        "rmse": 0.084048,
+        "max": 0.38837,
+        "n": 28531
+      },
+      "distance": {
+        "rmse": 1.540887,
+        "max": 11.306111,
+        "n": 28531
+      }
+    }
+  },
+  "recorded_message_counts": {
+    "/clock": 52449,
+    "/localization/kinematic_state": 65579,
+    "/result/diagnostics": 28543,
+    "/result/position": 28537,
+    "/result/velocity": 28543
+  },
+  "official_coverage": {
+    "velocity_matched_per_recorded_result": 0.9995795816837754,
+    "position_matched_per_recorded_result": 0.9997897466447069,
+    "denominator_note": "Recorder and checker have independent DDS subscriptions; losses may differ."
+  }
+}

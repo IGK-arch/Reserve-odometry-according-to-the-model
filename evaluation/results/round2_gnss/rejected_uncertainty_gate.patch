@@ -1,0 +1,21 @@
+--- a/ros2_ws/src/tram_odometry/src/navigation.cpp
++++ b/ros2_ws/src/tram_odometry/src/navigation.cpp
+@@ -193,7 +193,6 @@
+     const double separation=std::sqrt(delta.x*delta.x+delta.y*delta.y+delta.z*delta.z);
+     // The maximum allowed vehicle speed bounds unobserved travel between the
+     // antenna timestamps without assuming that the current wheel speed is right.
+-    // Keep a loose 3 m allowance because these fixes may have no covariance.
+     const double tolerance=3.0+estimator_.config().max_speed_mps*pair_age;
+     if (std::abs(separation-std::abs(rover_to_master_s_m_)) > tolerance) {
+       for (auto & pending : correction_windows_) pending.clear();
+@@ -244,6 +243,10 @@
+       std::abs(match.s-prior) >= config_.gnss_correction_gate_m-0.01) {
+     window.clear(); ++rejected_; return;
+   }
++  // Experimental three-sigma gate for isolated fixes (not a production change).
++  const double uncertainty_gate=3*std::sqrt(4+state.distance_variance);
++  if (!(other.valid && pair_age <= 0.2) &&
++      std::abs(match.s-prior)>uncertainty_gate) {window.clear(); ++rejected_; return;}
+   // Store absolute route anchor observations, not residuals invalidated by earlier updates.
+   const double anchor=match.s-distance;
+   if (!window.empty() && (fix.stamp_s-window.back().stamp_s > 1 ||

@@ -1,0 +1,28 @@
+{
+  "30618": {
+    "bags": 13,
+    "matched": 209747,
+    "baseline_rmse_mps": 0.13685968164828047,
+    "core_rmse_mps": 0.12182162516423083
+  },
+  "30639": {
+    "bags": 10,
+    "matched": 222021,
+    "baseline_rmse_mps": 0.11078477625850905,
+    "core_rmse_mps": 0.11421285056490271
+  },
+  "all": {
+    "bags": 23,
+    "matched": 431768,
+    "baseline_rmse_mps": 0.1241375755344085,
+    "core_rmse_mps": 0.11797039894769086
+  },
+  "protocol": "Current code, frozen historical holdout, table only for30618. Holdout previously used for mode selection; not untouched.",
+  "source_commit": "b132f4a94ec5e30e0d21a21ad1e4816eaf9b70b6 + working changes",
+  "source_sha256": {
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f",
+    "evaluation/core_benchmark.py": "3b6e9a517a19482d2ef34aee3b2bf7325d8b144b006340783def7c6fee675152",
+    "evaluation/replay_cli.cpp": "74a752977236c48e87aa50ed2a954cf4d98d87707a3810706547819e35badd38",
+    "tools/split_manifest.json": "9c7db9ea5df911692da03c2525843f20fd957a40ce01ce34ea8030696fc5f221"
+  }
+}

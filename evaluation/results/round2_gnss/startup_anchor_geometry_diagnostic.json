@@ -1,0 +1,154 @@
+{
+  "30618_082f1d65": {
+    "baseline": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -3.1888080874338804,
+      "final_anchor": 46.4957494979512,
+      "last_fix_time_ns": 1.7877701725e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": 45.98478646331645,
+          "mean_lateral_m": 2.99050994760111
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": 46.674811751769724,
+          "mean_lateral_m": 1.611002891950004
+        }
+      }
+    },
+    "geometry": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -13.97090781395816,
+      "final_anchor": 46.09559541878555,
+      "last_fix_time_ns": 1.7877701725e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": 45.98478646331645,
+          "mean_lateral_m": 2.99050994760111
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": 46.0669192927867,
+          "mean_lateral_m": 0.03869586371087196
+        }
+      }
+    }
+  },
+  "30618_dd8e6395": {
+    "baseline": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -6.034699489509858,
+      "final_anchor": -7.672102587500863,
+      "last_fix_time_ns": 1.7877286301e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": -8.468002166466922,
+          "mean_lateral_m": 0.22064556419976247
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": -7.43675989209678,
+          "mean_lateral_m": 2.9446519578061725
+        }
+      }
+    },
+    "geometry": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -18.286169679476565,
+      "final_anchor": -8.529287393171746,
+      "last_fix_time_ns": 1.7877286301e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": -8.468002166466922,
+          "mean_lateral_m": 0.22064556419976247
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": -8.595903199275584,
+          "mean_lateral_m": 0.30635489109823955
+        }
+      }
+    }
+  },
+  "30618_a53d5f6f": {
+    "baseline": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -1.2183614926036557,
+      "final_anchor": -4.927542562595695,
+      "last_fix_time_ns": 1.7877374348e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": -5.557180376319806,
+          "mean_lateral_m": 0.1667338974181466
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": -4.992349910136366,
+          "mean_lateral_m": 2.7742760240652484
+        }
+      }
+    },
+    "geometry": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -13.469831682570362,
+      "final_anchor": -5.6464790686097635,
+      "last_fix_time_ns": 1.7877374348e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": -5.557180376319806,
+          "mean_lateral_m": 0.1667338974181466
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": -5.660785797568542,
+          "mean_lateral_m": 0.27087208626417886
+        }
+      }
+    }
+  },
+  "30618_dd8d0741": {
+    "baseline": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": 7.671812694674766,
+      "final_anchor": -0.9069317220313045,
+      "last_fix_time_ns": 1.7877344075e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": -1.6251582576384658,
+          "mean_lateral_m": 0.1936542577075149
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": -0.6371398556434026,
+          "mean_lateral_m": 2.5067773775103928
+        }
+      }
+    },
+    "geometry": {
+      "initial_heading_source": "dual_antenna",
+      "initial_heading_delta_deg": -4.579657495291942,
+      "final_anchor": -1.7151235915150191,
+      "last_fix_time_ns": 1.7877344075e+18,
+      "last_fix_window": {
+        "MF": {
+          "n": 11,
+          "mean_anchor": -1.6251582576384658,
+          "mean_lateral_m": 0.1936542577075149
+        },
+        "RF": {
+          "n": 11,
+          "mean_anchor": -1.8092777827939273,
+          "mean_lateral_m": 0.6174973243799069
+        }
+      }
+    }
+  }
+}

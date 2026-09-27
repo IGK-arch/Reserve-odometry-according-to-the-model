@@ -1,0 +1,31 @@
+{
+  "description": "Selected physical body-heading correction plus independent pair guard; Estimator source and header are frozen round-1 baseline. Navigation/RouteMap are a fixed snapshot preceding all comparisons.",
+  "body_heading_lookahead_m": 6.098,
+  "parameter_origin": "9.873 m master antenna to front bogie minus half of 7.55 m bogie spacing; selected from rigid vehicle geometry and train analysis before validation or public reference.",
+  "comparison": "All 33 train + 13 validation representatives; same four GNSS schedules and exact common absolute-position masks. Two off-map train bags remain missing absolute coverage in both versions.",
+  "reports": {
+    "train_validation": "geometry_pair_train_validation.json",
+    "public_postselection": "geometry_pair_reference_diagnostic.json"
+  },
+  "public_full_3d_rmse_m": {
+    "baseline": 1.5663323667708708,
+    "pair_only": 1.5662941028767647,
+    "geometry_plus_pair": 1.4523263454121453
+  },
+  "caution": "This isolates navigation changes from subsequent Estimator recovery changes. Public reference is diagnostic only. Proxy improvements are not official hidden-test results.",
+  "artifacts_sha256": {
+    "/private/tmp/gnss-round2-candidates/geometry/navigation.cpp": "5841863ea88e9b2b39083ca3bc387799fc22e00f34d576a8ddf0112f4180878f",
+    "/private/tmp/gnss-round2-candidates/geometry/navigation_replay.cpp": "3287da40f078263a0bf06f56ba16b5b5fc5384cb8c1dbf51a62fa548adf709d3",
+    "/private/tmp/gnss-round2-candidates/geometry/navigation_replay_diagnostic": "474919b5ea93d3b9b98bc0d0a7fcbde02a67955ea2f4ebbf1ce8c4ef754011dd",
+    "/private/tmp/gnss-round2-candidates/geometry/include/tram_odometry/navigation.hpp": "e0dfeeb08beb357bf34f652073ec64ee74266b8a5cba3471f39fee20de8ffbf3",
+    "/private/tmp/gnss-round2-candidates/geometry/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+    "/private/tmp/gnss-round2-candidates/geometry/include/tram_odometry/estimator.hpp": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26",
+    "/private/tmp/odometry-round2-baseline/ros2_ws/src/tram_odometry/src/estimator.cpp": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f"
+  },
+  "diagnostic_followup": {
+    "report": "startup_anchor_geometry_diagnostic.json",
+    "stationary_082f": "23 s stationary clip; paired startup body heading differs from map body heading by -13.97 degrees. Existing Navigation applies this correction to output yaw but not the antenna-to-base lever arm. Its 2.40 m error is consistent with a 9.873 m lever arm rotated by about 14 degrees. Parent is investigating a synthetic regression and consistent lever-arm correction.",
+    "blackout_regressions": "The three main regressions (dd8e6395, a53d5f6f, dd8d0741) lose a fortuitous positive rover-matching anchor bias: new rover observations agree more closely with independent master anchors and reduce lateral residuals from 2.5\u20132.9 m to 0.27\u20130.62 m, but change the anchor carried through the long GNSS blackout by about -0.7 to -0.9 m. The old bias partly compensated subsequent wheel/map errors.",
+    "scope": "These are diagnostics after physical-geometry selection; no parameter tuned on the validation trips. Saved geometry evidence predates any follow-up startup lever-arm fix or tentative-wheel freeze guard change."
+  }
+}

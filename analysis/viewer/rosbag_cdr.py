@@ -1,4 +1,4 @@
-"""Minimal, dependency-free reader for the seven message types in this dataset.
+"""Minimal, dependency-free reader for the recorded input and result message types.
 
 ROS 2 messages in rosbag2 SQLite storage use CDR alignment relative to the
 four-byte encapsulation header. This module deliberately supports only the
@@ -7,6 +7,8 @@ recorded schema; it is an audit aid, not a general ROS serializer.
 
 from __future__ import annotations
 
+from contextlib import ExitStack, closing
+import heapq
 import sqlite3
 import struct
 from pathlib import Path
@@ -42,11 +44,21 @@ class CDR:
         return sec * 1_000_000_000 + nsec, frame
 
 
-def decode(topic: str, data: bytes) -> dict:
+def decode(topic: str, data: bytes, message_type: str | None = None) -> dict:
     cdr = CDR(data)
     stamp, frame = cdr.header()
     out = {"stamp_ns": stamp, "frame_id": frame}
-    if topic.endswith("bogie_velocity"):
+    if message_type == "nav_msgs/msg/Odometry" or topic in {
+        "/localization/kinematic_state", "/result/position"
+    }:
+        out["child_frame_id"] = cdr.string()
+        out["position"] = tuple(cdr.read("d", 8) for _ in range(3))
+        out["orientation"] = tuple(cdr.read("d", 8) for _ in range(4))
+        out["pose_covariance"] = tuple(cdr.read("d", 8) for _ in range(36))
+        out["linear"] = tuple(cdr.read("d", 8) for _ in range(3))
+        out["angular"] = tuple(cdr.read("d", 8) for _ in range(3))
+        out["twist_covariance"] = tuple(cdr.read("d", 8) for _ in range(36))
+    elif topic.endswith("bogie_velocity") or topic == "/result/velocity":
         out["velocity_raw"] = cdr.read("d", 8)
     elif topic.endswith("driver_position_cmd"):
         out["position"] = cdr.read("b", 1)
@@ -70,20 +82,33 @@ def messages(bag_dir: Path, topics: set[str] | None = None) -> Iterator[tuple[st
     db_paths = sorted(bag_dir.glob("*.db3"))
     if not db_paths:
         raise FileNotFoundError(f"No db3 in {bag_dir}")
-    for db_path in db_paths:
-        conn = sqlite3.connect(f"file:{db_path.as_posix()}?mode=ro", uri=True)
-        try:
-            name_by_id = dict(conn.execute("SELECT id, name FROM topics"))
-            selected = [tid for tid, name in name_by_id.items() if topics is None or name in topics]
+    # Splits need not be named chronologically; merge their ordered cursors.
+    # Opening read-only prevents a typo from creating an empty SQLite file.
+    with ExitStack() as stack:
+        streams = []
+        for db_path in db_paths:
+            conn = stack.enter_context(closing(sqlite3.connect(
+                f"{db_path.resolve().as_uri()}?mode=ro", uri=True
+            )))
+            schema = {row[1] for row in conn.execute("PRAGMA table_info(topics)")}
+            type_expr = "type" if "type" in schema else "NULL"
+            info = {row[0]: (row[1], row[2]) for row in conn.execute(
+                f"SELECT id, name, {type_expr} FROM topics"
+            )}
+            selected = [tid for tid, (name, _) in info.items() if topics is None or name in topics]
             if not selected:
                 continue
             placeholders = ",".join("?" for _ in selected)
             cursor = conn.execute(
-                f"SELECT topic_id, timestamp, data FROM messages WHERE topic_id IN ({placeholders}) ORDER BY timestamp",
+                f"SELECT topic_id, timestamp, data FROM messages WHERE topic_id IN ({placeholders}) ORDER BY timestamp, id",
                 selected,
             )
-            for topic_id, received_ns, data in cursor:
-                topic = name_by_id[topic_id]
-                yield topic, received_ns, decode(topic, data)
-        finally:
-            conn.close()
+
+            def rows(cursor=cursor, info=info):
+                for topic_id, received_ns, data in cursor:
+                    topic, message_type = info[topic_id]
+                    yield topic, received_ns, data, message_type
+
+            streams.append(rows())
+        for topic, received_ns, data, message_type in heapq.merge(*streams, key=lambda row: row[1]):
+            yield topic, received_ns, decode(topic, data, message_type)

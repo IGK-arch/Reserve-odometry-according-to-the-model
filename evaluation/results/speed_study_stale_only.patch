@@ -1,0 +1,94 @@
+--- a/ros2_ws/src/tram_odometry/src/estimator.cpp
++++ b/ros2_ws/src/tram_odometry/src/estimator.cpp
+@@ -73,6 +73,9 @@
+   distance_variance_ = 0.0;
+   drive_state_ = 0.0;
+   adaptive_bias_mps2_ = 0.0;
++  propagation_acceleration_mps2_ = 0.0;
++  short_acceleration_mps2_ = 0.0;
++  short_accel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   drive_table_used_ = false;
+   last_command_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+@@ -297,8 +300,18 @@
+       }
+     }
+   }
++  propagation_acceleration_mps2_ = model_acceleration_mps2_;
++  // Short causal wheel acceleration fades into the command model after loss.
++  if (!fresh(front_) && !fresh(rear_) &&
++      std::isfinite(short_accel_stamp_s_) &&
++      stamp_s_ >= front_.slip_until_s && stamp_s_ >= rear_.slip_until_s) {
++    const double age_s = std::max(0.0, stamp_s_ - short_accel_stamp_s_);
++    const double weight = std::exp(-std::max(0.0, age_s - config_.wheel_stale_s) / config_.wheel_stale_s);
++    propagation_acceleration_mps2_ = clamp(model_acceleration_mps2_ +
++        weight * short_acceleration_mps2_, -4.0, 3.0);
++  }
+   velocity_mps_ =
+-      clamp(before + model_acceleration_mps2_ * dt_s, 0.0,
++      clamp(before + propagation_acceleration_mps2_ * dt_s, 0.0,
+             config_.max_speed_mps);
+   distance_m_ += 0.5 * (before + velocity_mps_) * dt_s;
+   acceleration_mps2_ =
+@@ -390,7 +403,7 @@
+     return;
+   }
+   const double converted =
+-      physical_raw_mps + model_acceleration_mps2_ * late_by_s;
++      physical_raw_mps + propagation_acceleration_mps2_ * late_by_s;
+   const double measured_mps = clamp(converted, 0.0, config_.max_speed_mps);
+   const double predicted_mps = velocity_mps_;
+   const double old_good_mps = wheel.last_good_speed_mps;
+@@ -425,7 +438,7 @@
+       other_recent && effective_stamp_s >= other.slip_until_s;
+   const double other_projected_mps =
+       other.speed_mps +
+-      model_acceleration_mps2_ *
++      propagation_acceleration_mps2_ *
+           (other_recent ?
+                std::max(0.0, effective_stamp_s - other.stamp_s) : 0.0);
+   const double pair_difference =
+@@ -556,6 +569,22 @@
+     acceleration_mps2_ = model_acceleration_mps2_;
+   }
+ 
++  if (pair_consistent && trusted(other) &&
++      std::isfinite(wheel.last_good_sensor_stamp_s)) {
++    const double raw_dt_s = stamp_s - wheel.last_good_sensor_stamp_s;
++    if (raw_dt_s >= 0.045 && raw_dt_s <= 0.3) {
++      const double observed = (physical_raw_mps - wheel.last_good_raw_mps) / raw_dt_s - model_acceleration_mps2_;
++      if (std::abs(observed) <= 2.0) {
++        const double alpha = 1.0 - std::exp(-0.5 * raw_dt_s / config_.wheel_stale_s);
++        short_acceleration_mps2_ = std::isfinite(short_accel_stamp_s_)
++            ? short_acceleration_mps2_ + alpha * (observed - short_acceleration_mps2_)
++            : observed;
++        short_accel_stamp_s_ = effective_stamp_s;
++      }
++    }
++  }
++  wheel.last_good_raw_mps = physical_raw_mps;
++  wheel.last_good_sensor_stamp_s = stamp_s;
+   wheel.last_good_speed_mps = measured_mps;
+   wheel.last_good_stamp_s = effective_stamp_s;
+ 
+--- a/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp
++++ b/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp
+@@ -101,6 +101,8 @@
+  private:
+   struct WheelState {
+     double raw_speed_mps = 0.0;
++    double last_good_raw_mps = 0.0;
++    double last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
+     double speed_mps = 0.0;
+     double stamp_s = std::numeric_limits<double>::quiet_NaN();
+     double last_good_speed_mps = 0.0;
+@@ -140,6 +142,9 @@
+   double distance_variance_ = 0.0;
+   double drive_state_ = 0.0;
+   double adaptive_bias_mps2_ = 0.0;
++  double propagation_acceleration_mps2_ = 0.0;
++  double short_acceleration_mps2_ = 0.0;
++  double short_accel_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
+   std::array<std::vector<DriveCell>, 31> drive_table_;
+   bool drive_table_loaded_ = false;
+   bool drive_table_used_ = false;

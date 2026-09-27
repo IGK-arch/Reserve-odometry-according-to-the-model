@@ -1,0 +1,248 @@
+{
+  "runtime_navigation_sha256": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+  "fix": "Rotate the rigid antenna-to-base direction around Z by the same decaying startup paired-heading correction already applied to yaw. Preserve pitch, lever-arm norm, map/master anchor and independent positional residual.",
+  "parameter_fitting": "No parameters were fitted. Synthetic fixture uses a 32 m circle, a 1.75 m radial parked offset and a 0.4 rad observed body-heading offset; all chosen before the post-fix dataset diagnostics.",
+  "tdd": {
+    "red_stationary_error_m": 3.93372,
+    "green_stationary_error_m": 6.88294e-10,
+    "checks": [
+      "observed paired body heading and expected physical base position",
+      "yaw/position coherence through over 40 m of heading decay",
+      "rigid lever-arm length",
+      "same master-route anchor and accepted GNSS corrections for paired versus master-only startup",
+      "exactly equal wheel velocity and distance",
+      "3D grade preserved; antenna height applied once"
+    ],
+    "integrated_cpp_executables_passed": 13,
+    "asan_ubsan": "passed standalone startup-heading regression",
+    "independent_review": "passed at frozen runtime SHA"
+  },
+  "isolation": "All navigation dataset studies use original frozen Estimator source. The frozen Estimate declaration gains only two default-false tentative flags required by the later GNSS frozen-position guard; estimator numerical implementation/configuration is unchanged. Every dataset scenario checks exact velocity/distance equality with the original replay.",
+  "diagnostics_after_fix": {
+    "stationary_082f_rmse_m": {
+      "original": 1.2041956717564088,
+      "intermediate_geometry": 2.399469094729587,
+      "consistent_heading": 0.11381449547547239
+    },
+    "public_reference_full_3d_rmse_m": {
+      "original": 1.5663323667708708,
+      "intermediate_geometry": 1.4523263454121453,
+      "consistent_heading": 1.4749234216367966
+    }
+  },
+  "reports": {
+    "public": "heading_fix_reference_diagnostic.json",
+    "stationary": "startup_heading_stationary_diagnostic.json",
+    "train_validation": "heading_fix_train_validation.json"
+  },
+  "limitations": [
+    "Retaining physically consistent yaw and position can score worse than the inconsistent intermediate on an aggregate diagnostic. Public and validation results did not choose the heading correction or constants.",
+    "Original positive rover-map anchor bias sometimes compensated later wheel/map drift during GNSS blackout; correcting geometry cannot guarantee lower blackout RMSE.",
+    "Lone-antenna systematic bias remains unobservable by independent pair separation checks."
+  ],
+  "artifacts_sha256": {
+    "/private/tmp/gnss-round2-candidates/heading_fix/navigation.cpp": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+    "/private/tmp/gnss-round2-candidates/heading_fix/navigation_replay.cpp": "3287da40f078263a0bf06f56ba16b5b5fc5384cb8c1dbf51a62fa548adf709d3",
+    "/private/tmp/gnss-round2-candidates/heading_fix/navigation_replay_diagnostic": "64a618421daee265676f10306004bd58ba75b94af3e08be54840634769a9774a",
+    "/private/tmp/gnss-round2-candidates/heading_fix/include/tram_odometry/navigation.hpp": "e0dfeeb08beb357bf34f652073ec64ee74266b8a5cba3471f39fee20de8ffbf3",
+    "/private/tmp/gnss-round2-candidates/heading_fix/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+    "/private/tmp/gnss-round2-candidates/heading_fix/include/tram_odometry/estimator.hpp": "ac101599cb974e1dc09e3b8b2ac86fd2096231859850976b98c7d99fcc69c0df",
+    "/private/tmp/odometry-round2-baseline/ros2_ws/src/tram_odometry/src/estimator.cpp": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f",
+    "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/ros2_ws/src/tram_odometry/test/navigation_startup_heading_test.cpp": "47ab0d17cf03996645fd496a5ee42020f50f624c1018684535d13c84415c99d0"
+  },
+  "session_results": {
+    "2026-07-27": {
+      "startup": {
+        "attempted_bags": 29,
+        "scored_bags": 27,
+        "n": 709810,
+        "proxy_matched_count": 710990,
+        "no_absolute_position_bags": [
+          "30618_0d865417",
+          "30618_bc5e53c2"
+        ],
+        "absolute_position_coverage": 0.9983403423395547,
+        "baseline_bag_median_rmse_m": 2.159492034269739,
+        "baseline_pooled_rmse_m": 5.402517835912708,
+        "candidate_bag_median_rmse_m": 2.1280050945479507,
+        "candidate_pooled_rmse_m": 5.423847250884449,
+        "improved_bags": 17,
+        "worse_bags": 10
+      },
+      "sparse": {
+        "attempted_bags": 29,
+        "scored_bags": 27,
+        "n": 709810,
+        "proxy_matched_count": 710990,
+        "no_absolute_position_bags": [
+          "30618_0d865417",
+          "30618_bc5e53c2"
+        ],
+        "absolute_position_coverage": 0.9983403423395547,
+        "baseline_bag_median_rmse_m": 1.9783434601821204,
+        "baseline_pooled_rmse_m": 4.988966409396634,
+        "candidate_bag_median_rmse_m": 1.959987769813284,
+        "candidate_pooled_rmse_m": 4.971904089746883,
+        "improved_bags": 24,
+        "worse_bags": 3
+      },
+      "delayed": {
+        "attempted_bags": 29,
+        "scored_bags": 27,
+        "n": 709810,
+        "proxy_matched_count": 710990,
+        "no_absolute_position_bags": [
+          "30618_0d865417",
+          "30618_bc5e53c2"
+        ],
+        "absolute_position_coverage": 0.9983403423395547,
+        "baseline_bag_median_rmse_m": 2.159492034269739,
+        "baseline_pooled_rmse_m": 5.402517835912708,
+        "candidate_bag_median_rmse_m": 2.1280050945479507,
+        "candidate_pooled_rmse_m": 5.423847250884449,
+        "improved_bags": 17,
+        "worse_bags": 10
+      },
+      "frozen": {
+        "attempted_bags": 29,
+        "scored_bags": 27,
+        "n": 709810,
+        "proxy_matched_count": 710990,
+        "no_absolute_position_bags": [
+          "30618_0d865417",
+          "30618_bc5e53c2"
+        ],
+        "absolute_position_coverage": 0.9983403423395547,
+        "baseline_bag_median_rmse_m": 2.002226057435865,
+        "baseline_pooled_rmse_m": 4.684865833488969,
+        "candidate_bag_median_rmse_m": 1.9808934985012865,
+        "candidate_pooled_rmse_m": 4.6678291477972005,
+        "improved_bags": 24,
+        "worse_bags": 3
+      }
+    },
+    "2026-08-26": {
+      "startup": {
+        "attempted_bags": 13,
+        "scored_bags": 13,
+        "n": 301243,
+        "proxy_matched_count": 301269,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9999136983891472,
+        "baseline_bag_median_rmse_m": 2.570633146328915,
+        "baseline_pooled_rmse_m": 2.6640543456841463,
+        "candidate_bag_median_rmse_m": 2.834659333117354,
+        "candidate_pooled_rmse_m": 2.7981082796669408,
+        "improved_bags": 9,
+        "worse_bags": 4
+      },
+      "sparse": {
+        "attempted_bags": 13,
+        "scored_bags": 13,
+        "n": 301243,
+        "proxy_matched_count": 301269,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9999136983891472,
+        "baseline_bag_median_rmse_m": 1.4971605154115597,
+        "baseline_pooled_rmse_m": 1.8844470789854944,
+        "candidate_bag_median_rmse_m": 1.4617747653388624,
+        "candidate_pooled_rmse_m": 1.8409865823428464,
+        "improved_bags": 13,
+        "worse_bags": 0
+      },
+      "delayed": {
+        "attempted_bags": 13,
+        "scored_bags": 13,
+        "n": 301243,
+        "proxy_matched_count": 301269,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9999136983891472,
+        "baseline_bag_median_rmse_m": 2.570633146328915,
+        "baseline_pooled_rmse_m": 2.6640543456841463,
+        "candidate_bag_median_rmse_m": 2.834659333117354,
+        "candidate_pooled_rmse_m": 2.7981082796669408,
+        "improved_bags": 9,
+        "worse_bags": 4
+      },
+      "frozen": {
+        "attempted_bags": 13,
+        "scored_bags": 13,
+        "n": 301243,
+        "proxy_matched_count": 301269,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9999136983891472,
+        "baseline_bag_median_rmse_m": 1.7790424985190125,
+        "baseline_pooled_rmse_m": 1.7954508464783678,
+        "candidate_bag_median_rmse_m": 1.7594317902427312,
+        "candidate_pooled_rmse_m": 1.7525665518519582,
+        "improved_bags": 12,
+        "worse_bags": 1
+      }
+    },
+    "2026-09-03": {
+      "startup": {
+        "attempted_bags": 4,
+        "scored_bags": 4,
+        "n": 102218,
+        "proxy_matched_count": 102276,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9994329070358637,
+        "baseline_bag_median_rmse_m": 34.71883703343139,
+        "baseline_pooled_rmse_m": 36.93235573306426,
+        "candidate_bag_median_rmse_m": 35.16029941465486,
+        "candidate_pooled_rmse_m": 37.14323020307927,
+        "improved_bags": 2,
+        "worse_bags": 2
+      },
+      "sparse": {
+        "attempted_bags": 4,
+        "scored_bags": 4,
+        "n": 102218,
+        "proxy_matched_count": 102276,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9994329070358637,
+        "baseline_bag_median_rmse_m": 10.116121174421314,
+        "baseline_pooled_rmse_m": 11.481331880794421,
+        "candidate_bag_median_rmse_m": 10.10320541837247,
+        "candidate_pooled_rmse_m": 11.473203188410835,
+        "improved_bags": 4,
+        "worse_bags": 0
+      },
+      "delayed": {
+        "attempted_bags": 4,
+        "scored_bags": 4,
+        "n": 102218,
+        "proxy_matched_count": 102276,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9994329070358637,
+        "baseline_bag_median_rmse_m": 34.71883703343139,
+        "baseline_pooled_rmse_m": 36.93235573306426,
+        "candidate_bag_median_rmse_m": 35.16029941465486,
+        "candidate_pooled_rmse_m": 37.14323020307927,
+        "improved_bags": 2,
+        "worse_bags": 2
+      },
+      "frozen": {
+        "attempted_bags": 4,
+        "scored_bags": 4,
+        "n": 102218,
+        "proxy_matched_count": 102276,
+        "no_absolute_position_bags": [],
+        "absolute_position_coverage": 0.9994329070358637,
+        "baseline_bag_median_rmse_m": 17.40955754404879,
+        "baseline_pooled_rmse_m": 28.151558533496036,
+        "candidate_bag_median_rmse_m": 17.401132992212435,
+        "candidate_pooled_rmse_m": 28.135873087029236,
+        "improved_bags": 4,
+        "worse_bags": 0
+      }
+    }
+  },
+  "verified_invariants": {
+    "scenarios": 184,
+    "identical_velocity_and_integrated_wheel_distance": true,
+    "identical_publication_stamps_and_absolute_masks": true,
+    "frozen_diagnostic_rebuild_preserves_original_fields": true
+  },
+  "evidence_status": "Complete navigation-only comparison; final integrated Estimator/ROS results are reported separately by the parent task."
+}

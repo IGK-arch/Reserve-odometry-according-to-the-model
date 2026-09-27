@@ -1,0 +1,845 @@
+{
+  "note": "Paired-GNSS base_link proxy diagnostic; NOT official fused-reference score. No fitting.",
+  "window_rule": "All modes use corrections during first 30s; then alternating MF/RF 2s windows at 120,240,...s, except startup blackout.",
+  "matching": "Nearest proxy header within inclusive 50ms; ties choose earlier; all time differences use integer ns.",
+  "mode_labels": {
+    "startup": "Both GNSS antennas allowed first 30 seconds with corrections enabled, then blackout",
+    "sparse": "Same first 30 seconds, then clean sparse single-antenna windows",
+    "delayed": "Same first 30 seconds; sparse windows delayed by 1 second in receive order",
+    "frozen": "Same first 30 seconds; repeat first XYZ of each sparse window with fresh timestamps"
+  },
+  "limitations": [
+    "Paired GNSS + provided antenna TF is only an approximate base_link reference; these are not official fused-localization scores.",
+    "Reference antenna interpolation and cleanup are offline scoring operations; replay receives only selected original GNSS and vehicle inputs.",
+    "These trip diagnostics are not an independent population accuracy claim.",
+    "When sparse windows miss a fork, scalar wheel/controller inputs cannot identify its branch; the default branch can remain wrong.",
+    "The fixed-payload freeze guard requires two healthy wheel channels; broader smoothly drifting or jointly wrong GNSS is not certified.",
+    "Clean corrections can increase proxy RMSE on already accurate trips; uniform improvement is not guaranteed."
+  ],
+  "bags": [
+    {
+      "bag": "30618_01f73500",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 10430,
+      "modes": {
+        "startup": {
+          "n": 24439,
+          "rmse_3d_m": 3.2621073250795867,
+          "end_proxy_error_m": 5.4777281812524015,
+          "clamped_outputs": 0,
+          "corrections": 635,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 24439,
+          "rmse_3d_m": 1.4971605154115597,
+          "end_proxy_error_m": 0.30652236516172343,
+          "clamped_outputs": 0,
+          "corrections": 794,
+          "rejected": 30,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 24439,
+          "rmse_3d_m": 3.2621073250795867,
+          "end_proxy_error_m": 5.4777281812524015,
+          "clamped_outputs": 0,
+          "corrections": 635,
+          "rejected": 209,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 24439,
+          "rmse_3d_m": 1.9013390111738313,
+          "end_proxy_error_m": 2.680355478681601,
+          "clamped_outputs": 0,
+          "corrections": 689,
+          "rejected": 137,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_082f1d65",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 229,
+      "modes": {
+        "startup": {
+          "n": 493,
+          "rmse_3d_m": 1.2041956717564088,
+          "end_proxy_error_m": 1.4156079701825257,
+          "clamped_outputs": 0,
+          "corrections": 437,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 493,
+          "rmse_3d_m": 1.2041956717564088,
+          "end_proxy_error_m": 1.4156079701825257,
+          "clamped_outputs": 0,
+          "corrections": 437,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 493,
+          "rmse_3d_m": 1.2041956717564088,
+          "end_proxy_error_m": 1.4156079701825257,
+          "clamped_outputs": 0,
+          "corrections": 437,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 493,
+          "rmse_3d_m": 1.2041956717564088,
+          "end_proxy_error_m": 1.4156079701825257,
+          "clamped_outputs": 0,
+          "corrections": 437,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_2050d396",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 13234,
+      "modes": {
+        "startup": {
+          "n": 29322,
+          "rmse_3d_m": 1.965616956706552,
+          "end_proxy_error_m": 3.616245578227702,
+          "clamped_outputs": 0,
+          "corrections": 630,
+          "rejected": 8,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 29322,
+          "rmse_3d_m": 0.7669165779073682,
+          "end_proxy_error_m": 0.32666192950918993,
+          "clamped_outputs": 0,
+          "corrections": 828,
+          "rejected": 8,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 29322,
+          "rmse_3d_m": 1.965616956706552,
+          "end_proxy_error_m": 3.616245578227702,
+          "clamped_outputs": 0,
+          "corrections": 630,
+          "rejected": 228,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 29322,
+          "rmse_3d_m": 1.4648732850578816,
+          "end_proxy_error_m": 1.1219749909046977,
+          "clamped_outputs": 0,
+          "corrections": 684,
+          "rejected": 152,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_33bec73f",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 11704,
+      "modes": {
+        "startup": {
+          "n": 26330,
+          "rmse_3d_m": 1.4212580519801228,
+          "end_proxy_error_m": 4.112005006147156,
+          "clamped_outputs": 43,
+          "corrections": 620,
+          "rejected": 20,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 26330,
+          "rmse_3d_m": 0.939552784830678,
+          "end_proxy_error_m": 4.112005006147156,
+          "clamped_outputs": 60,
+          "corrections": 774,
+          "rejected": 20,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 26330,
+          "rmse_3d_m": 1.4212580519801228,
+          "end_proxy_error_m": 4.112005006147156,
+          "clamped_outputs": 43,
+          "corrections": 620,
+          "rejected": 192,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 26330,
+          "rmse_3d_m": 1.4115285817782088,
+          "end_proxy_error_m": 4.112005006147156,
+          "clamped_outputs": 49,
+          "corrections": 624,
+          "rejected": 170,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_3e9f4952",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 11717,
+      "modes": {
+        "startup": {
+          "n": 26389,
+          "rmse_3d_m": 2.400787455434034,
+          "end_proxy_error_m": 2.2494253615967033,
+          "clamped_outputs": 32,
+          "corrections": 638,
+          "rejected": 1,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 26389,
+          "rmse_3d_m": 4.82091582971076,
+          "end_proxy_error_m": 2.2487694960056133,
+          "clamped_outputs": 32,
+          "corrections": 817,
+          "rejected": 1,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 26389,
+          "rmse_3d_m": 2.400787455434034,
+          "end_proxy_error_m": 2.2494253615967033,
+          "clamped_outputs": 32,
+          "corrections": 638,
+          "rejected": 200,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 26389,
+          "rmse_3d_m": 1.7790424985190125,
+          "end_proxy_error_m": 2.2487694960056133,
+          "clamped_outputs": 27,
+          "corrections": 664,
+          "rejected": 156,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_437e855c",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 10337,
+      "modes": {
+        "startup": {
+          "n": 24137,
+          "rmse_3d_m": 3.301528216569168,
+          "end_proxy_error_m": 5.5823185321802455,
+          "clamped_outputs": 0,
+          "corrections": 624,
+          "rejected": 19,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 24137,
+          "rmse_3d_m": 1.5804587757123247,
+          "end_proxy_error_m": 3.250453413072693,
+          "clamped_outputs": 0,
+          "corrections": 780,
+          "rejected": 19,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 24137,
+          "rmse_3d_m": 3.301528216569168,
+          "end_proxy_error_m": 5.5823185321802455,
+          "clamped_outputs": 0,
+          "corrections": 624,
+          "rejected": 195,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 24137,
+          "rmse_3d_m": 2.4583193423958254,
+          "end_proxy_error_m": 3.5570719795325547,
+          "clamped_outputs": 0,
+          "corrections": 642,
+          "rejected": 159,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_67b89902",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 9007,
+      "modes": {
+        "startup": {
+          "n": 18991,
+          "rmse_3d_m": 1.3427323215602514,
+          "end_proxy_error_m": 2.7360829773307818,
+          "clamped_outputs": 0,
+          "corrections": 618,
+          "rejected": 11,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 18991,
+          "rmse_3d_m": 0.8867927518245271,
+          "end_proxy_error_m": 2.3023136992676916,
+          "clamped_outputs": 0,
+          "corrections": 762,
+          "rejected": 11,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 18991,
+          "rmse_3d_m": 1.3427323215602514,
+          "end_proxy_error_m": 2.7360829773307818,
+          "clamped_outputs": 0,
+          "corrections": 618,
+          "rejected": 171,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 18991,
+          "rmse_3d_m": 0.8849166892806029,
+          "end_proxy_error_m": 2.105876283015785,
+          "clamped_outputs": 0,
+          "corrections": 654,
+          "rejected": 119,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_a53d5f6f",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 11073,
+      "modes": {
+        "startup": {
+          "n": 25392,
+          "rmse_3d_m": 2.591744575248784,
+          "end_proxy_error_m": 4.038290208994281,
+          "clamped_outputs": 0,
+          "corrections": 629,
+          "rejected": 12,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 25392,
+          "rmse_3d_m": 1.5477279803719117,
+          "end_proxy_error_m": 1.1994581568920863,
+          "clamped_outputs": 0,
+          "corrections": 806,
+          "rejected": 12,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 25392,
+          "rmse_3d_m": 2.591744575248784,
+          "end_proxy_error_m": 4.038290208994281,
+          "clamped_outputs": 0,
+          "corrections": 629,
+          "rejected": 211,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 25392,
+          "rmse_3d_m": 1.9072759089720355,
+          "end_proxy_error_m": 1.4884007978176614,
+          "clamped_outputs": 0,
+          "corrections": 694,
+          "rejected": 126,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_a869780d",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 8707,
+      "modes": {
+        "startup": {
+          "n": 21825,
+          "rmse_3d_m": 2.8361564046075762,
+          "end_proxy_error_m": 29.036959385550045,
+          "clamped_outputs": 0,
+          "corrections": 628,
+          "rejected": 15,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 21825,
+          "rmse_3d_m": 1.662463993621086,
+          "end_proxy_error_m": 0.30553312570158353,
+          "clamped_outputs": 0,
+          "corrections": 780,
+          "rejected": 17,
+          "branch_switches": 1,
+          "last_branch": "alternate",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 21825,
+          "rmse_3d_m": 2.8361564046075762,
+          "end_proxy_error_m": 29.036959385550045,
+          "clamped_outputs": 0,
+          "corrections": 628,
+          "rejected": 188,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 21825,
+          "rmse_3d_m": 1.8506307618249314,
+          "end_proxy_error_m": 1.3721772279667337,
+          "clamped_outputs": 0,
+          "corrections": 680,
+          "rejected": 119,
+          "branch_switches": 1,
+          "last_branch": "alternate",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_d4ba7005",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 11530,
+      "modes": {
+        "startup": {
+          "n": 24735,
+          "rmse_3d_m": 3.232706288846645,
+          "end_proxy_error_m": 6.408439146698977,
+          "clamped_outputs": 0,
+          "corrections": 635,
+          "rejected": 6,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 24735,
+          "rmse_3d_m": 0.7134108786529891,
+          "end_proxy_error_m": 2.2986226495111395,
+          "clamped_outputs": 0,
+          "corrections": 797,
+          "rejected": 6,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 24735,
+          "rmse_3d_m": 3.232706288846645,
+          "end_proxy_error_m": 6.408439146698977,
+          "clamped_outputs": 0,
+          "corrections": 635,
+          "rejected": 186,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 24735,
+          "rmse_3d_m": 0.9475156479198132,
+          "end_proxy_error_m": 2.2861490857767373,
+          "clamped_outputs": 0,
+          "corrections": 730,
+          "rejected": 73,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_dd8d0741",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 10317,
+      "modes": {
+        "startup": {
+          "n": 22902,
+          "rmse_3d_m": 2.53381598003986,
+          "end_proxy_error_m": 3.8984794543267127,
+          "clamped_outputs": 0,
+          "corrections": 624,
+          "rejected": 12,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 22902,
+          "rmse_3d_m": 1.7505929417095631,
+          "end_proxy_error_m": 0.8178172759429553,
+          "clamped_outputs": 0,
+          "corrections": 804,
+          "rejected": 12,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 22902,
+          "rmse_3d_m": 2.53381598003986,
+          "end_proxy_error_m": 3.8984794543267127,
+          "clamped_outputs": 0,
+          "corrections": 624,
+          "rejected": 212,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 22902,
+          "rmse_3d_m": 2.113082696232211,
+          "end_proxy_error_m": 1.8477202022858847,
+          "clamped_outputs": 0,
+          "corrections": 696,
+          "rejected": 120,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_dd8e6395",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 12077,
+      "modes": {
+        "startup": {
+          "n": 28055,
+          "rmse_3d_m": 3.3934951815759122,
+          "end_proxy_error_m": 5.726762543327705,
+          "clamped_outputs": 1,
+          "corrections": 107,
+          "rejected": 526,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 28055,
+          "rmse_3d_m": 1.6156482967078776,
+          "end_proxy_error_m": 1.8178253111100597,
+          "clamped_outputs": 1,
+          "corrections": 283,
+          "rejected": 526,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 28055,
+          "rmse_3d_m": 3.3934951815759122,
+          "end_proxy_error_m": 5.726762543327705,
+          "clamped_outputs": 1,
+          "corrections": 107,
+          "rejected": 722,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 28055,
+          "rmse_3d_m": 2.7049382611116175,
+          "end_proxy_error_m": 1.817852972688953,
+          "clamped_outputs": 1,
+          "corrections": 161,
+          "rejected": 648,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_e9a34502",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 11933,
+      "modes": {
+        "startup": {
+          "n": 28233,
+          "rmse_3d_m": 2.570633146328915,
+          "end_proxy_error_m": 5.003195585476062,
+          "clamped_outputs": 0,
+          "corrections": 631,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 28233,
+          "rmse_3d_m": 0.535064595821708,
+          "end_proxy_error_m": 1.3302073759272863,
+          "clamped_outputs": 0,
+          "corrections": 804,
+          "rejected": 10,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 28233,
+          "rmse_3d_m": 2.570633146328915,
+          "end_proxy_error_m": 5.003195585476062,
+          "clamped_outputs": 0,
+          "corrections": 631,
+          "rejected": 193,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 28233,
+          "rmse_3d_m": 0.9511601767743919,
+          "end_proxy_error_m": 1.6921973941617718,
+          "clamped_outputs": 0,
+          "corrections": 664,
+          "rejected": 150,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "git_commit": "b132f4a94ec5e30e0d21a21ad1e4816eaf9b70b6",
+    "artifacts_sha256": {
+      "evaluation/navigation_gnss_stress.py": "2e0ee003f75c204f122ecfe8d463f91a55638717df4b3277269495d40d03f553",
+      "evaluation/navigation_replay.cpp": "fa5d8a9ffa8ddb9ab82bce0d10ca67d7f9bb1301db8f54877de3237361733ac7",
+      "evaluation/reference_benchmark.py": "156a82c240241da3c596a5bdca47d53d846b789adb462a23b6edb56b2175058d",
+      "analysis/viewer/rosbag_cdr.py": "7d8a5c7ac159c15c8164527aed1de1529a3e50cee96b44db08040b31285017fb",
+      "ros2_ws/src/tram_odometry/src/navigation.cpp": "7af67e7ce37576c8512dca1584c6ecaac0f1119e1d55909d1bc89a5d48601d74",
+      "ros2_ws/src/tram_odometry/src/estimator.cpp": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "6aba4a164441b3c0fbd4f244e4acba424d33bacb9b5fe4fb8e0583672fd21af5",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "09044aca84c32c3e48251b66e87edf30887e6dbcfa496f111aa118c86d2ea72f",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp": "93d263325fc13892549dd3104d2d51e6da3e77495d4e5846acfba88a8bf961e1",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+      "ros2_ws/src/tram_odometry/assets/route_map.csv": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+      "ros2_ws/src/tram_odometry/assets/route_map_branch_a.csv": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+      "ros2_ws/src/tram_odometry/assets/official_elevation.csv": "86ec3d223f1b76de6bc8ffc4f5b1a8eb87a457b570de00d97f996d859b53e686",
+      "ros2_ws/src/tram_odometry/assets/drive_accel_table.csv": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc"
+    },
+    "executable_sha256": "48aa3602e04fc261070af3bfa9d14fafeae257a9d68ce28373b0a83f342ed2ed",
+    "projection_adapter_sha256": "8bc03dd981c42d979bfe5c3ab2267ab562d98faff87327d40b438b09a585b208",
+    "bag_files_sha256": {
+      "30618_01f73500": {
+        "30618_01f73500_0.db3": "c06cb5b8ae3264db88494ac10081e6240a67455d7190c24349b16f7a90170fa7"
+      },
+      "30618_082f1d65": {
+        "30618_082f1d65_0.db3": "447ec1edc79bea775b1aa0c6ed6764255524ca01954d61a981e6e10b4ca01182"
+      },
+      "30618_2050d396": {
+        "30618_2050d396_0.db3": "0c63f7d8a45c605ee40853a6018ff2899e7825b4dea5a2ea50874ed80ff61de6"
+      },
+      "30618_33bec73f": {
+        "30618_33bec73f_0.db3": "d0a9c4a3af1ea752e18839a546bbbdc21e3715030605026f258078657e51a41d"
+      },
+      "30618_3e9f4952": {
+        "30618_3e9f4952_0.db3": "d7d4fc570a0ae5cfb8bdcb7b1ebecf15e6a9dc9391b9d663125e3ba56ce5c9a5"
+      },
+      "30618_437e855c": {
+        "30618_437e855c_0.db3": "1056f798971cabb555d8bd3ec480d6a215898d1437970410fb87745d831fe919"
+      },
+      "30618_67b89902": {
+        "30618_67b89902_0.db3": "3a412e6cc81aa4649d07f80a77bf074c1ca11e152eb9b87be29d4f0846688f30"
+      },
+      "30618_a53d5f6f": {
+        "30618_a53d5f6f_0.db3": "18dbb0251cf555263db1b34771afe702e36c615db4fe8e347fd7be04610b2a87"
+      },
+      "30618_a869780d": {
+        "30618_a869780d_0.db3": "494e02075c0205b143926ee11d5e2f46a8fa81105b3b14fdc0c9c5a35979928b"
+      },
+      "30618_d4ba7005": {
+        "30618_d4ba7005_0.db3": "bfa85c5d654e27599b17c90cc1b4265e48c106808f19484c48828a0bc4e90f5e"
+      },
+      "30618_dd8d0741": {
+        "30618_dd8d0741_0.db3": "2213264f131b41a2ef40c91794d304dec825dc08bcbb194a37829bf4e1e4b3eb"
+      },
+      "30618_dd8e6395": {
+        "30618_dd8e6395_0.db3": "5839e1b438b61795329451db5f211dbd7b37b6e2ad25774a0074e219c84246b4"
+      },
+      "30618_e9a34502": {
+        "30618_e9a34502_0.db3": "1f5a479b7790a92463b81b1b1e871da4ab3e65071045e7d156dd062fbcaea735"
+      }
+    },
+    "selected_bags": [
+      {
+        "bag": "30618_01f73500",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_082f1d65",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_2050d396",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_33bec73f",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_3e9f4952",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_437e855c",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_67b89902",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_a53d5f6f",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_a869780d",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_d4ba7005",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_dd8d0741",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_dd8e6395",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_e9a34502",
+        "split": "validation"
+      }
+    ],
+    "command": [
+      "evaluation/navigation_gnss_stress.py",
+      "--split",
+      "validation",
+      "--dataset-root",
+      "dataset/data",
+      "--exe",
+      "/private/tmp/odometry-map/stress/navigation_replay_repro",
+      "--outdir",
+      "/private/tmp/odometry-map/validation_stress"
+    ],
+    "vehicle_option_equivalence_check": {
+      "description": "Same executable and 30618 inputs: previous implicit vehicle default versus explicit --vehicle 30618; every complete output CSV is byte-identical.",
+      "output_csvs_compared": 52,
+      "all_byte_identical": true,
+      "prior_script_sha256": "6460c700d20ffa1bd4148d75026273ad41534856947344980e1a1d724b61fefe",
+      "output_hash_manifest_sha256": "493fe7a1e256a59d99d2efe19642e86d4255e8d44961b8f91544daea19592f55"
+    }
+  }
+}

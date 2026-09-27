@@ -1,0 +1,70 @@
+{
+  "cpp_portable": {
+    "executables": 7,
+    "status": "passed",
+    "command": "cmake --build build -j4 && ctest --test-dir build --output-on-failure"
+  },
+  "cpp_address_undefined_sanitizers": {
+    "executables": 7,
+    "status": "passed",
+    "command": "cmake -S . -B /private/tmp/odometry-sanitized -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=\"-fsanitize=address,undefined -fno-omit-frame-pointer\"; cmake --build /private/tmp/odometry-sanitized -j4; ctest --test-dir /private/tmp/odometry-sanitized --output-on-failure"
+  },
+  "ros_humble": {
+    "packages_built": 2,
+    "cpp_test_executables": 7,
+    "status": "passed",
+    "command": "colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release && colcon test && colcon test-result --verbose",
+    "environment": "Ubuntu22.04 ROS2Humble arm64 Docker"
+  },
+  "python": {
+    "tests": 28,
+    "status": "passed",
+    "command": "python3 -m unittest discover -s evaluation/tests -q"
+  },
+  "syntax": {
+    "status": "passed",
+    "checks": [
+      "py_compile: new evaluation scripts/CDR decoder/official elevation builder",
+      "bash -n tools/ros_reference_check.sh",
+      "git diff --check"
+    ]
+  },
+  "independent_reviews": {
+    "status": "all actionable findings addressed",
+    "findings": [
+      "reference decode/evaluation common masks",
+      "nonfinite output coverage",
+      "recorder cleanup failure path",
+      "branch evidence coherence",
+      "boundary matches",
+      "NaN correction config",
+      "rover rigid startup transform",
+      "frozen GNSS vs wheel motion",
+      "rover config parity",
+      "CLI model mode explicitness",
+      "30639 stress replay vehicle selection"
+    ]
+  },
+  "data": {
+    "archive_bytes": 256294592,
+    "archive_sha256": "d0b2483e13990edb8219b0d7bbcafc7ed001cce549a4d3af467069b2472e7d52",
+    "bag_directories": 122,
+    "unique_bags": 97
+  },
+  "limitations": [
+    "No multi-hour soak or x86_64 performance claim."
+  ],
+  "full_ros_1x": {
+    "original_status": "completed",
+    "final_status": "completed",
+    "report": "ros_final_1x_run_summary.json",
+    "cpus_limit": 2,
+    "memory_limit_mib": 512
+  },
+  "integration": {
+    "location": "original user workspace",
+    "cpp_test_executables": 7,
+    "python_tests": 28,
+    "status": "passed"
+  }
+}

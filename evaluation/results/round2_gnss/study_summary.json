@@ -1,0 +1,114 @@
+{
+  "selection": "Accept independent antenna-baseline guard only; reject uncalibrated uncertainty gate.",
+  "protocol": "Known-truth synthetic tests and all 33 train representatives (2 off-map) determined selection. All 13 validation and public fused reference were checked afterward. No reference is passed to runtime.",
+  "accepted_rule": {
+    "expected_baseline_m": 12.436,
+    "max_pair_timestamp_skew_s": 0.2,
+    "noise_allowance_m": 3,
+    "skew_allowance": "EstimatorConfig.max_speed_mps * absolute timestamp skew",
+    "effect": "Clear both pending longitudinal correction windows and branch evidence on inconsistent pair; leave velocity and integrated wheel distance untouched."
+  },
+  "rejected_rule": "In addition to pair guard, gate lone-antenna innovation by 3*sqrt(4+Estimator.distance_variance), after branch evidence. Estimator distance variance does not account for all systematic wheel or anchor errors; gate blocks real recovery.",
+  "synthetic": {
+    "baseline_passed": 6,
+    "selected_passed": 10,
+    "rejected_uncertainty_passed": 8,
+    "test_count": 10,
+    "baseline_fault_error_m": [
+      2.999989,
+      5.999977,
+      5.999977,
+      2.999989
+    ],
+    "selected_fault_error_bound_m": 0.01,
+    "preserved_behaviors": [
+      "20 m coherent pair correction",
+      "single-antenna repair after gradual acceleration and 2% wheel scale drift",
+      "recovery after pair conflict",
+      "late branch identification",
+      "fast motion with 0.19 s antenna timestamp skew",
+      "GNSS velocity/distance isolation"
+    ],
+    "sanitizers": "10/10 selected cases pass AddressSanitizer+UBSan"
+  },
+  "frame_scoring_fix": {
+    "red_tests": 3,
+    "passed_targeted_python_tests": 6,
+    "passed_current_all_python_tests": 37,
+    "rule": "Score only valid finite mgrs_37UCB positions; report null RMSE if none. Absolute coverage denominator includes every proxy-matched publication, including relative or invalid outputs. Diagnostic frozen replay must preserve every original output field exactly.",
+    "off_map_bags": [
+      "30618_0d865417",
+      "30618_bc5e53c2"
+    ],
+    "off_map_min_distance_m": [
+      532.1173609872982,
+      518.8116428750296
+    ]
+  },
+  "public_reference_postselection": {
+    "bag": "30618_88aea4d9",
+    "baseline_full_3d_rmse_m": 1.5663323667708708,
+    "selected_pair_full_3d_rmse_m": 1.5662941028767647,
+    "interpretation": "Essentially unchanged; the existing branch/elevation improvement is preserved. Not used for selection."
+  },
+  "limitations": [
+    "No physically inconsistent pair can be detected when only one antenna is supplied; the known lone-rover validation regression remains unchanged.",
+    "A common GNSS shift preserving antenna separation is not observable from pair geometry alone.",
+    "Paired-GNSS scoring proxy is not the official fused-reference score.",
+    "Only two train recording dates and one validation date are available; bag counts do not imply independent sessions.",
+    "Map-free relative outputs deliberately remain unscored in absolute position RMSE and reduce absolute coverage."
+  ],
+  "files_sha256": {
+    "baseline_navigation": {
+      "path": "/private/tmp/odometry-round2-baseline/ros2_ws/src/tram_odometry/src/navigation.cpp",
+      "sha256": "7af67e7ce37576c8512dca1584c6ecaac0f1119e1d55909d1bc89a5d48601d74"
+    },
+    "baseline_estimator": {
+      "path": "/private/tmp/odometry-round2-baseline/ros2_ws/src/tram_odometry/src/estimator.cpp",
+      "sha256": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f"
+    },
+    "baseline_estimator_header": {
+      "path": "/private/tmp/odometry-round2-baseline/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp",
+      "sha256": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26"
+    },
+    "selected_pair_navigation": {
+      "path": "/private/tmp/gnss-round2-candidates/pair/navigation.cpp",
+      "sha256": "8d3f5f54eef96ebff2bdfa16a999bc5deaef220f3203d9d57cc8b6bce70567d8"
+    },
+    "selected_pair_navigation_header": {
+      "path": "/private/tmp/gnss-round2-candidates/pair/include/tram_odometry/navigation.hpp",
+      "sha256": "4890991429caf42bd484168772265539c0698c7721bfdb233edd201a7f05fdfb"
+    },
+    "baseline_diagnostic_executable": {
+      "path": "/private/tmp/gnss-round2-candidates/baseline_diagnostic",
+      "sha256": "58e77cb6128a208229fb549eff0f4fe7dcad35c536db927beb9a1fae3329ad3e"
+    },
+    "selected_pair_diagnostic_executable": {
+      "path": "/private/tmp/gnss-round2-candidates/pair/navigation_replay_diagnostic",
+      "sha256": "60119997804f16fdda26556f11183b06135f08252b49a982f2ed89a0a5c0e692"
+    },
+    "rejected_uncertainty_navigation": {
+      "path": "/private/tmp/gnss-round2-candidates/uncertainty/navigation.cpp",
+      "sha256": "8e7d16e0a0a6de9bdc63fae017bfb205626160ba4cc9b035731bd31576959090"
+    },
+    "rejected_uncertainty_diagnostic_executable": {
+      "path": "/private/tmp/gnss-round2-candidates/uncertainty/navigation_replay_diagnostic",
+      "sha256": "53d5a1c42370fcd2e61cb3241d45c2614bc012d592f43d1a23dfb88339b97279"
+    },
+    "synthetic_test": {
+      "path": "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/ros2_ws/src/tram_odometry/test/navigation_gnss_robustness_test.cpp",
+      "sha256": "b68200e384dde33157bc5bba5667cc6c6abe4931ec512d695c8b56e1cbfd7bfe"
+    },
+    "frozen_replay_diagnostic_source": {
+      "path": "/private/tmp/gnss-round2-candidates/navigation_replay_diagnostic.cpp",
+      "sha256": "969d04177bc6761318cfa094955c968b71e8512981456452ed146ca676c960c7"
+    }
+  },
+  "reports": {
+    "selected_pair": "selected_pair_train_validation.json",
+    "rejected_uncertainty": "rejected_uncertainty_train.json",
+    "baseline_reference": "baseline_reference_diagnostic.json",
+    "selected_reference": "pair_reference_diagnostic.json",
+    "unanchored": "unanchored_off_map.json"
+  }
+}

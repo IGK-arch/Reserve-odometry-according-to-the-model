@@ -7,6 +7,14 @@ tram_odometry:
     child_frame_id: base_link
     route_direction: auto  # out, return or auto; auto needs a valid startup GNSS fix
     map_file: ''           # empty: installed assets/route_map.csv
+    alternate_map_file: '' # empty: installed branch A; 'none' disables branch selection
+    elevation_file: ''     # official base_link height; 'none' keeps train map height
+    enable_gnss_corrections: true
+    gnss_correction_max_age_s: 0.5
+    gnss_correction_gate_m: 40.0
+    gnss_correction_lateral_gate_m: 8.0
+    gnss_correction_gain: 0.5
+    gnss_correction_max_step_m: 3.0
     start_s_m: 0.0        # used if GNSS initialization is unavailable
     use_startup_gnss: true
     use_map_without_gnss: false  # true only with configured direction/start_s_m
@@ -20,6 +28,7 @@ tram_odometry:
     auto_return_terminal_max_x_m: -4400.0
     anchor_residual_decay_m: 100.0
     route_longitudinal_offset_m: 9.873  # rigid master→base_link offset along 3D body tangent
+    body_heading_lookahead_m: 6.098   # master→bogie midpoint: 9.873 - 7.55/2 m
     antenna_to_base_z_m: -3.0         # both GNSS antennae z=+3 in base_link
     relative_heading_rad: 0.0
     initial_x_m: 0.0

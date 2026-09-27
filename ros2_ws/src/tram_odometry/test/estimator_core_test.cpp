@@ -165,6 +165,36 @@ int main() {
   require(near(integral.state().distance_m, 50.0, 0.5),
           "distance remains close to 50 m at 5 m/s for 10 s");
 
+  // Healthy, agreeing wheels should correct a weak drive-model prior. The
+  // driver can hold a traction notch at constant speed on a grade. Replay
+  // 10 Hz wheels received 40 ms late against 20 Hz controller/output events;
+  // keeping the published state at current event time must not retain an
+  // excessive velocity bias from the imperfect force model.
+  Estimator steady_with_model_mismatch;
+  steady_with_model_mismatch.reset(0.0, 5.0);
+  double steady_squared_error = 0.0;
+  int steady_samples = 0;
+  for (int i = 0; i <= 200; ++i) {
+    const double t = 0.05 * i;
+    steady_with_model_mismatch.submitDriverPosition(4, t);
+    const auto published = steady_with_model_mismatch.state();
+    if (i > 0 && i % 2 == 0) {
+      steady_with_model_mismatch.submitFrontWheel(18.0, t - 0.04);
+      steady_with_model_mismatch.submitRearWheel(18.0, t - 0.04);
+    }
+    if (t >= 1.0) {
+      require(near(published.stamp_s, t, 1.0e-9),
+              "healthy wheel correction preserves current output time");
+      require(!published.front_slip && !published.rear_slip,
+              "steady agreeing wheels stay trusted despite model mismatch");
+      const double error = published.velocity_mps - 5.0;
+      steady_squared_error += error * error;
+      ++steady_samples;
+    }
+  }
+  require(std::sqrt(steady_squared_error / steady_samples) < 0.045,
+          "agreeing late wheels limit steady-speed model bias");
+
   // The optional train-only table changes prediction inside a supported
   // speed/notch cell and leaves unsupported speeds on the physics model.
   const auto fixture = std::filesystem::temp_directory_path() /

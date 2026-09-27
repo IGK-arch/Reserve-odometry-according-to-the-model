@@ -1,0 +1,174 @@
+{
+  "matching": {
+    "method": "nearest_reference_header_stamp",
+    "tolerance_ns": 50000000,
+    "boundary": "inclusive",
+    "ties": "earlier_reference_stamp",
+    "reference_reuse": true,
+    "equivalent_to_ros_approximate_time_synchronizer": false,
+    "reference_velocity_field": "twist.twist.linear.x"
+  },
+  "reference": {
+    "outputs": 65579,
+    "unique_stamps": 65579,
+    "gaps": {
+      "first_stamp_ns": 1788955801404989971,
+      "last_stamp_ns": 1788957112964989111,
+      "span_s": 1311.55999914,
+      "max_gap_s": 0.02167559,
+      "gap_threshold_s": 0.1,
+      "gaps_over_threshold": 0,
+      "duplicate_stamps": 0,
+      "backward_stamps_in_receive_order": 0
+    }
+  },
+  "candidate": {
+    "rows": 55626,
+    "velocity": {
+      "outputs": 27816,
+      "matched": 27804,
+      "unmatched": 12,
+      "coverage": 0.9995685936151855,
+      "unique_reference_matches": 26674,
+      "reference_coverage": 0.4067460620015554,
+      "mean_abs_match_offset_ms": 5.025129981873111,
+      "max_abs_match_offset_ms": 34.379967,
+      "gaps": {
+        "first_stamp_ns": 1788955799267189602,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1313.691359795,
+        "max_gap_s": 1.201666794,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 13,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "matched_gaps": {
+        "first_stamp_ns": 1788955801370610004,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.587939393,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 10,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "invalid": 0,
+      "n": 27804,
+      "rmse_mps": 0.04904330972831501,
+      "mae_mps": 0.03238995669183124,
+      "bias_mps": 0.0010713077282153666,
+      "max_abs_mps": 0.35139038943287426
+    },
+    "position": {
+      "outputs": 27810,
+      "matched": 27804,
+      "unmatched": 6,
+      "coverage": 0.9997842502696872,
+      "unique_reference_matches": 26674,
+      "reference_coverage": 0.4067460620015554,
+      "mean_abs_match_offset_ms": 5.025129981873111,
+      "max_abs_match_offset_ms": 34.379967,
+      "gaps": {
+        "first_stamp_ns": 1788955800768775275,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1312.189774122,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 12,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "matched_gaps": {
+        "first_stamp_ns": 1788955801370610004,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.587939393,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 10,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "invalid": 0,
+      "rmse_3d_m": 5.701107604837807,
+      "max_3d_m": 47.82772517107977,
+      "end_error_3d_m": 47.74171599806281,
+      "end_stamp_ns": 1788957112958549397,
+      "x": {
+        "n": 27804,
+        "rmse_m": 2.0961205844299458,
+        "mae_m": 1.4034819607360784,
+        "bias_m": 0.9882915510258038,
+        "max_abs_m": 22.5488636806258
+      },
+      "y": {
+        "n": 27804,
+        "rmse_m": 5.298493724979564,
+        "mae_m": 1.5135455437287264,
+        "bias_m": 1.2024686836566376,
+        "max_abs_m": 47.65645337777096
+      },
+      "z": {
+        "n": 27804,
+        "rmse_m": 0.18673688393230994,
+        "mae_m": 0.13382884744911666,
+        "bias_m": 0.1212734123771034,
+        "max_abs_m": 0.8271961989445629
+      }
+    },
+    "flag_counts": {}
+  },
+  "common_velocity": {
+    "mask": "finite candidate and reference velocity, exact baseline output stamp, nearest reference within tolerance",
+    "baseline_outputs": 26249,
+    "matched": 26104,
+    "candidate": {
+      "n": 26104,
+      "rmse_mps": 0.04906063337004124,
+      "mae_mps": 0.03232423737516522,
+      "bias_mps": 0.0009649892191307868,
+      "max_abs_mps": 0.35139038943287426
+    },
+    "baseline": {
+      "n": 26104,
+      "rmse_mps": 0.02679025842619031,
+      "mae_mps": 0.01629767993192556,
+      "bias_mps": 0.0029194256406552543,
+      "max_abs_mps": 0.28951775696542525
+    }
+  },
+  "provenance": {
+    "git_commit": "b132f4a94ec5e30e0d21a21ad1e4816eaf9b70b6",
+    "git_dirty": true,
+    "bag": "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
+    "bag_files_sha256": {
+      "30618_88aea4d9_0.db3": "48f846d134d0584b38f9ca06b7ba812a16aeeecc896594313e3fa9acd27e10c3",
+      "metadata.yaml": "b3b26262659d247aad1eceb3fbe1bc987e834df783f465cd5be8ca928f49534f"
+    },
+    "artifacts_sha256": {
+      "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/analysis/viewer/rosbag_cdr.py": "7d8a5c7ac159c15c8164527aed1de1529a3e50cee96b44db08040b31285017fb",
+      "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/evaluation/causal_baseline.py": "7c32f7aed01a6f8a97f3fefb8e20fbb537f8058efedd1fe88eb52ac39ee23bbc",
+      "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/evaluation/reference_benchmark.py": "156a82c240241da3c596a5bdca47d53d846b789adb462a23b6edb56b2175058d",
+      "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/evaluation/runs/original_ws/install/tram_odometry/lib/tram_odometry/odometry_node": "465a4efe4ab0b3113e3d2397dde4ee46fb58b5729046129991d8b8d024f5e1ce",
+      "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/evaluation/runs/original_ws/src/tram_odometry/config/default.yaml": "36e5d0dfac7a541cfb4f62f907baf20a1c5cc9a7add7e22287547dd2340f1ef5",
+      "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/evaluation/runs/ros_original_1x/result_bag/result_bag_0.db3": "c4bead19bda05396c08fccfd8ff82ebf77a71bd633ae28a5c2eece164975fd55"
+    },
+    "config_path": "/Users/infibiss/.codex/worktrees/odometry-validation/Reserve-odometry-according-to-the-model/evaluation/runs/original_ws/src/tram_odometry/config/default.yaml",
+    "config_text": "tram_odometry:\n  ros__parameters:\n    vehicle_id: 30618\n    output_frame_id: mgrs_37UCB\n    relative_frame_id: odom\n    output_projection: mgrs37ucb  # x=UTM37 easting-300000, y=northing-6100000\n    child_frame_id: base_link\n    route_direction: auto  # out, return or auto; auto needs a valid startup GNSS fix\n    map_file: ''           # empty: installed assets/route_map.csv\n    start_s_m: 0.0        # used if GNSS initialization is unavailable\n    use_startup_gnss: true\n    use_map_without_gnss: false  # true only with configured direction/start_s_m\n    use_rover_fallback: true\n    startup_gnss_window_s: 5.0\n    startup_min_fixes: 3\n    rover_fallback_delay_s: 1.5\n    rover_to_master_s_m: -12.436  # official rover-master longitudinal offset\n    map_match_max_distance_m: 50.0\n    auto_out_terminal_min_x_m: -200.0\n    auto_return_terminal_max_x_m: -4400.0\n    anchor_residual_decay_m: 100.0\n    route_longitudinal_offset_m: 9.873  # rigid master\u2192base_link offset along 3D body tangent\n    antenna_to_base_z_m: -3.0         # both GNSS antennae z=+3 in base_link\n    relative_heading_rad: 0.0\n    initial_x_m: 0.0\n    initial_y_m: 0.0\n    initial_z_m: 0.0\n    output_rotation_rad: 0.0\n    output_scale: 1.0\n    output_offset_x_m: 0.0\n    output_offset_y_m: 0.0\n    output_offset_z_m: 0.0\n    # Must match the WGS84 ECEF->ENU datum used to build assets/route_map.csv.\n    map_datum_lat_deg: 55.810367065\n    map_datum_lon_deg: 37.462266845\n    map_datum_alt_m: 168.3794\n    reset_on_large_time_jump_s: 60.0\n    # The model and robust fusion defaults come from EstimatorConfig::forVehicle(id).\n    # Optional ROS overrides: front_scale, rear_scale, mass_kg, effective_wheel_radius_m,\n    # motor_torque_max_nm, traction_power_limit_w, brake_force_max_n,\n    # rolling_resistance_accel_mps2, quadratic_drag_accel_per_mps2,\n    # grade_accel_mps2, wheel_stale_s, max_out_of_order_s, disagreement_gate_mps,\n    # innovation_gate_mps, implausible_wheel_accel_mps2, wheel_sigma_mps,\n    # process_accel_sigma_mps2, enable_adaptation.\n    # Train-only drive table is enabled by the node for vehicle_id=30618 and\n    # disabled for 30639; do not set a fixed boolean here, as it would override\n    # the vehicle-specific default. To override: enable_drive_table: false/true.\n    # Empty drive_table_path uses installed assets/drive_accel_table.csv.\n    # A missing or invalid file logs a startup warning and keeps physics-only\n    # prediction; check /result/diagnostics drive_table_active/used.\n",
+    "command": [
+      "evaluation/reference_benchmark.py",
+      "--bag",
+      "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
+      "--recorded-bag",
+      "evaluation/runs/ros_original_1x/result_bag",
+      "--candidate-out",
+      "evaluation/runs/ros_original_1x/candidate.csv",
+      "--out",
+      "evaluation/runs/ros_original_1x/offline_metrics.json",
+      "--config",
+      "evaluation/runs/original_ws/src/tram_odometry/config/default.yaml",
+      "--artifact",
+      "evaluation/runs/original_ws/install/tram_odometry/lib/tram_odometry/odometry_node"
+    ]
+  }
+}

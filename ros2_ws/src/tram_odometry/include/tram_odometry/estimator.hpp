@@ -71,6 +71,10 @@ struct Estimate {
   double rear_weight = 0.0;
   bool front_slip = false;
   bool rear_slip = false;
+  // Accepted through model uncertainty, still unsuitable as independent
+  // evidence or as a source for learning the acceleration model.
+  bool front_tentative = false;
+  bool rear_tentative = false;
   bool front_stale = true;
   bool rear_stale = true;
   bool model_only = true;
@@ -101,12 +105,21 @@ class Estimator {
  private:
   struct WheelState {
     double raw_speed_mps = 0.0;
+    // Monotonic raw sensor history is distinct from callback-effective time.
+    double ordered_raw_speed_mps = 0.0;
+    double ordered_raw_stamp_s = std::numeric_limits<double>::quiet_NaN();
+    double last_good_raw_mps = 0.0;
+    double last_good_sensor_stamp_s = std::numeric_limits<double>::quiet_NaN();
     double speed_mps = 0.0;
     double stamp_s = std::numeric_limits<double>::quiet_NaN();
     double last_good_speed_mps = 0.0;
     double last_good_stamp_s = std::numeric_limits<double>::quiet_NaN();
     double unchanged_since_s = std::numeric_limits<double>::quiet_NaN();
     double slip_until_s = -std::numeric_limits<double>::infinity();
+    // An impossible jump is independent evidence, unlike pair disagreement.
+    // Retain it until an independent prediction can support the measurement.
+    bool jump_pending = false;
+    bool jump_tentative = false;
     bool present = false;
   };
   struct DriveCell {
@@ -119,6 +132,7 @@ class Estimator {
   void submitWheel(WheelState& wheel, WheelState& other, double raw_kmh,
                    double sensor_scale, double stamp_s);
   void predict(double dt_s);
+  void invalidateWheelResidual();
   double modelAcceleration(double speed_mps, double drive_state) const;
   bool loadDriveTable(const std::string& path);
   bool tableAcceleration(int notch, double speed_mps, double& acceleration,
@@ -136,6 +150,9 @@ class Estimator {
   double distance_m_ = 0.0;
   double acceleration_mps2_ = 0.0;
   double model_acceleration_mps2_ = 0.0;
+  double propagation_acceleration_mps2_ = 0.0;
+  double wheel_accel_residual_mps2_ = 0.0;
+  double wheel_residual_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   double velocity_variance_ = 1.0;
   double distance_variance_ = 0.0;
   double drive_state_ = 0.0;
@@ -146,6 +163,8 @@ class Estimator {
   double last_command_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   double command_change_stamp_s_ = std::numeric_limits<double>::quiet_NaN();
   double last_accepted_wheel_stamp_s_ =
+      std::numeric_limits<double>::quiet_NaN();
+  double last_independent_wheel_stamp_s_ =
       std::numeric_limits<double>::quiet_NaN();
   int notch_ = 0;
   bool initialized_ = false;

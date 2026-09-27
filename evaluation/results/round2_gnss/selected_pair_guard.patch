@@ -1,0 +1,55 @@
+--- a/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp
++++ b/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp
+@@ -79,6 +79,7 @@
+  private:
+  struct Fix { double latitude,longitude,altitude; int status; double stamp_s; };
+  struct Correction { double stamp_s, innovation; };
++ struct PairFix { Point3 p; double stamp_s=0; bool valid=false; };
+  struct FixMotion { Point3 p; double distance=0, start=0, last=0; bool valid=false; };
+  void prepareInput(double stamp_s);
+  void collectStartupGnss(const Fix* message, bool rover);
+@@ -94,6 +95,7 @@
+  std::array<double,2> last_fix_stamp_{{-INFINITY,-INFINITY}};
+  std::array<std::deque<Correction>,2> correction_windows_;
+  std::array<FixMotion,2> fix_motion_;
++ std::array<PairFix,2> pair_fixes_;
+  std::deque<Correction> branch_evidence_;
+  size_t corrections_ = 0, rejected_ = 0, branch_switches_ = 0;
+   Estimator estimator_;
+--- a/ros2_ws/src/tram_odometry/src/navigation.cpp
++++ b/ros2_ws/src/tram_odometry/src/navigation.cpp
+@@ -119,6 +119,7 @@
+       last_fix_stamp_.fill(-std::numeric_limits<double>::infinity());
+       for (auto & window : correction_windows_) window.clear();
+       fix_motion_={};
++      pair_fixes_={};
+       branch_evidence_.clear();
+       corrections_=rejected_=branch_switches_=0;
+       if (alternate_active_) std::swap(map_,alternate_map_);
+@@ -181,7 +182,25 @@
+   const double distance=state.distance_m-state.velocity_mps*age;
+   const double prior=start_s_m_+distance;
+   const auto query=projection_.project(fix.latitude,fix.longitude,fix.altitude);
+-  auto & motion=fix_motion_[rover?1:0];
++  // Check the independent rigid antenna geometry before either route correction
++  // or branch evidence. A coherent bias can pass a single-antenna history gate.
++  const size_t sensor=rover?1:0;
++  pair_fixes_[sensor]={query,fix.stamp_s,true};
++  const auto & other=pair_fixes_[1-sensor];
++  const double pair_age=std::abs(fix.stamp_s-other.stamp_s);
++  if (other.valid && pair_age <= 0.2) {
++    const auto delta=query-other.p;
++    const double separation=std::sqrt(delta.x*delta.x+delta.y*delta.y+delta.z*delta.z);
++    // The maximum allowed vehicle speed bounds unobserved travel between the
++    // antenna timestamps without assuming that the current wheel speed is right.
++    // Keep a loose 3 m allowance because these fixes may have no covariance.
++    const double tolerance=3.0+estimator_.config().max_speed_mps*pair_age;
++    if (std::abs(separation-std::abs(rover_to_master_s_m_)) > tolerance) {
++      for (auto & pending : correction_windows_) pending.clear();
++      branch_evidence_.clear(); ++rejected_; return;
++    }
++  }
++  auto & motion=fix_motion_[sensor];
+   if (!motion.valid || fix.stamp_s-motion.last > 1 ||
+       std::hypot(query.x-motion.p.x,query.y-motion.p.y) > 0.05)
+     motion={query,distance,fix.stamp_s,fix.stamp_s,true};

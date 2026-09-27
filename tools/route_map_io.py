@@ -157,20 +157,23 @@ class RouteMap:
 
     def master_to_base_enu(self, direction: str, s: float,
                            forward_m: float = 9.873,
-                           antenna_height_m: float = 3.0) -> tuple[float, float, float]:
+                           antenna_height_m: float = 3.0,
+                           body_heading_lookahead_m: float = 6.098) -> tuple[float, float, float]:
         """Apply organiser TF master=(x=-9.873,z=3) relative to base_link.
 
-        The online C++ node uses a rigid body transform along the local 3D
-        tangent at ``s``. This differs from advancing 9.873 m along the rail
-        on curves. Train GNSS pairs verify the forward sign both ways.
+        Match the C++ quasi-steady body heading: sample the master trajectory
+        tangent near the bogie midpoint, 9.873 - 7.55/2 = 6.098 m ahead.
+        Keep the antenna position at s, then apply the rigid TF. Passing zero
+        reproduces the earlier local-tangent approximation for ablation.
         """
         # An odometry overrun is clamped by both the C++ map reader and this
         # helper. Clamp *before* finding the tangent so s±1 still spans the
         # final/initial segment rather than becoming two identical endpoints.
         s_clamped = min(max(0.0, s), self.abscissae[direction][-1])
         p = self.sample(direction, s_clamped)
-        before = self.sample(direction, s_clamped - 1.0)
-        after = self.sample(direction, s_clamped + 1.0)
+        heading_s = min(max(0.0, s + body_heading_lookahead_m), self.abscissae[direction][-1])
+        before = self.sample(direction, heading_s - 1.0)
+        after = self.sample(direction, heading_s + 1.0)
         tangent = tuple(after[i] - before[i] for i in range(3))
         norm = math.sqrt(sum(value * value for value in tangent))
         if norm < 1e-8:

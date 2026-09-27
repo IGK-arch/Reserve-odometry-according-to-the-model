@@ -1,0 +1,83 @@
+{
+  "bag": "30618_3e9f4952",
+  "split": "validation",
+  "purpose": "Read-only diagnosis of the observed clean-sparse GNSS regression; no runtime or threshold tuning.",
+  "position_metric": "Paired-GNSS approximate base_link proxy, not official fused-reference score.",
+  "observations": [
+    {
+      "window_sec": 480,
+      "count": 20,
+      "rover_s_range": [
+        1655.9868259495713,
+        1674.744499357056
+      ],
+      "rover_lateral_p50_max": [
+        4.0268063658763795,
+        4.18843035908027
+      ],
+      "master_lateral_p50_max": [
+        4.223240015807735,
+        4.237906687681792
+      ],
+      "rover_minus_master_s_p05_p50_p95": [
+        1.6265533520211535,
+        1.725636533921488,
+        1.8369095378241809
+      ],
+      "map_heading_change_over20m_deg_p50_max": [
+        0.2445388507662271,
+        0.36040304994226957
+      ],
+      "paired_baseline_m_p05_p50_p95": [
+        14.351371230023295,
+        14.38346824843639,
+        14.429913753477653
+      ]
+    },
+    {
+      "window_sec": 720,
+      "count": 20,
+      "rover_s_range": [
+        3447.734019108517,
+        3447.346099017383
+      ],
+      "rover_lateral_p50_max": [
+        1.2045720264874067,
+        2.3205065038417616
+      ],
+      "master_lateral_p50_max": [
+        0.31059843739728277,
+        0.5222738136003146
+      ],
+      "rover_minus_master_s_p05_p50_p95": [
+        15.500181034803608,
+        16.0832635356644,
+        16.19816399861843
+      ],
+      "map_heading_change_over20m_deg_p50_max": [
+        0.3449549714852946,
+        0.3449549714852946
+      ],
+      "paired_baseline_m_p05_p50_p95": [
+        28.032821707492474,
+        28.60131869026336,
+        28.70908181757871
+      ]
+    }
+  ],
+  "nominal_master_rover_baseline_m": 12.436,
+  "gnss_metadata": {
+    "status": 2,
+    "covariance_type": 0,
+    "covariance_diagonal": "all zero (unknown)",
+    "typical_header_age_s": 0.085
+  },
+  "interpretation": [
+    "The retained single-rover windows at 480 s and 720 s disagree with the simultaneously recorded master antenna. The latter is available only to this offline diagnosis, not selected for runtime input.",
+    "At 720 s rover and master imply longitudinal coordinates differing by approximately 16 m; the normal age, status and small rover lateral residual do not identify this as an invalid fix.",
+    "Map heading varies less than 0.4 deg over 20 m at these windows, so tight-curve body-tangent error cannot explain the regression.",
+    "The paired-GNSS scoring proxy rejects these invalid baselines at the affected windows and measures persistent odometry error after the pair becomes consistent again. It is still an approximate reference.",
+    "The fixed-payload guard does not certify robustness to all biased or jittering single-antenna GNSS. A narrower gate chosen from this validation failure would be tuning rather than independent verification."
+  ],
+  "runtime_available_channel": "RF only in each injected sparse window; paired MF used solely for offline diagnosis."
+}

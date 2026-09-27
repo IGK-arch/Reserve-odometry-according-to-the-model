@@ -1,0 +1,14 @@
+{
+  "source": "таллинская - щукинская - Pathgraph для задачи.json",
+  "source_sha256": "7a402fcd426a607ad2f6cf2fca7dbf38cf2e9a171cd5034c61eb3d71bc0e53ba",
+  "csv_sha256": "86ec3d223f1b76de6bc8ffc4f5b1a8eb87a457b570de00d97f996d859b53e686",
+  "point_count": 4709,
+  "coordinate_frame": "MGRS 37UCB fixed numeric square; x=UTM37N-300000, y=UTM37N-6100000",
+  "height_target": "base_link at rail contact elevation; already uses the official z datum",
+  "usage": "Height only at final base_link XY; full weight within 5m, fade to zero at 10m",
+  "limitations": [
+    "Surveyed XY follows the return rail; outgoing rail has a lateral offset.",
+    "Profile omits terminal loops; retain train-derived map height outside coverage.",
+    "No validation, holdout or checker reference positions were used in this export."
+  ]
+}

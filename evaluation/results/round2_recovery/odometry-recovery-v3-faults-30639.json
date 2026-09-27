@@ -1,0 +1,5167 @@
+{
+  "protocol": "Independent analytic ground truth; fixed faults; 20 Hz commands, 10 Hz wheels delayed 40 ms with deterministic noise/jitter; 5 s warmup. Fault timestamps are measurement time. Same input bytes and exact common output times for both versions.",
+  "limitations": [
+    "Synthetic faults do not measure prevalence or contest robustness score.",
+    "Smooth common bias and frozen wheels at constant actual speed may be unobservable.",
+    "Reported distance is relative to the first scored output at 5 seconds.",
+    "First-5s recovery errors may include model errors beyond a fault boundary."
+  ],
+  "vehicle": 30639,
+  "seeds": [
+    11,
+    37
+  ],
+  "table": null,
+  "provenance": {
+    "script_sha256": "aa6dcdbd6890c2740d74326716b7722d831fe401bdba37680faa394520600713",
+    "executables": {
+      "before": {
+        "path": "/private/tmp/odometry-round2-baseline/build/replay_cli",
+        "sha256": "b28347838b75ccbd2db7d17d0743c0829f02bc9ffd95403544916bc4a4bfeafe"
+      },
+      "after": {
+        "path": "/private/tmp/odometry-recovery-v3",
+        "sha256": "602e467ea95e3d833af66616c1b7cc0d5830b0e01854c7e7395ca0e896f23f96"
+      }
+    },
+    "table_sha256": null
+  },
+  "scenarios": [
+    {
+      "profile": "steady",
+      "fault": "clean",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "2c1ca9f6bb68cf86ed6edd2ddf12670269d6c012016b0616568672c813f1ddee",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007624344312469793,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.007868777294347479,
+          "max_abs": 0.024065445024183063
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00770544630454055,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": 0.004629940866607285,
+        "distance_rmse_m": 0.006311966651093267,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007624344312469793,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.007868777294347479,
+            "max_abs": 0.024065445024183063
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00770544630454055,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": 0.004629940866607285,
+          "distance_rmse_m": 0.006311966651093267,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007624344312469793,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.007868777294347479,
+          "max_abs": 0.024065445024183063
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00770544630454055,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": 0.004629940866607285,
+        "distance_rmse_m": 0.006311966651093267,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007624344312469793,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.007868777294347479,
+            "max_abs": 0.024065445024183063
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00770544630454055,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": 0.004629940866607285,
+          "distance_rmse_m": 0.006311966651093267,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "clean",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "828a8b106ff9eb9a5b5a3cd78b583f1c025e09c788059abf9a75ac329d3770ca",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007355185450484584,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006552177638849986,
+          "max_abs": 0.018159331051846195
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007495269625039987,
+          "max_abs": 0.019658337275369142
+        },
+        "end_distance_error_m": 0.01002282180502334,
+        "distance_rmse_m": 0.005407819307918939,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007355185450484584,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006552177638849986,
+            "max_abs": 0.018159331051846195
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007495269625039987,
+            "max_abs": 0.019658337275369142
+          },
+          "end_distance_error_m": 0.01002282180502334,
+          "distance_rmse_m": 0.005407819307918939,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007355185450484584,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006552177638849986,
+          "max_abs": 0.018159331051846195
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007495269625039987,
+          "max_abs": 0.019658337275369142
+        },
+        "end_distance_error_m": 0.01002282180502334,
+        "distance_rmse_m": 0.005407819307918939,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007355185450484584,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006552177638849986,
+            "max_abs": 0.018159331051846195
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007495269625039987,
+            "max_abs": 0.019658337275369142
+          },
+          "end_distance_error_m": 0.01002282180502334,
+          "distance_rmse_m": 0.005407819307918939,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_jump_up",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "713ba8a25171fb334c1b32403489dfdf7fa753b125c0398a71c373fb4f04bb4e",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3700606171366416,
+        "speed_max_abs_mps": 4.01438875743375,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.8848626255956313,
+          "max_abs": 4.01438875743375
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3205201389604866,
+          "max_abs": 3.9970042263244334
+        },
+        "end_distance_error_m": 39.993774020571834,
+        "distance_rmse_m": 31.559596248577297,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3700606171366416,
+          "speed_max_abs_mps": 4.01438875743375,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.8848626255956313,
+            "max_abs": 4.01438875743375
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3205201389604866,
+            "max_abs": 3.9970042263244334
+          },
+          "end_distance_error_m": 39.993774020571834,
+          "distance_rmse_m": 31.559596248577297,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0521091647370115,
+        "speed_max_abs_mps": 4.01438875743375,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 2.922701072100069,
+          "max_abs": 4.01438875743375
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3205201389604866,
+          "max_abs": 3.9970042263244334
+        },
+        "end_distance_error_m": 23.281574766099652,
+        "distance_rmse_m": 18.127623628796346,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.059964726631393295,
+        "slip_fraction": 0.059964726631393295,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0521091647370115,
+          "speed_max_abs_mps": 4.01438875743375,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 2.922701072100069,
+            "max_abs": 4.01438875743375
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3205201389604866,
+            "max_abs": 3.9970042263244334
+          },
+          "end_distance_error_m": 23.281574766099652,
+          "distance_rmse_m": 18.127623628796346,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.059964726631393295,
+          "slip_fraction": 0.059964726631393295
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_jump_up",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "f7fba52bcef6caafa6a1e4c484be8fe0a56ea7264aa265f719b011c723d44ca8",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3697094862165555,
+        "speed_max_abs_mps": 4.013933731626537,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.884133833288278,
+          "max_abs": 4.013933731626537
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3186208306621585,
+          "max_abs": 3.9912888806873372
+        },
+        "end_distance_error_m": 39.999251479540135,
+        "distance_rmse_m": 31.564082618259075,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3697094862165555,
+          "speed_max_abs_mps": 4.013933731626537,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.884133833288278,
+            "max_abs": 4.013933731626537
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3186208306621585,
+            "max_abs": 3.9912888806873372
+          },
+          "end_distance_error_m": 39.999251479540135,
+          "distance_rmse_m": 31.564082618259075,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0519710508200997,
+        "speed_max_abs_mps": 4.0102842704181185,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 2.922709352397478,
+          "max_abs": 4.0102842704181185
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3186208306621585,
+          "max_abs": 3.9912888806873372
+        },
+        "end_distance_error_m": 23.249400254485522,
+        "distance_rmse_m": 18.102077638646243,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.059964726631393295,
+        "slip_fraction": 0.059964726631393295,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0519710508200997,
+          "speed_max_abs_mps": 4.0102842704181185,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 2.922709352397478,
+            "max_abs": 4.0102842704181185
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3186208306621585,
+            "max_abs": 3.9912888806873372
+          },
+          "end_distance_error_m": 23.249400254485522,
+          "distance_rmse_m": 18.102077638646243,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.059964726631393295,
+          "slip_fraction": 0.059964726631393295
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_jump_down",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "8fdf4a227a71d3755c68864dcec3ca17ca276a2faa2eac713539d58f793c7ec1",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3715064793184553,
+        "speed_max_abs_mps": 4.022741699220258,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.887970719978253,
+          "max_abs": 4.022741699220258
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3277358383682976,
+          "max_abs": 4.007823469517437
+        },
+        "end_distance_error_m": -39.99894557650293,
+        "distance_rmse_m": 31.570805767525215,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3715064793184553,
+          "speed_max_abs_mps": 4.022741699220258,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.887970719978253,
+            "max_abs": 4.022741699220258
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3277358383682976,
+            "max_abs": 4.007823469517437
+          },
+          "end_distance_error_m": -39.99894557650293,
+          "distance_rmse_m": 31.570805767525215,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0801553858709607,
+        "speed_max_abs_mps": 4.022741699220258,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.0068659337418766,
+          "max_abs": 4.022741699220258
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3277358383682976,
+          "max_abs": 4.007823469517437
+        },
+        "end_distance_error_m": -25.07063206203776,
+        "distance_rmse_m": 19.55567679089511,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.0564373897707231,
+        "slip_fraction": 0.0564373897707231,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0801553858709607,
+          "speed_max_abs_mps": 4.022741699220258,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.0068659337418766,
+            "max_abs": 4.022741699220258
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3277358383682976,
+            "max_abs": 4.007823469517437
+          },
+          "end_distance_error_m": -25.07063206203776,
+          "distance_rmse_m": 19.55567679089511,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.0564373897707231,
+          "slip_fraction": 0.0564373897707231
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_jump_down",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "e5ac350d422fd92b4b83ae6f3e6915d509e80c0b4a5980fc22bb079fa4d4fd21",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3718559544898903,
+        "speed_max_abs_mps": 4.015254796288732,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.88869658962,
+          "max_abs": 4.015254796288732
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3296346469896139,
+          "max_abs": 4.013540698469926
+        },
+        "end_distance_error_m": -39.99347411069266,
+        "distance_rmse_m": 31.56632295601163,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3718559544898903,
+          "speed_max_abs_mps": 4.015254796288732,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.88869658962,
+            "max_abs": 4.015254796288732
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3296346469896139,
+            "max_abs": 4.013540698469926
+          },
+          "end_distance_error_m": -39.99347411069266,
+          "distance_rmse_m": 31.56632295601163,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0804028122758644,
+        "speed_max_abs_mps": 4.015254796288732,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.007204703240646,
+          "max_abs": 4.015254796288732
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3296346469896139,
+          "max_abs": 4.013540698469926
+        },
+        "end_distance_error_m": -25.100176867103357,
+        "distance_rmse_m": 19.57921227988686,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.0564373897707231,
+        "slip_fraction": 0.0564373897707231,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0804028122758644,
+          "speed_max_abs_mps": 4.015254796288732,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.007204703240646,
+            "max_abs": 4.015254796288732
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3296346469896139,
+            "max_abs": 4.013540698469926
+          },
+          "end_distance_error_m": -25.100176867103357,
+          "distance_rmse_m": 19.57921227988686,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.0564373897707231,
+          "slip_fraction": 0.0564373897707231
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "7abfd8d697972cc31a82434bdbc3a97324b71d6e31697ad84e1ab0211f16902e",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007503021425473625,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006799842113164569,
+          "max_abs": 0.017346311708996254
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007714604970826454,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.03792528495796432,
+        "distance_rmse_m": 0.034390733354072424,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007503021425473625,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006799842113164569,
+            "max_abs": 0.017346311708996254
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007714604970826454,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.03792528495796432,
+          "distance_rmse_m": 0.034390733354072424,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007503021425473625,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006799842113164569,
+          "max_abs": 0.017346311708996254
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007714604970826454,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.03792528495796432,
+        "distance_rmse_m": 0.034390733354072424,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007503021425473625,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006799842113164569,
+            "max_abs": 0.017346311708996254
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007714604970826454,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.03792528495796432,
+          "distance_rmse_m": 0.034390733354072424,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "30fcb992e51503d917b7f2b3574536fe49083cd497c4a6d64a15139d98b889f5",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007545320982044735,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.00816638270195766,
+          "max_abs": 0.01820553926699553
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075400806195741596,
+          "max_abs": 0.020132468607737763
+        },
+        "end_distance_error_m": -0.0425349129652659,
+        "distance_rmse_m": 0.037353529276969326,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007545320982044735,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.00816638270195766,
+            "max_abs": 0.01820553926699553
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075400806195741596,
+            "max_abs": 0.020132468607737763
+          },
+          "end_distance_error_m": -0.0425349129652659,
+          "distance_rmse_m": 0.037353529276969326,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007545320982044735,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.00816638270195766,
+          "max_abs": 0.01820553926699553
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075400806195741596,
+          "max_abs": 0.020132468607737763
+        },
+        "end_distance_error_m": -0.0425349129652659,
+        "distance_rmse_m": 0.037353529276969326,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007545320982044735,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.00816638270195766,
+            "max_abs": 0.01820553926699553
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075400806195741596,
+            "max_abs": 0.020132468607737763
+          },
+          "end_distance_error_m": -0.0425349129652659,
+          "distance_rmse_m": 0.037353529276969326,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "rear_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "10458da58cb025948816a245290a922ef7c78de7d5491711a3f44edb3f2debd7",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007546245811166736,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.007153249023080826,
+          "max_abs": 0.016299242280051196
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007792163871424441,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.043606287573709324,
+        "distance_rmse_m": 0.03894351175423867,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007546245811166736,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.007153249023080826,
+            "max_abs": 0.016299242280051196
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007792163871424441,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.043606287573709324,
+          "distance_rmse_m": 0.03894351175423867,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007546245811166736,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.007153249023080826,
+          "max_abs": 0.016299242280051196
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007792163871424441,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.043606287573709324,
+        "distance_rmse_m": 0.03894351175423867,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007546245811166736,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.007153249023080826,
+            "max_abs": 0.016299242280051196
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007792163871424441,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.043606287573709324,
+          "distance_rmse_m": 0.03894351175423867,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "rear_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "7a2b5ed2d2bb376f9d48c1700d6280101e021b227aeb06a209fd911198b6d838",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007401393511720404,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006944083256634868,
+          "max_abs": 0.014050137394849394
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075630155312820645,
+          "max_abs": 0.019715887988270175
+        },
+        "end_distance_error_m": -0.02861315425667499,
+        "distance_rmse_m": 0.026437507070003696,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007401393511720404,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006944083256634868,
+            "max_abs": 0.014050137394849394
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075630155312820645,
+            "max_abs": 0.019715887988270175
+          },
+          "end_distance_error_m": -0.02861315425667499,
+          "distance_rmse_m": 0.026437507070003696,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007401393511720404,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006944083256634868,
+          "max_abs": 0.014050137394849394
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075630155312820645,
+          "max_abs": 0.019715887988270175
+        },
+        "end_distance_error_m": -0.02861315425667499,
+        "distance_rmse_m": 0.026437507070003696,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007401393511720404,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006944083256634868,
+            "max_abs": 0.014050137394849394
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075630155312820645,
+            "max_abs": 0.019715887988270175
+          },
+          "end_distance_error_m": -0.02861315425667499,
+          "distance_rmse_m": 0.026437507070003696,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_dropout",
+      "fault_window_s": [
+        30.0,
+        35.0
+      ],
+      "seed": 11,
+      "input_sha256": "4022777eebdb3a4a392cb95e241195080172e236714198248478e491b8622017",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.02308528534471896,
+        "speed_max_abs_mps": 0.15523465302828576,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.08884495316685448,
+          "max_abs": 0.15368877673090964
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.01751438700075248,
+          "max_abs": 0.15523465302828576
+        },
+        "end_distance_error_m": -0.370317504401271,
+        "distance_rmse_m": 0.3049716296259472,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.02308528534471896,
+          "speed_max_abs_mps": 0.15523465302828576,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.08884495316685448,
+            "max_abs": 0.15368877673090964
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.01751438700075248,
+            "max_abs": 0.15523465302828576
+          },
+          "end_distance_error_m": -0.370317504401271,
+          "distance_rmse_m": 0.3049716296259472,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.02308528534471896,
+        "speed_max_abs_mps": 0.15523465302828576,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.08884495316685448,
+          "max_abs": 0.15368877673090964
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.01751438700075248,
+          "max_abs": 0.15523465302828576
+        },
+        "end_distance_error_m": -0.370317504401271,
+        "distance_rmse_m": 0.3049716296259472,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.02308528534471896,
+          "speed_max_abs_mps": 0.15523465302828576,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.08884495316685448,
+            "max_abs": 0.15368877673090964
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.01751438700075248,
+            "max_abs": 0.15523465302828576
+          },
+          "end_distance_error_m": -0.370317504401271,
+          "distance_rmse_m": 0.3049716296259472,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_dropout",
+      "fault_window_s": [
+        30.0,
+        35.0
+      ],
+      "seed": 37,
+      "input_sha256": "0dc50b4038182bf129e84795b8e26402da89ac522f02084d10e7816dcdf20d47",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.024941208212993244,
+        "speed_max_abs_mps": 0.1646582390765312,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.09715429823469668,
+          "max_abs": 0.16311487282012216
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.017549672054072263,
+          "max_abs": 0.1646582390765312
+        },
+        "end_distance_error_m": -0.4059570748589749,
+        "distance_rmse_m": 0.3337648803267835,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.024941208212993244,
+          "speed_max_abs_mps": 0.1646582390765312,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.09715429823469668,
+            "max_abs": 0.16311487282012216
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.017549672054072263,
+            "max_abs": 0.1646582390765312
+          },
+          "end_distance_error_m": -0.4059570748589749,
+          "distance_rmse_m": 0.3337648803267835,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.024941208212993244,
+        "speed_max_abs_mps": 0.1646582390765312,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.09715429823469668,
+          "max_abs": 0.16311487282012216
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.017549672054072263,
+          "max_abs": 0.1646582390765312
+        },
+        "end_distance_error_m": -0.4059570748589749,
+        "distance_rmse_m": 0.3337648803267835,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.024941208212993244,
+          "speed_max_abs_mps": 0.1646582390765312,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.09715429823469668,
+            "max_abs": 0.16311487282012216
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.017549672054072263,
+            "max_abs": 0.1646582390765312
+          },
+          "end_distance_error_m": -0.4059570748589749,
+          "distance_rmse_m": 0.3337648803267835,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_dropout",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "38ce5acb61900c34ca74a8b72ef21a7453c99b5a5336dc237d99c8ad7934be3c",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007500325701313879,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006774501384918475,
+          "max_abs": 0.017346311708996254
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007714604970826454,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.03695676631900824,
+        "distance_rmse_m": 0.03359904566622576,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007500325701313879,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006774501384918475,
+            "max_abs": 0.017346311708996254
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007714604970826454,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.03695676631900824,
+          "distance_rmse_m": 0.03359904566622576,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007500325701313879,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006774501384918475,
+          "max_abs": 0.017346311708996254
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007714604970826454,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.03695676631900824,
+        "distance_rmse_m": 0.03359904566622576,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007500325701313879,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006774501384918475,
+            "max_abs": 0.017346311708996254
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007714604970826454,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.03695676631900824,
+          "distance_rmse_m": 0.03359904566622576,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_dropout",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "a971d767d31e1f6e5d13dbe2002dea726962b2ec9734e6b4dbcf1c773eadca78",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.0075294106724724235,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008040518404567088,
+          "max_abs": 0.0172450783784317
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075400806195741596,
+          "max_abs": 0.020132468607737763
+        },
+        "end_distance_error_m": -0.040788320284434576,
+        "distance_rmse_m": 0.035929633692713,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.0075294106724724235,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008040518404567088,
+            "max_abs": 0.0172450783784317
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075400806195741596,
+            "max_abs": 0.020132468607737763
+          },
+          "end_distance_error_m": -0.040788320284434576,
+          "distance_rmse_m": 0.035929633692713,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.0075294106724724235,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008040518404567088,
+          "max_abs": 0.0172450783784317
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075400806195741596,
+          "max_abs": 0.020132468607737763
+        },
+        "end_distance_error_m": -0.040788320284434576,
+        "distance_rmse_m": 0.035929633692713,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.0075294106724724235,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008040518404567088,
+            "max_abs": 0.0172450783784317
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075400806195741596,
+            "max_abs": 0.020132468607737763
+          },
+          "end_distance_error_m": -0.040788320284434576,
+          "distance_rmse_m": 0.035929633692713,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 11,
+      "input_sha256": "3c2446161e31897b0ccca09c516e3ff77338126863cf0f3e833b5e42882e5190",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008188007196009442,
+        "speed_max_abs_mps": 0.025665071955276453,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.012763820961042283,
+          "max_abs": 0.016990617062010216
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008252532772586375,
+          "max_abs": 0.016937540733558798
+        },
+        "end_distance_error_m": -0.06566624258095999,
+        "distance_rmse_m": 0.0661885999580024,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008188007196009442,
+          "speed_max_abs_mps": 0.025665071955276453,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.012763820961042283,
+            "max_abs": 0.016990617062010216
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008252532772586375,
+            "max_abs": 0.016937540733558798
+          },
+          "end_distance_error_m": -0.06566624258095999,
+          "distance_rmse_m": 0.0661885999580024,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008188007196009442,
+        "speed_max_abs_mps": 0.025665071955276453,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.012763820961042283,
+          "max_abs": 0.016990617062010216
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008252532772586375,
+          "max_abs": 0.016937540733558798
+        },
+        "end_distance_error_m": -0.06566624258095999,
+        "distance_rmse_m": 0.0661885999580024,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008188007196009442,
+          "speed_max_abs_mps": 0.025665071955276453,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.012763820961042283,
+            "max_abs": 0.016990617062010216
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008252532772586375,
+            "max_abs": 0.016937540733558798
+          },
+          "end_distance_error_m": -0.06566624258095999,
+          "distance_rmse_m": 0.0661885999580024,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 37,
+      "input_sha256": "3e7999cbb0e0aa3eb0dd56b9d811d37bf6184c25ad7762b100d7caff323a65c9",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007365730167846276,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.006659469901001696,
+          "max_abs": 0.010407691418378384
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007436010658958896,
+          "max_abs": 0.022538978833464007
+        },
+        "end_distance_error_m": -0.025087817591952444,
+        "distance_rmse_m": 0.02778127168869159,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007365730167846276,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.006659469901001696,
+            "max_abs": 0.010407691418378384
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007436010658958896,
+            "max_abs": 0.022538978833464007
+          },
+          "end_distance_error_m": -0.025087817591952444,
+          "distance_rmse_m": 0.02778127168869159,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007365730167846276,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.006659469901001696,
+          "max_abs": 0.010407691418378384
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007436010658958896,
+          "max_abs": 0.022538978833464007
+        },
+        "end_distance_error_m": -0.025087817591952444,
+        "distance_rmse_m": 0.02778127168869159,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007365730167846276,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.006659469901001696,
+            "max_abs": 0.010407691418378384
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007436010658958896,
+            "max_abs": 0.022538978833464007
+          },
+          "end_distance_error_m": -0.025087817591952444,
+          "distance_rmse_m": 0.02778127168869159,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 11,
+      "input_sha256": "41dd4da677fde684a193c6b9e16605bcba849ce7aeb47114ab714091246570c3",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.00754551967400222,
+        "speed_max_abs_mps": 0.025665071955276453,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.007456930234884767,
+          "max_abs": 0.01732906809963808
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008237233070780016,
+          "max_abs": 0.016937540733558798
+        },
+        "end_distance_error_m": -0.008501612191025743,
+        "distance_rmse_m": 0.0154060208169022,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.00754551967400222,
+          "speed_max_abs_mps": 0.025665071955276453,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.007456930234884767,
+            "max_abs": 0.01732906809963808
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008237233070780016,
+            "max_abs": 0.016937540733558798
+          },
+          "end_distance_error_m": -0.008501612191025743,
+          "distance_rmse_m": 0.0154060208169022,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.00754551967400222,
+        "speed_max_abs_mps": 0.025665071955276453,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.007456930234884767,
+          "max_abs": 0.01732906809963808
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008237233070780016,
+          "max_abs": 0.016937540733558798
+        },
+        "end_distance_error_m": -0.008501612191025743,
+        "distance_rmse_m": 0.0154060208169022,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.00754551967400222,
+          "speed_max_abs_mps": 0.025665071955276453,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.007456930234884767,
+            "max_abs": 0.01732906809963808
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008237233070780016,
+            "max_abs": 0.016937540733558798
+          },
+          "end_distance_error_m": -0.008501612191025743,
+          "distance_rmse_m": 0.0154060208169022,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 37,
+      "input_sha256": "bfe07f3daefb733ad22659a932a1e5fddf55b968b4a04536f4dff84a300e38d5",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007509181226782566,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.008182280384410611,
+          "max_abs": 0.01622460502180889
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007445044425970333,
+          "max_abs": 0.022538978833464007
+        },
+        "end_distance_error_m": -0.02275956693409853,
+        "distance_rmse_m": 0.025723469384141183,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007509181226782566,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.008182280384410611,
+            "max_abs": 0.01622460502180889
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007445044425970333,
+            "max_abs": 0.022538978833464007
+          },
+          "end_distance_error_m": -0.02275956693409853,
+          "distance_rmse_m": 0.025723469384141183,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007509181226782566,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.008182280384410611,
+          "max_abs": 0.01622460502180889
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007445044425970333,
+          "max_abs": 0.022538978833464007
+        },
+        "end_distance_error_m": -0.02275956693409853,
+        "distance_rmse_m": 0.025723469384141183,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007509181226782566,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.008182280384410611,
+            "max_abs": 0.01622460502180889
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007445044425970333,
+            "max_abs": 0.022538978833464007
+          },
+          "end_distance_error_m": -0.02275956693409853,
+          "distance_rmse_m": 0.025723469384141183,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_slow_bias",
+      "fault_window_s": [
+        27.0,
+        43.0
+      ],
+      "seed": 11,
+      "input_sha256": "ac112a057201c47261107ce8385846e7918a4414aa289b7217c4491194d67df6",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7189424400658855,
+        "speed_max_abs_mps": 2.018048951781169,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.6236410005410982,
+          "max_abs": 2.018048951781169
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.5962319555900946,
+          "max_abs": 1.9962264539349652
+        },
+        "end_distance_error_m": 24.56832296592097,
+        "distance_rmse_m": 18.995390657539232,
+        "recovery_to_0p1_mps_for_1s_s": 0.45000000000000284,
+        "model_only_fraction": 0.004703115814226925,
+        "slip_fraction": 0.004703115814226925,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7189424400658855,
+          "speed_max_abs_mps": 2.018048951781169,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.6236410005410982,
+            "max_abs": 2.018048951781169
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.5962319555900946,
+            "max_abs": 1.9962264539349652
+          },
+          "end_distance_error_m": 24.56832296592097,
+          "distance_rmse_m": 18.995390657539232,
+          "recovery_to_0p1_mps_for_1s_s": 0.45000000000000284,
+          "model_only_fraction": 0.004703115814226925,
+          "slip_fraction": 0.004703115814226925
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.761060928104852,
+        "speed_max_abs_mps": 2.018048951781169,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.6236410005410982,
+          "max_abs": 2.018048951781169
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.189882124677559,
+          "max_abs": 1.9962264539349652
+        },
+        "end_distance_error_m": 27.300373988656247,
+        "distance_rmse_m": 20.916579703172268,
+        "recovery_to_0p1_mps_for_1s_s": 1.8500000000000014,
+        "model_only_fraction": 0.021164021164021163,
+        "slip_fraction": 0.021164021164021163,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.761060928104852,
+          "speed_max_abs_mps": 2.018048951781169,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.6236410005410982,
+            "max_abs": 2.018048951781169
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.189882124677559,
+            "max_abs": 1.9962264539349652
+          },
+          "end_distance_error_m": 27.300373988656247,
+          "distance_rmse_m": 20.916579703172268,
+          "recovery_to_0p1_mps_for_1s_s": 1.8500000000000014,
+          "model_only_fraction": 0.021164021164021163,
+          "slip_fraction": 0.021164021164021163
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_slow_bias",
+      "fault_window_s": [
+        27.0,
+        43.0
+      ],
+      "seed": 37,
+      "input_sha256": "f4a2fcd2d9637d9733ce28ef81b25689bac6ba8d03bba19f4e964b0509e3928d",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7217482928440145,
+        "speed_max_abs_mps": 2.011954404670652,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.62270077817961,
+          "max_abs": 2.011954404670652
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.6588250197251063,
+          "max_abs": 1.9974866876517705
+        },
+        "end_distance_error_m": 24.77051059857297,
+        "distance_rmse_m": 19.139635406235133,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.005878894767783657,
+        "slip_fraction": 0.005878894767783657,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7217482928440145,
+          "speed_max_abs_mps": 2.011954404670652,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.62270077817961,
+            "max_abs": 2.011954404670652
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.6588250197251063,
+            "max_abs": 1.9974866876517705
+          },
+          "end_distance_error_m": 24.77051059857297,
+          "distance_rmse_m": 19.139635406235133,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.005878894767783657,
+          "slip_fraction": 0.005878894767783657
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7607518087859889,
+        "speed_max_abs_mps": 2.011954404670652,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.62270077817961,
+          "max_abs": 2.011954404670652
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.1906363053819775,
+          "max_abs": 1.9974866876517705
+        },
+        "end_distance_error_m": 27.30925244155793,
+        "distance_rmse_m": 20.92351205197366,
+        "recovery_to_0p1_mps_for_1s_s": 1.8500000000000014,
+        "model_only_fraction": 0.021164021164021163,
+        "slip_fraction": 0.021164021164021163,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7607518087859889,
+          "speed_max_abs_mps": 2.011954404670652,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.62270077817961,
+            "max_abs": 2.011954404670652
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.1906363053819775,
+            "max_abs": 1.9974866876517705
+          },
+          "end_distance_error_m": 27.30925244155793,
+          "distance_rmse_m": 20.92351205197366,
+          "recovery_to_0p1_mps_for_1s_s": 1.8500000000000014,
+          "model_only_fraction": 0.021164021164021163,
+          "slip_fraction": 0.021164021164021163
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_delay",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "ca16a35497e34525e86889c873d70291adf1c83ff87002ca4fa94ac0eccee903",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007500325701313879,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006774501384918475,
+          "max_abs": 0.017346311708996254
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007714604970826454,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.03695676631900824,
+        "distance_rmse_m": 0.03359904566622576,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007500325701313879,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006774501384918475,
+            "max_abs": 0.017346311708996254
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007714604970826454,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.03695676631900824,
+          "distance_rmse_m": 0.03359904566622576,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.007500325701313879,
+        "speed_max_abs_mps": 0.028315786620346728,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.006774501384918475,
+          "max_abs": 0.017346311708996254
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007714604970826454,
+          "max_abs": 0.018724519929791406
+        },
+        "end_distance_error_m": -0.03695676631900824,
+        "distance_rmse_m": 0.03359904566622576,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.007500325701313879,
+          "speed_max_abs_mps": 0.028315786620346728,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.006774501384918475,
+            "max_abs": 0.017346311708996254
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007714604970826454,
+            "max_abs": 0.018724519929791406
+          },
+          "end_distance_error_m": -0.03695676631900824,
+          "distance_rmse_m": 0.03359904566622576,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "front_delay",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "90cefec71ef096251cf15786ea8c123bb4bb406bc90b4a66acc480bd164c8208",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.0075294106724724235,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008040518404567088,
+          "max_abs": 0.0172450783784317
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075400806195741596,
+          "max_abs": 0.020132468607737763
+        },
+        "end_distance_error_m": -0.040788320284434576,
+        "distance_rmse_m": 0.035929633692713,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.0075294106724724235,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008040518404567088,
+            "max_abs": 0.0172450783784317
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075400806195741596,
+            "max_abs": 0.020132468607737763
+          },
+          "end_distance_error_m": -0.040788320284434576,
+          "distance_rmse_m": 0.035929633692713,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.0075294106724724235,
+        "speed_max_abs_mps": 0.027681409848769434,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008040518404567088,
+          "max_abs": 0.0172450783784317
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0075400806195741596,
+          "max_abs": 0.020132468607737763
+        },
+        "end_distance_error_m": -0.040788320284434576,
+        "distance_rmse_m": 0.035929633692713,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.0075294106724724235,
+          "speed_max_abs_mps": 0.027681409848769434,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008040518404567088,
+            "max_abs": 0.0172450783784317
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0075400806195741596,
+            "max_abs": 0.020132468607737763
+          },
+          "end_distance_error_m": -0.040788320284434576,
+          "distance_rmse_m": 0.035929633692713,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_jump_long",
+      "fault_window_s": [
+        25.0,
+        45.0
+      ],
+      "seed": 11,
+      "input_sha256": "23ac2b05e1e44833e0bf4428d880a4bc31c2e07a50c06bced6ef0701234fcac0",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.9374755402749686,
+        "speed_max_abs_mps": 4.0171489472117905,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.940592115050463,
+          "max_abs": 4.0171489472117905
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3185546688725553,
+          "max_abs": 3.991095544582265
+        },
+        "end_distance_error_m": 79.99043175647785,
+        "distance_rmse_m": 62.12316488581774,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.9374755402749686,
+          "speed_max_abs_mps": 4.0171489472117905,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.940592115050463,
+            "max_abs": 4.0171489472117905
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3185546688725553,
+            "max_abs": 3.991095544582265
+          },
+          "end_distance_error_m": 79.99043175647785,
+          "distance_rmse_m": 62.12316488581774,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.7278393945207298,
+        "speed_max_abs_mps": 4.0171489472117905,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.5015310441801795,
+          "max_abs": 4.0171489472117905
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3185546688725553,
+          "max_abs": 3.991095544582265
+        },
+        "end_distance_error_m": 63.26576727948759,
+        "distance_rmse_m": 48.461870670195225,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.059964726631393295,
+        "slip_fraction": 0.059964726631393295,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.7278393945207298,
+          "speed_max_abs_mps": 4.0171489472117905,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.5015310441801795,
+            "max_abs": 4.0171489472117905
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3185546688725553,
+            "max_abs": 3.991095544582265
+          },
+          "end_distance_error_m": 63.26576727948759,
+          "distance_rmse_m": 48.461870670195225,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.059964726631393295,
+          "slip_fraction": 0.059964726631393295
+        }
+      }
+    },
+    {
+      "profile": "steady",
+      "fault": "pair_jump_long",
+      "fault_window_s": [
+        25.0,
+        45.0
+      ],
+      "seed": 37,
+      "input_sha256": "d9f2f437de0cf511a617e6804f4b04856095a9f5b65f35a8a3bc84ce98f994b7",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.9372271742305538,
+        "speed_max_abs_mps": 4.015206189478427,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.9399010144097537,
+          "max_abs": 4.015206189478427
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3206101192300908,
+          "max_abs": 3.9973197058995424
+        },
+        "end_distance_error_m": 79.99676692033881,
+        "distance_rmse_m": 62.12888059122138,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.9372271742305538,
+          "speed_max_abs_mps": 4.015206189478427,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.9399010144097537,
+            "max_abs": 4.015206189478427
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3206101192300908,
+            "max_abs": 3.9973197058995424
+          },
+          "end_distance_error_m": 79.99676692033881,
+          "distance_rmse_m": 62.12888059122138,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.7273177385766922,
+        "speed_max_abs_mps": 4.013933731626537,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.500243004423304,
+          "max_abs": 4.013933731626537
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3206101192300908,
+          "max_abs": 3.9973197058995424
+        },
+        "end_distance_error_m": 63.28672792624866,
+        "distance_rmse_m": 48.47904460637529,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.059964726631393295,
+        "slip_fraction": 0.059964726631393295,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.7273177385766922,
+          "speed_max_abs_mps": 4.013933731626537,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.500243004423304,
+            "max_abs": 4.013933731626537
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3206101192300908,
+            "max_abs": 3.9973197058995424
+          },
+          "end_distance_error_m": 63.28672792624866,
+          "distance_rmse_m": 48.47904460637529,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.059964726631393295,
+          "slip_fraction": 0.059964726631393295
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "clean",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "01cc3cabae02cee7b8894151229366193751d7972e75b3273956360ab9208a87",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.00874347839060259,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008435733983310163,
+          "max_abs": 0.020137116761443252
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008123971703392114,
+          "max_abs": 0.02173601736803299
+        },
+        "end_distance_error_m": 0.04266616826481595,
+        "distance_rmse_m": 0.016726500489712443,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.00874347839060259,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008435733983310163,
+            "max_abs": 0.020137116761443252
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008123971703392114,
+            "max_abs": 0.02173601736803299
+          },
+          "end_distance_error_m": 0.04266616826481595,
+          "distance_rmse_m": 0.016726500489712443,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.00874347839060259,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008435733983310163,
+          "max_abs": 0.020137116761443252
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008123971703392114,
+          "max_abs": 0.02173601736803299
+        },
+        "end_distance_error_m": 0.04266616826481595,
+        "distance_rmse_m": 0.016726500489712443,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.00874347839060259,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008435733983310163,
+            "max_abs": 0.020137116761443252
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008123971703392114,
+            "max_abs": 0.02173601736803299
+          },
+          "end_distance_error_m": 0.04266616826481595,
+          "distance_rmse_m": 0.016726500489712443,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "clean",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "2271679ac26806dba50b0b3a58beb08d1dd87a03a65ccdf1de5013a668d52819",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008027262132200168,
+        "speed_max_abs_mps": 0.03988240326299497,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.00654788987903482,
+          "max_abs": 0.019831517697937784
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007082139654013154,
+          "max_abs": 0.015748778132662622
+        },
+        "end_distance_error_m": 0.061013824173983267,
+        "distance_rmse_m": 0.022164058425158065,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008027262132200168,
+          "speed_max_abs_mps": 0.03988240326299497,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.00654788987903482,
+            "max_abs": 0.019831517697937784
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007082139654013154,
+            "max_abs": 0.015748778132662622
+          },
+          "end_distance_error_m": 0.061013824173983267,
+          "distance_rmse_m": 0.022164058425158065,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008027262132200168,
+        "speed_max_abs_mps": 0.03988240326299497,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.00654788987903482,
+          "max_abs": 0.019831517697937784
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007082139654013154,
+          "max_abs": 0.015748778132662622
+        },
+        "end_distance_error_m": 0.061013824173983267,
+        "distance_rmse_m": 0.022164058425158065,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008027262132200168,
+          "speed_max_abs_mps": 0.03988240326299497,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.00654788987903482,
+            "max_abs": 0.019831517697937784
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007082139654013154,
+            "max_abs": 0.015748778132662622
+          },
+          "end_distance_error_m": 0.061013824173983267,
+          "distance_rmse_m": 0.022164058425158065,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_jump_up",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "979a81e257598d64a02f5ee449b1626fc6391fbd790d9c8059e6b6f462dc8aa1",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3715344363722293,
+        "speed_max_abs_mps": 4.016796422159688,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.8882579189723274,
+          "max_abs": 4.016796422159688
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3264220715233208,
+          "max_abs": 4.002129568151487
+        },
+        "end_distance_error_m": 40.046246357541406,
+        "distance_rmse_m": 31.57714716286067,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3715344363722293,
+          "speed_max_abs_mps": 4.016796422159688,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.8882579189723274,
+            "max_abs": 4.016796422159688
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3264220715233208,
+            "max_abs": 4.002129568151487
+          },
+          "end_distance_error_m": 40.046246357541406,
+          "distance_rmse_m": 31.57714716286067,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0797141068513867,
+        "speed_max_abs_mps": 4.0163939242818785,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.0060502611726534,
+          "max_abs": 4.0163939242818785
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3251016443172925,
+          "max_abs": 4.0009818249822775
+        },
+        "end_distance_error_m": 25.131696274359626,
+        "distance_rmse_m": 19.569670908813112,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.0564373897707231,
+        "slip_fraction": 0.0564373897707231,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0797141068513867,
+          "speed_max_abs_mps": 4.0163939242818785,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.0060502611726534,
+            "max_abs": 4.0163939242818785
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3251016443172925,
+            "max_abs": 4.0009818249822775
+          },
+          "end_distance_error_m": 25.131696274359626,
+          "distance_rmse_m": 19.569670908813112,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.0564373897707231,
+          "slip_fraction": 0.0564373897707231
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_jump_up",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "351a9051653ebfa88a793bf138b2503bf490c606b8b8a09d83a3e831b774eb9b",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.371139275599997,
+        "speed_max_abs_mps": 4.015963698325397,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.887430465267327,
+          "max_abs": 4.015963698325397
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3243702124216374,
+          "max_abs": 3.9962834257005753
+        },
+        "end_distance_error_m": 40.064391986810904,
+        "distance_rmse_m": 31.587048293178487,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.371139275599997,
+          "speed_max_abs_mps": 4.015963698325397,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.887430465267327,
+            "max_abs": 4.015963698325397
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3243702124216374,
+            "max_abs": 3.9962834257005753
+          },
+          "end_distance_error_m": 40.064391986810904,
+          "distance_rmse_m": 31.587048293178487,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0794549963866433,
+        "speed_max_abs_mps": 4.012277134403748,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.005694193533227,
+          "max_abs": 4.012277134403748
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3231734983193615,
+          "max_abs": 3.995243049717553
+        },
+        "end_distance_error_m": 25.113165718720722,
+        "distance_rmse_m": 19.55018985428867,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.0564373897707231,
+        "slip_fraction": 0.0564373897707231,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0794549963866433,
+          "speed_max_abs_mps": 4.012277134403748,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.005694193533227,
+            "max_abs": 4.012277134403748
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3231734983193615,
+            "max_abs": 3.995243049717553
+          },
+          "end_distance_error_m": 25.113165718720722,
+          "distance_rmse_m": 19.55018985428867,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.0564373897707231,
+          "slip_fraction": 0.0564373897707231
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_jump_down",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "a2f9b4307b2cbcd10c5025528085de9d71115e3b6c5a525ea164784aec4dbb5d",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3695303138201318,
+        "speed_max_abs_mps": 4.019143814488826,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.883060953288365,
+          "max_abs": 4.019143814488826
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3216595120547787,
+          "max_abs": 3.993274202962909
+        },
+        "end_distance_error_m": -39.949150342245616,
+        "distance_rmse_m": 31.554205332345322,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3695303138201318,
+          "speed_max_abs_mps": 4.019143814488826,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.883060953288365,
+            "max_abs": 4.019143814488826
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3216595120547787,
+            "max_abs": 3.993274202962909
+          },
+          "end_distance_error_m": -39.949150342245616,
+          "distance_rmse_m": 31.554205332345322,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.051620011748646,
+        "speed_max_abs_mps": 4.017555273948834,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 2.9217129045538717,
+          "max_abs": 4.017555273948834
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3180421020039388,
+          "max_abs": 3.990128414084265
+        },
+        "end_distance_error_m": -23.216960936732107,
+        "distance_rmse_m": 18.110981940418043,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.059964726631393295,
+        "slip_fraction": 0.059964726631393295,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.051620011748646,
+          "speed_max_abs_mps": 4.017555273948834,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 2.9217129045538717,
+            "max_abs": 4.017555273948834
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3180421020039388,
+            "max_abs": 3.990128414084265
+          },
+          "end_distance_error_m": -23.216960936732107,
+          "distance_rmse_m": 18.110981940418043,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.059964726631393295,
+          "slip_fraction": 0.059964726631393295
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_jump_down",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "714e6b7adcbd6cbbdca97a0f633d3305438ca6b9b2783b8aff12184bab4106b8",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.369916430015127,
+        "speed_max_abs_mps": 4.011120272986366,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 3.8838791202279124,
+          "max_abs": 4.011120272986366
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3237078296178788,
+          "max_abs": 3.9991251992973593
+        },
+        "end_distance_error_m": -39.9310101503097,
+        "distance_rmse_m": 31.54430766898563,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.369916430015127,
+          "speed_max_abs_mps": 4.011120272986366,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 3.8838791202279124,
+            "max_abs": 4.011120272986366
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3237078296178788,
+            "max_abs": 3.9991251992973593
+          },
+          "end_distance_error_m": -39.9310101503097,
+          "distance_rmse_m": 31.54430766898563,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.0517596027837468,
+        "speed_max_abs_mps": 4.010083448636166,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 2.921717064879407,
+          "max_abs": 4.010083448636166
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3199658147278257,
+          "max_abs": 3.9958722045331436
+        },
+        "end_distance_error_m": -23.23840420838269,
+        "distance_rmse_m": 18.132702372556015,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.059964726631393295,
+        "slip_fraction": 0.059964726631393295,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.0517596027837468,
+          "speed_max_abs_mps": 4.010083448636166,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 2.921717064879407,
+            "max_abs": 4.010083448636166
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3199658147278257,
+            "max_abs": 3.9958722045331436
+          },
+          "end_distance_error_m": -23.23840420838269,
+          "distance_rmse_m": 18.132702372556015,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.059964726631393295,
+          "slip_fraction": 0.059964726631393295
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "d5fc252c6460311cfa35430e45ec18b852a9c0d9f0c995bc685320775342053f",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008869087104574189,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008739699963221884,
+          "max_abs": 0.018745377033205557
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008579162313795108,
+          "max_abs": 0.023040030125763167
+        },
+        "end_distance_error_m": 0.08918341559126475,
+        "distance_rmse_m": 0.04590987908153406,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008869087104574189,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008739699963221884,
+            "max_abs": 0.018745377033205557
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008579162313795108,
+            "max_abs": 0.023040030125763167
+          },
+          "end_distance_error_m": 0.08918341559126475,
+          "distance_rmse_m": 0.04590987908153406,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008869087104574189,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008739699963221884,
+          "max_abs": 0.018745377033205557
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.008579162313795108,
+          "max_abs": 0.023040030125763167
+        },
+        "end_distance_error_m": 0.08918341559126475,
+        "distance_rmse_m": 0.04590987908153406,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008869087104574189,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008739699963221884,
+            "max_abs": 0.018745377033205557
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.008579162313795108,
+            "max_abs": 0.023040030125763167
+          },
+          "end_distance_error_m": 0.08918341559126475,
+          "distance_rmse_m": 0.04590987908153406,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "a6fa1b5b87addde15a27aefd55272f3986df2e4f8be6e690890da57e9fc59d4c",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008149795003026785,
+        "speed_max_abs_mps": 0.04100019627799867,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.00680765304298424,
+          "max_abs": 0.01578680732601434
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007318331458996034,
+          "max_abs": 0.016936044324497246
+        },
+        "end_distance_error_m": 0.09766058648403941,
+        "distance_rmse_m": 0.04781184145594484,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008149795003026785,
+          "speed_max_abs_mps": 0.04100019627799867,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.00680765304298424,
+            "max_abs": 0.01578680732601434
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007318331458996034,
+            "max_abs": 0.016936044324497246
+          },
+          "end_distance_error_m": 0.09766058648403941,
+          "distance_rmse_m": 0.04781184145594484,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008149795003026785,
+        "speed_max_abs_mps": 0.04100019627799867,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.00680765304298424,
+          "max_abs": 0.01578680732601434
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007318331458996034,
+          "max_abs": 0.016936044324497246
+        },
+        "end_distance_error_m": 0.09766058648403941,
+        "distance_rmse_m": 0.04781184145594484,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008149795003026785,
+          "speed_max_abs_mps": 0.04100019627799867,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.00680765304298424,
+            "max_abs": 0.01578680732601434
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007318331458996034,
+            "max_abs": 0.016936044324497246
+          },
+          "end_distance_error_m": 0.09766058648403941,
+          "distance_rmse_m": 0.04781184145594484,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "rear_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "efc95816fe45b6c5e1b43a72a5b18c0b5acbf0ab1a5ed8d37b445473e9adce5e",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008815494460469638,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008313656246289304,
+          "max_abs": 0.017126306028753646
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00850321012608602,
+          "max_abs": 0.02302171821072463
+        },
+        "end_distance_error_m": 0.08251560423974524,
+        "distance_rmse_m": 0.04099767858900549,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008815494460469638,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008313656246289304,
+            "max_abs": 0.017126306028753646
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00850321012608602,
+            "max_abs": 0.02302171821072463
+          },
+          "end_distance_error_m": 0.08251560423974524,
+          "distance_rmse_m": 0.04099767858900549,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008815494460469638,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008313656246289304,
+          "max_abs": 0.017126306028753646
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00850321012608602,
+          "max_abs": 0.02302171821072463
+        },
+        "end_distance_error_m": 0.08251560423974524,
+        "distance_rmse_m": 0.04099767858900549,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008815494460469638,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008313656246289304,
+            "max_abs": 0.017126306028753646
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00850321012608602,
+            "max_abs": 0.02302171821072463
+          },
+          "end_distance_error_m": 0.08251560423974524,
+          "distance_rmse_m": 0.04099767858900549,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "rear_jump",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "2cb9fad5a11a2caf0e9f035002dd5c88c051c85a91556cab5b882353b47f944b",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008279370742455213,
+        "speed_max_abs_mps": 0.04097313357847021,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008055973257580984,
+          "max_abs": 0.015214910045337149
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0072979470313012836,
+          "max_abs": 0.016902162205669313
+        },
+        "end_distance_error_m": 0.1102278732475952,
+        "distance_rmse_m": 0.05735227820058157,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008279370742455213,
+          "speed_max_abs_mps": 0.04097313357847021,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008055973257580984,
+            "max_abs": 0.015214910045337149
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0072979470313012836,
+            "max_abs": 0.016902162205669313
+          },
+          "end_distance_error_m": 0.1102278732475952,
+          "distance_rmse_m": 0.05735227820058157,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008279370742455213,
+        "speed_max_abs_mps": 0.04097313357847021,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008055973257580984,
+          "max_abs": 0.015214910045337149
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.0072979470313012836,
+          "max_abs": 0.016902162205669313
+        },
+        "end_distance_error_m": 0.1102278732475952,
+        "distance_rmse_m": 0.05735227820058157,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.11757789535567313,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008279370742455213,
+          "speed_max_abs_mps": 0.04097313357847021,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008055973257580984,
+            "max_abs": 0.015214910045337149
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.0072979470313012836,
+            "max_abs": 0.016902162205669313
+          },
+          "end_distance_error_m": 0.1102278732475952,
+          "distance_rmse_m": 0.05735227820058157,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.11757789535567313
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_dropout",
+      "fault_window_s": [
+        30.0,
+        35.0
+      ],
+      "seed": 11,
+      "input_sha256": "a911bb2460b38a264ad65bcd6fe83fa09ea1b80c0f2c60db211692e738a7252f",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.023650960475035173,
+        "speed_max_abs_mps": 0.15150467992207162,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.08971178847395787,
+          "max_abs": 0.1501052000680314
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.017245418383903033,
+          "max_abs": 0.15150467992207162
+        },
+        "end_distance_error_m": 0.4211559216703904,
+        "distance_rmse_m": 0.31402587764677714,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.023650960475035173,
+          "speed_max_abs_mps": 0.15150467992207162,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.08971178847395787,
+            "max_abs": 0.1501052000680314
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.017245418383903033,
+            "max_abs": 0.15150467992207162
+          },
+          "end_distance_error_m": 0.4211559216703904,
+          "distance_rmse_m": 0.31402587764677714,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.023650960475035173,
+        "speed_max_abs_mps": 0.15150467992207162,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.08971178847395787,
+          "max_abs": 0.1501052000680314
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.017245418383903033,
+          "max_abs": 0.15150467992207162
+        },
+        "end_distance_error_m": 0.4211559216703904,
+        "distance_rmse_m": 0.31402587764677714,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.023650960475035173,
+          "speed_max_abs_mps": 0.15150467992207162,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.08971178847395787,
+            "max_abs": 0.1501052000680314
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.017245418383903033,
+            "max_abs": 0.15150467992207162
+          },
+          "end_distance_error_m": 0.4211559216703904,
+          "distance_rmse_m": 0.31402587764677714,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_dropout",
+      "fault_window_s": [
+        30.0,
+        35.0
+      ],
+      "seed": 37,
+      "input_sha256": "4209848e5964ec8d87a229c264d3e3e8d3a9aa76083ba67c17df08db161e5d94",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.021391495606448367,
+        "speed_max_abs_mps": 0.1410438327510004,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.08079783170232352,
+          "max_abs": 0.1396516733915174
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.015323238178080234,
+          "max_abs": 0.1410438327510004
+        },
+        "end_distance_error_m": 0.39588870155978384,
+        "distance_rmse_m": 0.28867731208874015,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.021391495606448367,
+          "speed_max_abs_mps": 0.1410438327510004,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.08079783170232352,
+            "max_abs": 0.1396516733915174
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.015323238178080234,
+            "max_abs": 0.1410438327510004
+          },
+          "end_distance_error_m": 0.39588870155978384,
+          "distance_rmse_m": 0.28867731208874015,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.021391495606448367,
+        "speed_max_abs_mps": 0.1410438327510004,
+        "fault_speed": {
+          "n": 100,
+          "rmse": 0.08079783170232352,
+          "max_abs": 0.1396516733915174
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.015323238178080234,
+          "max_abs": 0.1410438327510004
+        },
+        "end_distance_error_m": 0.39588870155978384,
+        "distance_rmse_m": 0.28867731208874015,
+        "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+        "model_only_fraction": 0.05584950029394474,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.021391495606448367,
+          "speed_max_abs_mps": 0.1410438327510004,
+          "fault_speed": {
+            "n": 100,
+            "rmse": 0.08079783170232352,
+            "max_abs": 0.1396516733915174
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.015323238178080234,
+            "max_abs": 0.1410438327510004
+          },
+          "end_distance_error_m": 0.39588870155978384,
+          "distance_rmse_m": 0.28867731208874015,
+          "recovery_to_0p1_mps_for_1s_s": 0.04999999999999716,
+          "model_only_fraction": 0.05584950029394474,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_dropout",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "186ea1ad06e150fec785f11da8a5ade7202b81a8a8f77f29e7d7da8fa7735428",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008841978731256538,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008542927170071313,
+          "max_abs": 0.018571013338611664
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00855644457358099,
+          "max_abs": 0.022978918441772578
+        },
+        "end_distance_error_m": 0.08746693628938829,
+        "distance_rmse_m": 0.04464626154025891,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008841978731256538,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008542927170071313,
+            "max_abs": 0.018571013338611664
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00855644457358099,
+            "max_abs": 0.022978918441772578
+          },
+          "end_distance_error_m": 0.08746693628938829,
+          "distance_rmse_m": 0.04464626154025891,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008841978731256538,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008542927170071313,
+          "max_abs": 0.018571013338611664
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00855644457358099,
+          "max_abs": 0.022978918441772578
+        },
+        "end_distance_error_m": 0.08746693628938829,
+        "distance_rmse_m": 0.04464626154025891,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008841978731256538,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008542927170071313,
+            "max_abs": 0.018571013338611664
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00855644457358099,
+            "max_abs": 0.022978918441772578
+          },
+          "end_distance_error_m": 0.08746693628938829,
+          "distance_rmse_m": 0.04464626154025891,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_dropout",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "fd7dbf6bf575056561f88f3ee46edc666499a8647a018d1f655c8b83333d9447",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008126304756075186,
+        "speed_max_abs_mps": 0.04093145370672424,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.0066327900821745575,
+          "max_abs": 0.015547109327323838
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007299016048898795,
+          "max_abs": 0.016849979592981512
+        },
+        "end_distance_error_m": 0.09631691207977155,
+        "distance_rmse_m": 0.046820691972121645,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008126304756075186,
+          "speed_max_abs_mps": 0.04093145370672424,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.0066327900821745575,
+            "max_abs": 0.015547109327323838
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007299016048898795,
+            "max_abs": 0.016849979592981512
+          },
+          "end_distance_error_m": 0.09631691207977155,
+          "distance_rmse_m": 0.046820691972121645,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008126304756075186,
+        "speed_max_abs_mps": 0.04093145370672424,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.0066327900821745575,
+          "max_abs": 0.015547109327323838
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007299016048898795,
+          "max_abs": 0.016849979592981512
+        },
+        "end_distance_error_m": 0.09631691207977155,
+        "distance_rmse_m": 0.046820691972121645,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008126304756075186,
+          "speed_max_abs_mps": 0.04093145370672424,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.0066327900821745575,
+            "max_abs": 0.015547109327323838
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007299016048898795,
+            "max_abs": 0.016849979592981512
+          },
+          "end_distance_error_m": 0.09631691207977155,
+          "distance_rmse_m": 0.046820691972121645,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 11,
+      "input_sha256": "c389b7df881aed69257ec15f6178d4e34296300e1002187b5824875743d050ff",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.77288929263648,
+        "speed_max_abs_mps": 4.101692799731331,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 2.2862931534282946,
+          "max_abs": 3.9675469706005604
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3404007175843233,
+          "max_abs": 4.101692799731331
+        },
+        "end_distance_error_m": -17.588188277640086,
+        "distance_rmse_m": 15.795109089936838,
+        "recovery_to_0p1_mps_for_1s_s": 0.5500000000000007,
+        "model_only_fraction": 0.005878894767783657,
+        "slip_fraction": 0.005878894767783657,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.77288929263648,
+          "speed_max_abs_mps": 4.101692799731331,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 2.2862931534282946,
+            "max_abs": 3.9675469706005604
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3404007175843233,
+            "max_abs": 4.101692799731331
+          },
+          "end_distance_error_m": -17.588188277640086,
+          "distance_rmse_m": 15.795109089936838,
+          "recovery_to_0p1_mps_for_1s_s": 0.5500000000000007,
+          "model_only_fraction": 0.005878894767783657,
+          "slip_fraction": 0.005878894767783657
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.3737040550908668,
+        "speed_max_abs_mps": 5.046395241732804,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 2.2862931534282946,
+          "max_abs": 3.9675469706005604
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 4.473790780790219,
+          "max_abs": 4.9010383095569425
+        },
+        "end_distance_error_m": -41.32870142370666,
+        "distance_rmse_m": 36.0009022202671,
+        "recovery_to_0p1_mps_for_1s_s": 5.75,
+        "model_only_fraction": 0.06701940035273368,
+        "slip_fraction": 0.06701940035273368,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.3737040550908668,
+          "speed_max_abs_mps": 5.046395241732804,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 2.2862931534282946,
+            "max_abs": 3.9675469706005604
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 4.473790780790219,
+            "max_abs": 4.9010383095569425
+          },
+          "end_distance_error_m": -41.32870142370666,
+          "distance_rmse_m": 36.0009022202671,
+          "recovery_to_0p1_mps_for_1s_s": 5.75,
+          "model_only_fraction": 0.06701940035273368,
+          "slip_fraction": 0.06701940035273368
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 37,
+      "input_sha256": "93666ec9d871f531994125a8d24133868c0179ac2e1c7150bf12d6012a078596",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7711399044163634,
+        "speed_max_abs_mps": 4.095547688291433,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 2.280752543676035,
+          "max_abs": 3.9615599650552866
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3383924523100128,
+          "max_abs": 4.095547688291433
+        },
+        "end_distance_error_m": -17.532392219592396,
+        "distance_rmse_m": 15.74934290014902,
+        "recovery_to_0p1_mps_for_1s_s": 0.5500000000000007,
+        "model_only_fraction": 0.005878894767783657,
+        "slip_fraction": 0.005878894767783657,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7711399044163634,
+          "speed_max_abs_mps": 4.095547688291433,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 2.280752543676035,
+            "max_abs": 3.9615599650552866
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3383924523100128,
+            "max_abs": 4.095547688291433
+          },
+          "end_distance_error_m": -17.532392219592396,
+          "distance_rmse_m": 15.74934290014902,
+          "recovery_to_0p1_mps_for_1s_s": 0.5500000000000007,
+          "model_only_fraction": 0.005878894767783657,
+          "slip_fraction": 0.005878894767783657
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.371300084533206,
+        "speed_max_abs_mps": 5.038631402493785,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 2.280752543676035,
+          "max_abs": 3.9615599650552866
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 4.467045205434896,
+          "max_abs": 4.89352115827963
+        },
+        "end_distance_error_m": -41.23896152063986,
+        "distance_rmse_m": 35.926708699306324,
+        "recovery_to_0p1_mps_for_1s_s": 5.75,
+        "model_only_fraction": 0.06701940035273368,
+        "slip_fraction": 0.06701940035273368,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.371300084533206,
+          "speed_max_abs_mps": 5.038631402493785,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 2.280752543676035,
+            "max_abs": 3.9615599650552866
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 4.467045205434896,
+            "max_abs": 4.89352115827963
+          },
+          "end_distance_error_m": -41.23896152063986,
+          "distance_rmse_m": 35.926708699306324,
+          "recovery_to_0p1_mps_for_1s_s": 5.75,
+          "model_only_fraction": 0.06701940035273368,
+          "slip_fraction": 0.06701940035273368
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 11,
+      "input_sha256": "70f91245a9ef4bdbc6e9d6fc2c3d2900c90e982e166accaa4bfa1d4e3ecbb06c",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.016041382822833773,
+        "speed_max_abs_mps": 0.18901225034726377,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.0453328249507377,
+          "max_abs": 0.18901225034726377
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.015663618943757587,
+          "max_abs": 0.059142093226444814
+        },
+        "end_distance_error_m": -0.18506911343837373,
+        "distance_rmse_m": 0.20390911196227962,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.08465608465608465,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.016041382822833773,
+          "speed_max_abs_mps": 0.18901225034726377,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.0453328249507377,
+            "max_abs": 0.18901225034726377
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.015663618943757587,
+            "max_abs": 0.059142093226444814
+          },
+          "end_distance_error_m": -0.18506911343837373,
+          "distance_rmse_m": 0.20390911196227962,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.08465608465608465
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.016041382822833773,
+        "speed_max_abs_mps": 0.18901225034726377,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.0453328249507377,
+          "max_abs": 0.18901225034726377
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.015663618943757587,
+          "max_abs": 0.059142093226444814
+        },
+        "end_distance_error_m": -0.18506911343837373,
+        "distance_rmse_m": 0.20390911196227962,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.08465608465608465,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.016041382822833773,
+          "speed_max_abs_mps": 0.18901225034726377,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.0453328249507377,
+            "max_abs": 0.18901225034726377
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.015663618943757587,
+            "max_abs": 0.059142093226444814
+          },
+          "end_distance_error_m": -0.18506911343837373,
+          "distance_rmse_m": 0.20390911196227962,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.08465608465608465
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_freeze",
+      "fault_window_s": [
+        15.0,
+        23.0
+      ],
+      "seed": 37,
+      "input_sha256": "945422f59d64a291e25122c9fbf46acfe61ef9ce27ccc1a07ccfd7c1355fac21",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.015067548375040112,
+        "speed_max_abs_mps": 0.1743738196509721,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.04244743986212822,
+          "max_abs": 0.1743738196509721
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.01634039836632395,
+          "max_abs": 0.056517371815647977
+        },
+        "end_distance_error_m": -0.14861442939746894,
+        "distance_rmse_m": 0.17510775524371813,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.08583186360964139,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.015067548375040112,
+          "speed_max_abs_mps": 0.1743738196509721,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.04244743986212822,
+            "max_abs": 0.1743738196509721
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.01634039836632395,
+            "max_abs": 0.056517371815647977
+          },
+          "end_distance_error_m": -0.14861442939746894,
+          "distance_rmse_m": 0.17510775524371813,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.08583186360964139
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.015067548375040112,
+        "speed_max_abs_mps": 0.1743738196509721,
+        "fault_speed": {
+          "n": 160,
+          "rmse": 0.04244743986212822,
+          "max_abs": 0.1743738196509721
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.01634039836632395,
+          "max_abs": 0.056517371815647977
+        },
+        "end_distance_error_m": -0.14861442939746894,
+        "distance_rmse_m": 0.17510775524371813,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.08583186360964139,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.015067548375040112,
+          "speed_max_abs_mps": 0.1743738196509721,
+          "fault_speed": {
+            "n": 160,
+            "rmse": 0.04244743986212822,
+            "max_abs": 0.1743738196509721
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.01634039836632395,
+            "max_abs": 0.056517371815647977
+          },
+          "end_distance_error_m": -0.14861442939746894,
+          "distance_rmse_m": 0.17510775524371813,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.08583186360964139
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_slow_bias",
+      "fault_window_s": [
+        27.0,
+        43.0
+      ],
+      "seed": 11,
+      "input_sha256": "1fc3fb90ef526cd28706414433363eaeb92f0b2e36f0d197d1776462bfc5d6a6",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7232438364160501,
+        "speed_max_abs_mps": 2.032062819322382,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.6326011458592211,
+          "max_abs": 2.028300387541897
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.6059929653897488,
+          "max_abs": 2.032062819322382
+        },
+        "end_distance_error_m": 24.62683475276299,
+        "distance_rmse_m": 19.015847460906755,
+        "recovery_to_0p1_mps_for_1s_s": 0.45000000000000284,
+        "model_only_fraction": 0.004703115814226925,
+        "slip_fraction": 0.004703115814226925,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7232438364160501,
+          "speed_max_abs_mps": 2.032062819322382,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.6326011458592211,
+            "max_abs": 2.028300387541897
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.6059929653897488,
+            "max_abs": 2.032062819322382
+          },
+          "end_distance_error_m": 24.62683475276299,
+          "distance_rmse_m": 19.015847460906755,
+          "recovery_to_0p1_mps_for_1s_s": 0.45000000000000284,
+          "model_only_fraction": 0.004703115814226925,
+          "slip_fraction": 0.004703115814226925
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.781202285996302,
+        "speed_max_abs_mps": 2.1692143672260045,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.6326011458592211,
+          "max_abs": 2.028300387541897
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.359901410056073,
+          "max_abs": 2.1692143672260045
+        },
+        "end_distance_error_m": 28.175046973346127,
+        "distance_rmse_m": 21.49739039725813,
+        "recovery_to_0p1_mps_for_1s_s": 2.1499999999999986,
+        "model_only_fraction": 0.024691358024691357,
+        "slip_fraction": 0.024691358024691357,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.781202285996302,
+          "speed_max_abs_mps": 2.1692143672260045,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.6326011458592211,
+            "max_abs": 2.028300387541897
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.359901410056073,
+            "max_abs": 2.1692143672260045
+          },
+          "end_distance_error_m": 28.175046973346127,
+          "distance_rmse_m": 21.49739039725813,
+          "recovery_to_0p1_mps_for_1s_s": 2.1499999999999986,
+          "model_only_fraction": 0.024691358024691357,
+          "slip_fraction": 0.024691358024691357
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_slow_bias",
+      "fault_window_s": [
+        27.0,
+        43.0
+      ],
+      "seed": 37,
+      "input_sha256": "fa3167cbece93269da7d930220840ff573fa541cf875cd1b0c12229f15ebdfec",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7262227157237926,
+        "speed_max_abs_mps": 2.039680408557107,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.6316464562177386,
+          "max_abs": 2.024410052871554
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.6714167654191506,
+          "max_abs": 2.039680408557107
+        },
+        "end_distance_error_m": 24.846716217168648,
+        "distance_rmse_m": 19.169112092792084,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.005878894767783657,
+        "slip_fraction": 0.005878894767783657,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7262227157237926,
+          "speed_max_abs_mps": 2.039680408557107,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.6316464562177386,
+            "max_abs": 2.024410052871554
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.6714167654191506,
+            "max_abs": 2.039680408557107
+          },
+          "end_distance_error_m": 24.846716217168648,
+          "distance_rmse_m": 19.169112092792084,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.005878894767783657,
+          "slip_fraction": 0.005878894767783657
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.7809242359947158,
+        "speed_max_abs_mps": 2.1709642742414044,
+        "fault_speed": {
+          "n": 320,
+          "rmse": 1.6316464562177386,
+          "max_abs": 2.024410052871554
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3609047985282612,
+          "max_abs": 2.1709642742414044
+        },
+        "end_distance_error_m": 28.197837581398517,
+        "distance_rmse_m": 21.510611996950676,
+        "recovery_to_0p1_mps_for_1s_s": 2.1499999999999986,
+        "model_only_fraction": 0.024691358024691357,
+        "slip_fraction": 0.024691358024691357,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.7809242359947158,
+          "speed_max_abs_mps": 2.1709642742414044,
+          "fault_speed": {
+            "n": 320,
+            "rmse": 1.6316464562177386,
+            "max_abs": 2.024410052871554
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3609047985282612,
+            "max_abs": 2.1709642742414044
+          },
+          "end_distance_error_m": 28.197837581398517,
+          "distance_rmse_m": 21.510611996950676,
+          "recovery_to_0p1_mps_for_1s_s": 2.1499999999999986,
+          "model_only_fraction": 0.024691358024691357,
+          "slip_fraction": 0.024691358024691357
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_delay",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 11,
+      "input_sha256": "98ed6bed5d84938a133dfc3b29d6cb366ea0c0cc4c9161ddf9ffb81efddbe6ec",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008841978731256538,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008542927170071313,
+          "max_abs": 0.018571013338611664
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00855644457358099,
+          "max_abs": 0.022978918441772578
+        },
+        "end_distance_error_m": 0.08746693628938829,
+        "distance_rmse_m": 0.04464626154025891,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008841978731256538,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008542927170071313,
+            "max_abs": 0.018571013338611664
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00855644457358099,
+            "max_abs": 0.022978918441772578
+          },
+          "end_distance_error_m": 0.08746693628938829,
+          "distance_rmse_m": 0.04464626154025891,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008841978731256538,
+        "speed_max_abs_mps": 0.07988733514514224,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.008542927170071313,
+          "max_abs": 0.018571013338611664
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.00855644457358099,
+          "max_abs": 0.022978918441772578
+        },
+        "end_distance_error_m": 0.08746693628938829,
+        "distance_rmse_m": 0.04464626154025891,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008841978731256538,
+          "speed_max_abs_mps": 0.07988733514514224,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.008542927170071313,
+            "max_abs": 0.018571013338611664
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.00855644457358099,
+            "max_abs": 0.022978918441772578
+          },
+          "end_distance_error_m": 0.08746693628938829,
+          "distance_rmse_m": 0.04464626154025891,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "front_delay",
+      "fault_window_s": [
+        30.0,
+        40.0
+      ],
+      "seed": 37,
+      "input_sha256": "2b0704d5cb8a9b406f7809192ed8c7e9a9efe325803dedfc359d6692d640c314",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008126304756075186,
+        "speed_max_abs_mps": 0.04093145370672424,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.0066327900821745575,
+          "max_abs": 0.015547109327323838
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007299016048898795,
+          "max_abs": 0.016849979592981512
+        },
+        "end_distance_error_m": 0.09631691207977155,
+        "distance_rmse_m": 0.046820691972121645,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008126304756075186,
+          "speed_max_abs_mps": 0.04093145370672424,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.0066327900821745575,
+            "max_abs": 0.015547109327323838
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007299016048898795,
+            "max_abs": 0.016849979592981512
+          },
+          "end_distance_error_m": 0.09631691207977155,
+          "distance_rmse_m": 0.046820691972121645,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 0.008126304756075186,
+        "speed_max_abs_mps": 0.04093145370672424,
+        "fault_speed": {
+          "n": 200,
+          "rmse": 0.0066327900821745575,
+          "max_abs": 0.015547109327323838
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 0.007299016048898795,
+          "max_abs": 0.016849979592981512
+        },
+        "end_distance_error_m": 0.09631691207977155,
+        "distance_rmse_m": 0.046820691972121645,
+        "recovery_to_0p1_mps_for_1s_s": 0.0,
+        "model_only_fraction": 0.0,
+        "slip_fraction": 0.0,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 0.008126304756075186,
+          "speed_max_abs_mps": 0.04093145370672424,
+          "fault_speed": {
+            "n": 200,
+            "rmse": 0.0066327900821745575,
+            "max_abs": 0.015547109327323838
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 0.007299016048898795,
+            "max_abs": 0.016849979592981512
+          },
+          "end_distance_error_m": 0.09631691207977155,
+          "distance_rmse_m": 0.046820691972121645,
+          "recovery_to_0p1_mps_for_1s_s": 0.0,
+          "model_only_fraction": 0.0,
+          "slip_fraction": 0.0
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_jump_long",
+      "fault_window_s": [
+        25.0,
+        45.0
+      ],
+      "seed": 11,
+      "input_sha256": "90a7ad0c13e3fbdfdef3885e2491235227c4156b7f65cba0942ac731034774b1",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.9405139757702767,
+        "speed_max_abs_mps": 4.080656594198919,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.9448323861087817,
+          "max_abs": 4.020198761501447
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3434833017118872,
+          "max_abs": 4.080656594198919
+        },
+        "end_distance_error_m": 80.06703071264349,
+        "distance_rmse_m": 62.156997307591716,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.9405139757702767,
+          "speed_max_abs_mps": 4.080656594198919,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.9448323861087817,
+            "max_abs": 4.020198761501447
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3434833017118872,
+            "max_abs": 4.080656594198919
+          },
+          "end_distance_error_m": 80.06703071264349,
+          "distance_rmse_m": 62.156997307591716,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.757640231904755,
+        "speed_max_abs_mps": 4.07526303898498,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.5618005899090996,
+          "max_abs": 4.019723719899638
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3424340262646917,
+          "max_abs": 4.07526303898498
+        },
+        "end_distance_error_m": 66.23087197325441,
+        "distance_rmse_m": 50.82858234736649,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.05408583186360964,
+        "slip_fraction": 0.05408583186360964,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.757640231904755,
+          "speed_max_abs_mps": 4.07526303898498,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.5618005899090996,
+            "max_abs": 4.019723719899638
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3424340262646917,
+            "max_abs": 4.07526303898498
+          },
+          "end_distance_error_m": 66.23087197325441,
+          "distance_rmse_m": 50.82858234736649,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.05408583186360964,
+          "slip_fraction": 0.05408583186360964
+        }
+      }
+    },
+    {
+      "profile": "trip",
+      "fault": "pair_jump_long",
+      "fault_window_s": [
+        25.0,
+        45.0
+      ],
+      "seed": 37,
+      "input_sha256": "18686a219b14d18062e4ec84cf2d94f12d073575d1bb9a85e7d2634a834e7542",
+      "common_outputs": 1701,
+      "before": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.9402560696007956,
+        "speed_max_abs_mps": 4.0865121656947,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.9441282768659818,
+          "max_abs": 4.01788989292128
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.345473336191535,
+          "max_abs": 4.0865121656947
+        },
+        "end_distance_error_m": 80.08627587548762,
+        "distance_rmse_m": 62.16839325723308,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.011757789535567314,
+        "slip_fraction": 0.011757789535567314,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.9402560696007956,
+          "speed_max_abs_mps": 4.0865121656947,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.9441282768659818,
+            "max_abs": 4.01788989292128
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.345473336191535,
+            "max_abs": 4.0865121656947
+          },
+          "end_distance_error_m": 80.08627587548762,
+          "distance_rmse_m": 62.16839325723308,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.011757789535567314,
+          "slip_fraction": 0.011757789535567314
+        }
+      },
+      "after": {
+        "expected_outputs": 1701,
+        "matched_outputs": 1701,
+        "missing_outputs": 0,
+        "invalid_outputs": 0,
+        "coverage": 1.0,
+        "speed_rmse_mps": 1.7572309482113766,
+        "speed_max_abs_mps": 4.0816298372154485,
+        "fault_speed": {
+          "n": 400,
+          "rmse": 3.5607501238683272,
+          "max_abs": 4.016525916037782
+        },
+        "first_5s_recovery_speed": {
+          "n": 100,
+          "rmse": 1.3445236145241093,
+          "max_abs": 4.0816298372154485
+        },
+        "end_distance_error_m": 66.26412870421842,
+        "distance_rmse_m": 50.851036308687114,
+        "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+        "model_only_fraction": 0.05408583186360964,
+        "slip_fraction": 0.05408583186360964,
+        "common_mask_metrics": {
+          "expected_outputs": 1701,
+          "matched_outputs": 1701,
+          "missing_outputs": 0,
+          "invalid_outputs": 0,
+          "coverage": 1.0,
+          "speed_rmse_mps": 1.7572309482113766,
+          "speed_max_abs_mps": 4.0816298372154485,
+          "fault_speed": {
+            "n": 400,
+            "rmse": 3.5607501238683272,
+            "max_abs": 4.016525916037782
+          },
+          "first_5s_recovery_speed": {
+            "n": 100,
+            "rmse": 1.3445236145241093,
+            "max_abs": 4.0816298372154485
+          },
+          "end_distance_error_m": 66.26412870421842,
+          "distance_rmse_m": 50.851036308687114,
+          "recovery_to_0p1_mps_for_1s_s": 0.5499999999999972,
+          "model_only_fraction": 0.05408583186360964,
+          "slip_fraction": 0.05408583186360964
+        }
+      }
+    }
+  ]
+}

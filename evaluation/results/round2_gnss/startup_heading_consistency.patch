@@ -1,0 +1,35 @@
+--- a/ros2_ws/src/tram_odometry/src/navigation.cpp
++++ b/ros2_ws/src/tram_odometry/src/navigation.cpp
+@@ -372,17 +372,23 @@
+       const auto route_pose = map_.sample(selected_direction_, master_s_m);
+       const Point3 tangent = map_.bodyDirection(selected_direction_, master_s_m,
+                                                   config_.body_heading_lookahead_m);
+-      // Organiser TF is a rigid body offset from master antenna to front
+-      // bogie base_link, not a 9.873 m advance along the curved map.
+-      pose = {route_pose.p + tangent * route_longitudinal_offset_m_,
+-              std::atan2(tangent.y, tangent.x), route_pose.clamped, true};
++      double anchor_weight = 0.0;
+       if (has_gnss_anchor_ && anchor_residual_decay_m_ > 0.0) {
+         const double progressed_m = std::max(0.0, distance_m - anchor_distance_m_);
+-        const double weight = std::exp(-progressed_m / anchor_residual_decay_m_);
+-        pose.p = pose.p + Point3{anchor_residual_.x * weight,
+-                                 anchor_residual_.y * weight, 0.0};
+-        pose.yaw += anchor_heading_delta_rad_ * weight;
+-      }
++        anchor_weight = std::exp(-progressed_m / anchor_residual_decay_m_);
++      }
++      // The startup pair corrects body yaw, so it must rotate the same rigid
++      // antenna-to-base lever arm. Rotate around Z to preserve the map grade.
++      const double heading_delta = anchor_heading_delta_rad_ * anchor_weight;
++      const double ch = std::cos(heading_delta), sh = std::sin(heading_delta);
++      const Point3 body{ch * tangent.x - sh * tangent.y,
++                        sh * tangent.x + ch * tangent.y, tangent.z};
++      // GNSS anchors remain master-antenna route coordinates. Apply the body
++      // extrinsic once, then the independent decaying master-position residual.
++      pose = {route_pose.p + body * route_longitudinal_offset_m_ +
++                Point3{anchor_residual_.x * anchor_weight,
++                       anchor_residual_.y * anchor_weight, 0.0},
++              std::atan2(tangent.y, tangent.x) + heading_delta, route_pose.clamped, true};
+     } else {
+       const double longitudinal_m = distance_m +
+         (has_gnss_anchor_ ? route_longitudinal_offset_m_ : 0.0);

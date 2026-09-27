@@ -1,0 +1,363 @@
+{
+  "note": "Paired-GNSS base_link proxy diagnostic; NOT official fused-reference score. No fitting.",
+  "window_rule": "All modes use corrections during first 30s; then alternating MF/RF 2s windows at 120,240,...s, except startup blackout.",
+  "matching": "Nearest proxy header within inclusive 50ms; ties choose earlier; all time differences use integer ns.",
+  "mode_labels": {
+    "startup": "Both GNSS antennas allowed first 30 seconds with corrections enabled, then blackout",
+    "sparse": "Same first 30 seconds, then clean sparse single-antenna windows",
+    "delayed": "Same first 30 seconds; sparse windows delayed by 1 second in receive order",
+    "frozen": "Same first 30 seconds; repeat first XYZ of each sparse window with fresh timestamps"
+  },
+  "limitations": [
+    "Paired GNSS + provided antenna TF is only an approximate base_link reference; these are not official fused-localization scores.",
+    "Reference antenna interpolation and cleanup are offline scoring operations; replay receives only selected original GNSS and vehicle inputs.",
+    "These trip diagnostics are not an independent population accuracy claim.",
+    "When sparse windows miss a fork, scalar wheel/controller inputs cannot identify its branch; the default branch can remain wrong.",
+    "The fixed-payload freeze guard requires two healthy wheel channels; broader smoothly drifting or jointly wrong GNSS is not certified.",
+    "Clean corrections can increase proxy RMSE on already accurate trips; uniform improvement is not guaranteed."
+  ],
+  "bags": [
+    {
+      "bag": "30618_8158f0b0",
+      "split": "train",
+      "vehicle": 30618,
+      "proxy_count": 10853,
+      "modes": {
+        "startup": {
+          "n": 27600,
+          "rmse_3d_m": 7.871630069460823,
+          "end_proxy_error_m": 64.19606061135177,
+          "clamped_outputs": 430,
+          "corrections": 615,
+          "rejected": 29,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 27600,
+          "rmse_3d_m": 7.394926143303103,
+          "end_proxy_error_m": 64.19606061135177,
+          "clamped_outputs": 443,
+          "corrections": 776,
+          "rejected": 29,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 27600,
+          "rmse_3d_m": 7.871630069460823,
+          "end_proxy_error_m": 64.19606061135177,
+          "clamped_outputs": 430,
+          "corrections": 615,
+          "rejected": 208,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 27600,
+          "rmse_3d_m": 7.436534416151416,
+          "end_proxy_error_m": 64.19606061135177,
+          "clamped_outputs": 443,
+          "corrections": 698,
+          "rejected": 107,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_76e1f9c7",
+      "split": "train",
+      "vehicle": 30618,
+      "proxy_count": 12401,
+      "modes": {
+        "startup": {
+          "n": 31627,
+          "rmse_3d_m": 0.9113274356493868,
+          "end_proxy_error_m": 2.720798974927465,
+          "clamped_outputs": 13,
+          "corrections": 641,
+          "rejected": 1,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 31627,
+          "rmse_3d_m": 0.9617711579760251,
+          "end_proxy_error_m": 2.720798974927465,
+          "clamped_outputs": 11,
+          "corrections": 821,
+          "rejected": 1,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 31627,
+          "rmse_3d_m": 0.9113274356493868,
+          "end_proxy_error_m": 2.720798974927465,
+          "clamped_outputs": 13,
+          "corrections": 641,
+          "rejected": 201,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 31627,
+          "rmse_3d_m": 0.9463310003447669,
+          "end_proxy_error_m": 2.720798974927465,
+          "clamped_outputs": 11,
+          "corrections": 731,
+          "rejected": 91,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_68847170",
+      "split": "train",
+      "vehicle": 30618,
+      "proxy_count": 11328,
+      "modes": {
+        "startup": {
+          "n": 27685,
+          "rmse_3d_m": 0.7083623352361116,
+          "end_proxy_error_m": 3.9099751544810246,
+          "clamped_outputs": 86,
+          "corrections": 542,
+          "rejected": 27,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 27685,
+          "rmse_3d_m": 0.7253705674142145,
+          "end_proxy_error_m": 3.9099751544810246,
+          "clamped_outputs": 92,
+          "corrections": 714,
+          "rejected": 27,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 27685,
+          "rmse_3d_m": 0.7083623352361116,
+          "end_proxy_error_m": 3.9099751544810246,
+          "clamped_outputs": 86,
+          "corrections": 542,
+          "rejected": 219,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 27685,
+          "rmse_3d_m": 0.7004574269384511,
+          "end_proxy_error_m": 3.9099751544810246,
+          "clamped_outputs": 78,
+          "corrections": 615,
+          "rejected": 126,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_a869780d",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 8707,
+      "modes": {
+        "startup": {
+          "n": 21825,
+          "rmse_3d_m": 2.8361564046075762,
+          "end_proxy_error_m": 29.036959385550045,
+          "clamped_outputs": 0,
+          "corrections": 628,
+          "rejected": 15,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 21825,
+          "rmse_3d_m": 1.662463993621086,
+          "end_proxy_error_m": 0.30553312570158353,
+          "clamped_outputs": 0,
+          "corrections": 780,
+          "rejected": 17,
+          "branch_switches": 1,
+          "last_branch": "alternate",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 21825,
+          "rmse_3d_m": 2.8361564046075762,
+          "end_proxy_error_m": 29.036959385550045,
+          "clamped_outputs": 0,
+          "corrections": 628,
+          "rejected": 188,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 21825,
+          "rmse_3d_m": 1.8506307618249314,
+          "end_proxy_error_m": 1.3721772279667337,
+          "clamped_outputs": 0,
+          "corrections": 680,
+          "rejected": 119,
+          "branch_switches": 1,
+          "last_branch": "alternate",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    },
+    {
+      "bag": "30618_2050d396",
+      "split": "validation",
+      "vehicle": 30618,
+      "proxy_count": 13234,
+      "modes": {
+        "startup": {
+          "n": 29322,
+          "rmse_3d_m": 1.965616956706552,
+          "end_proxy_error_m": 3.616245578227702,
+          "clamped_outputs": 0,
+          "corrections": 630,
+          "rejected": 8,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "sparse": {
+          "n": 29322,
+          "rmse_3d_m": 0.7669165779073682,
+          "end_proxy_error_m": 0.32666192950918993,
+          "clamped_outputs": 0,
+          "corrections": 828,
+          "rejected": 8,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        },
+        "delayed": {
+          "n": 29322,
+          "rmse_3d_m": 1.965616956706552,
+          "end_proxy_error_m": 3.616245578227702,
+          "clamped_outputs": 0,
+          "corrections": 630,
+          "rejected": 228,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true,
+          "max_position_difference_to_startup_m": 0.0
+        },
+        "frozen": {
+          "n": 29322,
+          "rmse_3d_m": 1.4648732850578816,
+          "end_proxy_error_m": 1.1219749909046977,
+          "clamped_outputs": 0,
+          "corrections": 684,
+          "rejected": 152,
+          "branch_switches": 0,
+          "last_branch": "primary",
+          "identical_wheel_state_to_startup": true
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "git_commit": "b132f4a94ec5e30e0d21a21ad1e4816eaf9b70b6",
+    "artifacts_sha256": {
+      "evaluation/navigation_gnss_stress.py": "2e0ee003f75c204f122ecfe8d463f91a55638717df4b3277269495d40d03f553",
+      "evaluation/navigation_replay.cpp": "fa5d8a9ffa8ddb9ab82bce0d10ca67d7f9bb1301db8f54877de3237361733ac7",
+      "evaluation/reference_benchmark.py": "156a82c240241da3c596a5bdca47d53d846b789adb462a23b6edb56b2175058d",
+      "analysis/viewer/rosbag_cdr.py": "7d8a5c7ac159c15c8164527aed1de1529a3e50cee96b44db08040b31285017fb",
+      "ros2_ws/src/tram_odometry/src/navigation.cpp": "7af67e7ce37576c8512dca1584c6ecaac0f1119e1d55909d1bc89a5d48601d74",
+      "ros2_ws/src/tram_odometry/src/estimator.cpp": "55e6f88f695bf4954569325b627209dd9e5afe13a9ba43551522c1e56e74730f",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "6aba4a164441b3c0fbd4f244e4acba424d33bacb9b5fe4fb8e0583672fd21af5",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "09044aca84c32c3e48251b66e87edf30887e6dbcfa496f111aa118c86d2ea72f",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp": "93d263325fc13892549dd3104d2d51e6da3e77495d4e5846acfba88a8bf961e1",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "336532309297c96ece1b8ff18c6893c8baf1567a2e333cbc106d2ece4c6b3c26",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+      "ros2_ws/src/tram_odometry/assets/route_map.csv": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+      "ros2_ws/src/tram_odometry/assets/route_map_branch_a.csv": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+      "ros2_ws/src/tram_odometry/assets/official_elevation.csv": "86ec3d223f1b76de6bc8ffc4f5b1a8eb87a457b570de00d97f996d859b53e686",
+      "ros2_ws/src/tram_odometry/assets/drive_accel_table.csv": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc"
+    },
+    "executable_sha256": "48aa3602e04fc261070af3bfa9d14fafeae257a9d68ce28373b0a83f342ed2ed",
+    "projection_adapter_sha256": "8bc03dd981c42d979bfe5c3ab2267ab562d98faff87327d40b438b09a585b208",
+    "bag_files_sha256": {
+      "30618_8158f0b0": {
+        "30618_8158f0b0_0.db3": "3c7cb9331296b196165cb3c4bf8f3343eb826e7a43bcc18377b1109fc21e2638"
+      },
+      "30618_76e1f9c7": {
+        "30618_76e1f9c7_0.db3": "b2698b972241fd7a7ea3a3513f1a76970fde90e8af480313320c2b98005cf8a9"
+      },
+      "30618_68847170": {
+        "30618_68847170_0.db3": "fd0cb7d9dea2cd6420b5c56e7d479eaf3b9ce7229b09e25706a9e14ff8f8f35e"
+      },
+      "30618_a869780d": {
+        "30618_a869780d_0.db3": "494e02075c0205b143926ee11d5e2f46a8fa81105b3b14fdc0c9c5a35979928b"
+      },
+      "30618_2050d396": {
+        "30618_2050d396_0.db3": "0c63f7d8a45c605ee40853a6018ff2899e7825b4dea5a2ea50874ed80ff61de6"
+      }
+    },
+    "selected_bags": [
+      {
+        "bag": "30618_8158f0b0",
+        "split": "train"
+      },
+      {
+        "bag": "30618_76e1f9c7",
+        "split": "train"
+      },
+      {
+        "bag": "30618_68847170",
+        "split": "train"
+      },
+      {
+        "bag": "30618_a869780d",
+        "split": "validation"
+      },
+      {
+        "bag": "30618_2050d396",
+        "split": "validation"
+      }
+    ],
+    "command": [
+      "evaluation/navigation_gnss_stress.py",
+      "--dataset-root",
+      "dataset/data",
+      "--exe",
+      "/private/tmp/odometry-map/stress/navigation_replay_repro",
+      "--outdir",
+      "/private/tmp/odometry-map/repro_stress"
+    ],
+    "vehicle_option_equivalence_check": {
+      "description": "Same executable and 30618 inputs: previous implicit vehicle default versus explicit --vehicle 30618; every complete output CSV is byte-identical.",
+      "output_csvs_compared": 20,
+      "all_byte_identical": true,
+      "prior_script_sha256": "6460c700d20ffa1bd4148d75026273ad41534856947344980e1a1d724b61fefe",
+      "output_hash_manifest_sha256": "c8268e9f47682177357ae06b01deddf023885e2d9435a10d6df0750419caecb0"
+    }
+  }
+}

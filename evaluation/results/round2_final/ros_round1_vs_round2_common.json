@@ -1,0 +1,262 @@
+{
+  "matching": {
+    "method": "exact candidate header stamp intersection, nearest reference header stamp",
+    "tolerance_ns": 50000000,
+    "boundary": "inclusive",
+    "ties": "earlier reference stamp",
+    "reference_reuse": true,
+    "equivalent_to_ros_ats": false,
+    "reference_velocity_field": "twist.twist.linear.x"
+  },
+  "duplicate_policy": "independent per channel and header stamp: greatest receive_ns; ties use later CSV row; retain nonfinite latest publications before masking",
+  "coverage_denominator": "unique published channel stamps, including nonfinite values, before intersection",
+  "before_counts": {
+    "rows": 54856,
+    "velocity": {
+      "published_rows": 27431,
+      "unique_stamps": 27431,
+      "duplicate_rows": 0,
+      "valid_unique_stamps": 27431,
+      "invalid_unique_stamps": 0,
+      "gaps": {
+        "first_stamp_ns": 1788955799267189602,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1313.691359795,
+        "max_gap_s": 1.201666794,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 13,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      }
+    },
+    "position": {
+      "published_rows": 27425,
+      "unique_stamps": 27425,
+      "duplicate_rows": 0,
+      "valid_unique_stamps": 27425,
+      "invalid_unique_stamps": 0,
+      "gaps": {
+        "first_stamp_ns": 1788955800768775275,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1312.189774122,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 12,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      }
+    }
+  },
+  "after_counts": {
+    "rows": 57080,
+    "velocity": {
+      "published_rows": 28543,
+      "unique_stamps": 28543,
+      "duplicate_rows": 0,
+      "valid_unique_stamps": 28543,
+      "invalid_unique_stamps": 0,
+      "gaps": {
+        "first_stamp_ns": 1788955799267189602,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1313.691359795,
+        "max_gap_s": 1.201666794,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 13,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      }
+    },
+    "position": {
+      "published_rows": 28537,
+      "unique_stamps": 28537,
+      "duplicate_rows": 0,
+      "valid_unique_stamps": 28537,
+      "invalid_unique_stamps": 0,
+      "gaps": {
+        "first_stamp_ns": 1788955800768775275,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1312.189774122,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 12,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      }
+    }
+  },
+  "reference_counts": {
+    "rows": 65579,
+    "unique_stamps": 65579
+  },
+  "velocity": {
+    "mask": {
+      "shared_stamps": 26862,
+      "shared_finite_stamps": 26862,
+      "excluded_nonfinite_candidate": 0,
+      "outside_tolerance": 12,
+      "invalid_reference": 0,
+      "matched": 26850,
+      "before_only_stamps": 569,
+      "after_only_stamps": 1681,
+      "before_coverage": 0.9788195836826947,
+      "after_coverage": 0.9406859825526399,
+      "intersection_coverage": 0.999553272280545,
+      "first_stamp_ns": 1788955801370610004,
+      "last_stamp_ns": 1788957112958549397,
+      "stamp_mask_sha256": "4a478356fd4ec64c2c0b7f6e0a71172769b7e187e94cf7a87db6a0bf84d28cc5",
+      "unique_reference_stamps": 26258,
+      "max_abs_reference_offset_ms": 34.379967,
+      "gaps": {
+        "first_stamp_ns": 1788955801370610004,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.587939393,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 10,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      }
+    },
+    "before": {
+      "n": 26850,
+      "rmse_mps": 0.048806809603646424,
+      "mae_mps": 0.03233166394955913,
+      "bias_mps": 0.0018041520514841126,
+      "max_abs_mps": 0.33600964386731097
+    },
+    "after": {
+      "n": 26850,
+      "rmse_mps": 0.04898198690456211,
+      "mae_mps": 0.03244660562514463,
+      "bias_mps": 0.0020265256701459465,
+      "max_abs_mps": 0.3368447429909337
+    }
+  },
+  "position": {
+    "mask": {
+      "shared_stamps": 26856,
+      "shared_finite_stamps": 26856,
+      "excluded_nonfinite_candidate": 0,
+      "outside_tolerance": 6,
+      "invalid_reference": 0,
+      "matched": 26850,
+      "before_only_stamps": 569,
+      "after_only_stamps": 1681,
+      "before_coverage": 0.9790337283500455,
+      "after_coverage": 0.9408837649367487,
+      "intersection_coverage": 0.9997765862377123,
+      "first_stamp_ns": 1788955801370610004,
+      "last_stamp_ns": 1788957112958549397,
+      "stamp_mask_sha256": "4a478356fd4ec64c2c0b7f6e0a71172769b7e187e94cf7a87db6a0bf84d28cc5",
+      "unique_reference_stamps": 26258,
+      "max_abs_reference_offset_ms": 34.379967,
+      "gaps": {
+        "first_stamp_ns": 1788955801370610004,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.587939393,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 10,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      }
+    },
+    "before": {
+      "n": 26850,
+      "x": {
+        "n": 26850,
+        "rmse_m": 0.8516164542809321,
+        "mae_m": 0.5829610934869596,
+        "bias_m": -0.09596663989734124,
+        "max_abs_m": 8.998359740318847
+      },
+      "y": {
+        "n": 26850,
+        "rmse_m": 1.3135838390054277,
+        "mae_m": 0.7033616243723896,
+        "bias_m": 0.4317932997845393,
+        "max_abs_m": 7.032236813480267
+      },
+      "z": {
+        "n": 26850,
+        "rmse_m": 0.08662931506566411,
+        "mae_m": 0.056574816232537704,
+        "bias_m": 0.0422776488713422,
+        "max_abs_m": 0.400851566458158
+      },
+      "rmse_3d_m": 1.5678831989427675,
+      "max_3d_m": 11.421509339952959,
+      "end_error_3d_m": 0.5820047187956411,
+      "end_error_xyz_m": [
+        0.42569673973775934,
+        -0.39564149764191825,
+        0.03129830379901932
+      ],
+      "end_stamp_ns": 1788957112958549397
+    },
+    "after": {
+      "n": 26850,
+      "x": {
+        "n": 26850,
+        "rmse_m": 0.869599365333445,
+        "mae_m": 0.5941272254544874,
+        "bias_m": -0.11138922666207743,
+        "max_abs_m": 8.93580448832654
+      },
+      "y": {
+        "n": 26850,
+        "rmse_m": 1.2459602983135163,
+        "mae_m": 0.6471785035309554,
+        "bias_m": 0.39083253412917746,
+        "max_abs_m": 6.960581663879566
+      },
+      "z": {
+        "n": 26850,
+        "rmse_m": 0.08301231416995719,
+        "mae_m": 0.05474540207145872,
+        "bias_m": 0.04179851068385169,
+        "max_abs_m": 0.38848943505388434
+      },
+      "rmse_3d_m": 1.5216803755932737,
+      "max_3d_m": 11.327736329394769,
+      "end_error_3d_m": 0.11510970608846241,
+      "end_error_xyz_m": [
+        0.043106184210046194,
+        0.06449843289738055,
+        0.08504148089258479
+      ],
+      "end_stamp_ns": 1788957112958549397
+    }
+  },
+  "provenance": {
+    "git_commit": "b132f4a94ec5e30e0d21a21ad1e4816eaf9b70b6",
+    "git_dirty": true,
+    "bag": "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
+    "bag_files_sha256": {
+      "30618_88aea4d9_0.db3": "48f846d134d0584b38f9ca06b7ba812a16aeeecc896594313e3fa9acd27e10c3",
+      "metadata.yaml": "b3b26262659d247aad1eceb3fbe1bc987e834df783f465cd5be8ca928f49534f"
+    },
+    "artifacts_sha256": {
+      "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/analysis/viewer/rosbag_cdr.py": "7d8a5c7ac159c15c8164527aed1de1529a3e50cee96b44db08040b31285017fb",
+      "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/evaluation/compare_reference_runs.py": "85e18ee0c579ce2ed53136e2fea7b16af74e810024d7f838f263a184c5ec4aac",
+      "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/evaluation/reference_benchmark.py": "156a82c240241da3c596a5bdca47d53d846b789adb462a23b6edb56b2175058d",
+      "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/evaluation/runs/ros_round2_1x/candidate.csv": "f8638e2cd994f93705bc1d21c90fe507824272d1adf79aa73617a479d7aa838e",
+      "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/runs/ros_final_1x/candidate.csv": "80eb7b95d6517cb30deb8cc8eb2002e1744e60d60bb037f334bc4e17c459bfb5"
+    },
+    "config_path": null,
+    "config_text": null,
+    "command": [
+      "evaluation/compare_reference_runs.py",
+      "--bag",
+      "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
+      "--before",
+      "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/runs/ros_final_1x/candidate.csv",
+      "--after",
+      "evaluation/runs/ros_round2_1x/candidate.csv",
+      "--out",
+      "evaluation/results/round2_final/ros_round1_vs_round2_common.json"
+    ],
+    "before_csv": "/Users/infibiss/Desktop/Reserve-odometry-according-to-the-model/evaluation/runs/ros_final_1x/candidate.csv",
+    "after_csv": "/Users/infibiss/.codex/worktrees/odometry-robustness/Reserve-odometry-according-to-the-model/evaluation/runs/ros_round2_1x/candidate.csv"
+  }
+}

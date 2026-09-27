@@ -1,0 +1,11 @@
+PASS: inconsistent pair rejects biased master master first
+PASS: inconsistent pair rejects biased master rover first
+PASS: inconsistent pair rejects biased rover master first
+PASS: inconsistent pair rejects biased rover rover first
+PASS: pair conflict cannot select a contradictory branch
+PASS: consistent pair still corrects a large longitudinal innovation
+FAIL: healthy pair and lone antenna recover after pair conflict: fresh fixes must recover after conflict: actual=59.873000 expected=67.873000
+PASS: consistent pair retains late branch selection
+FAIL: single antenna repairs accumulated wheel scale drift: late lone-antenna window must repair genuine accumulated drift
+PASS: timestamp skew during fast motion does not look like pair distortion
+8/10 GNSS robustness tests passed
