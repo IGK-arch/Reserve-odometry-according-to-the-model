@@ -27,3 +27,6 @@ __pycache__/
 /dataset/
 /build/
 /evaluation/runs/
+/evaluation/tmp_py_tests/
+/evaluation/tmp_final_cpp_tests/
+/ros2_ws/smoke_logs/

@@ -48,6 +48,15 @@ class WheelFaultBenchmarkTest(unittest.TestCase):
             self.assertEqual(len({r[3] for r in bad}),1)
             self.assertEqual(len({r[1] for r in bad}),80)
 
+    def test_additional_freeze_windows_cover_braking_and_notch_change(self):
+        for fault, start, end in (('pair_freeze_brake', 50, 58),
+                                  ('pair_freeze_transition', 42, 50)):
+            rows=b.generate_events('trip',fault,7,30618)
+            for channel in ('F','R'):
+                bad=[r for r in rows if r[2]==channel and start <= b.seconds(r[1]) < end]
+                self.assertEqual(len({r[3] for r in bad}),1)
+                self.assertEqual(len({r[1] for r in bad}),80)
+
     def test_missing_and_nonfinite_outputs_cannot_improve_coverage(self):
         expected=[b.nanoseconds(5+i*.05) for i in range(41)]
         result=b.score_outputs({},expected,'steady','clean')

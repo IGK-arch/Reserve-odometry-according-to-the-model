@@ -64,6 +64,16 @@ the CSV explicitly. The exact equations, gating, assumptions and split
 protocol are in [`docs/CORE_MODEL.md`](../../../docs/CORE_MODEL.md) and
 [`docs/DRIVE_CALIBRATION.md`](../../../docs/DRIVE_CALIBRATION.md).
 
+Both wheel channels repeating exactly the same values under demonstrated
+motion or a changed driver command can now enter `pair_freeze_active` model
+prediction. Reacquisition requires both channels to resume consistently.
+The optional bounded distance correction at recovery is spread over future
+updates at up to 2 m/s; diagnostics report the active state, requested
+correction and pending balance. Set `pair_freeze_distance_correction_limit_m: 0.0` to disable
+the pose correction while retaining freeze detection. See
+[`docs/PAIR_FREEZE_AUDIT_2026-09-27.md`](../../../docs/PAIR_FREEZE_AUDIT_2026-09-27.md)
+for measured synthetic and real-bag regression results.
+
 To override the vehicle default, add `enable_drive_table: false` or `true`
 under `ros__parameters` in `config/default.yaml`. Set `drive_table_path` to
 use another CSV; an empty value resolves to the installed

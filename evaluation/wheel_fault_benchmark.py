@@ -33,6 +33,11 @@ FAULTS = {
     'front_delay': (30., 40.),
     'pair_jump_long': (25., 45.),
 }
+EXTENDED_FREEZE_FAULTS = {
+    'pair_freeze_brake': (50., 58.),
+    'pair_freeze_transition': (42., 50.),
+}
+ALL_FAULTS = {**FAULTS, **EXTENDED_FREEZE_FAULTS}
 
 
 def nanoseconds(t):
@@ -63,13 +68,13 @@ def truth(t, profile):
 
 
 def generate_events(profile, fault, seed, vehicle):
-    if fault not in FAULTS:
+    if fault not in ALL_FAULTS:
         raise ValueError(f'unknown fault: {fault}')
     if vehicle not in (30618, 30639):
         raise ValueError('expected vehicle 30618 or 30639')
     scales = (1.000295, 1.000195) if vehicle == 30618 else (1.003512, 1.003187)
     rng = random.Random(seed)
-    start, end = FAULTS[fault]
+    start, end = ALL_FAULTS[fault]
     events = []
     frozen = {}
     for i in range(DURATION_S * 20 + 1):
@@ -90,7 +95,8 @@ def generate_events(profile, fault, seed, vehicle):
                     v += 4.
                 elif fault == 'pair_jump_down':
                     v = max(0., v - 4.)
-                elif fault == 'pair_freeze' or (fault == 'front_freeze' and channel == 'F'):
+                elif fault in ('pair_freeze', 'pair_freeze_brake',
+                               'pair_freeze_transition') or (fault == 'front_freeze' and channel == 'F'):
                     v = frozen.setdefault(channel, v)
                 elif fault == 'pair_slow_bias':
                     v += min(2., .25 * (t - start))
@@ -131,7 +137,7 @@ def score_outputs(rows, expected, profile, fault):
     valid = {t: r for t, r in rows.items() if math.isfinite(r['v']) and math.isfinite(r['s'])}
     stamps = [t for t in expected if t in valid]
     errors = [valid[t]['v']-truth(seconds(t), profile)[0] for t in stamps]
-    start, end = FAULTS[fault]
+    start, end = ALL_FAULTS[fault]
     during = [e for t, e in zip(stamps, errors) if start <= seconds(t) < end]
     recovery = [e for t, e in zip(stamps, errors) if end <= seconds(t) < end + 5]
     relative_errors = []
@@ -177,6 +183,8 @@ def main():
     parser.add_argument('--table', type=Path)
     parser.add_argument('--vehicle', type=int, choices=(30618,30639), default=30618)
     parser.add_argument('--seeds', type=int, nargs='+', default=[7,137,911])
+    parser.add_argument('--extended-freeze', action='store_true',
+                        help='also score paired freezes during braking and command transitions')
     parser.add_argument('--out', required=True, type=Path)
     args=parser.parse_args()
     if args.out.exists():parser.error('--out must be a new file')
@@ -184,13 +192,14 @@ def main():
     table=args.table.resolve() if args.table else None
     expected=[nanoseconds(i/20) for i in range(100,DURATION_S*20+1)]
     reports=[]
+    faults = list(FAULTS) + (list(EXTENDED_FREEZE_FAULTS) if args.extended_freeze else [])
     for profile in ('steady','trip'):
-        for fault in FAULTS:
+        for fault in faults:
             for seed in args.seeds:
                 payload=serialize_events(generate_events(profile,fault,seed,args.vehicle))
                 runs={name:replay(exe,payload,args.vehicle,table) for name,exe in paths.items()}
                 common=[t for t in expected if all(t in rows and math.isfinite(rows[t]['v']) and math.isfinite(rows[t]['s']) for rows in runs.values())]
-                item={'profile':profile,'fault':fault,'fault_window_s':FAULTS[fault], 'seed':seed,
+                item={'profile':profile,'fault':fault,'fault_window_s':ALL_FAULTS[fault], 'seed':seed,
                       'input_sha256':hashlib.sha256(payload.encode()).hexdigest(), 'common_outputs':len(common)}
                 for name,rows in runs.items():
                     item[name]=score_outputs(rows,expected,profile,fault)
@@ -202,7 +211,8 @@ def main():
                            'Smooth common bias and frozen wheels at constant actual speed may be unobservable.',
                            'Reported distance is relative to the first scored output at 5 seconds.',
                            'First-5s recovery errors may include model errors beyond a fault boundary.'],
-            'vehicle':args.vehicle,'seeds':args.seeds,'table':str(table) if table else None,
+            'vehicle':args.vehicle,'seeds':args.seeds,'extended_freeze':args.extended_freeze,
+            'table':str(table) if table else None,
             'provenance':{'script_sha256':file_hash(Path(__file__)), 'executables':{name:{'path':str(path),'sha256':file_hash(path)} for name,path in paths.items()},
                           'table_sha256':file_hash(table) if table else None},'scenarios':reports}
     args.out.parent.mkdir(parents=True,exist_ok=True)

@@ -74,6 +74,16 @@ EstimatorConfig makeEstimatorConfig(rclcpp::Node & node) {
     "wheel_sigma_mps", config.wheel_sigma_mps);
   config.process_accel_sigma_mps2 = node.declare_parameter<double>(
     "process_accel_sigma_mps2", config.process_accel_sigma_mps2);
+  config.pair_freeze_min_duration_s = node.declare_parameter<double>(
+    "pair_freeze_min_duration_s", config.pair_freeze_min_duration_s);
+  config.pair_freeze_model_accel_threshold_mps2 = node.declare_parameter<double>(
+    "pair_freeze_model_accel_threshold_mps2",
+    config.pair_freeze_model_accel_threshold_mps2);
+  config.pair_freeze_distance_correction_limit_m = node.declare_parameter<double>(
+    "pair_freeze_distance_correction_limit_m",
+    config.pair_freeze_distance_correction_limit_m);
+  config.pair_freeze_correction_rate_mps = node.declare_parameter<double>(
+    "pair_freeze_correction_rate_mps", config.pair_freeze_correction_rate_mps);
   config.enable_adaptation = node.declare_parameter<bool>(
     "enable_adaptation", config.enable_adaptation);
   config.enable_drive_table = node.declare_parameter<bool>(
@@ -306,6 +316,12 @@ class OdometryNode final : public rclcpp::Node {
     addDiagnosticValue(status, "front_stale", state.front_stale ? "true" : "false");
     addDiagnosticValue(status, "rear_stale", state.rear_stale ? "true" : "false");
     addDiagnosticValue(status, "model_only", state.model_only ? "true" : "false");
+    addDiagnosticValue(status, "pair_freeze_active",
+                       state.pair_freeze_active ? "true" : "false");
+    addDiagnosticValue(status, "pair_freeze_distance_correction_total_m",
+                       std::to_string(state.pair_freeze_distance_correction_total_m));
+    addDiagnosticValue(status, "pair_freeze_distance_correction_pending_m",
+                       std::to_string(state.pair_freeze_distance_correction_pending_m));
     addDiagnosticValue(status, "drive_table_active", state.drive_table_active ? "true" : "false");
     addDiagnosticValue(status, "drive_table_used", state.drive_table_used ? "true" : "false");
     addDiagnosticValue(status, "startup_gnss_anchor", result.anchored ? "true" : "false");

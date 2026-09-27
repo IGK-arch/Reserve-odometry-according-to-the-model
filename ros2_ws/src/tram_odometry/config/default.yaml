@@ -51,7 +51,11 @@ tram_odometry:
     # rolling_resistance_accel_mps2, quadratic_drag_accel_per_mps2,
     # grade_accel_mps2, wheel_stale_s, max_out_of_order_s, disagreement_gate_mps,
     # innovation_gate_mps, implausible_wheel_accel_mps2, wheel_sigma_mps,
-    # process_accel_sigma_mps2, enable_adaptation.
+    # process_accel_sigma_mps2, enable_adaptation,
+    # pair_freeze_min_duration_s (0.5),
+    # pair_freeze_model_accel_threshold_mps2 (0.15),
+    # pair_freeze_distance_correction_limit_m (5.0),
+    # pair_freeze_correction_rate_mps (2.0).
     # Train-only drive table is enabled by the node for vehicle_id=30618 and
     # disabled for 30639; do not set a fixed boolean here, as it would override
     # the vehicle-specific default. To override: enable_drive_table: false/true.

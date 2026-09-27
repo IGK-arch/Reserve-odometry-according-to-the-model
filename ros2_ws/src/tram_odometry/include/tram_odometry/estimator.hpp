@@ -46,6 +46,10 @@ struct EstimatorConfig {
   double outlier_hold_s = 0.35;
   double wheel_sigma_mps = 0.075;
   double process_accel_sigma_mps2 = 0.8;
+  double pair_freeze_min_duration_s = 0.5;
+  double pair_freeze_model_accel_threshold_mps2 = 0.15;
+  double pair_freeze_distance_correction_limit_m = 5.0;
+  double pair_freeze_correction_rate_mps = 2.0;
   double command_stale_s = 1.0;
   double adaptive_bias_rate_per_s = 0.035;
   double adaptive_bias_limit_mps2 = 0.25;
@@ -78,6 +82,9 @@ struct Estimate {
   bool front_stale = true;
   bool rear_stale = true;
   bool model_only = true;
+  bool pair_freeze_active = false;
+  double pair_freeze_distance_correction_total_m = 0.0;
+  double pair_freeze_distance_correction_pending_m = 0.0;
   bool command_stale = true;
   bool drive_table_active = false;
   bool drive_table_used = false;
@@ -116,6 +123,8 @@ class Estimator {
     double last_good_speed_mps = 0.0;
     double last_good_stamp_s = std::numeric_limits<double>::quiet_NaN();
     double unchanged_since_s = std::numeric_limits<double>::quiet_NaN();
+    // Smoothed acceleration immediately before a raw-speed plateau.
+    double recent_motion_accel_mps2 = 0.0;
     double slip_until_s = -std::numeric_limits<double>::infinity();
     // An impossible jump is independent evidence, unlike pair disagreement.
     // Retain it until an independent prediction can support the measurement.
@@ -169,6 +178,15 @@ class Estimator {
       std::numeric_limits<double>::quiet_NaN();
   double last_independent_wheel_stamp_s_ =
       std::numeric_limits<double>::quiet_NaN();
+  // A shared flatline is only actionable while the drive model expects
+  // appreciable motion. Keep its original values for paired reacquisition.
+  bool pair_freeze_active_ = false;
+  double pair_freeze_front_mps_ = 0.0;
+  double pair_freeze_rear_mps_ = 0.0;
+  double pair_freeze_start_s_ = std::numeric_limits<double>::quiet_NaN();
+  int pair_freeze_notch_ = 0;
+  double pair_freeze_distance_correction_total_m_ = 0.0;
+  double pair_freeze_distance_correction_pending_m_ = 0.0;
   int notch_ = 0;
   bool initialized_ = false;
 };

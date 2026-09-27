@@ -28,7 +28,6 @@ import subprocess
 import sys
 
 import numpy as np
-from scipy.ndimage import median_filter
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "evaluation"))
@@ -143,6 +142,8 @@ def scoring_proxy(inputs, projection: Path):
                        for j in range(3)]).T
     delta = paired - master
     separation = np.linalg.norm(delta, axis=1)
+    from scipy.ndimage import median_filter
+
     local = median_filter(master, size=(9, 1), mode="nearest")
     good = ((age < 150_000_000) & (separation > 11) & (separation < 14)
             & (np.linalg.norm(master - local, axis=1) < 3))
