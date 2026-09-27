@@ -1,0 +1,275 @@
+{
+  "protocol": "Post-freeze diagnosis only; no runtime/parameter selection. Same permitted input CSV, frozen50bd771 binary and round3v1 outputs; nearest-reference <=50ms, not ROS ATS.",
+  "profiles": {
+    "startup": {
+      "baseline_position_outputs": 26890,
+      "candidate_position_outputs": 26889,
+      "common_matched": 26884,
+      "baseline_rmse_3d_m": 5.65680986911085,
+      "candidate_rmse_3d_m": 5.676123255211609,
+      "velocity_rows_changed": 0,
+      "distance_rows_changed": 0
+    },
+    "corrections": {
+      "baseline_position_outputs": 26890,
+      "candidate_position_outputs": 26889,
+      "common_matched": 26884,
+      "baseline_rmse_3d_m": 5.6232405176767974,
+      "candidate_rmse_3d_m": 5.641999085338651,
+      "velocity_rows_changed": 0,
+      "distance_rows_changed": 0
+    },
+    "branch": {
+      "baseline_position_outputs": 26890,
+      "candidate_position_outputs": 26889,
+      "common_matched": 26884,
+      "baseline_rmse_3d_m": 1.4834474344213198,
+      "candidate_rmse_3d_m": 1.553040904165548,
+      "velocity_rows_changed": 0,
+      "distance_rows_changed": 0
+    },
+    "full": {
+      "baseline_position_outputs": 26890,
+      "candidate_position_outputs": 26889,
+      "common_matched": 26884,
+      "baseline_rmse_3d_m": 1.474923421636901,
+      "candidate_rmse_3d_m": 1.544900911697455,
+      "velocity_rows_changed": 0,
+      "distance_rows_changed": 0,
+      "time_bins_from_first_vehicle_s": {
+        "(0, 10)": {
+          "matched": 137,
+          "baseline_rmse_m": 1.3543210569752144,
+          "candidate_rmse_m": 2.7454040147159295,
+          "delta_squared_error_sum_m2": 781.3189019753077,
+          "max_output_separation_m": 2.1365437229733555
+        },
+        "(10, 30)": {
+          "matched": 401,
+          "baseline_rmse_m": 1.3250603746776874,
+          "candidate_rmse_m": 2.660252535867219,
+          "delta_squared_error_sum_m2": 2133.784581776848,
+          "max_output_separation_m": 2.184938891573354
+        },
+        "(30, 60)": {
+          "matched": 601,
+          "baseline_rmse_m": 1.223216079982978,
+          "candidate_rmse_m": 2.643561572344353,
+          "delta_squared_error_sum_m2": 3300.7882852765397,
+          "max_output_separation_m": 2.78895788006612
+        },
+        "(60, 120)": {
+          "matched": 1201,
+          "baseline_rmse_m": 0.7920074504152743,
+          "candidate_rmse_m": 0.624684723086665,
+          "delta_squared_error_sum_m2": -284.69080270478446,
+          "max_output_separation_m": 2.2778534754153963
+        },
+        "(120, 300)": {
+          "matched": 3618,
+          "baseline_rmse_m": 0.695847361447383,
+          "candidate_rmse_m": 0.6442956544259789,
+          "delta_squared_error_sum_m2": -249.95553631808957,
+          "max_output_separation_m": 0.7122353973392542
+        },
+        "(300, 600)": {
+          "matched": 6132,
+          "baseline_rmse_m": 2.340138235780548,
+          "candidate_rmse_m": 2.340133849558529,
+          "delta_squared_error_sum_m2": -0.12588206497947776,
+          "max_output_separation_m": 0.0006074098054370245
+        },
+        "(600, 1400)": {
+          "matched": 14794,
+          "baseline_rmse_m": 1.178398021159861,
+          "candidate_rmse_m": 1.1783980211598561,
+          "delta_squared_error_sum_m2": -1.648875896931301e-10,
+          "max_output_separation_m": 4.0749248631213e-10
+        }
+      },
+      "distance_bins_m": {
+        "(0, 0.01)": {
+          "matched": 677,
+          "baseline_rmse_m": 1.3327267557764855,
+          "candidate_rmse_m": 2.680867219679053,
+          "delta_squared_error_sum_m2": 3663.1714765793176,
+          "max_output_separation_m": 2.1878873412590916
+        },
+        "(0.01, 10)": {
+          "matched": 124,
+          "baseline_rmse_m": 1.1737640495762922,
+          "candidate_rmse_m": 2.708874078536088,
+          "delta_squared_error_sum_m2": 739.0743144315883,
+          "max_output_separation_m": 2.5380695980934833
+        },
+        "(10, 50)": {
+          "matched": 251,
+          "baseline_rmse_m": 1.1386852766019617,
+          "candidate_rmse_m": 2.774693113572727,
+          "delta_squared_error_sum_m2": 1606.9817465548126,
+          "max_output_separation_m": 2.78895788006612
+        },
+        "(50, 100)": {
+          "matched": 298,
+          "baseline_rmse_m": 1.077227762486661,
+          "candidate_rmse_m": 1.5883215155016281,
+          "delta_squared_error_sum_m2": 405.9789841313445,
+          "max_output_separation_m": 2.567561723024008
+        },
+        "(100, 300)": {
+          "matched": 1908,
+          "baseline_rmse_m": 0.848967736374918,
+          "candidate_rmse_m": 0.5943787043251101,
+          "delta_squared_error_sum_m2": -701.1140105616779,
+          "max_output_separation_m": 1.3856688225965332
+        },
+        "(300, 10000)": {
+          "matched": 23626,
+          "baseline_rmse_m": 1.526643293781547,
+          "candidate_rmse_m": 1.526186136924435,
+          "delta_squared_error_sum_m2": -32.97296319470705,
+          "max_output_separation_m": 0.21112836076790448
+        }
+      },
+      "last_difference_over_1cm": [
+        0.010012910635164778,
+        227.191344843,
+        606.6147335761942
+      ],
+      "last_difference_over_1mm": [
+        0.0010005975755188992,
+        255.44135526,
+        836.9314085296376
+      ]
+    }
+  },
+  "startup": {
+    "baseline_first_anchor_output": {
+      "stamp_ns": "1788955800768775275",
+      "receive_ns": "1788955803441452217",
+      "velocity_mps": "0",
+      "distance_m": "0",
+      "position_valid": "1",
+      "x": "103635.360982257",
+      "y": "86057.410483893938",
+      "z": "165.24421833455563",
+      "front_slip": "0",
+      "rear_slip": "0",
+      "model_only": "0",
+      "gnss_corrections": "0",
+      "gnss_rejected": "1",
+      "branch_switches": "0",
+      "branch": "primary",
+      "clamped": "0",
+      "frame_id": "mgrs_37UCB",
+      "mapped": "1",
+      "anchored": "1",
+      "yaw": "1.251341433322847",
+      "anchor_source": "master",
+      "heading_source": "dual_antenna",
+      "anchor_distance_m": "0"
+    },
+    "candidate_first_anchor_output": {
+      "stamp_ns": "1788955800868752156",
+      "receive_ns": "1788955803455059716",
+      "velocity_mps": "0",
+      "distance_m": "0",
+      "position_valid": "1",
+      "x": "103634.99797529279",
+      "y": "86055.305004132912",
+      "z": "165.24421400018036",
+      "front_slip": "0",
+      "rear_slip": "0",
+      "model_only": "0",
+      "gnss_corrections": "0",
+      "gnss_rejected": "1",
+      "branch_switches": "0",
+      "branch": "primary",
+      "clamped": "0",
+      "frame_id": "mgrs_37UCB",
+      "mapped": "1",
+      "anchored": "1",
+      "yaw": "1.4147204457964457",
+      "anchor_source": "rover_fallback",
+      "heading_source": "route_body_heading",
+      "anchor_distance_m": "0"
+    },
+    "delay_s": 0.099976881,
+    "initial_yaw_delta_deg": 9.360927875752441,
+    "initial_position_separation_m": 2.1365437229733555,
+    "same_reference_match_count": true,
+    "horizontal_unit_slope_lever_arm_approximation": {
+      "lever_delta_xy_m": [
+        -1.5659178961037288,
+        0.3794995097729185
+      ],
+      "lever_delta_norm_m": 1.611247571062813,
+      "remaining_inferred_master_anchor_delta_xy_m": [
+        1.2029109318942393,
+        -2.4849792707997183
+      ],
+      "note": "Descriptive approximate decomposition in projected XY, assumes horizontal body, not a counterfactual score or surveyed truth."
+    },
+    "fix_status_counts_first_5s": {
+      "MF": {
+        "0": 37
+      },
+      "RF": {
+        "0": 4,
+        "2": 36
+      }
+    },
+    "first_RTK_since_run_start_s": {
+      "MF": 11.232810398,
+      "RF": 1.232810398
+    }
+  },
+  "files_sha256": {
+    "evaluation/runs/round3_reference/permitted_inputs.csv": "50b7ba4a11c674342b929cb1e95a6019a4fa9de2a4596b56a489af6a8cd86df2",
+    "evaluation/runs/round3_public_delta_baseline/startup.csv": "7f227ce09dfc19117608ab0e587f02b627742926fe321862c5e0915e22c28070",
+    "evaluation/runs/round3_public_delta_baseline/corrections.csv": "78543285aacea7084c48923f0e0766cdd71bcf9826931e4c38b1f5d8bfd85114",
+    "evaluation/runs/round3_public_delta_baseline/branch.csv": "cc8d2cb31ce10b027716a0202b73cf6a352e714b977af351ba90ac1a8fc57174",
+    "evaluation/runs/round3_public_delta_baseline/full.csv": "a45e822866ad482a7b0642140d282d1897e293f3ad4f45e6a7556e9faca25326",
+    "evaluation/runs/round3_public_delta_baseline/diagnostic_baseline.csv": "2be067c83d39d5d1659ee763de09d17bb72a17ecc6794fa2411c563a3dee438e",
+    "evaluation/runs/round3_public_delta_baseline/diagnostic_rtk.csv": "b3faae058ac0a149ef84c1ca963f09f52d11106942c37897ed58856dc5f3bf18",
+    "evaluation/runs/round3_reference/ablation.json": "73b4c69c20c636de401b495214083782646fe78a23117049676355aa4a6db009",
+    "evaluation/runs/round3_reference/startup.csv": "26705551bec4900fb0396167633ce572e519f6450fb4f0eaff04a9d389d3cf22",
+    "evaluation/runs/round3_reference/corrections.csv": "3c0c95e47220dc2644227b3c6ff6fc1b64df7a0b7c175ff1c8cea3506cf561db",
+    "evaluation/runs/round3_reference/branch.csv": "b094e839f388f35133ffba6592152ab8792ccbf3bab59570a8dc9da09ec625f2",
+    "evaluation/runs/round3_reference/full.csv": "34fb12cc3f65926758471ba06e98dbf825bb3922ffaea59e41cc8e2018b92651"
+  },
+  "diagnostic_build": {
+    "purpose": "Isolate Navigation startup changes while retaining50bd771 Estimator in both diagnostic builds; only append public output yaw/heading/anchor fields.",
+    "baseline_runtime_fields_exactly_match_frozen_baseline_csv": true,
+    "rtk_runtime_fields_exactly_match_round3_v1_csv": true,
+    "production_edits": false,
+    "source_root": "/private/tmp/round3-startup-diagnostic",
+    "source_files_sha256": {
+      "/private/tmp/round3-startup-diagnostic/diagnostic.cpp": "10ea044e5be735d670b18032d0ec3c0bbb17094df0d000fc48a968e4618835c2",
+      "/private/tmp/round3-startup-diagnostic/baseline/navigation.cpp": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+      "/private/tmp/round3-startup-diagnostic/baseline/estimator.cpp": "6bbc07947591fb68a17e149f556a962518b55521d7269e4de48fa313530cc537",
+      "/private/tmp/round3-startup-diagnostic/rtk/navigation.cpp": "38564b23954d3dd6491adeb9839a855917975f9775d72cff03d63390be551009",
+      "/private/tmp/round3-startup-diagnostic/rtk/estimator.cpp": "6bbc07947591fb68a17e149f556a962518b55521d7269e4de48fa313530cc537"
+    }
+  },
+  "limitations": [
+    "Public fused reference is a diagnostic set already examined previously, not independent hidden validation.",
+    "Nearest reference <=50ms is not the official ROS ATS metric.",
+    "Position anchor source and startup heading change together; this comparison establishes their combined effect and does not separately identify each contribution to reference error.",
+    "GNSS status is a quality preference, not proof that either antenna or map heading is error-free.",
+    "Startup differences persist with travelled-distance decay, so standing still prolongs them.",
+    "No-map mixed-quality heading exclusion can leave configured heading indefinitely; this is an accepted design limitation, not a claim of universal accuracy improvement."
+  ],
+  "mixed_quality_heading_risk": {
+    "disposition": "Intentional conservative RTK/RTK heading policy retained as directed; no public-score tuning.",
+    "independent_fixture": "startup_independent_review.md",
+    "ninety_degree_heading_error_at_rest_m": 13.962530501309566,
+    "worst_case_heading_only_master_lever_error_at_rest_m": 19.746,
+    "moving_no_map_heading_error": "2*(distance_m+9.873)*sin(abs(yaw_error)/2) for a straight rigid master-based trajectory; no map correction bounds this error."
+  },
+  "executables_sha256": {
+    "/private/tmp/odometry-pull-50bd771/navigation_replay": "1b529e0e02ddecdc1fd0304ed1918ba1fd7f238316e5c7ae1fd5a93b10535b98",
+    "/private/tmp/round3-startup-diagnostic/baseline/diagnostic": "11c0ceab735ac9478bf37dc9384747b8cd5f6b76c53bcddc14755603489ccfff",
+    "/private/tmp/round3-startup-diagnostic/rtk/diagnostic": "19827c044ef9ef493620f35e54c1347c555953dfe80bea34632aa8947b731a26"
+  }
+}

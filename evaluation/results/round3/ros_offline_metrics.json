@@ -1,0 +1,183 @@
+{
+  "matching": {
+    "method": "nearest_reference_header_stamp",
+    "tolerance_ns": 50000000,
+    "boundary": "inclusive",
+    "ties": "earlier_reference_stamp",
+    "reference_reuse": true,
+    "equivalent_to_ros_approximate_time_synchronizer": false,
+    "reference_velocity_field": "twist.twist.linear.x"
+  },
+  "reference": {
+    "outputs": 65579,
+    "unique_stamps": 65579,
+    "gaps": {
+      "first_stamp_ns": 1788955801404989971,
+      "last_stamp_ns": 1788957112964989111,
+      "span_s": 1311.55999914,
+      "max_gap_s": 0.02167559,
+      "gap_threshold_s": 0.1,
+      "gaps_over_threshold": 0,
+      "duplicate_stamps": 0,
+      "backward_stamps_in_receive_order": 0
+    }
+  },
+  "candidate": {
+    "rows": 57308,
+    "velocity": {
+      "outputs": 28658,
+      "matched": 28646,
+      "unmatched": 12,
+      "coverage": 0.9995812687556703,
+      "unique_reference_matches": 26933,
+      "reference_coverage": 0.4106954970341115,
+      "mean_abs_match_offset_ms": 5.012611835718774,
+      "max_abs_match_offset_ms": 34.379967,
+      "gaps": {
+        "first_stamp_ns": 1788955799267189602,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1313.691359795,
+        "max_gap_s": 1.201666794,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 13,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "matched_gaps": {
+        "first_stamp_ns": 1788955801370610004,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.587939393,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 10,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "invalid": 0,
+      "n": 28646,
+      "rmse_mps": 0.048848647788807466,
+      "mae_mps": 0.032308158661130126,
+      "bias_mps": 0.0021561424174431233,
+      "max_abs_mps": 0.3366549295165099
+    },
+    "position": {
+      "outputs": 28650,
+      "matched": 28646,
+      "unmatched": 4,
+      "coverage": 0.9998603839441536,
+      "unique_reference_matches": 26933,
+      "reference_coverage": 0.4106954970341115,
+      "mean_abs_match_offset_ms": 5.012611835718774,
+      "max_abs_match_offset_ms": 34.379967,
+      "gaps": {
+        "first_stamp_ns": 1788955800968722663,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.989826734,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 12,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "matched_gaps": {
+        "first_stamp_ns": 1788955801370610004,
+        "last_stamp_ns": 1788957112958549397,
+        "span_s": 1311.587939393,
+        "max_gap_s": 0.143956376,
+        "gap_threshold_s": 0.1,
+        "gaps_over_threshold": 10,
+        "duplicate_stamps": 0,
+        "backward_stamps_in_receive_order": 0
+      },
+      "invalid": 0,
+      "rmse_3d_m": 1.5532434127022623,
+      "max_3d_m": 11.330980212174488,
+      "end_error_3d_m": 0.1285987479319899,
+      "end_stamp_ns": 1788957112958549397,
+      "x": {
+        "n": 28646,
+        "rmse_m": 0.8021379550925695,
+        "mae_m": 0.5553235872324893,
+        "bias_m": -0.09177859131873475,
+        "max_abs_m": 8.953755172915407
+      },
+      "y": {
+        "n": 28646,
+        "rmse_m": 1.3274464680855558,
+        "mae_m": 0.6887329432647218,
+        "bias_m": 0.24682844994861633,
+        "max_abs_m": 6.94276144138712
+      },
+      "z": {
+        "n": 28646,
+        "rmse_m": 0.08381929652571711,
+        "mae_m": 0.05535292354719789,
+        "bias_m": 0.042361686115745506,
+        "max_abs_m": 0.3887123747437613
+      }
+    },
+    "flag_counts": {}
+  },
+  "common_velocity": {
+    "mask": "finite candidate and reference velocity, exact baseline output stamp, nearest reference within tolerance",
+    "baseline_outputs": 26249,
+    "matched": 25912,
+    "candidate": {
+      "n": 25912,
+      "rmse_mps": 0.048855719130816815,
+      "mae_mps": 0.03232350228135366,
+      "bias_mps": 0.002007378235033814,
+      "max_abs_mps": 0.3366549295165099
+    },
+    "baseline": {
+      "n": 25912,
+      "rmse_mps": 0.026790426868868553,
+      "mae_mps": 0.016284455813359685,
+      "bias_mps": 0.0029440652301406414,
+      "max_abs_mps": 0.28951775696542525
+    }
+  },
+  "provenance": {
+    "git_commit": "1b4a395b61596c8ce370bb65cf1572d9d9272dda",
+    "git_dirty": true,
+    "bag": "/data/reference",
+    "bag_files_sha256": {
+      "30618_88aea4d9_0.db3": "48f846d134d0584b38f9ca06b7ba812a16aeeecc896594313e3fa9acd27e10c3",
+      "metadata.yaml": "b3b26262659d247aad1eceb3fbe1bc987e834df783f465cd5be8ca928f49534f"
+    },
+    "artifacts_sha256": {
+      "/workspace/analysis/viewer/rosbag_cdr.py": "7d8a5c7ac159c15c8164527aed1de1529a3e50cee96b44db08040b31285017fb",
+      "/workspace/evaluation/causal_baseline.py": "7c32f7aed01a6f8a97f3fefb8e20fbb537f8058efedd1fe88eb52ac39ee23bbc",
+      "/workspace/evaluation/reference_benchmark.py": "156a82c240241da3c596a5bdca47d53d846b789adb462a23b6edb56b2175058d",
+      "/workspace/evaluation/runs/round3_final_ros_1x/result_bag/result_bag_0.db3": "444bd85441fc92d094c63f5b02a48a7e591a12791fb9634159edadc236bc5f32",
+      "/workspace/ros2_ws/src/tram_odometry/config/default.yaml": "aef74a217068eefcb450fa6585e88542507a7cdddc7f8c390a6c972780100f6b",
+      "/workspace/ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140",
+      "/workspace/ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "d3a2f7b7436a183aa7ad6b0298d605e950a57d6f9ffa3633896874e8af519d7b",
+      "/workspace/ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+      "/workspace/ros2_ws/src/tram_odometry/src/navigation.cpp": "38564b23954d3dd6491adeb9839a855917975f9775d72cff03d63390be551009"
+    },
+    "config_path": "/workspace/ros2_ws/src/tram_odometry/config/default.yaml",
+    "config_text": "tram_odometry:\n  ros__parameters:\n    vehicle_id: 30618\n    output_frame_id: mgrs_37UCB\n    relative_frame_id: odom\n    output_projection: mgrs37ucb  # x=UTM37 easting-300000, y=northing-6100000\n    child_frame_id: base_link\n    route_direction: auto  # out, return or auto; auto needs a valid startup GNSS fix\n    map_file: ''           # empty: installed assets/route_map.csv\n    alternate_map_file: '' # empty: installed branch A; 'none' disables branch selection\n    elevation_file: ''     # official base_link height; 'none' keeps train map height\n    enable_gnss_corrections: true\n    gnss_correction_max_age_s: 0.5\n    gnss_correction_gate_m: 40.0\n    gnss_correction_lateral_gate_m: 8.0\n    gnss_correction_gain: 0.5\n    gnss_correction_max_step_m: 3.0\n    start_s_m: 0.0        # used if GNSS initialization is unavailable\n    use_startup_gnss: true\n    use_map_without_gnss: false  # true only with configured direction/start_s_m\n    use_rover_fallback: true\n    startup_gnss_window_s: 5.0\n    startup_min_fixes: 3\n    rover_fallback_delay_s: 1.5\n    rover_to_master_s_m: -12.436  # official rover-master longitudinal offset\n    map_match_max_distance_m: 50.0\n    auto_out_terminal_min_x_m: -200.0\n    auto_return_terminal_max_x_m: -4400.0\n    anchor_residual_decay_m: 100.0\n    route_longitudinal_offset_m: 9.873  # rigid master\u2192base_link offset along 3D body tangent\n    body_heading_lookahead_m: 6.098   # master\u2192bogie midpoint: 9.873 - 7.55/2 m\n    antenna_to_base_z_m: -3.0         # both GNSS antennae z=+3 in base_link\n    relative_heading_rad: 0.0\n    initial_x_m: 0.0\n    initial_y_m: 0.0\n    initial_z_m: 0.0\n    output_rotation_rad: 0.0\n    output_scale: 1.0\n    wheel_common_scale_sigma: 0.01  # train-only prior for shared wheel-scale drift (dimensionless)\n    output_offset_x_m: 0.0\n    output_offset_y_m: 0.0\n    output_offset_z_m: 0.0\n    # Must match the WGS84 ECEF->ENU datum used to build assets/route_map.csv.\n    map_datum_lat_deg: 55.810367065\n    map_datum_lon_deg: 37.462266845\n    map_datum_alt_m: 168.3794\n    reset_on_large_time_jump_s: 60.0\n    # The model and robust fusion defaults come from EstimatorConfig::forVehicle(id).\n    # Optional ROS overrides: front_scale, rear_scale, mass_kg, effective_wheel_radius_m,\n    # motor_torque_max_nm, traction_power_limit_w, brake_force_max_n,\n    # rolling_resistance_accel_mps2, quadratic_drag_accel_per_mps2,\n    # grade_accel_mps2, wheel_stale_s, max_out_of_order_s, disagreement_gate_mps,\n    # innovation_gate_mps, implausible_wheel_accel_mps2, wheel_sigma_mps,\n    # process_accel_sigma_mps2, enable_adaptation,\n    # pair_freeze_min_duration_s (0.5),\n    # pair_freeze_model_accel_threshold_mps2 (0.15),\n    # pair_freeze_distance_correction_limit_m (5.0),\n    # pair_freeze_correction_rate_mps (2.0).\n    # Train-only drive table is enabled by the node for vehicle_id=30618 and\n    # disabled for 30639; do not set a fixed boolean here, as it would override\n    # the vehicle-specific default. To override: enable_drive_table: false/true.\n    # Empty drive_table_path uses installed assets/drive_accel_table.csv.\n    # A missing or invalid file logs a startup warning and keeps physics-only\n    # prediction; check /result/diagnostics drive_table_active/used.\n",
+    "command": [
+      "/workspace/evaluation/record_ros_outputs.py",
+      "--bag",
+      "/data/reference",
+      "--outdir",
+      "evaluation/runs/round3_final_ros_1x",
+      "--config",
+      "ros2_ws/src/tram_odometry/config/default.yaml",
+      "--rate",
+      "1",
+      "--timeout",
+      "1800",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/src/estimator.cpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/src/navigation.cpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp",
+      "--artifact",
+      "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp"
+    ]
+  }
+}

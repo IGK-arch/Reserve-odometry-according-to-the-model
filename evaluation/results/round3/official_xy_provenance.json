@@ -1,0 +1,14 @@
+{
+  "files": {
+    "evaluation/round3_official_xy.py": "14eae567837740d948f70c78f1f1ef4b3c5b2241bfaf03e7f28e9aac2319e1be",
+    "evaluation/round3_xy_replay.py": "36b5b2d94d9e77e501e3c421ae8e2135ab625998b289f24e99a12d8dd85030c0",
+    "context/таллинская - щукинская - Pathgraph для задачи.json": "7a402fcd426a607ad2f6cf2fca7dbf38cf2e9a171cd5034c61eb3d71bc0e53ba",
+    "ros2_ws/src/tram_odometry/assets/route_map.csv": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+    "ros2_ws/src/tram_odometry/assets/route_map_branch_a.csv": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+    "tools/split_manifest.json": "9c7db9ea5df911692da03c2525843f20fd957a40ce01ce34ea8030696fc5f221"
+  },
+  "scratch_dir": "/private/tmp/round3-xy",
+  "public_reference_read": false,
+  "train_unique_bags": 42,
+  "fused_truth_ever_passed_to_candidate": false
+}

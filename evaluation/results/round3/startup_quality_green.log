@@ -1,0 +1,15 @@
+PASS: RTK arriving after low-quality fixes owns the anchor
+PASS: absent RTK falls back at the unchanged five-second deadline
+PASS: one RTK fix cannot promote a lower-quality window early
+PASS: sparse RTK remains usable at the deadline without mixing qualities
+PASS: low-quality rover cannot rotate an RTK master anchor
+PASS: coherent RTK pair survives denser low-quality timestamps
+PASS: RTK rover fallback is not blocked by low-quality master
+PASS: RTK rover respects its delay with either antenna arrival order
+PASS: stale RTK pair cannot provide startup heading
+PASS: reset restarts quality evidence and deadline
+PASS: reset discards unfinished RTK and lower-quality fallback windows
+PASS: moving startup prefers RTK without losing wheel travel
+PASS: stale and future RTK cannot satisfy startup evidence
+PASS: no GNSS still releases relative position after five seconds
+14/14 startup quality tests passed

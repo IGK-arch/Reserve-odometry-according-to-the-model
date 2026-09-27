@@ -1,0 +1,23 @@
+{
+  "runtime_commit": "1b4a395",
+  "reviewers": [
+    "independent navigation/startup reviewer",
+    "independent estimator recovery reviewer",
+    "independent geometry researcher"
+  ],
+  "fixed": [
+    "lone recovery with missing companion",
+    "lone recovery with fresh frozen companion after pairing grace",
+    "stale/asynchronous pair endpoint",
+    "conflicting payload on duplicate timestamp",
+    "distance compensation after any command transition",
+    "GNSS evaluator dependency and exact proxy provenance"
+  ],
+  "accepted_limitations": [
+    "command-only freeze synthetic regression retained explicitly",
+    "healthy plateau after acceleration remains ambiguous",
+    "mixed-quality heading excluded intentionally; no-map13.9625m fixture retained",
+    "public RTK startup RMSE regression diagnosed without tuning"
+  ],
+  "final_review": "No new runtime blocker; docs clarified shared GNSS proxy source and heading fallback risk. Full ROS completion and package verification are delivery gates."
+}

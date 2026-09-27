@@ -1,0 +1,68 @@
+{
+  "candidate_runtime_freeze": "final_freeze.json",
+  "tests": {
+    "portable_release_cpp": {
+      "passed": 17,
+      "total": 17,
+      "log": "portable_ctest.log"
+    },
+    "python_unittest": {
+      "passed": 40,
+      "total": 40,
+      "log": "python_tests.log"
+    },
+    "asan_ubsan_cpp": {
+      "passed": 17,
+      "total": 17,
+      "log": "sanitize.log"
+    },
+    "ubuntu_humble_cpp": {
+      "passed": 17,
+      "total": 17,
+      "log": "ros_ctest.log"
+    },
+    "extracted_source_archive": {
+      "cpp_passed": 17,
+      "python_passed": 40,
+      "log": "extracted_release_check.log",
+      "runtime_files_exactly_match_final_freeze": true
+    }
+  },
+  "replay": {
+    "real_unique_bags": 97,
+    "byte_identical_csv_bags": 97,
+    "output_rows": 2061664,
+    "synthetic_per_vehicle": 84,
+    "gnss_bags": 46,
+    "gnss_modes_per_bag": 4
+  },
+  "contracts": [
+    "ros_contract_no_gnss.json",
+    "ros_contract_30639.json"
+  ],
+  "known_regressions": [
+    "three trip/pair_freeze_transition seeds per vehicle after command-only trigger removal",
+    "public fused nearest-reference 3D RMSE1.474923->1.544901 due RTK startup anchor and heading policy"
+  ],
+  "notes": [
+    "Data previously inspected; no independent hidden-test claim.",
+    "Archive extraction verified runtime hashes against final_freeze; subsequent documentation/evidence additions do not alter the tested runtime.",
+    "Measurements began before the runtime commit was created; file/binary SHA-256, not an unqualified HEAD label, identifies the tested candidate.",
+    "git diff whitespace validation uses core.whitespace=cr-at-eol because pre-existing JSON calibration metadata is CRLF and .gitattributes deliberately preserves it."
+  ],
+  "runtime_commit": "1b4a395",
+  "full_ros": {
+    "status": "completed",
+    "playback_completed": true,
+    "wall_s": 1316.4531127650116,
+    "rate": 1.0,
+    "recorded_reference": 65579,
+    "report": "ros_run_summary.json",
+    "container_limits": "2 CPUs /512 MiB; Ubuntu22.04 ROS2Humble arm64"
+  },
+  "excluded_preliminary_run": {
+    "path": "evaluation/runs/round3_ros_1x",
+    "status": "failed/interrupted deliberately before final review fixes",
+    "used_for_final_metrics": false
+  }
+}

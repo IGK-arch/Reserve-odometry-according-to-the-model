@@ -1,0 +1,29 @@
+{
+  "baseline_commit": "50bd771a497a4e2866b41d1a4870763c04548bdc",
+  "source_sha256": {
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "6bbc07947591fb68a17e149f556a962518b55521d7269e4de48fa313530cc537",
+    "ros2_ws/src/tram_odometry/src/odometry_node.cpp": "29e1ada193786dd1c033b9498f90ff5b1ab83392fc47dddd805f4967db992f9a",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/startup_output_gate.hpp": "0fb79ef4cd297d125cbcae6a83a40671d97d646ad12e57ab2400dccbd2d02276",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp": "01956153d22ece6ed0f179270ae9167e3b5cc30c328f2284d4cc7f62b7a0edd6",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/uncertainty.hpp": "1d231a74e907605a52580aab38bd629df5905c374523c6befba49cad986bf426",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp": "80e833aaba9a00b4db0eb5c8f4e1bacbca93531e4d57e7917ab7b862eabf0869",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "4565bf43f5e5beac1dbfb9554631ee35e0b8a42a153290e61b7a343ed0fdbd86",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp": "93d263325fc13892549dd3104d2d51e6da3e77495d4e5846acfba88a8bf961e1",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "bc1d7361000610360be2456f3a817067abe549c4806d6afe0567c8cf5be193e6",
+    "ros2_ws/src/tram_odometry/assets/route_map_branch_a.csv": "a73144571b3d92ac86f3da7b92b1bf2b80a3127cb6b5472fddc211742b69169f",
+    "ros2_ws/src/tram_odometry/assets/stops.csv": "e235428d9203c4e7406503a75da254fce4e8d94faceb3f8ec9273c930ccca5df",
+    "ros2_ws/src/tram_odometry/assets/drive_accel_table.csv": "3f2104d544421b9843a4619f5b4d849c85608ae5f6118f9aa7b381c766a345dc",
+    "ros2_ws/src/tram_odometry/assets/route_map_meta.json": "0cb9f08e706def5c6c842a0fc253afccb42e606aa340b5c636f12cc6d8cfe82f",
+    "ros2_ws/src/tram_odometry/assets/official_elevation_meta.json": "23093a2c45f8bf34eeaddd19be92339a590ef118a54f13c4254b5a8a24659906",
+    "ros2_ws/src/tram_odometry/assets/route_map.csv": "6909a058a01750a389e05ecfdb6d848f4d65e74a5012cb8ea41b908e1225051a",
+    "ros2_ws/src/tram_odometry/assets/official_elevation.csv": "86ec3d223f1b76de6bc8ffc4f5b1a8eb87a457b570de00d97f996d859b53e686",
+    "ros2_ws/src/tram_odometry/assets/route_map_branch_a_meta.json": "2a8f9a27730ab958a3e451a81ed6fec8cee65f10a68c3b3244f78e18f71215f2",
+    "ros2_ws/src/tram_odometry/config/default.yaml": "aef74a217068eefcb450fa6585e88542507a7cdddc7f8c390a6c972780100f6b"
+  },
+  "binaries": {
+    "/private/tmp/odometry-pull-50bd771/replay_cli": "3408ec7f33bfd64c5469bb09c6a29f4779866d7eb5fc09d2cea5bb3c82938865",
+    "/private/tmp/odometry-pull-50bd771/navigation_replay": "1b529e0e02ddecdc1fd0304ed1918ba1fd7f238316e5c7ae1fd5a93b10535b98"
+  },
+  "protocol": "Preserve 50bd771 baseline. Select fixes by physical counterexamples and train first. Existing validation/holdout/public are inspected diagnostic sets, not independent hidden tests."
+}

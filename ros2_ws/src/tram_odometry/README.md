@@ -64,15 +64,20 @@ the CSV explicitly. The exact equations, gating, assumptions and split
 protocol are in [`docs/CORE_MODEL.md`](../../../docs/CORE_MODEL.md) and
 [`docs/DRIVE_CALIBRATION.md`](../../../docs/DRIVE_CALIBRATION.md).
 
-Both wheel channels repeating exactly the same values under demonstrated
-motion or a changed driver command can now enter `pair_freeze_active` model
-prediction. Reacquisition requires both channels to resume consistently.
-The optional bounded distance correction at recovery is spread over future
-updates at up to 2 m/s; diagnostics report the active state, requested
-correction and pending balance. Set `pair_freeze_distance_correction_limit_m: 0.0` to disable
-the pose correction while retaining freeze detection. See
-[`docs/PAIR_FREEZE_AUDIT_2026-09-27.md`](../../../docs/PAIR_FREEZE_AUDIT_2026-09-27.md)
-for measured synthetic and real-bag regression results.
+Both wheel channels repeating identical payloads after demonstrated acceleration
+or braking can enter `pair_freeze_active` model prediction. A driver-command
+change alone no longer establishes a freeze. A pair may recover only from fresh,
+sensor-time-coherent observations; conflicting payloads at a duplicate header
+are rejected. A lone changed channel can recover through the normal innovation
+gate after a bounded pairing grace, while its frozen peer remains quarantined.
+Any command transition during the freeze disables the approximate distance
+backfill. Otherwise its bounded correction is spread over future updates at up
+to 2 m/s; diagnostics report active state, requested correction and pending
+balance. Set `pair_freeze_distance_correction_limit_m: 0.0` to disable backfill.
+A healthy exact plateau after acceleration remains ambiguous. Removing the
+command-only trigger deliberately loses the earlier synthetic transition-fault
+gain. See [`docs/ROUND3_RELIABILITY.md`](../../../docs/ROUND3_RELIABILITY.md)
+for measured improvements, regressions and limitations.
 
 To override the vehicle default, add `enable_drive_table: false` or `true`
 under `ros__parameters` in `config/default.yaml`. Set `drive_table_path` to
@@ -155,9 +160,9 @@ latency. No new ROS performance numbers should be inferred from portable tests.
 
 ## Route and coordinate settings
 
-`assets/route_map.csv` is generated offline from training bags only. It contains `direction,s,x,y,z`, where `s` is distance in metres along either the `out` or `return` route and `x/y/z` use a fixed WGS84 ENU datum. The node buffers allowed startup GNSS fixes, projects them by WGS84 geodetic → ECEF → ENU, takes a componentwise median, matches it to the closest route segment, then stores the corresponding initial route distance. It attempts a master anchor after `startup_min_fixes`; if fewer fixes arrive, the buffered fixes are used when the startup window ends. For startup, master fixes take priority; rover fixes are used only if master fixes are absent after `rover_fallback_delay_s` and carry a larger covariance. Simultaneous master and rover fixes provide initial body-forward heading; with one antenna the map tangent supplies heading. GNSS is **never** fed to the velocity/distance estimator. If no startup GNSS is available, the default output is straight relative odometry (`relative_frame_id`) from `initial_x_m/y_m/z_m` and `relative_heading_rad`. Set `use_map_without_gnss=true` and provide `route_direction` plus `start_s_m` only when the starting route pose is known through configuration.
+`assets/route_map.csv` is generated offline from training bags only. It contains `direction,s,x,y,z`, where `s` is distance in metres along either the `out` or `return` route and `x/y/z` use a fixed WGS84 ENU datum. The node buffers allowed startup GNSS fixes, projects them by WGS84 geodetic → ECEF → ENU, takes a componentwise median, matches it to the closest route segment, then stores the corresponding initial route distance. RTK (`status=2`) uses separate per-antenna samples and timestamp histories. A sufficient RTK master window anchors early; a sufficient RTK rover window may anchor after `rover_fallback_delay_s` when RTK master is absent. At the five-second deadline, sparse RTK takes priority over usable lower-quality fixes. Low-quality fixes cannot complete an RTK median. Paired heading uses the selected quality group with the existing timestamp and physical-baseline gates. An RTK anchor excludes lower-quality companion heading; otherwise the map body-heading estimate supplies yaw, or the configured yaw when no map exists. This can discard a correct mixed-quality heading and worsen startup accuracy; the reproduced risks are recorded in the round-3 report. GNSS is **never** fed to the velocity/distance estimator. If no startup GNSS is available, the default output is straight relative odometry (`relative_frame_id`) from `initial_x_m/y_m/z_m` and `relative_heading_rad`. Set `use_map_without_gnss=true` and provide `route_direction` plus `start_s_m` only when the starting route pose is known through configuration.
 
-The organiser specified the target point as `base_link`, centred on the front bogie at rail level. In that body frame, master antenna is `(-9.873, 0, +3.0)` m and rover is `(+2.563, 0, +3.0)` m. The map follows master, so the default output adds **+9.873 m times the local 3D forward unit tangent** to the mapped master point, then subtracts **3.0 m from altitude**. The tangent is estimated from map samples at `s±1 m`; this is a rigid body transform, not an advance of `s` by 9.873 m on a curved track. Rover-only initialization matches the antenna rigidly displaced **+12.436 m** from the master route along the local 3D tangent, then retains the corresponding master route coordinate; it does not subtract 12.436 m along a curved polyline. Neither offset changes estimated speed or distance.
+The organiser specified the target point as `base_link`, centred on the front bogie at rail level. In that body frame, master antenna is `(-9.873, 0, +3.0)` m and rover is `(+2.563, 0, +3.0)` m. The map follows master, so the default output adds **+9.873 m times the local 3D forward unit tangent** to the mapped master point, then subtracts **3.0 m from altitude**. The body direction uses the route tangent near `s + body_heading_lookahead_m` (default 6.098 m, reflecting antenna placement behind the body midpoint). A coherent startup antenna pair also rotates the initial lever arm, decaying with travelled distance. This is a rigid body transform, not an advance of `s` by 9.873 m on a curved track. Rover-only initialization matches the antenna rigidly displaced **+12.436 m** from the master route along the local 3D tangent, then retains the corresponding master route coordinate; it does not subtract 12.436 m along a curved polyline. Neither offset changes estimated speed or distance.
 
 The default `/result/position` uses a fixed, continuous MGRS `37UCB` plane: `x = UTM zone 37N easting − 300000`, `y = UTM northing − 6100000`, and `z = base_link` height in metres. The transformation is WGS84 ENU → ECEF → geodetic → UTM; it remains continuous if a route crosses a 100-km MGRS letter boundary. The official control point `lat=55.8088325462547°, lon=37.4602768500852°` projects to `x=103501.6309, y=85876.1201` m. Our standalone C++ test differs by approximately 0.6 mm in `y`. `output_projection=enu` is for internal inspection. `output_scale`, `output_rotation_rad`, and `output_offset_*_m` remain available for a revised judge frame. `nav_msgs/Odometry` twist is expressed in `child_frame_id`.
 

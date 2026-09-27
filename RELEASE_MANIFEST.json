@@ -8,8 +8,8 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "f082ec368ad6f259d4eb9d982ff7d2d2a17379f5ba7ed68715611e61e76e8f4e",
-      "size": 636
+      "sha256": "5bc2a8abe7141efa0fe018a562a60e6bc9957534da52660bb9e6178d9eaaf839",
+      "size": 716
     },
     {
       "path": "CMakeLists.txt",
@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "00b7385756341ef1e552730d77685a4ba0533c83aeb956de057a133f91e86982",
-      "size": 10141
+      "sha256": "201dd19f133badefb4a93ec9408e4e47ecb440c0ef112d91da51caa06c3d8733",
+      "size": 10423
     },
     {
       "path": "analysis/README.md",
@@ -213,8 +213,8 @@
     },
     {
       "path": "docs/CORE_MODEL.md",
-      "sha256": "541056a8543d4caf6dcd7014b72892b1cb93955278cfa6b2ca6fba21c08d00e1",
-      "size": 29825
+      "sha256": "c4323d6d68ba6a4cfbd150ed0c9cac4de7780bec31d87333e2b91c12fd913213",
+      "size": 34252
     },
     {
       "path": "docs/DRIVE_CALIBRATION.md",
@@ -238,18 +238,23 @@
     },
     {
       "path": "docs/METRICS_COMPARISON.md",
-      "sha256": "8c24d6c72bada08c7527874969fddc21d3c5afdfef4657cb7827b1abad47df5e",
-      "size": 63861
+      "sha256": "0b7311f343a8e327cccc21d8c154e9b50dd9092fcb600a62e588ea86f32f4a28",
+      "size": 64999
+    },
+    {
+      "path": "docs/PAIR_FREEZE_AUDIT_2026-09-27.md",
+      "sha256": "6342ccbae38d1bf887c542781703b667e452d1000302c2ca07a4c1ca784dd7fd",
+      "size": 10816
     },
     {
       "path": "docs/PUBLISH_VERIFICATION.md",
-      "sha256": "19b19dc67cb29042089348a7c4183374f80d1440160057a55c4e8a38a8bbaa93",
-      "size": 5181
+      "sha256": "576de5ec03ae5227f0f184c8ac32e4235860f20fcad68221ffa2c8c5cf0a7ae8",
+      "size": 5448
     },
     {
       "path": "docs/RESULTS.md",
-      "sha256": "dae82d5806f556cf7e9725516e4eb6c0f9cb9db552663a503fb2b784721ea58c",
-      "size": 12621
+      "sha256": "31f1dc9d6aa0e568325759d9ec302e053b4def06b878612f92547674190350d9",
+      "size": 13821
     },
     {
       "path": "docs/RESULTS_ROUND1.md",
@@ -260,6 +265,11 @@
       "path": "docs/ROUND2_IMPROVEMENTS.md",
       "sha256": "d93cde6e0bd2b038416911a7f9db4613d5608b05dac4d7f314f230d988e68b4d",
       "size": 16975
+    },
+    {
+      "path": "docs/ROUND3_RELIABILITY.md",
+      "sha256": "07429781b9a84ea15b148e8e8e713439a60775d4ba55ab3a730536411517a41e",
+      "size": 20056
     },
     {
       "path": "docs/STOP_LANDMARKS.md",
@@ -552,6 +562,11 @@
       "size": 8128
     },
     {
+      "path": "evaluation/compare_core_replays.py",
+      "sha256": "abfff11cce807c7a157a9e7d2a01316b7da078f50cce2834d917099c419b6616",
+      "size": 3150
+    },
+    {
       "path": "evaluation/compare_reference_runs.py",
       "sha256": "85e18ee0c579ce2ed53136e2fea7b16af74e810024d7f838f263a184c5ec4aac",
       "size": 7706
@@ -648,8 +663,8 @@
     },
     {
       "path": "evaluation/navigation_gnss_stress.py",
-      "sha256": "ac7b4ff69a8248acf1e297eb69d43c9ccc2b443ff2e844d839c80a87ed332931",
-      "size": 17235
+      "sha256": "932dcf4245cb6556ce858678446a9f19d9495082a3b77b384f18a3dcc82be2bb",
+      "size": 17240
     },
     {
       "path": "evaluation/navigation_replay.cpp",
@@ -755,6 +770,31 @@
       "path": "evaluation/results/original_blackout.json",
       "sha256": "c81f0524a3240f28caa06a038004831242aa093cba632597927ad6048f210334",
       "size": 376373
+    },
+    {
+      "path": "evaluation/results/pair_freeze_20260927/real_bag_parity.json",
+      "sha256": "814b6b8e0299babb520d39ee0b8eea76122449ab1e478429b01ab78ad0b81500",
+      "size": 35132
+    },
+    {
+      "path": "evaluation/results/pair_freeze_20260927/ros_anchored_moving.json",
+      "sha256": "3d8b750a33c5f946f2894fcd042a938c200fe08b275c1565c5cb13db60b0d357",
+      "size": 1874
+    },
+    {
+      "path": "evaluation/results/pair_freeze_20260927/ros_no_gnss_moving.json",
+      "sha256": "c5bd3fda8afd5a8fc2effbca49c123bffdd967b2e29d3685affe8aa970b0df46",
+      "size": 1772
+    },
+    {
+      "path": "evaluation/results/pair_freeze_20260927/synthetic_30618.json",
+      "sha256": "56043cd1367d17f833ea6bfaffb4b86f7d6f49fc2b4d9e247a24cdcc79f2217a",
+      "size": 301119
+    },
+    {
+      "path": "evaluation/results/pair_freeze_20260927/synthetic_30639.json",
+      "sha256": "3f18662b731fbb1ba86814413e4942d8ee93f0d6e120914fb565c75ba6d041b9",
+      "size": 300724
     },
     {
       "path": "evaluation/results/pair_gain_blackout.json",
@@ -1077,6 +1117,256 @@
       "size": 4040
     },
     {
+      "path": "evaluation/results/round3/baseline_freeze.json",
+      "sha256": "bb42f8efe8e3a7b0332d3ea3b555df17101a6ae68b1da24ea1502e44a7897547",
+      "size": 3062
+    },
+    {
+      "path": "evaluation/results/round3/extracted_release_check.log",
+      "sha256": "df576fea17f273abfcb0e11e3bf07733005e53fb8d20834f798987b0e31c2363",
+      "size": 7154
+    },
+    {
+      "path": "evaluation/results/round3/final_freeze.json",
+      "sha256": "84a72a24de5d1ef8559310599052bac98c6bcaa9a6bf5a3a7f0ee559c79ff23f",
+      "size": 3129
+    },
+    {
+      "path": "evaluation/results/round3/final_speed_holdout_results.json",
+      "sha256": "2f96f161ccc25b556b3c93d9b6da03b6b4e5a990dfba2edc5146481ba8bceaa4",
+      "size": 764759
+    },
+    {
+      "path": "evaluation/results/round3/final_speed_holdout_summary.json",
+      "sha256": "d7f4f9551923839d8096d3590db9a5023c71689101406e9a9f8c32daedfe2da6",
+      "size": 2298
+    },
+    {
+      "path": "evaluation/results/round3/final_speed_train_results.json",
+      "sha256": "ca9b65642600e6a8778667fe710c1ad936bd892df08e5fa1c9e06e26a8ae1155",
+      "size": 37577
+    },
+    {
+      "path": "evaluation/results/round3/final_speed_train_summary.json",
+      "sha256": "0ceb951e1e0906ab639c5b5ba6eb8d7ac1cc53afb2c3cfdec7d5dbcfae11736f",
+      "size": 2887
+    },
+    {
+      "path": "evaluation/results/round3/final_speed_validation_results.json",
+      "sha256": "7ca61e2bc3658e8667ebb7d8f2570fb6d7b6a5dd7ea4b6ae0ae591589458a2eb",
+      "size": 480939
+    },
+    {
+      "path": "evaluation/results/round3/final_speed_validation_summary.json",
+      "sha256": "51eaa725af4710310e15ecbfa988dcf075220ffac7ab9b9dad73c48a83285199",
+      "size": 1147
+    },
+    {
+      "path": "evaluation/results/round3/gnss_comparison.json",
+      "sha256": "f91c524f54e98f730432449d311cf23c199106fbcc010e9122b91fadcdeaf2e7",
+      "size": 423088
+    },
+    {
+      "path": "evaluation/results/round3/official_xy_decision.md",
+      "sha256": "06e2e015024292744fa55f76b3b86b699200d6d2955ee8a526ba23612856ad1d",
+      "size": 4627
+    },
+    {
+      "path": "evaluation/results/round3/official_xy_decision_frozen.json",
+      "sha256": "2ca5c4047ad714d55d2ad70899953fb58d1b8a183151a0f2da4858874b711be9",
+      "size": 304
+    },
+    {
+      "path": "evaluation/results/round3/official_xy_geometry.json",
+      "sha256": "63d70ad24df9d82d0bbc1acc222ddc7d8eaf141ba04ed812cd61e8b235396779",
+      "size": 43101
+    },
+    {
+      "path": "evaluation/results/round3/official_xy_provenance.json",
+      "sha256": "acccd3fe773c76041423b03f54d62651297bb928cb686b339afb27fd301de5f4",
+      "size": 903
+    },
+    {
+      "path": "evaluation/results/round3/official_xy_replay.json",
+      "sha256": "61ce817c20a4451793672dbb84896ebf3b787354d464ccb6d4e559f25bd9b1c3",
+      "size": 62712
+    },
+    {
+      "path": "evaluation/results/round3/portable_ctest.log",
+      "sha256": "352aef93095d8fcb065ad92fcf78cfca0b7ca484669eafaebfe3db973c3ae197",
+      "size": 2116
+    },
+    {
+      "path": "evaluation/results/round3/public_startup_delta.json",
+      "sha256": "32e564f62dd53891474e3672cc96c023491a7dc53d10a4343852669eb7c16c5f",
+      "size": 12095
+    },
+    {
+      "path": "evaluation/results/round3/public_startup_delta.md",
+      "sha256": "f90c733153302848ec743d795f93331f2acd6cdea84c30b012689fce0e3cbc0c",
+      "size": 5225
+    },
+    {
+      "path": "evaluation/results/round3/public_startup_delta_analysis.py",
+      "sha256": "690bc5008e466df485306cba4203b2bd1708523372a27247112ebd1c4d207132",
+      "size": 4809
+    },
+    {
+      "path": "evaluation/results/round3/public_startup_diagnostic.cpp",
+      "sha256": "10ea044e5be735d670b18032d0ec3c0bbb17094df0d000fc48a968e4618835c2",
+      "size": 4340
+    },
+    {
+      "path": "evaluation/results/round3/python_tests.log",
+      "sha256": "6ba69d89e2f52b7c7e0fb10dc3ddbc033abea8841e8fcf691ef14c8895d5706a",
+      "size": 98
+    },
+    {
+      "path": "evaluation/results/round3/real_numeric_parity.json",
+      "sha256": "690d478f84193d0465e8214ac109e6af2618babce3235189e3a3a18218026dd7",
+      "size": 45308
+    },
+    {
+      "path": "evaluation/results/round3/recovery_evidence.json",
+      "sha256": "16a75c3b55b551c6db009bc8256b0f543e5e9c5315fec01e53abb1e5bfffa66f",
+      "size": 4177
+    },
+    {
+      "path": "evaluation/results/round3/reference_ablation.json",
+      "sha256": "4d4607760687dea79d8cea50cb7f69660a05187b4b4e97574f7f6198184f118b",
+      "size": 28588
+    },
+    {
+      "path": "evaluation/results/round3/review_resolution.json",
+      "sha256": "79c2fda7b5e6c3f10df44b4dd8c29fe2cf9b7b3d0e823031d1eee2bd362d79f0",
+      "size": 1015
+    },
+    {
+      "path": "evaluation/results/round3/ros_build.log",
+      "sha256": "20bdd3059e2a3687c5e83afcd438c8ab28a79081bd9309c4456a6079ad13bb2b",
+      "size": 99
+    },
+    {
+      "path": "evaluation/results/round3/ros_checker.log",
+      "sha256": "39fa48f7f44bec61d60185f033580b653378c345effd42e3f86fbac2cf1adc18",
+      "size": 100641
+    },
+    {
+      "path": "evaluation/results/round3/ros_contract_30639.json",
+      "sha256": "50516090dc06fe5a30f7345e132c630ad3a74f0f3894b7059ef646e8727eef0c",
+      "size": 1855
+    },
+    {
+      "path": "evaluation/results/round3/ros_contract_no_gnss.json",
+      "sha256": "5454dab32af7316b622f08000961d88899faa5b49d521d0f1c438daf534fb5db",
+      "size": 1741
+    },
+    {
+      "path": "evaluation/results/round3/ros_ctest.log",
+      "sha256": "8cdd696c1a8c3c6f51de95d9207df99fff6ed822d9dd1439d9731a0a1aed1645",
+      "size": 2140
+    },
+    {
+      "path": "evaluation/results/round3/ros_effective_parameters.log",
+      "sha256": "6310f1ede260ee9ba25611b93af312fae0ccc1a20d67a18023559fea9f3b2272",
+      "size": 2501
+    },
+    {
+      "path": "evaluation/results/round3/ros_offline_metrics.json",
+      "sha256": "0e35b73e4a9ead4779da14fb0d5092e018f01a50de03a2048af3903fa36aceb3",
+      "size": 9976
+    },
+    {
+      "path": "evaluation/results/round3/ros_round2_vs_round3_common.json",
+      "sha256": "d2d20f1d96371f8a5ded7c0c6ec1da5623566ef5b33ad84247e6c96bc22e78b5",
+      "size": 9156
+    },
+    {
+      "path": "evaluation/results/round3/ros_run_summary.json",
+      "sha256": "96d995da2aaf2d5108290fe3fc6dbf330e7e64a898ab9d8ed76c2e91384e12db",
+      "size": 12604
+    },
+    {
+      "path": "evaluation/results/round3/round3-frozen-peer-red.log",
+      "sha256": "991dcbe1616d38c806d1438efda261e8a7c4ea2e395ec4d072c2798d0189627a",
+      "size": 576
+    },
+    {
+      "path": "evaluation/results/round3/round3-rate-after.csv",
+      "sha256": "3bc56dd09a1e5a36b06977a375356b0112470ad59528df0053453e7b6b982cf4",
+      "size": 160
+    },
+    {
+      "path": "evaluation/results/round3/round3-rate-before.csv",
+      "sha256": "70ab0ab602905b7d773d57daa16ed543fae3c2bec4120750f6d37ee2b28127e6",
+      "size": 148
+    },
+    {
+      "path": "evaluation/results/round3/round3-recovery-red.log",
+      "sha256": "9bd181abac29cd416163ae34916d1ff06b2674fc6f8ad338db0522e4d5f1eec0",
+      "size": 2772
+    },
+    {
+      "path": "evaluation/results/round3/round3-review-ctest.log",
+      "sha256": "6fd5232703370ca6a94cb67b79eeff420d1402141127262488769d3d2ab0bcd6",
+      "size": 2122
+    },
+    {
+      "path": "evaluation/results/round3/round3-review-regression-red.log",
+      "sha256": "e26fe062fb0973bc2aad5369b6f4db7ccf92aa820dd0535f330cf1bd8cd12bd3",
+      "size": 1830
+    },
+    {
+      "path": "evaluation/results/round3/sanitize.log",
+      "sha256": "e298648970b2fe381a786357a4121a61ceccacb5ef3ee4940b7e31c2b5dc2773",
+      "size": 7035
+    },
+    {
+      "path": "evaluation/results/round3/startup_independent_review.md",
+      "sha256": "1b78f3bfc385f7511087b8e19e341494c75a67d21367ecded5cd346e41734f3b",
+      "size": 3013
+    },
+    {
+      "path": "evaluation/results/round3/startup_quality.json",
+      "sha256": "f18b1fb13383798a06aa915ac6a78b9af1abea44f5dfba7e653c225a07f1440c",
+      "size": 3923
+    },
+    {
+      "path": "evaluation/results/round3/startup_quality_README.md",
+      "sha256": "abe64dbb2193c6cc36dffef96a9c9292e9c61e22e180d39c918098a7ba176aae",
+      "size": 1617
+    },
+    {
+      "path": "evaluation/results/round3/startup_quality_ctest.log",
+      "sha256": "34bc446aed114ba5914ee69935cd8fc36a19a4f78590ef4157ee76987698a85f",
+      "size": 2124
+    },
+    {
+      "path": "evaluation/results/round3/startup_quality_green.log",
+      "sha256": "1720705166c4ae330419c434850399af1ec5e4ad9cec536dfc172e125099c4e6",
+      "size": 908
+    },
+    {
+      "path": "evaluation/results/round3/startup_quality_red.log",
+      "sha256": "3514307d82fb7cafff432cc606180824563a1a074ad624528609cc4bcbc59c12",
+      "size": 971
+    },
+    {
+      "path": "evaluation/results/round3/synthetic_30618.json",
+      "sha256": "3e336d48f2370ce28981c45a8447a4688c1d024c848081203b1f43db27d9389b",
+      "size": 301191
+    },
+    {
+      "path": "evaluation/results/round3/synthetic_30639.json",
+      "sha256": "3fca263208799ea16729e9e65558a3689791d267c99344b5e94a4dce3e318f3c",
+      "size": 300757
+    },
+    {
+      "path": "evaluation/results/round3/verification.json",
+      "sha256": "50d79793f554fb765ab9512a3c42add99bb75d390826f589c37a1398a25c146f",
+      "size": 2233
+    },
+    {
       "path": "evaluation/results/speed_study_final.json",
       "sha256": "4aa107cfd2117315396f3df250b9ed03d27c91af9fed691ee17688f4f9a6c589",
       "size": 509215
@@ -1257,6 +1547,26 @@
       "size": 1043
     },
     {
+      "path": "evaluation/round3_navigation_study.py",
+      "sha256": "98c8410e9b01a36a70574784d6cf6e3981d4c0a5b6fba955c5de91b4f4e3a331",
+      "size": 5416
+    },
+    {
+      "path": "evaluation/round3_numeric_parity.py",
+      "sha256": "210b0548eacf6afe7674aef0ec4ff4b9b911497a5e217905f628d7135dab0f99",
+      "size": 2311
+    },
+    {
+      "path": "evaluation/round3_official_xy.py",
+      "sha256": "63394b9191b58901e2d7d9e8ee3bdf84586d4e107ef9c1ca80db9c4c9a0f114a",
+      "size": 4729
+    },
+    {
+      "path": "evaluation/round3_xy_replay.py",
+      "sha256": "3e33b2398ded7ec11afad33ca98a4c703e170d1be7844b3ad52450ecbd7c47cc",
+      "size": 5318
+    },
+    {
       "path": "evaluation/run_reference_ablation.py",
       "sha256": "0d9dd42987869433af251f0e1f127b5a54a482f0629a0dbd3efcb4be14c009e3",
       "size": 3626
@@ -1322,9 +1632,14 @@
       "size": 4305
     },
     {
+      "path": "evaluation/tests/test_round3_navigation_study.py",
+      "sha256": "f0342ad185bcf8f6d577992599ea4e9f6dedf743adcaae61c187cb97f9237c1b",
+      "size": 1396
+    },
+    {
       "path": "evaluation/tests/test_wheel_fault_benchmark.py",
-      "sha256": "0f74384a3c7fdf9cbf8a86ac32fffe73462c3975dfa1d929cebc597c60072c8f",
-      "size": 3285
+      "sha256": "d44a25f1088cc9cb1226802464327aa01a5e0dd02930ff30eca47907402ec1d4",
+      "size": 3807
     },
     {
       "path": "evaluation/validation_baseline.csv",
@@ -1383,8 +1698,8 @@
     },
     {
       "path": "evaluation/wheel_fault_benchmark.py",
-      "sha256": "aa6dcdbd6890c2740d74326716b7722d831fe401bdba37680faa394520600713",
-      "size": 9697
+      "sha256": "a268de7db0baf7be2f78701f41ab3dc4d0bfd477dde176a19f58be115aa272af",
+      "size": 10257
     },
     {
       "path": "ros2_ws/src/tram_odometry/CMakeLists.txt",
@@ -1393,8 +1708,8 @@
     },
     {
       "path": "ros2_ws/src/tram_odometry/README.md",
-      "sha256": "d81d0e189b94a3d643a57166264d29ebaaa7063b561b8017a370eaa9f67c9c3d",
-      "size": 17810
+      "sha256": "a685a5c045cbafa020294f653c86ee36ee8ca0ff6df6a4cde995ffcc6689b77c",
+      "size": 19416
     },
     {
       "path": "ros2_ws/src/tram_odometry/assets/drive_accel_table.csv",
@@ -1428,8 +1743,8 @@
     },
     {
       "path": "ros2_ws/src/tram_odometry/assets/route_map_meta.json",
-      "sha256": "0cb9f08e706def5c6c842a0fc253afccb42e606aa340b5c636f12cc6d8cfe82f",
-      "size": 4474
+      "sha256": "5f9792bc31b5f9fa7c1d7b1453f4ed5e58913b3a8b7a2fbb39567105c18e9a98",
+      "size": 4618
     },
     {
       "path": "ros2_ws/src/tram_odometry/assets/stops.csv",
@@ -1438,8 +1753,8 @@
     },
     {
       "path": "ros2_ws/src/tram_odometry/config/default.yaml",
-      "sha256": "25aa9f43ca0fbb7067c50438c58126302b9221ebac25ae99526f5fb95af92803",
-      "size": 3063
+      "sha256": "aef74a217068eefcb450fa6585e88542507a7cdddc7f8c390a6c972780100f6b",
+      "size": 3254
     },
     {
       "path": "ros2_ws/src/tram_odometry/include/tram_odometry/elevation_profile.hpp",
@@ -1448,8 +1763,8 @@
     },
     {
       "path": "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp",
-      "sha256": "5571c4f8ee4d785fad2f2082640c089662004f444eee27ba9c89778f2f283906",
-      "size": 6632
+      "sha256": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140",
+      "size": 7932
     },
     {
       "path": "ros2_ws/src/tram_odometry/include/tram_odometry/geo_projection.hpp",
@@ -1458,8 +1773,8 @@
     },
     {
       "path": "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp",
-      "sha256": "bc1d7361000610360be2456f3a817067abe549c4806d6afe0567c8cf5be193e6",
-      "size": 5534
+      "sha256": "d3a2f7b7436a183aa7ad6b0298d605e950a57d6f9ffa3633896874e8af519d7b",
+      "size": 5797
     },
     {
       "path": "ros2_ws/src/tram_odometry/include/tram_odometry/route_map.hpp",
@@ -1488,18 +1803,18 @@
     },
     {
       "path": "ros2_ws/src/tram_odometry/src/estimator.cpp",
-      "sha256": "294cdfd194c8b25c3b3df17890d931700c8d30e999bff8ef2d15a02591fca6e8",
-      "size": 31501
+      "sha256": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+      "size": 41642
     },
     {
       "path": "ros2_ws/src/tram_odometry/src/navigation.cpp",
-      "sha256": "611d02032aaa2bf3c1beced8a9fd6c0edc40890f6c69b824023add210cdda571",
-      "size": 22865
+      "sha256": "38564b23954d3dd6491adeb9839a855917975f9775d72cff03d63390be551009",
+      "size": 23600
     },
     {
       "path": "ros2_ws/src/tram_odometry/src/odometry_node.cpp",
-      "sha256": "352549e3af6e65d66661797dd66787d7a20c7e1f256579cbea68f68644826861",
-      "size": 21526
+      "sha256": "29e1ada193786dd1c033b9498f90ff5b1ab83392fc47dddd805f4967db992f9a",
+      "size": 22632
     },
     {
       "path": "ros2_ws/src/tram_odometry/test/elevation_profile_test.cpp",
@@ -1520,6 +1835,11 @@
       "path": "ros2_ws/src/tram_odometry/test/estimator_jump_recovery_test.cpp",
       "sha256": "8f4277fd6c589fc5bbcfaf7bc35381572118b51f562a78a4704a3fa096b23744",
       "size": 8545
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/test/estimator_pair_freeze_test.cpp",
+      "sha256": "0ca8cde5baa628e99d98eec14d4f7ca99f33769f3be27e224946aada59916883",
+      "size": 11383
     },
     {
       "path": "ros2_ws/src/tram_odometry/test/estimator_wheel_residual_test.cpp",
@@ -1545,6 +1865,11 @@
       "path": "ros2_ws/src/tram_odometry/test/navigation_startup_heading_test.cpp",
       "sha256": "47ab0d17cf03996645fd496a5ee42020f50f624c1018684535d13c84415c99d0",
       "size": 6969
+    },
+    {
+      "path": "ros2_ws/src/tram_odometry/test/navigation_startup_quality_test.cpp",
+      "sha256": "13b753e34092f283b38ab7c7876c3e849099438479a08005280ca9a2a57a671d",
+      "size": 10988
     },
     {
       "path": "ros2_ws/src/tram_odometry/test/navigation_test.cpp",
@@ -1638,8 +1963,8 @@
     },
     {
       "path": "tools/make_release.py",
-      "sha256": "688c7be3aeb0ab2c105ef8562ea07ff71fe21d72f47a119fd4bab52546f0e642",
-      "size": 12821
+      "sha256": "8475b5b7496c79eb4eeb4ace3cf986422f2f61e29baea5f6f983182e60a3a14a",
+      "size": 12856
     },
     {
       "path": "tools/make_split.py",

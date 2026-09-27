@@ -1,0 +1,76 @@
+{
+  "baseline_commit": "50bd771",
+  "scope": "Navigation startup quality preference; no public-reference tuning",
+  "defaults_changed": false,
+  "startup_window_s": 5.0,
+  "rover_fallback_delay_s": 1.5,
+  "startup_min_fixes": 3,
+  "red": {
+    "tests": 10,
+    "passed": 2,
+    "failed": 8,
+    "failure_names": [
+      "RTK arriving after low-quality fixes owns the anchor",
+      "absent RTK falls back at the unchanged five-second deadline",
+      "one RTK fix cannot promote a lower-quality window early",
+      "low-quality rover cannot rotate an RTK master anchor",
+      "coherent RTK pair survives denser low-quality timestamps",
+      "RTK rover fallback is not blocked by low-quality master",
+      "reset restarts quality evidence and deadline",
+      "moving startup prefers RTK without losing wheel travel"
+    ],
+    "log": "startup_quality_red.log"
+  },
+  "green": {
+    "tests": 14,
+    "passed": 14,
+    "failed": 0,
+    "test_names": [
+      "RTK arriving after low-quality fixes owns the anchor",
+      "absent RTK falls back at the unchanged five-second deadline",
+      "one RTK fix cannot promote a lower-quality window early",
+      "sparse RTK remains usable at the deadline without mixing qualities",
+      "low-quality rover cannot rotate an RTK master anchor",
+      "coherent RTK pair survives denser low-quality timestamps",
+      "RTK rover fallback is not blocked by low-quality master",
+      "RTK rover respects its delay with either antenna arrival order",
+      "stale RTK pair cannot provide startup heading",
+      "reset restarts quality evidence and deadline",
+      "reset discards unfinished RTK and lower-quality fallback windows",
+      "moving startup prefers RTK without losing wheel travel",
+      "stale and future RTK cannot satisfy startup evidence",
+      "no GNSS still releases relative position after five seconds"
+    ],
+    "log": "startup_quality_green.log"
+  },
+  "full_ctest": {
+    "tests": 17,
+    "passed": 17,
+    "failed": 0,
+    "configuration": "portable Release",
+    "log": "startup_quality_ctest.log"
+  },
+  "commands": [
+    "cmake -S . -B /private/tmp/odometry-round3-rtk-build -DCMAKE_BUILD_TYPE=Release",
+    "cmake --build /private/tmp/odometry-round3-rtk-build -j4",
+    "ctest --test-dir /private/tmp/odometry-round3-rtk-build --output-on-failure"
+  ],
+  "navigation_source_sha256": {
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": "38564b23954d3dd6491adeb9839a855917975f9775d72cff03d63390be551009",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/navigation.hpp": "d3a2f7b7436a183aa7ad6b0298d605e950a57d6f9ffa3633896874e8af519d7b",
+    "ros2_ws/src/tram_odometry/test/navigation_startup_quality_test.cpp": "13b753e34092f283b38ab7c7876c3e849099438479a08005280ca9a2a57a671d"
+  },
+  "policy": [
+    "Keep status=2 samples and timestamps separate from lower-quality samples per antenna.",
+    "Before deadline, master RTK requires startup_min_fixes; rover RTK requires minimum count, no RTK master yet, and existing rover delay.",
+    "At deadline select sufficient master RTK, sufficient rover RTK, sparse master RTK, sparse rover RTK, usable master, then usable rover.",
+    "Sparse RTK may anchor only at deadline; never mix quality groups in position median or heading pair.",
+    "Retain existing timestamp age, pairing time/baseline/coherence, moving-distance and reset rules."
+  ],
+  "coverage_expectation": "Runs beginning with status0/1 hold position until RTK minimum count or first event after five seconds; velocity publication continues. RTK-first and no-GNSS deadlines unchanged. Public coverage and trajectory effects are for frozen-code evaluation, not tuning.",
+  "existing_test_fixtures_changed": false,
+  "limitations": [
+    "Early RTK rover waits if any RTK master sample exists, preserving master preference until deadline.",
+    "Quality preference affects startup only; ongoing correction policy is unchanged."
+  ]
+}

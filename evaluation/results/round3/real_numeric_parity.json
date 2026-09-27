@@ -1,0 +1,1769 @@
+{
+  "before": "/private/tmp/odometry-pull-50bd771/replay_cli",
+  "after": "/private/tmp/odometry-round3-final/replay_cli",
+  "binary_sha256": {
+    "/private/tmp/odometry-pull-50bd771/replay_cli": "3408ec7f33bfd64c5469bb09c6a29f4779866d7eb5fc09d2cea5bb3c82938865",
+    "/private/tmp/odometry-round3-final/replay_cli": "360b8c08afcb727a9283911eae3a328c0ae9884760447aacaed3718d0f3bb555"
+  },
+  "bags": 97,
+  "rows": [
+    {
+      "bag": "30618_0652866c",
+      "outputs": 29207,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_0686195f",
+      "outputs": 23580,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_073f08d1",
+      "outputs": 25436,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_095a115b",
+      "outputs": 26438,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_0d865417",
+      "outputs": 234,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_0e41eac3",
+      "outputs": 26455,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_0f120b35",
+      "outputs": 26360,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_1551d0a9",
+      "outputs": 25,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_22c1c589",
+      "outputs": 23042,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_27e994fc",
+      "outputs": 37941,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_28538acf",
+      "outputs": 25750,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2dbce472",
+      "outputs": 27389,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2f104a1d",
+      "outputs": 24968,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_49fe4c54",
+      "outputs": 27597,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_616ec56b",
+      "outputs": 24796,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_68847170",
+      "outputs": 24215,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_68d1748a",
+      "outputs": 25134,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_76e1f9c7",
+      "outputs": 25912,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_7b4d83f4",
+      "outputs": 23138,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_8158f0b0",
+      "outputs": 23628,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_87afe526",
+      "outputs": 24315,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_88548b02",
+      "outputs": 25058,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_9c09b081",
+      "outputs": 26572,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_ab5921a4",
+      "outputs": 23027,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_b15eafc3",
+      "outputs": 25102,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_b8044aa0",
+      "outputs": 25441,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_b83d854d",
+      "outputs": 24057,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_b95ca60a",
+      "outputs": 21718,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_bc5e53c2",
+      "outputs": 525,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_defd0170",
+      "outputs": 20891,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_e2dcf65f",
+      "outputs": 21850,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_e3d94878",
+      "outputs": 23368,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_f19a4ac3",
+      "outputs": 23885,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_0ab96c59",
+      "outputs": 1590,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_0be558e2",
+      "outputs": 25777,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_2b4a6347",
+      "outputs": 21836,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_4285f2bc",
+      "outputs": 24863,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_50956d6e",
+      "outputs": 22044,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_584b6e32",
+      "outputs": 22536,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_927002c2",
+      "outputs": 22837,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_9f0b519f",
+      "outputs": 20561,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_d927f360",
+      "outputs": 21873,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_01f73500",
+      "outputs": 24233,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_082f1d65",
+      "outputs": 405,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2050d396",
+      "outputs": 26807,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_33bec73f",
+      "outputs": 23541,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_3e9f4952",
+      "outputs": 26406,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_437e855c",
+      "outputs": 22950,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_67b89902",
+      "outputs": 19658,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_a53d5f6f",
+      "outputs": 24197,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_a869780d",
+      "outputs": 21667,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_d4ba7005",
+      "outputs": 23161,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_dd8d0741",
+      "outputs": 25303,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_dd8e6395",
+      "outputs": 24526,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_e9a34502",
+      "outputs": 24023,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_0259fe53",
+      "outputs": 24565,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_0a83c933",
+      "outputs": 21911,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_117c2d02",
+      "outputs": 24048,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_1cc230fa",
+      "outputs": 26225,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_20096314",
+      "outputs": 23746,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2161b58b",
+      "outputs": 21398,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_21dd3af3",
+      "outputs": 21486,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2255aade",
+      "outputs": 25060,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2366c74a",
+      "outputs": 21613,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2cb9ce37",
+      "outputs": 14915,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2d2fa7be",
+      "outputs": 23965,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_2f2f1175",
+      "outputs": 23369,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_3b36e5cd",
+      "outputs": 25105,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_3ba2326f",
+      "outputs": 25519,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_3e012faf",
+      "outputs": 20376,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_40ffd323",
+      "outputs": 25538,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_45ff6f99",
+      "outputs": 261,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_4d487b0d",
+      "outputs": 21458,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_4e1e3181",
+      "outputs": 25385,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_5036aa78",
+      "outputs": 1977,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_6236f680",
+      "outputs": 25453,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_6cb3280a",
+      "outputs": 24482,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_74559c73",
+      "outputs": 1907,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_748832b9",
+      "outputs": 22227,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_79b204dc",
+      "outputs": 21230,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_7a152380",
+      "outputs": 25063,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_81c22fee",
+      "outputs": 23626,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_98161270",
+      "outputs": 769,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_9bbe6faa",
+      "outputs": 24371,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_af7496f0",
+      "outputs": 5259,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_bab2fe58",
+      "outputs": 1070,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30618_e151d6e4",
+      "outputs": 758,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_253671cc",
+      "outputs": 21586,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_3b3d9eb8",
+      "outputs": 24322,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_44226bde",
+      "outputs": 21603,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_92226df0",
+      "outputs": 24285,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_9c362687",
+      "outputs": 27097,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_c31df386",
+      "outputs": 27161,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_d3c43d69",
+      "outputs": 21937,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_d601d28f",
+      "outputs": 20113,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_dce52be4",
+      "outputs": 22906,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    },
+    {
+      "bag": "30639_e4379d7f",
+      "outputs": 28671,
+      "same_timestamps": true,
+      "byte_equal": true,
+      "max_abs_delta_by_field": {
+        "velocity_mps": 0.0,
+        "distance_m": 0.0,
+        "model_accel_mps2": 0.0,
+        "front_weight": 0.0,
+        "rear_weight": 0.0,
+        "front_slip": 0.0,
+        "rear_slip": 0.0,
+        "model_only": 0.0,
+        "drive_table_active": 0.0,
+        "drive_table_used": 0.0
+      }
+    }
+  ],
+  "max_abs_delta_by_field": {
+    "velocity_mps": 0.0,
+    "distance_m": 0.0,
+    "model_accel_mps2": 0.0,
+    "front_weight": 0.0,
+    "rear_weight": 0.0,
+    "front_slip": 0.0,
+    "rear_slip": 0.0,
+    "model_only": 0.0,
+    "drive_table_active": 0.0,
+    "drive_table_used": 0.0
+  }
+}

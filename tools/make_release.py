@@ -66,6 +66,7 @@ ALLOWLIST = (
     "evaluation/results/**/*.md",
     "evaluation/results/**/*.patch",
     "evaluation/results/**/*.py",
+    "evaluation/results/**/*.cpp",
     "evaluation/results/**/*.log",
     "evaluation/*.patch",
     "evaluation/*study*.cpp",

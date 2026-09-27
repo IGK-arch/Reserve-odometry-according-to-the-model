@@ -1,0 +1,60 @@
+{
+  "baseline_commit": "50bd771",
+  "source_sha256": {
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "63e870dbf3668173e28c63d4ea4d50a2dc4499f921fffd4b9d6d659c279bb0dc",
+    "ros2_ws/src/tram_odometry/include/tram_odometry/estimator.hpp": "a06bbc21a5560906f20e7c23bc659de9e2d2227970e26747e3200c159c7fd140",
+    "ros2_ws/src/tram_odometry/test/estimator_pair_freeze_test.cpp": "0ca8cde5baa628e99d98eec14d4f7ca99f33769f3be27e224946aada59916883"
+  },
+  "after_replay_sha256": "360b8c08afcb727a9283911eae3a328c0ae9884760447aacaed3718d0f3bb555",
+  "verification": [
+    "Extended estimator_pair_freeze_test failed against unchanged baseline before implementation; regression failures saved.",
+    "Frozen-peer followup regression failed before per-channel quarantine fix; failures saved.",
+    "17/17 portable CTests passed after implementation.",
+    "Rebuild after formatting yielded identical replay_cli SHA256 to both synthetic reports; final estimator regression passed.",
+    "Independent review found fresh frozen peer lock and changed duplicate-header payload recovery. Added regressions:24assertion failures before implementation across physics30618,30639,deployed30618 andbothsensororders; now pass. Full17CTestpasses. Both84-scenario suites rerun on reviewed binary; metrics exactly equal prior round3 run."
+  ],
+  "rate_probe": {
+    "columns": [
+      "vehicle",
+      "hz",
+      "first_active_s",
+      "active_at_13s"
+    ],
+    "profile": "v=5+0.5*t for0..5s, then7.5m/s through13s; constant+4; deployed30618 train table and30639 physics",
+    "before": "round3-rate-before.csv",
+    "after": "round3-rate-after.csv"
+  },
+  "deployed_counterexamples_after": [
+    "30618 only_front_resumes_12s front_stale=0 rear_stale=1 front_weight=1 model_only=0 v=8.00283 front_truth=8.0",
+    "30618 healthy_constant_speed front_weight=1 model_only=0 v=5.00025 distance=60.0155 true_distance=60",
+    "30639 only_front_resumes_12s front_stale=0 rear_stale=1 front_weight=1 model_only=0 v=8.02965 front_truth=8.0",
+    "30639 healthy_constant_speed front_weight=1 model_only=0 v=5.00024 distance=60.0149 true_distance=60"
+  ],
+  "physics_counterexamples_after": [
+    "notch_changed_4_0_4 correction=0 active=0",
+    "stale_front_recovery active=0 front_stale=1 model_only=0 correction=0 v=11.4043",
+    "only_front_resumes_12s active=0 front_stale=0 rear_stale=1 front_weight=1 model_only=0 v=17.4587 front_truth=17.5"
+  ],
+  "limitations": [
+    "Command-only trigger disabled deliberately: trip pair_freeze_transition loses the previous gain and returns to older behavior; 3/84 synthetic cases per vehicle change. Other81 equal at1e-9.",
+    "A true exact plateau following acceleration can still look identical to frozen wheels. Retained motion-before-flatline detection is a heuristic, not proof of a fault.",
+    "The high-rate change removes the dt>=0.045 blind spot for the tested0.5m/s^2 ramp at10..100Hz; it does not establish invariance for quantized changes below0.002m/s or arbitrary rates.",
+    "Lone recovery uses existing uncertainty/innovation gating and carries no retrospective correction; this cannot prove that a lone changed sensor is healthy.",
+    "Bounded correction remains a constant-acceleration-error approximation; its gradual application makes distance derivative differ from published speed.",
+    "No public-data fitting was done."
+  ],
+  "review_fixes": {
+    "behavior": [
+      "A lone changed channel waits wheel_pair_max_age_s pairing grace before independent recovery when fresh peer stays frozen. Peer quarantine remains.",
+      "Conflicting payload at same per-sensor timestamp is rejected before raw-history changes. Strictly newer paired samples can subsequently recover."
+    ],
+    "red_log": "round3-review-regression-red.log",
+    "ctest_log": "round3-review-ctest.log",
+    "independent_probe_after": [
+      "30618 one recovered, peer fresh frozen: active=0 model=0 v=8.02535",
+      "30618 changed payload at same header: active=1 correction=0 v=9.62261",
+      "30639 one recovered, peer fresh frozen: active=0 model=0 v=8.02969",
+      "30639 changed payload at same header: active=1 correction=0 v=9.60324"
+    ]
+  }
+}

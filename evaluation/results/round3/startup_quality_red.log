@@ -1,0 +1,11 @@
+FAIL: RTK arriving after low-quality fixes owns the anchor: usable fixes must wait for RTK
+FAIL: absent RTK falls back at the unchanged five-second deadline: fallback must wait through RTK window
+FAIL: one RTK fix cannot promote a lower-quality window early: one RTK fix is insufficient for early anchor
+FAIL: low-quality rover cannot rotate an RTK master anchor: low-quality rover cannot supply RTK heading
+FAIL: coherent RTK pair survives denser low-quality timestamps: coherent RTK pair supplies heading
+FAIL: RTK rover fallback is not blocked by low-quality master: RTK rover wins after rover delay
+FAIL: reset restarts quality evidence and deadline: reset must discard old RTK evidence
+FAIL: moving startup prefers RTK without losing wheel travel: RTK anchor preserves integrated distance: actual=94.872328
+PASS: stale and future RTK cannot satisfy startup evidence
+PASS: no GNSS still releases relative position after five seconds
+2/10 startup quality tests passed

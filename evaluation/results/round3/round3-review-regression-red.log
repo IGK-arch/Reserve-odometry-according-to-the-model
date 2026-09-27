@@ -1,0 +1,24 @@
+FAIL: fresh frozen companion cannot extend paired recovery grace indefinitely
+FAIL: lone recovery must work when companion still publishes frozen payloads
+FAIL: changed payloads on duplicate sensor headers cannot form a recovery pair
+FAIL: first valid recovery sample must wait for its coherent companion
+FAIL: fresh frozen companion cannot extend paired recovery grace indefinitely
+FAIL: lone recovery must work when companion still publishes frozen payloads
+FAIL: changed payloads on duplicate sensor headers cannot form a recovery pair
+FAIL: first valid recovery sample must wait for its coherent companion
+FAIL: fresh frozen companion cannot extend paired recovery grace indefinitely
+FAIL: lone recovery must work when companion still publishes frozen payloads
+FAIL: changed payloads on duplicate sensor headers cannot form a recovery pair
+FAIL: first valid recovery sample must wait for its coherent companion
+FAIL: fresh frozen companion cannot extend paired recovery grace indefinitely
+FAIL: lone recovery must work when companion still publishes frozen payloads
+FAIL: changed payloads on duplicate sensor headers cannot form a recovery pair
+FAIL: first valid recovery sample must wait for its coherent companion
+FAIL: fresh frozen companion cannot extend paired recovery grace indefinitely
+FAIL: lone recovery must work when companion still publishes frozen payloads
+FAIL: changed payloads on duplicate sensor headers cannot form a recovery pair
+FAIL: first valid recovery sample must wait for its coherent companion
+FAIL: fresh frozen companion cannot extend paired recovery grace indefinitely
+FAIL: lone recovery must work when companion still publishes frozen payloads
+FAIL: changed payloads on duplicate sensor headers cannot form a recovery pair
+FAIL: first valid recovery sample must wait for its coherent companion

@@ -1,0 +1,73 @@
+{
+  "mode": "no-gnss",
+  "vehicle_id": 30618,
+  "topic_types": {
+    "/result/velocity": [
+      "tram_vehicle_msgs/msg/VelocitySensor"
+    ],
+    "/result/position": [
+      "nav_msgs/msg/Odometry"
+    ],
+    "/result/diagnostics": [
+      "diagnostic_msgs/msg/DiagnosticArray"
+    ]
+  },
+  "input_unique_stamps": 733,
+  "velocity_count": 655,
+  "position_count": 576,
+  "velocity_rate_wall_hz": 29.426368314003973,
+  "position_rate_wall_hz": 29.642403185562358,
+  "velocity_rate_header_hz": 26.77154877900184,
+  "position_rate_header_hz": 29.63900402220568,
+  "velocity_input_stamp_matches": 655,
+  "position_velocity_stamp_matches": 576,
+  "velocity_frames": {
+    "base_link": 655
+  },
+  "position_frames": {
+    "odom": 576
+  },
+  "first_position_stamp_ns": 1787736036378918634,
+  "first_position_xyz": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "position_xyz_min": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "position_xyz_max": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "anchor_sources": {
+    "none": 576
+  },
+  "position_modes": {
+    "pending_anchor": 79,
+    "relative_straight": 576
+  },
+  "invalid_stamps": {},
+  "invalid_numeric": {},
+  "callback_to_publish_ms_p50": 0.0703125,
+  "callback_to_publish_ms_p95": 0.130833,
+  "callback_to_publish_ms_p99": 0.308834,
+  "callback_to_publish_ms_max": 1.635541,
+  "reported_rate_hz_p50": 30.0168375,
+  "pose_x_variance_m2_min": 25.014059409122265,
+  "pose_x_variance_m2_max": 25.014853463792615,
+  "scale_drift_sigma_m_max": 0.0,
+  "wheel_common_scale_sigma": 0.01,
+  "node_resource_pids": [
+    40
+  ],
+  "node_resource_samples": 96,
+  "node_peak_rss_mb": 22.1484375,
+  "node_cpu_one_core_mean_pct": 1.4556049095690675,
+  "node_cpu_one_core_p95_pct": 3.9972585521824584,
+  "failures": [],
+  "passed": true
+}
