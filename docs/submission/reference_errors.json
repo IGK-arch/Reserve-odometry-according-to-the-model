@@ -1,20 +1,20 @@
 {
   "method": "nearest reference <=50 ms; every valid match; no alignment or filtering",
-  "position_n": 28538,
-  "velocity_n": 28538,
-  "position_rmse_m": 1.5606605461308296,
-  "velocity_rmse_mps": 0.04876236952481599,
-  "candidate_sha256": "363d8728d22cea4ee623228f501705e3db0d42f7ec0256f00fe326eda13bfe8f",
-  "metrics_sha256": "d82323d528f878ca04c373674a00a5a5d6d486ac01ee69f438f2032f6b43263d",
-  "script_sha256": "1d7d57067c2643278813258742d5ed11f747072485cafae17bd9c59190029a46",
-  "plot_sha256": "82266d5cd8569dc25c2bef90ae94ae43441f9d0581d56e3a01ba968b29cb7611",
+  "position_n": 26884,
+  "velocity_n": 26884,
+  "position_rmse_m": 1.5449009116974546,
+  "velocity_rmse_mps": 0.04804813728929262,
+  "candidate_sha256": "65b0f70ed2b68baddb309796e09813fcd22e1e1970a008a807ccca8783a15755",
+  "metrics_sha256": "755a72cf4f038047c15cd468aa209f8a62f1f547df6ba7591413de91047c3148",
+  "script_sha256": "ec96f09f569540be1b4c7841dbdafe29c66ec261af4e3b848d6be902dad60f0e",
+  "plot_sha256": "142879a5181af4da6581bb7c47a804cdec37c283518692d0a224d57accfd052d",
   "command": [
     "tools/make_submission_plot.py",
     "--bag",
     "/private/tmp/odometry-audit/check-code/bags/30618_88aea4d9",
     "--candidate",
-    "evaluation/runs/round4_final_ros_1x/candidate.csv",
+    "evaluation/runs/submission_final_reference/candidate.csv",
     "--metrics",
-    "evaluation/results/round4/ros_offline_metrics.json"
+    "evaluation/results/submission_final_20260927/reference_metrics.json"
   ]
 }

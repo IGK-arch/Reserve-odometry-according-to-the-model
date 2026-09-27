@@ -1,0 +1,20 @@
+{
+  "source_commit": "8846ee0b8f3fb3d4a0a28b1747efded76e09a87d",
+  "scope": "Final jury documents. Production code and parameters unchanged.",
+  "document_links_checked": 26,
+  "declared_ros_parameters_documented": 73,
+  "validation_position_matches": 301243,
+  "validation_position_rmse_m_verified": 2.615324873246008,
+  "fresh_native_cpp_tests": 21,
+  "fresh_python_tests": 40,
+  "reference_method": "Full C++ offline replay, all available permitted inputs, nearest reference header <=50ms.",
+  "plot_visual_check": "passed",
+  "source_sha256": {
+    "ros2_ws/src/tram_odometry/src/estimator.cpp": "412ecaa7f19c15c0b20360dc47234e2a40415c7a746b1ad919ca185b96642152",
+    "ros2_ws/src/tram_odometry/src/navigation.cpp": "f9bc4d1a95b269cbc198bdfb0262e1088d79c8361e655715d99c5d66c90e5f82",
+    "ros2_ws/src/tram_odometry/src/odometry_node.cpp": "ee26b8bbafde93dc8a2461306de33d31dc902a6021c25acc16a9318838f1410f"
+  },
+  "fresh_ros_humble_build": "passed",
+  "fresh_ros_cpp_tests": 21,
+  "independent_document_review": "passed, two wording corrections applied"
+}

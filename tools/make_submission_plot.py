@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plot all valid nearest-header matches of a recorded ROS output, without fitting."""
+"""Plot all valid nearest-header matches of the offline C++ output, without fitting."""
 import argparse
 import hashlib
 import json
@@ -49,7 +49,7 @@ def main():
                          'axes.spines.top': False, 'axes.spines.right': False})
     fig, axes = plt.subplots(2, 1, figsize=(10.5, 6.2), sharex=True)
     fig.suptitle('Ошибка на полном контрольном прогоне 30618', fontsize=16, x=.09, ha='left')
-    fig.text(.09, .905, 'Записанный ROS-выход · ближайшая метка эталона ≤50 мс · прямое сравнение', fontsize=10, color='#526070')
+    fig.text(.09, .905, 'Офлайн-пересчёт C++-ядра · ближайшая метка эталона ≤50 мс · прямое сравнение', fontsize=10, color='#526070')
     axes[0].plot((p[:, 0]-start_ns)/60e9, p[:, 1], color='#1766a1', linewidth=.7)
     axes[0].axhline(p_rmse, color='#b76b19', linestyle='--', linewidth=1.1,
                    label=f'Офлайн RMSE = {p_rmse:.3f} м')
